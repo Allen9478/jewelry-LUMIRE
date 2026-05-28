@@ -1,9 +1,9 @@
 <script setup>
-import AppHeader from './components/AppHeader.vue'
+import DefaultLayout from './layouts/DefaultLayout.vue'
 </script>
 
 <template>
-  <AppHeader />
+  <RouterView />
 </template>
 
 <style scoped></style>

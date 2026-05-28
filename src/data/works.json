@@ -1,0 +1,130 @@
+[
+  {
+    "id": "wei_chen-necklace",
+    "designer": "Wei Chen",
+    "category": "Necklace",
+    "name": "Imperial Jade Cascade Necklace",
+    "materials": "18K Yellow Gold, Hand-Carved Nephrite Jade",
+    "description": "A majestic bib necklace featuring eleven hand-carved nephrite jade plaques suspended from layered gold chains. The collar is adorned with intricate filigree work and a central pagoda motif flanked by mythical creatures, evoking the grandeur of imperial Chinese craftsmanship."
+  },
+  {
+    "id": "yu_an_lin-necklace",
+    "designer": "Yu An Lin",
+    "category": "Necklace",
+    "name": "Molten Flow Pendant Necklace",
+    "materials": "18K Yellow Gold",
+    "description": "An avant-garde statement necklace featuring a dramatic draping pendant of organically flowing gold strands with lattice-like perforations. The sculptural centerpiece evokes molten metal in motion, suspended from a hand-forged link chain."
+  },
+  {
+    "id": "wei_chen-earring",
+    "designer": "Wei Chen",
+    "category": "Earrings",
+    "name": "Phoenix Jade Chandelier Earrings",
+    "materials": "18K Yellow Gold, Hand-Carved Nephrite Jade",
+    "description": "Elaborate drop earrings featuring a sculpted phoenix hook suspending a gold-framed nephrite jade plaque engraved with ancient taotie motifs. A tiered fringe of chains, gold beads, and jade pendants cascades below, blending dynastic Chinese symbolism with fine jewelry artistry."
+  },
+  {
+    "id": "wei_chen-bracelet",
+    "designer": "Wei Chen",
+    "category": "Bracelet",
+    "name": "Imperial Jade Cuff Bracelet",
+    "materials": "18K Yellow Gold, Nephrite Jade",
+    "description": "A wide cuff bracelet composed of smooth nephrite jade panels set within an ornate gold framework of Greek-key borders and a central taotie mask motif. The inner band carries repeating geometric fretwork, reflecting the architectural splendor of imperial Chinese palace design."
+  },
+  {
+    "id": "marco_bianchi-earring",
+    "designer": "Marco Bianchi",
+    "category": "Earrings",
+    "name": "Art Deco Sapphire & Ruby Tower Earrings",
+    "materials": "18K Rose Gold, Blue Sapphire, Ruby, Diamond Baguettes",
+    "description": "Striking Art Deco drop earrings with a tiered architectural silhouette. Each piece features a step-cut blue sapphire stud atop a trapezoidal pendant framed by calibré-set rubies and diamond baguettes, capturing the bold geometry and opulent color contrasts of the 1920s."
+  },
+  {
+    "id": "elena_volkov-bracelet",
+    "designer": "Elena Volkov",
+    "category": "Bracelet",
+    "name": "Duality Edge Cuff",
+    "materials": "White Gold, Black Ceramic, Pavé Diamonds",
+    "description": "A sleek open-cuff bracelet with a razor-sharp faceted profile that transitions seamlessly from polished white metal with black ceramic inlay on one side to a pavé diamond-encrusted arc on the other — a study in contrasts between raw precision and luminous luxury."
+  },
+  {
+    "id": "yu_an_lin-ring",
+    "designer": "Yu An Lin",
+    "category": "Ring",
+    "name": "Lace Lattice Elongated Ring",
+    "materials": "18K Yellow Gold",
+    "description": "A sculptural statement ring extending well beyond the finger with an open, reticulated structure inspired by organic cellular forms. The freeform lattice of flowing gold threads creates a dramatic, armor-like piece that blurs the boundary between jewelry and wearable sculpture."
+  },
+  {
+    "id": "marco_bianchi-bracelet",
+    "designer": "Marco Bianchi",
+    "category": "Bracelet",
+    "name": "Art Deco Ruby & Sapphire Panel Bracelet",
+    "materials": "18K Yellow Gold, Ruby, Blue Sapphire, Square-Cut Diamonds",
+    "description": "A wide Art Deco bracelet with a grid of alternating ruby and sapphire columns set within a milgrain-edged gold framework. Square-cut diamonds punctuate the intersections, creating a bold rhythmic pattern reminiscent of stained-glass windows in a jazz-age skyscraper."
+  },
+  {
+    "id": "marco_bianchi-ring",
+    "designer": "Marco Bianchi",
+    "category": "Ring",
+    "name": "Art Deco Chevron Signet Ring",
+    "materials": "18K Yellow Gold, Blue Sapphire, Ruby",
+    "description": "A substantial Art Deco signet ring featuring a multi-tiered face inlaid with chevron-patterned blue sapphires bordered by calibré-set rubies. The stepped pyramid profile and filigree-engraved shoulders evoke the bold symmetry and chromatic richness of 1920s decorative arts."
+  },
+  {
+    "id": "yu_an_lin-bracelet",
+    "designer": "Yu An Lin",
+    "category": "Bracelet",
+    "name": "Voronoi Cuff Bracelet",
+    "materials": "18K Yellow Gold",
+    "description": "A bold wide cuff bracelet with a richly textured Voronoi-inspired surface — an organic network of irregular cells and perforations that catches light from every angle. Handcrafted in warm gold, the piece evokes natural cellular structures like coral or bone, rendered in liquid metal."
+  },
+  {
+    "id": "yu_an_lin-earring",
+    "designer": "Yu An Lin",
+    "category": "Earrings",
+    "name": "Cascade Lattice Drop Earrings",
+    "materials": "18K Yellow Gold",
+    "description": "Long, fluid drop earrings composed of an open gold lattice that narrows and drips into a pointed tapered end. The honeycombed perforations and undulating silhouette give the impression of suspended liquid metal, merging organic form with artisanal goldsmithing."
+  },
+  {
+    "id": "elena_volkov-earring",
+    "designer": "Elena Volkov",
+    "category": "Earrings",
+    "name": "Minimalist Diamond Bar Bracelet",
+    "materials": "18K Rose Gold, Princess-Cut Diamonds",
+    "description": "An elegant linear bracelet composed of three faceted rose gold bar segments connected by princess-cut diamond stations. The understated geometric design balances architectural restraint with delicate brilliance, making it an ideal everyday fine jewelry piece."
+  },
+  {
+    "id": "wei_chen-ring",
+    "designer": "Wei Chen",
+    "category": "Ring",
+    "name": "Pavilion Gate Jade Ring",
+    "materials": "18K Yellow Gold, Nephrite Jade",
+    "description": "An extraordinary statement ring featuring a nephrite jade centerpiece framed within a gold architectural surround modeled after a classical Chinese pavilion gate. Flanking panels are filled with scrolling cloud and ruyi motifs in deep relief, creating a wearable monument to traditional Chinese heritage architecture."
+  },
+  {
+    "id": "elena_volkov-necklace",
+    "designer": "Elena Volkov",
+    "category": "Necklace",
+    "name": "Baguette Diamond Bar Necklace",
+    "materials": "18K Rose Gold, Baguette Diamonds",
+    "description": "A refined and architectural bar necklace with a full row of channel-set baguette diamonds spanning a clean horizontal pendant. The sleek rose gold setting and geometric precision create a minimalist modern aesthetic with understated luminosity."
+  },
+  {
+    "id": "marco_bianchi-necklace",
+    "designer": "Marco Bianchi",
+    "category": "Necklace",
+    "name": "Soleil Yin-Yang Art Deco Necklace",
+    "materials": "18K Yellow Gold, Blue Sapphire, Ruby, Diamond Baguettes, Black Onyx",
+    "description": "A spectacular Art Deco statement necklace centered on a sunburst medallion with a yin-yang core of pear-cut rubies and sapphires. Radiating fan-shaped spokes of black onyx, baguette diamonds, and calibré-set gemstones surround the central motif, while a geometric chain of sapphires, rubies, and diamonds completes the composition."
+  },
+  {
+    "id": "elena_volkov-ring",
+    "designer": "Elena Volkov",
+    "category": "Ring",
+    "name": "Geometric Tension-Set Diamond Ring",
+    "materials": "White Gold, Emerald-Cut Diamond",
+    "description": "A bold architectural ring with a flat trapezoidal top panel tension-set with a single emerald-cut diamond. The angular, wing-like profile and mirror-polished white metal surface give this piece a futuristic, sculptural presence — where precision engineering meets fine gem-setting."
+  }
+]
