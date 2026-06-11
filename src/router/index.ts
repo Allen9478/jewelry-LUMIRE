@@ -7,54 +7,54 @@ const routes = [
     children: [
       {
         path: '',
-        name: 'Home',
+        name: 'home',
         component: () => import('@/views/HomeView.vue'),
       },
       {
-        path: '/Works',
-        name: 'Works',
+        path: '/works',
+        name: 'works',
         component: () => import('@/views/works/WorksView.vue'),
       },
       {
-        path: '/Works/:id',
-        name: 'Work',
+        path: '/works/:id',
+        name: 'work-detail',
         component: () => import('@/views/works/WorkDetailView.vue'),
       },
       {
-        path: '/Artists',
-        name: 'Artists',
+        path: '/artists',
+        name: 'artists',
         component: () => import('@/views/artists/ArtistsView.vue'),
       },
       {
-        path: '/Artists/:id',
-        name: 'ArtistsDetail',
+        path: '/artists/:id',
+        name: 'artists-detail',
         component: () => import('@/views/artists/ArtistDetail.vue'),
       },
       {
-        path: '/About',
-        name: 'About',
+        path: '/about',
+        name: 'about',
         component: () => import('@/views/AboutView.vue'),
       },
       {
-        path: '/Exhibitions',
-        name: 'Exhibitions',
+        path: '/exhibitions',
+        name: 'exhibitions',
         component: () => import('@/views/ExhibitionsView.vue'),
       },
       {
-        path: '/Contact',
-        name: 'Contact',
+        path: '/contact',
+        name: 'contact',
         component: () => import('@/views/ContactView.vue'),
       },
       //auth版面,不套用header/footer,還不知怎麼寫暫時先這樣要查
       {
-        path: '/Login',
-        name: 'Login',
+        path: '/login',
+        name: 'login',
         component: () => import('@/views/auth/LoginView.vue'),
       },
       //404頁面
       {
         path: '/:pathMatch(.*)*',
-        name: 'NotFound',
+        name: 'notFound',
         component: () => import('@/views/NotFoundView.vue'),
       },
     ],

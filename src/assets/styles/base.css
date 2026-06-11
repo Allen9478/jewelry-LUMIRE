@@ -1,0 +1,17 @@
+/* Chrome / Safari  滾動條自訂*/
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: #d6b46a;
+  border-radius: 3px;
+}
+
+/* Firefox 滾動條自訂*/
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #d6b46a #000;
+}

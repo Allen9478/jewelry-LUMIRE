@@ -2,12 +2,12 @@
 import HamburgerMenu from '@/components/layout/HamburgerMenu.vue'
 
 const navItems = [
-  { label: 'Home', to: { name: 'Home' } },
-  { label: 'Works', to: { name: 'Works' } },
-  { label: 'Artists', to: { name: 'Artists' } },
-  { label: 'About', to: { name: 'About' } },
-  { label: 'Exhibitions', to: { name: 'Exhibitions' } },
-  { label: 'Contact', to: { name: 'Contact' } },
+  { label: 'Home', to: { name: 'home' } },
+  { label: 'Works', to: { name: 'works' } },
+  { label: 'Artists', to: { name: 'artists' } },
+  { label: 'About', to: { name: 'about' } },
+  { label: 'Exhibitions', to: { name: 'exhibitions' } },
+  { label: 'Contact', to: { name: 'contact' } },
 ]
 </script>
 

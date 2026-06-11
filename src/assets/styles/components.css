@@ -1,0 +1,20 @@
+@layer components {
+  /* 有框框的btn */
+
+  .btn {
+    @apply cursor-pointer inline-flex items-center justify-center;
+  }
+
+  .btn-primary {
+    @apply border border-gold-400 text-gold-400 px-6 py-3 
+         text-xs tracking-[0.2em] uppercase font-sans
+         transition-all duration-300
+         hover:bg-gold-400 hover:text-black;
+  }
+  /* 無框框的btn */
+  .btn-ghost {
+    @apply text-gold-400 text-xs tracking-[0.2em] uppercase font-sans
+           transition-opacity duration-300
+           hover:opacity-70;
+  }
+}
