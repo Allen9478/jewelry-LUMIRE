@@ -1,3 +1,44 @@
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+// 收藏還沒做好這是測試用
+import { useFavoriteStore } from '@/stores/useFavoriteStore'
+const favoriteStore = useFavoriteStore()
+
+const isOpen = ref(false)
+
+const navItems = [
+  { name: 'Home', href: '/' },
+  { name: 'Works', href: '/works' },
+  { name: 'Artists', href: '/artists' },
+  { name: 'About', href: '/about' },
+  { name: 'Exhibitions', href: '/exhibitions' },
+  { name: 'Contact', href: '/contact' },
+]
+
+function toggleMenu() {
+  isOpen.value = !isOpen.value
+  document.body.style.overflow = isOpen.value ? 'hidden' : ''
+}
+
+function closeMenu() {
+  isOpen.value = false
+  document.body.style.overflow = ''
+}
+
+function handleKeydown(e) {
+  if (e.key === 'Escape') closeMenu()
+}
+// 測試點擊漢堡選中的收藏同時關閉選單
+function favoriteOpen() {
+  favoriteStore.toggleFavorite('test')
+  toggleMenu()
+}
+onMounted(() => window.addEventListener('keydown', handleKeydown))
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeydown)
+  document.body.style.overflow = ''
+})
+</script>
 <template>
   <div class="hamburger-wrapper">
     <!-- 觸發按鈕 -->
@@ -60,6 +101,22 @@
                   <a href="#" class="social-link">IG</a>
                   <a href="#" class="social-link">FB</a>
                   <a href="#" class="social-link">PT</a>
+                  <button aria-label="我的最愛收藏" class="header-icon" @click="favoriteOpen">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="size-6"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                      />
+                    </svg>
+                  </button>
                 </div>
               </div>
               <p class="footer-copy">© 2026 Lumière Jewelry Gallery</p>
@@ -70,41 +127,6 @@
     </Teleport>
   </div>
 </template>
-
-<script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-
-const isOpen = ref(false)
-
-const navItems = [
-  { name: 'Home', href: '/' },
-  { name: 'Works', href: '/works' },
-  { name: 'Artists', href: '/artists' },
-  { name: 'About', href: '/about' },
-  { name: 'Exhibitions', href: '/exhibitions' },
-  { name: 'Contact', href: '/contact' },
-]
-
-function toggleMenu() {
-  isOpen.value = !isOpen.value
-  document.body.style.overflow = isOpen.value ? 'hidden' : ''
-}
-
-function closeMenu() {
-  isOpen.value = false
-  document.body.style.overflow = ''
-}
-
-function handleKeydown(e) {
-  if (e.key === 'Escape') closeMenu()
-}
-
-onMounted(() => window.addEventListener('keydown', handleKeydown))
-onUnmounted(() => {
-  window.removeEventListener('keydown', handleKeydown)
-  document.body.style.overflow = ''
-})
-</script>
 
 <style scoped>
 /* ── CSS 變數 ── */

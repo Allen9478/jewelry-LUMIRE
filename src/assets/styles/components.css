@@ -1,20 +1,39 @@
 @layer components {
-  /* 有框框的btn */
-
+  .page-wrapper {
+    @apply mx-auto  w-full  px-6 tablet:px-8 laptop:px-12;
+  }
+  /* 網站logo */
+  .logo {
+    @apply shrink-0 inline-flex flex-col  text-center font-serif text-gold-500;
+  }
   .btn {
     @apply cursor-pointer inline-flex items-center justify-center;
   }
-
+  /* 有框框的btn */
   .btn-primary {
-    @apply border border-gold-400 text-gold-400 px-6 py-3 
+    @apply border border-gold-500 text-gold-500 px-6 py-3 
          text-xs tracking-[0.2em] uppercase font-sans
          transition-all duration-300
-         hover:bg-gold-400 hover:text-black;
+         hover:bg-gold-500 hover:text-black;
   }
   /* 無框框的btn */
   .btn-ghost {
-    @apply text-gold-400 text-xs tracking-[0.2em] uppercase font-sans
+    @apply text-gold-400 text-xs tracking-luxury uppercase font-sans
            transition-opacity duration-300
            hover:opacity-70;
+  }
+
+  .header-icon {
+    @apply hover:text-gold-500  transition-colors duration-300;
+  }
+
+  /* iconbtn */
+  .footer-icon {
+    @apply text-gold-500;
+  }
+
+  /* 社群btn icon */
+  .footer-icon-social {
+    @apply stroke-1 w-6 h-6  group-hover:stroke-2 transition-all duration-300 laptop:w-8 laptop:h-8;
   }
 }

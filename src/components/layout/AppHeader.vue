@@ -1,5 +1,8 @@
 <script setup>
 import HamburgerMenu from '@/components/layout/HamburgerMenu.vue'
+// 收藏還沒做好這是測試用
+import { useFavoriteStore } from '@/stores/useFavoriteStore'
+const favoriteStore = useFavoriteStore()
 
 const navItems = [
   { label: 'Home', to: { name: 'home' } },
@@ -13,29 +16,27 @@ const navItems = [
 
 <template>
   <!-- 用途：Header 的基礎黑金配色 -->
-  <header class="bg-black text-cream border-b border-gold-400/20">
-    <div
-      class="mx-auto flex h-20 w-full items-center justify-between px-6 tablet:px-8 laptop:px-12"
-    >
-      <a
-        aria-label="回首頁"
-        href="/"
-        class="logo shrink-0 inline-flex flex-col text-center font-serif text-gold-400"
-      >
+  <header class="border-b border-gold-400/20">
+    <div class="page-wrapper flex h-20 items-center justify-between">
+      <a aria-label="回首頁" href="/" class="logo">
         <span class="tracking-[0.1em] text-4xl">LUMIÈRE</span>
         <span class="text-xs tracking-[0.2em]">JEWELRY GALLERY</span>
       </a>
       <!-- Nav：flex-1 吸收空間，overflow hidden 防破版 -->
       <nav
         aria-label="主要導覽列"
-        class="hidden tablet:flex flex-1 justify-center overflow-hidden px-2 lg:px-4"
+        class="hidden tablet:flex flex-1 justify-center overflow-hidden px-2 laptop:px-4"
       >
         <ul class="flex items-center whitespace-nowrap">
-          <li v-for="item in navItems" :key="item">
+          <li
+            class="px-2 tablet:px-2 laptop:px-4 desktop:px-6"
+            v-for="item in navItems"
+            :key="item"
+          >
             <!-- router要設置 -->
             <RouterLink
               :to="item.to"
-              class="block border-b border-transparent px-2 tablet:px-2 laptop:px-4 desktop:px-6 py-3 text-xs tablet:text-sm laptop:text-base desktop:text-lg text-stone-50 whitespace-nowrap transition-colors duration-300 hover:border-gold-400 hover:text-gold-400"
+              class="relative inline-block py-3 text-xs tablet:text-sm laptop:text-base desktop:text-lg text-stone-50 whitespace-nowrap transition-colors duration-300 hover:text-gold-500 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full"
             >
               {{ item.label }}
             </RouterLink>
@@ -44,7 +45,7 @@ const navItems = [
       </nav>
 
       <div class="hidden tablet:flex shrink-0 items-center gap-2 lg:gap-3 xl:gap-4 text-stone-50">
-        <button aria-label="站內搜尋" class="hover:text-gold-400 transition-colors duration-300">
+        <button aria-label="站內搜尋" class="header-icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -62,7 +63,8 @@ const navItems = [
         </button>
         <button
           aria-label="我的最愛收藏"
-          class="hover:text-gold-400 transition-colors duration-300"
+          class="header-icon"
+          @click="favoriteStore.toggleFavorite('test')"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -79,7 +81,7 @@ const navItems = [
             />
           </svg>
         </button>
-        <button aria-label="會員" class="hover:text-gold-400 transition-colors duration-300">
+        <button aria-label="會員" class="header-icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -100,7 +102,7 @@ const navItems = [
           <!-- select尚未設置i18n -->
           <select
             aria-label="選擇語言"
-            class="appearance-none bg-black px-2 py-2 text-xs lg:text-sm transition-colors duration-300 group-hover:text-gold-400 focus:outline-none cursor-pointer pr-6"
+            class="appearance-none bg-black px-2 py-2 text-xs lg:text-sm transition-colors duration-300 group-hover:text-gold-500 focus:outline-none cursor-pointer pr-6"
           >
             <option value="en" selected>EN</option>
             <option value="zh">中文</option>
@@ -113,7 +115,7 @@ const navItems = [
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="size-4 absolute right-0 pointer-events-none text-white transition-colors duration-300 group-hover:text-gold-400"
+            class="size-4 absolute right-0 pointer-events-none text-white transition-colors duration-300 group-hover:text-gold-500"
           >
             <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
           </svg>

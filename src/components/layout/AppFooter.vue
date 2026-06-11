@@ -33,16 +33,12 @@ const sections = [
 </script>
 
 <template>
-  <footer class="bg-black text-cream border-b border-gold-400/20">
-    <div class="mx-auto flex flex-col w-full p-6 tablet:px-8 laptop:px-12">
+  <footer class="border-b border-gold-400/20">
+    <div class="page-wrapper flex flex-col">
       <div class="flex flex-col laptop:flex-row laptop:justify-between laptop:items-start">
         <!-- laptop:w-[300px]是為svg的寬度改變時不影響整體排版而寫 -->
         <div class="flex flex-col laptop:shrink-0 laptop:w-[300px]">
-          <a
-            aria-label="回首頁"
-            href="/"
-            class="logo shrink-0 inline-flex flex-col self-start text-center font-serif text-gold-400"
-          >
+          <a aria-label="回首頁" href="/" class="logo self-start">
             <span class="tracking-[0.1em] text-4xl">LUMIÈRE</span>
             <span class="text-xs tracking-[0.2em]">JEWELRY GALLERY</span>
           </a>
@@ -52,12 +48,12 @@ const sections = [
           <div
             class="flex py-4 space-x-6 border-b border-gold-400/30 laptop:flex-row laptop:gap-9 laptop:border-none laptop:space-x-0 laptop:pt-12"
           >
-            <button class="text-gold-400 group">
+            <button class="footer-icon group transition-colors duration-300">
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                class="stroke-1 w-6 h-6 group-hover:stroke-2 laptop:w-8 laptop:h-8"
+                class="footer-icon-social"
               >
                 <path
                   d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
@@ -77,12 +73,12 @@ const sections = [
                 ></path>
               </svg>
             </button>
-            <button class="text-gold-400 group">
+            <button class="footer-icon group">
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                class="stroke-1 w-6 h-6 group-hover:stroke-2 laptop:w-8 laptop:h-8"
+                class="footer-icon-social"
               >
                 <path
                   d="M21 8V16C21 18.7614 18.7614 21 16 21H8C5.23858 21 3 18.7614 3 16V8C3 5.23858 5.23858 3 8 3H16C18.7614 3 21 5.23858 21 8Z"
@@ -104,13 +100,13 @@ const sections = [
                 ></path>
               </svg>
             </button>
-            <button class="text-gold-400 group">
+            <button class="footer-icon group">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
-                class="stroke-1 w-6 h-6 group-hover:stroke-2 laptop:w-8 laptop:h-8"
+                class="footer-icon-social"
               >
                 <path
                   stroke-linecap="round"
@@ -119,12 +115,12 @@ const sections = [
                 />
               </svg>
             </button>
-            <button class="text-gold-400 group">
+            <button class="footer-icon group">
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                class="stroke-1 w-6 h-6 group-hover:stroke-2 laptop:w-8 laptop:h-8"
+                class="footer-icon-social"
               >
                 <path
                   d="M14 12L10.5 14V10L14 12Z"
@@ -150,6 +146,7 @@ const sections = [
             v-for="section in sections"
             :key="section.key"
             :class="{ 'hidden laptop:block': section.desktopOnly }"
+            class="text-gold-500"
           >
             <div
               class="footer-nav-title flex flex-col border-b border-gold-400/30 py-1 laptop:border-none"
@@ -166,12 +163,8 @@ const sections = [
                 </button>
               </div>
               <ul :class="[openSections[section.key] ? 'block' : 'hidden', 'laptop:block']">
-                <li
-                  v-for="item in section.items"
-                  :key="item"
-                  class="laptop:leading-10 text-cream/60"
-                >
-                  {{ item }}
+                <li v-for="item in section.items" :key="item" class="laptop:leading-10">
+                  <a href="#" class="text-cream/60 hover:text-gold-500"> {{ item }}</a>
                 </li>
               </ul>
             </div>

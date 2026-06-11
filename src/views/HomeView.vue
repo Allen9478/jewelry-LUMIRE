@@ -1,10 +1,12 @@
 <script setup>
-import BaseButton from '../components/layout/ui/BaseButton.vue'
+import BaseButton from '@/components/ui/BaseButton.vue'
 </script>
 <template>
-  <p>我是home</p>
-  <BaseButton variant="primary">button</BaseButton>
-  <BaseButton variant="ghost" tag="RouterLink" to="/works">ghost</BaseButton>
+  <div class="page-wrapper">
+    <p>我是home</p>
+    <BaseButton variant="primary">button</BaseButton>
+    <BaseButton variant="ghost" tag="RouterLink" to="/works">ghost</BaseButton>
+  </div>
 </template>
 
 <style scoped></style>
