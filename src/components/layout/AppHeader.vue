@@ -18,9 +18,10 @@ const navItems = [
   <!-- 用途：Header 的基礎黑金配色 -->
   <header class="border-b border-gold-400/20">
     <div class="page-wrapper flex h-20 items-center justify-between">
+      <HamburgerMenu class="tablet:hidden" />
       <a aria-label="回首頁" href="/" class="logo">
-        <span class="tracking-[0.1em] text-4xl">LUMIÈRE</span>
-        <span class="text-xs tracking-[0.2em]">JEWELRY GALLERY</span>
+        <span class="logo-title">LUMIÈRE</span>
+        <span class="logo-subtitle">JEWELRY GALLERY</span>
       </a>
       <!-- Nav：flex-1 吸收空間，overflow hidden 防破版 -->
       <nav
@@ -44,8 +45,8 @@ const navItems = [
         </ul>
       </nav>
 
-      <div class="hidden tablet:flex shrink-0 items-center gap-2 lg:gap-3 xl:gap-4 text-stone-50">
-        <button aria-label="站內搜尋" class="header-icon">
+      <div class="flex shrink-0 items-center gap-2 lg:gap-3 xl:gap-4 text-stone-50">
+        <button aria-label="站內搜尋" class="header-icon hidden tablet:block">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -81,7 +82,7 @@ const navItems = [
             />
           </svg>
         </button>
-        <button aria-label="會員" class="header-icon">
+        <button aria-label="會員" class="header-icon hidden tablet:block">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -98,7 +99,7 @@ const navItems = [
           </svg>
         </button>
 
-        <div class="relative flex justify-center items-center group">
+        <div class="relative justify-center items-center group hidden tablet:flex">
           <!-- select尚未設置i18n -->
           <select
             aria-label="選擇語言"
@@ -121,7 +122,6 @@ const navItems = [
           </svg>
         </div>
       </div>
-      <HamburgerMenu class="tablet:hidden" />
     </div>
   </header>
 </template>

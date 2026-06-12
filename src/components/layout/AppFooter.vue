@@ -173,7 +173,7 @@ const sections = [
       </div>
 
       <p class="pt-6 display-inline laptop:pt-10 text-sm text-cream/50">
-        © 2024 Lumière Jewelry Gallery. All Rights Reserved.
+        © 2026 Lumière Jewelry Gallery. All Rights Reserved.
       </p>
     </div>
   </footer>

@@ -1,18 +1,15 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-// 收藏還沒做好這是測試用
-import { useFavoriteStore } from '@/stores/useFavoriteStore'
-const favoriteStore = useFavoriteStore()
 
 const isOpen = ref(false)
 
 const navItems = [
-  { name: 'Home', href: '/' },
-  { name: 'Works', href: '/works' },
-  { name: 'Artists', href: '/artists' },
-  { name: 'About', href: '/about' },
-  { name: 'Exhibitions', href: '/exhibitions' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Home', to: { name: 'home' } },
+  { name: 'Works', to: { name: 'works' } },
+  { name: 'Artists', to: { name: 'artists' } },
+  { name: 'About', to: { name: 'home' } },
+  { name: 'Exhibitions', to: { name: 'exhibitions' } },
+  { name: 'Contact', to: { name: 'contact' } },
 ]
 
 function toggleMenu() {
@@ -71,11 +68,12 @@ onUnmounted(() => {
             <a
               aria-label="回首頁"
               href="/"
-              class="logo shrink-0 inline-flex flex-col font-serif menu-logo-animation mb-12 text-gold-400"
+              class="logo font-serif menu-logo-animation mb-8 text-gold-500"
             >
-              <span class="tracking-[0.1em] text-2xl">LUMIÈRE</span>
-              <span class="text-[9px] tracking-[0.2em]">JEWELRY GALLERY</span>
+              <span class="tracking-[0.1em] text-4xl">LUMIÈRE</span>
+              <span class="text-xs tracking-[0.2em]">JEWELRY GALLERY</span>
             </a>
+
             <!-- 主要連結 -->
             <ul class="menu-links">
               <li
@@ -84,42 +82,38 @@ onUnmounted(() => {
                 class="menu-item"
                 :style="{ '--delay': `${0.1 + index * 0.07}s` }"
               >
-                <a :href="item.href" class="menu-link" @click="closeMenu">
+                <RouterLink :to="item.to" class="menu-link" @click="closeMenu">
                   <span class="item-number">0{{ index + 1 }}</span>
                   <span class="item-name">{{ item.name }}</span>
                   <span class="item-arrow">→</span>
-                </a>
+                </RouterLink>
               </li>
             </ul>
 
             <!-- 底部資訊 -->
             <div class="menu-footer">
               <div class="footer-divider"></div>
-              <div class="footer-row">
-                <span class="footer-label">Follow Us</span>
-                <div class="social-links">
-                  <a href="#" class="social-link">IG</a>
-                  <a href="#" class="social-link">FB</a>
-                  <a href="#" class="social-link">PT</a>
-                  <button aria-label="我的最愛收藏" class="header-icon" @click="favoriteOpen">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      class="size-6"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-                      />
-                    </svg>
-                  </button>
-                </div>
+              <div class="flex flex-col">
+                <button aria-label="會員" class="header-icon flex">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                    />
+                  </svg>
+                  <p>會員</p>
+                </button>
               </div>
-              <p class="footer-copy">© 2026 Lumière Jewelry Gallery</p>
+
+              <p class="footer-copy">© 2026 Lumière Jewelry Gallery. All Rights Reserved.</p>
             </div>
           </nav>
         </div>
@@ -143,7 +137,7 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: 5px;
   width: 36px;
   height: 36px;
@@ -176,15 +170,15 @@ onUnmounted(() => {
 /* 開啟時 X 形態 */
 .hamburger-btn.is-open .bar-top {
   width: 26px;
-  transform: rotate(-45deg) translateY(1px);
+  transform: rotate(-45deg) translateY(-6px);
 }
 .hamburger-btn.is-open .bar-mid {
   opacity: 0;
   transform: scaleX(0);
 }
 .hamburger-btn.is-open .bar-bot {
-  width: 26px;
-  transform: rotate(45deg) translateY(-1px);
+  width: 24px;
+  transform: rotate(45deg) translateY(6px);
 }
 
 .hamburger-btn:hover .bar-top {
@@ -351,7 +345,7 @@ onUnmounted(() => {
 }
 
 .footer-divider {
-  width: 40px;
+  width: 120px;
   height: 1px;
   background: #d6b46a;
   margin-bottom: 20px;

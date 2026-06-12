@@ -4,7 +4,13 @@
   }
   /* 網站logo */
   .logo {
-    @apply shrink-0 inline-flex flex-col  text-center font-serif text-gold-500;
+    @apply shrink-0 inline-flex flex-col  text-center  font-serif text-gold-500;
+  }
+  .logo-title {
+    @apply tracking-[0.1em] text-3xl tablet:text-4xl;
+  }
+  .logo-subtitle {
+    @apply text-[10px] tracking-[0.2em]  tablet:text-xs;
   }
   .btn {
     @apply cursor-pointer inline-flex items-center justify-center;
