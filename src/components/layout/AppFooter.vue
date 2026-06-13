@@ -38,10 +38,14 @@ const sections = [
       <div class="flex flex-col laptop:flex-row laptop:justify-between laptop:items-start">
         <!-- laptop:w-[300px]是為svg的寬度改變時不影響整體排版而寫 -->
         <div class="flex flex-col laptop:shrink-0 laptop:w-[300px]">
-          <a aria-label="回首頁" href="/" class="logo self-start">
-            <span class="tracking-[0.1em] text-4xl">LUMIÈRE</span>
-            <span class="text-xs tracking-[0.2em]">JEWELRY GALLERY</span>
-          </a>
+          <RouterLink
+            aria-label="回首頁"
+            :to="{ name: 'home' }"
+            class="inline-flex flex-col self-start font-serif text-center text-gold-500"
+          >
+            <span class="text-[22px] tablet:text-[28px] tracking-[0.1em]">LUMIÈRE</span>
+            <span class="text-[8px] tablet:text-[9px] tracking-[0.2em]">JEWELRY GALLERY</span>
+          </RouterLink>
           <p class="pt-5 laptop:pt-7">Celebrating the artistry of jewelry</p>
           <br />
           <p>and the beauty of Human expression</p>

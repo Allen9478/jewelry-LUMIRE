@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import BaseButton from '@/components/ui/BaseButton.vue'
 
 const isOpen = ref(false)
 
@@ -25,11 +26,7 @@ function closeMenu() {
 function handleKeydown(e) {
   if (e.key === 'Escape') closeMenu()
 }
-// 測試點擊漢堡選中的收藏同時關閉選單
-function favoriteOpen() {
-  favoriteStore.toggleFavorite('test')
-  toggleMenu()
-}
+
 onMounted(() => window.addEventListener('keydown', handleKeydown))
 onUnmounted(() => {
   window.removeEventListener('keydown', handleKeydown)
@@ -60,19 +57,15 @@ onUnmounted(() => {
 
           <!-- 選單內容 -->
           <nav class="menu-nav">
-            <!-- Logo 區 -->
-            <!-- <div class="menu-logo">
-              <span class="logo-text">LUMIÈRE</span>
-              <span class="logo-sub">JEWELRY GALLERY</span>
-            </div> -->
-            <a
+            <RouterLink
               aria-label="回首頁"
-              href="/"
-              class="logo font-serif menu-logo-animation mb-8 text-gold-500"
+              :to="{ name: 'home' }"
+              @click="closeMenu"
+              class="inline-flex flex-col font-serif self-start text-center text-gold-500 menu-logo-animation mt-5"
             >
-              <span class="tracking-[0.1em] text-4xl">LUMIÈRE</span>
-              <span class="text-xs tracking-[0.2em]">JEWELRY GALLERY</span>
-            </a>
+              <span class="text-[28px] tracking-[0.1em]">LUMIÈRE</span>
+              <span class="text-[9px] tracking-[0.2em]">JEWELRY GALLERY</span>
+            </RouterLink>
 
             <!-- 主要連結 -->
             <ul class="menu-links">
@@ -93,25 +86,31 @@ onUnmounted(() => {
             <!-- 底部資訊 -->
             <div class="menu-footer">
               <div class="footer-divider"></div>
-              <div class="flex flex-col">
-                <button aria-label="會員" class="header-icon flex">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="size-6"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
-                    />
-                  </svg>
-                  <p>會員</p>
-                </button>
-              </div>
+
+              <BaseButton
+                variant="ghost"
+                tag="RouterLink"
+                to="/login"
+                @click="closeMenu"
+                class="header-icon inline-flex normal-case"
+                aria-label="會員"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                  />
+                </svg>
+                <span>Member</span>
+              </BaseButton>
 
               <p class="footer-copy">© 2026 Lumière Jewelry Gallery. All Rights Reserved.</p>
             </div>
@@ -123,15 +122,6 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-/* ── CSS 變數 ── */
-:root {
-  --gold-500: #d6b46a;
-  --gold-300: #efe3c4;
-  --black-900: #080808;
-  --black-800: #121212;
-  --white-warm: #f8f5ef;
-}
-
 /* ── 漢堡按鈕 ── */
 .hamburger-btn {
   display: flex;
@@ -146,14 +136,14 @@ onUnmounted(() => {
   cursor: pointer;
   padding: 0;
   position: relative;
-  z-index: 1001;
+  z-index: var(--z-toast);
 }
 
 .bar {
   display: block;
   height: 1px;
-  background: #efe3c4;
-  transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+  background: var(--color-gold-50);
+  transition: all 0.45s var(--ease-luxury);
   transform-origin: right center;
 }
 
@@ -195,8 +185,8 @@ onUnmounted(() => {
 .menu-overlay {
   position: fixed;
   inset: 0;
-  background: #080808;
-  z-index: 1000;
+  background: var(--color-black);
+  z-index: var(--z-modal);
   display: flex;
   align-items: stretch;
   overflow: hidden;
@@ -208,13 +198,13 @@ onUnmounted(() => {
   background: linear-gradient(
     to bottom,
     transparent 0%,
-    #d6b46a 30%,
-    #d6b46a 70%,
+    var(--color-gold-400) 30%,
+    var(--color-gold-400) 70%,
     transparent 100%
   );
   margin: 0 60px;
   opacity: 0.4;
-  animation: lineReveal 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  animation: lineReveal 0.8s var(--ease-luxury) forwards;
 }
 
 @keyframes lineReveal {
@@ -233,29 +223,14 @@ onUnmounted(() => {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   padding: 60px 80px 60px 0;
   max-width: 560px;
 }
 
 /* ── Logo ── */
 .menu-logo-animation {
-  animation: fadeUp 0.6s 0.05s cubic-bezier(0.23, 1, 0.32, 1) both;
-}
-
-.logo-text {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  letter-spacing: 0.3em;
-  color: #d6b46a;
-}
-
-.logo-sub {
-  font-family: 'Noto Sans TC', sans-serif;
-  font-size: 9px;
-  letter-spacing: 0.25em;
-  color: #a7a7a7;
-  margin-top: 2px;
+  animation: fadeUp 0.6s 0.05s var(--ease-luxury) both;
 }
 
 /* ── 連結清單 ── */
@@ -266,8 +241,8 @@ onUnmounted(() => {
 }
 
 .menu-item {
-  animation: fadeUp 0.6s var(--delay, 0.1s) cubic-bezier(0.23, 1, 0.32, 1) both;
-  border-bottom: 1px solid rgba(214, 180, 106, 0.1);
+  animation: fadeUp 0.6s var(--delay, 0.1s) var(--ease-luxury) both;
+  border-bottom: 1px solid rgba(214, 180, 106, 0.102);
 }
 
 .menu-link {
@@ -276,7 +251,7 @@ onUnmounted(() => {
   gap: 20px;
   padding: 20px 0;
   text-decoration: none;
-  color: #f8f5ef;
+  color: var(--color-cream);
   position: relative;
   overflow: hidden;
   transition: color 0.3s ease;
@@ -298,27 +273,30 @@ onUnmounted(() => {
 }
 
 .menu-link:hover {
-  color: #d6b46a;
+  color: var(--color-gold-500);
 }
-
+.menu-link:active {
+  color: var(--color-gold-500);
+  transform: translateX(4px);
+}
 .item-number {
-  font-family: 'Noto Sans TC', sans-serif;
+  font-family: var(--font-sans);
   font-size: 11px;
   letter-spacing: 0.15em;
-  color: #d6b46a;
+  color: var(--color-gold-500);
   opacity: 0.6;
   width: 24px;
   flex-shrink: 0;
 }
 
 .item-name {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-serif);
   font-size: 36px;
   font-weight: 400;
   letter-spacing: 0.02em;
   line-height: 1;
   flex: 1;
-  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 0.3s var(--ease-luxury);
 }
 
 .menu-link:hover .item-name {
@@ -327,10 +305,10 @@ onUnmounted(() => {
 
 .item-arrow {
   font-size: 18px;
-  color: #d6b46a;
+  color: var(--color-gold-500);
   opacity: 0;
   transform: translateX(-10px);
-  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all 0.3s var(--ease-luxury);
 }
 
 .menu-link:hover .item-arrow {
@@ -341,56 +319,23 @@ onUnmounted(() => {
 /* ── Footer ── */
 .menu-footer {
   margin-top: 48px;
-  animation: fadeUp 0.6s 0.55s cubic-bezier(0.23, 1, 0.32, 1) both;
+  animation: fadeUp 0.6s 0.55s var(--ease-luxury) both;
 }
 
 .footer-divider {
-  width: 120px;
+  width: 40px;
   height: 1px;
-  background: #d6b46a;
+  background: var(--color-gold-500);
   margin-bottom: 20px;
   opacity: 0.5;
 }
 
-.footer-row {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 12px;
-}
-
-.footer-label {
-  font-family: 'Noto Sans TC', sans-serif;
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  color: #a7a7a7;
-  text-transform: uppercase;
-}
-
-.social-links {
-  display: flex;
-  gap: 16px;
-}
-
-.social-link {
-  font-family: 'Noto Sans TC', sans-serif;
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  color: #efe3c4;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.social-link:hover {
-  color: #d6b46a;
-}
-
 .footer-copy {
-  font-family: 'Noto Sans TC', sans-serif;
-  font-size: 10px;
-  color: #a7a7a7;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--color-gray-muted);
   letter-spacing: 0.05em;
-  margin: 0;
+  margin-top: 12px;
   opacity: 0.5;
 }
 
@@ -408,10 +353,10 @@ onUnmounted(() => {
 
 /* ── Vue Transition ── */
 .overlay-enter-active {
-  animation: overlayIn 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  animation: overlayIn 0.6s var(--ease-luxury) forwards;
 }
 .overlay-leave-active {
-  animation: overlayOut 0.45s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  animation: overlayOut 0.45s var(--ease-luxury) forwards;
 }
 
 @keyframes overlayIn {

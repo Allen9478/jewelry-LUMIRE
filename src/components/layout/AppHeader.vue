@@ -18,11 +18,15 @@ const navItems = [
   <!-- 用途：Header 的基礎黑金配色 -->
   <header class="border-b border-gold-400/20">
     <div class="page-wrapper flex h-20 items-center justify-between">
-      <HamburgerMenu class="tablet:hidden" />
-      <a aria-label="回首頁" href="/" class="logo">
-        <span class="logo-title">LUMIÈRE</span>
-        <span class="logo-subtitle">JEWELRY GALLERY</span>
-      </a>
+      <HamburgerMenu class="tablet:hidden w-9" />
+      <RouterLink
+        aria-label="回首頁"
+        :to="{ name: 'home' }"
+        class="inline-flex flex-col font-serif text-center text-gold-500"
+      >
+        <span class="text-[22px] tablet:text-[28px] tracking-[0.1em]">LUMIÈRE</span>
+        <span class="text-[8px] tablet:text-[9px] tracking-[0.2em]">JEWELRY GALLERY</span>
+      </RouterLink>
       <!-- Nav：flex-1 吸收空間，overflow hidden 防破版 -->
       <nav
         aria-label="主要導覽列"
@@ -64,7 +68,7 @@ const navItems = [
         </button>
         <button
           aria-label="我的最愛收藏"
-          class="header-icon"
+          class="header-icon w-9 flex items-center justify-end tablet:w-6"
           @click="favoriteStore.toggleFavorite('test')"
         >
           <svg
