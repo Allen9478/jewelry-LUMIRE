@@ -42,7 +42,7 @@ const favoriteStore = useFavoriteStore()
       </nav>
 
       <div class="flex shrink-0 items-center gap-2 lg:gap-3 xl:gap-4 text-stone-50">
-        <button aria-label="站內搜尋" class="header-icon hidden tablet:block">
+        <button aria-label="站內搜尋" class="nav__icon hidden tablet:block">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -60,7 +60,7 @@ const favoriteStore = useFavoriteStore()
         </button>
         <button
           aria-label="我的最愛收藏"
-          class="header-icon w-9 flex items-center justify-end tablet:w-6"
+          class="nav__icon w-9 flex items-center justify-end tablet:w-6"
           @click="favoriteStore.toggleFavorite('test')"
         >
           <svg
@@ -78,7 +78,7 @@ const favoriteStore = useFavoriteStore()
             />
           </svg>
         </button>
-        <button aria-label="會員" class="header-icon hidden tablet:block">
+        <button aria-label="會員" class="nav__icon hidden tablet:block">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

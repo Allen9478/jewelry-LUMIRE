@@ -25,65 +25,65 @@ onUnmounted(() => {
 })
 </script>
 <template>
-  <div class="hamburger-wrapper">
+  <div class="hamburger">
     <!-- 觸發按鈕 -->
     <button
       @click="toggleMenu"
-      class="hamburger-btn"
+      class="hamburger__btn"
       :class="{ 'is-open': isOpen }"
       :aria-expanded="isOpen"
       aria-label="Toggle navigation menu"
     >
-      <span class="bar bar-top"></span>
-      <span class="bar bar-mid"></span>
-      <span class="bar bar-bot"></span>
+      <span class="hamburger__bar hamburger__bar--top"></span>
+      <span class="hamburger__bar hamburger__bar--mid"></span>
+      <span class="hamburger__bar hamburger__bar--bot"></span>
     </button>
 
     <!-- 全螢幕選單遮罩 -->
     <Teleport to="body">
       <Transition name="overlay">
-        <div v-if="isOpen" class="menu-overlay" @click.self="closeMenu">
+        <div v-if="isOpen" class="menu__overlay" @click.self="closeMenu">
           <!-- 左側裝飾線 -->
-          <div class="deco-line"></div>
+          <div class="menu__deco-line"></div>
 
           <!-- 選單內容 -->
-          <nav class="menu-nav">
+          <nav class="menu__nav">
             <RouterLink
               aria-label="回首頁"
               :to="{ name: 'home' }"
               @click="closeMenu"
-              class="inline-flex flex-col font-serif self-start text-center text-gold-500 mt-12 menu-logo-animation"
+              class="inline-flex flex-col font-serif self-start text-center text-gold-500 mt-12 menu__logo"
             >
               <span class="text-[28px] tracking-[0.1em]">LUMIÈRE</span>
               <span class="text-[9px] tracking-[0.2em]">JEWELRY GALLERY</span>
             </RouterLink>
 
             <!-- 主要連結 -->
-            <ul class="menu-links">
+            <ul class="menu__links">
               <li
                 v-for="(item, index) in navItems"
                 :key="item.name"
-                class="menu-item"
+                class="menu__item"
                 :style="{ '--delay': `${0.1 + index * 0.07}s` }"
               >
-                <RouterLink :to="item.to" class="menu-link" @click="closeMenu">
-                  <span class="item-number">0{{ index + 1 }}</span>
-                  <span class="item-name">{{ item.name }}</span>
-                  <span class="item-arrow">→</span>
+                <RouterLink :to="item.to" class="menu__link" @click="closeMenu">
+                  <span class="menu__link-number">0{{ index + 1 }}</span>
+                  <span class="menu__link-name">{{ item.name }}</span>
+                  <span class="menu__link-arrow">→</span>
                 </RouterLink>
               </li>
             </ul>
 
             <!-- 底部資訊 -->
-            <div class="menu-footer">
-              <div class="footer-divider"></div>
+            <div class="menu__footer">
+              <div class="menu__footer-divider"></div>
 
               <BaseButton
                 variant="ghost"
                 tag="RouterLink"
                 to="/login"
                 @click="closeMenu"
-                class="header-icon inline-flex normal-case"
+                class="nav__icon inline-flex normal-case"
                 aria-label="會員"
               >
                 <svg
@@ -103,7 +103,7 @@ onUnmounted(() => {
                 <span>Member</span>
               </BaseButton>
 
-              <p class="footer-copy">© 2026 Lumière Jewelry Gallery. All Rights Reserved.</p>
+              <p class="menu__footer-copy">© 2026 Lumière Jewelry Gallery. All Rights Reserved.</p>
             </div>
           </nav>
         </div>
@@ -114,7 +114,7 @@ onUnmounted(() => {
 
 <style scoped>
 /* ── 漢堡按鈕 ── */
-.hamburger-btn {
+.hamburger__btn {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -130,7 +130,7 @@ onUnmounted(() => {
   z-index: var(--z-toast);
 }
 
-.bar {
+.hamburger__bar {
   display: block;
   height: 1px;
   background: var(--color-gold-50);
@@ -138,42 +138,42 @@ onUnmounted(() => {
   transform-origin: right center;
 }
 
-.bar-top {
+.hamburger__bar--top {
   width: 28px;
 }
-.bar-mid {
+.hamburger__bar--mid {
   width: 20px;
 }
-.bar-bot {
+.hamburger__bar--bot {
   width: 24px;
 }
 
 /* 開啟時 X 形態 */
-.hamburger-btn.is-open .bar-top {
+.hamburger__btn.is-open .hamburger__bar--top {
   width: 26px;
   transform: rotate(-45deg) translateY(-6px);
 }
-.hamburger-btn.is-open .bar-mid {
+.hamburger__btn.is-open .hamburger__bar--mid {
   opacity: 0;
   transform: scaleX(0);
 }
-.hamburger-btn.is-open .bar-bot {
+.hamburger__btn.is-open .hamburger__bar--bot {
   width: 24px;
   transform: rotate(45deg) translateY(6px);
 }
 
-.hamburger-btn:hover .bar-top {
+.hamburger__btn:hover .hamburger__bar--top {
   width: 28px;
 }
-.hamburger-btn:hover .bar-mid {
+.hamburger__btn:hover .hamburger__bar--mid {
   width: 28px;
 }
-.hamburger-btn:hover .bar-bot {
+.hamburger__btn:hover .hamburger__bar--bot {
   width: 28px;
 }
 
 /* ── 全螢幕遮罩 ── */
-.menu-overlay {
+.menu__overlay {
   position: fixed;
   inset: 0;
   background: var(--color-black);
@@ -184,7 +184,7 @@ onUnmounted(() => {
 }
 
 /* ── 裝飾線 ── */
-.deco-line {
+.menu__deco-line {
   width: 1px;
   background: linear-gradient(
     to bottom,
@@ -210,7 +210,7 @@ onUnmounted(() => {
 }
 
 /* ── 選單 Nav ── */
-.menu-nav {
+.menu__nav {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -220,23 +220,23 @@ onUnmounted(() => {
 }
 
 /* ── Logo ── */
-.menu-logo-animation {
+.menu__logo {
   animation: fadeUp 0.6s 0.05s var(--ease-luxury) both;
 }
 
 /* ── 連結清單 ── */
-.menu-links {
+.menu__links {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.menu-item {
+.menu__item {
   animation: fadeUp 0.6s var(--delay, 0.1s) var(--ease-luxury) both;
   border-bottom: 1px solid rgba(214, 180, 106, 0.102);
 }
 
-.menu-link {
+.menu__link {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -248,7 +248,7 @@ onUnmounted(() => {
   transition: color 0.3s ease;
 }
 
-.menu-link::before {
+.menu__link::before {
   content: '';
   position: absolute;
   left: -100%;
@@ -259,18 +259,18 @@ onUnmounted(() => {
   transition: left 0.5s ease;
 }
 
-.menu-link:hover::before {
+.menu__link:hover::before {
   left: 100%;
 }
 
-.menu-link:hover {
+.menu__link:hover {
   color: var(--color-gold-500);
 }
-.menu-link:active {
+.menu__link:active {
   color: var(--color-gold-500);
   transform: translateX(4px);
 }
-.item-number {
+.menu__link-number {
   font-family: var(--font-sans);
   font-size: 11px;
   letter-spacing: 0.15em;
@@ -280,7 +280,7 @@ onUnmounted(() => {
   flex-shrink: 0;
 }
 
-.item-name {
+.menu__link-name {
   font-family: var(--font-serif);
   font-size: 36px;
   font-weight: 400;
@@ -290,11 +290,11 @@ onUnmounted(() => {
   transition: transform 0.3s var(--ease-luxury);
 }
 
-.menu-link:hover .item-name {
+.menu__link:hover .menu__link-name {
   transform: translateX(8px);
 }
 
-.item-arrow {
+.menu__link-arrow {
   font-size: 18px;
   color: var(--color-gold-500);
   opacity: 0;
@@ -302,17 +302,17 @@ onUnmounted(() => {
   transition: all 0.3s var(--ease-luxury);
 }
 
-.menu-link:hover .item-arrow {
+.menu__link:hover .menu__link-arrow {
   opacity: 1;
   transform: translateX(0);
 }
 
 /* ── Footer ── */
-.menu-footer {
+.menu__footer {
   animation: fadeUp 0.6s 0.55s var(--ease-luxury) both;
 }
 
-.footer-divider {
+.menu__footer-divider {
   width: 40px;
   height: 1px;
   background: var(--color-gold-500);
@@ -320,7 +320,7 @@ onUnmounted(() => {
   opacity: 0.5;
 }
 
-.footer-copy {
+.menu__footer-copy {
   font-family: var(--font-sans);
   font-size: 11px;
   color: var(--color-gray-muted);
@@ -371,19 +371,19 @@ onUnmounted(() => {
 
 /* ── RWD ── */
 @media (max-width: 640px) {
-  .deco-line {
+  .menu__deco-line {
     margin: 0 24px;
   }
 
-  .menu-nav {
+  .menu__nav {
     padding: 40px 32px 40px 0;
   }
 
-  .item-name {
+  .menu__item-name {
     font-size: 28px;
   }
 
-  .menu-link {
+  .menu__link {
     padding: 16px 0;
   }
 }

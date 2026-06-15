@@ -52,12 +52,12 @@ const sections = [
           <div
             class="flex py-4 space-x-6 border-b border-gold-400/30 laptop:flex-row laptop:gap-9 laptop:border-none laptop:space-x-0 laptop:pt-12"
           >
-            <button class="footer-icon group transition-colors duration-300">
+            <button class="footer__icon group transition-colors duration-300">
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                class="footer-icon-social"
+                class="footer__icon--social"
               >
                 <path
                   d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
@@ -77,12 +77,12 @@ const sections = [
                 ></path>
               </svg>
             </button>
-            <button class="footer-icon group">
+            <button class="footer__icon group">
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                class="footer-icon-social"
+                class="footer__icon--social"
               >
                 <path
                   d="M21 8V16C21 18.7614 18.7614 21 16 21H8C5.23858 21 3 18.7614 3 16V8C3 5.23858 5.23858 3 8 3H16C18.7614 3 21 5.23858 21 8Z"
@@ -104,13 +104,13 @@ const sections = [
                 ></path>
               </svg>
             </button>
-            <button class="footer-icon group">
+            <button class="footer__icon group">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
-                class="footer-icon-social"
+                class="footer__icon--social"
               >
                 <path
                   stroke-linecap="round"
@@ -119,12 +119,12 @@ const sections = [
                 />
               </svg>
             </button>
-            <button class="footer-icon group">
+            <button class="footer__icon group">
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                class="footer-icon-social"
+                class="footer__icon--social"
               >
                 <path
                   d="M14 12L10.5 14V10L14 12Z"
