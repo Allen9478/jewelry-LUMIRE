@@ -2,16 +2,8 @@
 import HamburgerMenu from '@/components/layout/HamburgerMenu.vue'
 // 收藏還沒做好這是測試用
 import { useFavoriteStore } from '@/stores/useFavoriteStore'
+import { navItems } from '@/constants/navigations'
 const favoriteStore = useFavoriteStore()
-
-const navItems = [
-  { label: 'Home', to: { name: 'home' } },
-  { label: 'Works', to: { name: 'works' } },
-  { label: 'Artists', to: { name: 'artists' } },
-  { label: 'About', to: { name: 'about' } },
-  { label: 'Exhibitions', to: { name: 'exhibitions' } },
-  { label: 'Contact', to: { name: 'contact' } },
-]
 </script>
 
 <template>

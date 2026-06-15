@@ -1,17 +1,8 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
-
+import { navItems } from '@/constants/navigations'
 const isOpen = ref(false)
-
-const navItems = [
-  { name: 'Home', to: { name: 'home' } },
-  { name: 'Works', to: { name: 'works' } },
-  { name: 'Artists', to: { name: 'artists' } },
-  { name: 'About', to: { name: 'home' } },
-  { name: 'Exhibitions', to: { name: 'exhibitions' } },
-  { name: 'Contact', to: { name: 'contact' } },
-]
 
 function toggleMenu() {
   isOpen.value = !isOpen.value
@@ -61,7 +52,7 @@ onUnmounted(() => {
               aria-label="回首頁"
               :to="{ name: 'home' }"
               @click="closeMenu"
-              class="inline-flex flex-col font-serif self-start text-center text-gold-500 menu-logo-animation mt-5"
+              class="inline-flex flex-col font-serif self-start text-center text-gold-500 mt-12 menu-logo-animation"
             >
               <span class="text-[28px] tracking-[0.1em]">LUMIÈRE</span>
               <span class="text-[9px] tracking-[0.2em]">JEWELRY GALLERY</span>
@@ -318,7 +309,6 @@ onUnmounted(() => {
 
 /* ── Footer ── */
 .menu-footer {
-  margin-top: 48px;
   animation: fadeUp 0.6s 0.55s var(--ease-luxury) both;
 }
 
