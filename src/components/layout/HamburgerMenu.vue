@@ -127,7 +127,7 @@ onUnmounted(() => {
   cursor: pointer;
   padding: 0;
   position: relative;
-  z-index: var(--z-toast);
+  z-index: var(--z-index-modal);
 }
 
 .hamburger__bar {
@@ -177,7 +177,7 @@ onUnmounted(() => {
   position: fixed;
   inset: 0;
   background: var(--color-black);
-  z-index: var(--z-modal);
+  z-index: var(--z-index-overlay);
   display: flex;
   align-items: stretch;
   overflow: hidden;

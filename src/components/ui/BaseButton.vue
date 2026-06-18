@@ -14,7 +14,7 @@ defineProps({
 
 <template>
   <!-- :is是我在tag裡寫button或a改變相對應html -->
-  <component :is="tag" :class="['btn', `btn-${variant}`]">
+  <component :is="tag" :class="['btn', `btn--${variant}`]">
     <slot />
   </component>
 </template>
