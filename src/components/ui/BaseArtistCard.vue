@@ -2,12 +2,13 @@
 defineProps({
   product: Object,
 })
+
 const getImageUrl = (imgname) => {
   return new URL(`../../assets/images/${imgname}`, import.meta.url).href
 }
 </script>
 <template>
-  <RouterLink class="artistscard">
+  <RouterLink to="/artists" class="artistscard">
     <img
       :src="getImageUrl(product.artistsimg)"
       :alt="product.name"
