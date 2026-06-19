@@ -35,9 +35,9 @@ const getImageUrl = (imgname) => {
       </svg>
     </button>
     <div class="card__body flex items-center tablet:flex-col">
-      <div class="relative over-hidden w-auto tablet:w-full">
+      <div class="relative over-hidden w-auto tablet:max-w-full">
         <img
-          class="aspect-[3/4] w-full object-cover max-h-[180px] tablet:max-h-[250px] laptop:max-h-[300px] laptop:object-contain"
+          class="aspect-[3/4] max-w-full object-cover max-h-[180px] tablet:max-h-[250px] laptop:max-h-[300px] laptop:object-contain"
           :src="getImageUrl(product.jewelryimg)"
           :alt="product.name"
         />
