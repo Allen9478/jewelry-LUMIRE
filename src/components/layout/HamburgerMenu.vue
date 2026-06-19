@@ -272,7 +272,7 @@ onUnmounted(() => {
 }
 .menu__link-number {
   font-family: var(--font-sans);
-  font-size: 11px;
+  font-size: 9px;
   letter-spacing: 0.15em;
   color: var(--color-gold-500);
   opacity: 0.6;
@@ -282,7 +282,7 @@ onUnmounted(() => {
 
 .menu__link-name {
   font-family: var(--font-serif);
-  font-size: 36px;
+  font-size: 28px;
   font-weight: 400;
   letter-spacing: 0.02em;
   line-height: 1;
@@ -295,7 +295,7 @@ onUnmounted(() => {
 }
 
 .menu__link-arrow {
-  font-size: 18px;
+  font-size: 14px;
   color: var(--color-gold-500);
   opacity: 0;
   transform: translateX(-10px);

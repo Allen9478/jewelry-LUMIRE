@@ -4,7 +4,8 @@ export const testWork = [
     name: 'Solitaire Ring',
     artist: 'WEI CINDY',
     material: '18K Gold · Diamond',
-    image: 'Wei_Chen-ring拷貝.webp',
+    jewelryimg: 'Wei_Chen-ring拷貝.webp',
+    artistsimg: 'Wei_Chen-profileSmall拷貝.webp',
     badge: null,
   },
   {
@@ -12,7 +13,8 @@ export const testWork = [
     name: 'Diamond Pendant',
     artist: 'ELENA VOLKOV',
     material: '14K White Gold',
-    image: 'Elena_Volkov-bracelet拷貝.webp',
+    jewelryimg: 'Elena_Volkov-bracelet拷貝.webp',
+    artistsimg: 'Elena_Volkov-profileSmall拷貝.webp',
     badge: 'New',
   },
   {
@@ -20,7 +22,8 @@ export const testWork = [
     name: 'Diamond EARRING',
     artist: 'Marco Bianchi',
     material: '14K White Gold',
-    image: 'Marco_Bianchi-earring拷貝.webp',
+    jewelryimg: 'Marco_Bianchi-earring拷貝.webp',
+    artistsimg: 'Marco_Bianchi-profileSmall拷貝.webp',
     badge: 'New',
   },
   {
@@ -28,7 +31,8 @@ export const testWork = [
     name: 'GOLD NECKLACE',
     artist: 'YU AN LIN',
     material: '14K White Gold',
-    image: 'Yu_An_Lin-necklace拷貝.webp',
+    jewelryimg: 'Yu_An_Lin-necklace拷貝.webp',
+    artistsimg: 'Yu_An_Lin-profileSmall拷貝.webp',
     badge: 'New',
   },
 ]

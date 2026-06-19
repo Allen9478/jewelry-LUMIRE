@@ -3,6 +3,7 @@ import HamburgerMenu from '@/components/layout/HamburgerMenu.vue'
 // 收藏還沒做好這是測試用
 import { useFavoriteStore } from '@/stores/useFavoriteStore'
 import { navItems } from '@/constants/navigations'
+console.log(navItems)
 const favoriteStore = useFavoriteStore()
 </script>
 
@@ -35,7 +36,7 @@ const favoriteStore = useFavoriteStore()
               :to="item.to"
               class="relative inline-block py-3 text-xs tablet:text-sm laptop:text-base desktop:text-lg text-stone-50 whitespace-nowrap transition-colors duration-300 hover:text-gold-500 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full"
             >
-              {{ item.label }}
+              {{ item.name }}
             </RouterLink>
           </li>
         </ul>
