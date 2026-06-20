@@ -1,6 +1,6 @@
 @theme {
   /* ── Screens ── */
-  --breakpoint-mobile: 390px;
+  --breakpoint-ipad: 576px;
   --breakpoint-tablet: 768px;
   --breakpoint-laptop: 1024px;
   --breakpoint-desktop: 1280px;

@@ -1,6 +1,6 @@
 <script setup>
 import BaseJewelryCard from '@/components/ui/BaseJewelryCard.vue'
-import BaseArtistCard from '@/components/ui/BaseArtistCard.vue'
+import BaseArtistAvatar from '@/components/ui/BaseArtistAvatar.vue'
 import { testWork } from '@/data/testWork.js'
 </script>
 <template>
@@ -14,12 +14,12 @@ import { testWork } from '@/data/testWork.js'
     </div>
     <div class="mt-25"></div>
     <div class="artists grid grid-cols-2 gap-3 tablet:grid-cols-4 tablet:gap-5 desktop:gap-7">
-      <BaseArtistCard
+      <BaseArtistAvatar
         v-for="item in testWork"
         :key="item.id"
         :product="item"
         class="flex flex-col items-center"
-      ></BaseArtistCard>
+      ></BaseArtistAvatar>
     </div>
     <div class="mt-25"></div>
   </div>
