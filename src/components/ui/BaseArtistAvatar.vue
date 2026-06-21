@@ -14,7 +14,7 @@ const getImageUrl = (imgname) => {
       :alt="product.name"
       class="border border-gray-800 object-contain rounded-full w-[150px] h-[150px] tablet:w-[200px] tablet:h-[200px] desktop:w-[250px] desktop:h-[250px]"
     />
-    <h2 class="mt-3 text-cream/80 text-label tablet:text-body desktop:text-subhead-sm">
+    <h2 class="mt-3 text-cream/80 text-label tablet:text-body desktop:text-subhead">
       {{ product.artist }}
     </h2>
   </RouterLink>

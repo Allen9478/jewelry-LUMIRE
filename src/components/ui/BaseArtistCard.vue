@@ -9,7 +9,7 @@ const getImageUrl = (imgname) => {
 </script>
 <template>
   <div
-    class="card w-full rounded-lg overflow-hidden border border-gold-500 shadow-gold-glow tablet:border-transparent tablet:shadow-none tablet:hover:border-gold-500/40 tablet:hover:shadow-gold-glow transition-all group"
+    class="card w-full overflow-hidden rounded-lg border border-gold-500 shadow-gold-glow tablet:border-transparent tablet:shadow-none tablet:hover:border-gold-500/40 tablet:hover:shadow-gold-glow transition-all group"
   >
     <div class="aspect-[4/5] tablet:aspect-[3/4]">
       <img
