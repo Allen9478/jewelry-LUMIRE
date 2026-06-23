@@ -50,6 +50,7 @@ const routes = [
         path: '/login',
         name: 'login',
         component: () => import('@/views/auth/LoginView.vue'),
+        meta: { hideFooter: true }, //footer在登入不展現
       },
       //404頁面
       {
