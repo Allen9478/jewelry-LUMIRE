@@ -2,8 +2,11 @@
 import BaseButton from '@/components/ui/BaseButton.vue'
 </script>
 <template>
-  <div class="flex flex-col tablet:flex-row tablet:h-[90dvh] overflow-hidden">
-    <div class="h-[45dvh] tablet:h-full tablet:w-1/2">
+  <!-- 手機直向轉橫向welcome會被header擋到,已知解法是在該區塊加pt-header的高度,要問 -->
+  <div
+    class="flex flex-col tablet:flex-row tablet:h-[90dvh] overflow-hidden landscape:overflow-y-auto landscape:h-auto"
+  >
+    <div class="h-[45dvh] tablet:h-full tablet:w-1/2 landscape:h-auto landscape:self-stretch">
       <img
         src="../../assets/images/ui/auth-hero-ring.webp"
         alt="auth-bg"
@@ -11,7 +14,7 @@ import BaseButton from '@/components/ui/BaseButton.vue'
       />
     </div>
     <div
-      class="w-full mx-auto p-6 pt-0 tablet:flex tablet:flex-1 tablet:flex-col tablet:justify-center tablet:px-16 laptop:px-24 tablet:max-w-[600px] laptop:max-w-[680px] ml-auto"
+      class="w-full mx-auto p-6 pt-0 tablet:flex tablet:flex-1 tablet:flex-col tablet:justify-center tablet:px-16 laptop:px-24 tablet:max-w-[600px] laptop:max-w-[680px] ml-auto landscape:pt-4"
     >
       <h2 class="text-[42px] laptop:text-[56px] text-center tracking-wide font-serif pb-8">
         Welcome Back
