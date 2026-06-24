@@ -1,22 +1,31 @@
 <script setup>
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import BaseButton from '@/components/ui/BaseButton.vue'
+
+const showPassword = ref(false)
+const router = useRouter()
+function goToRegister() {
+  router.push({ name: 'register' })
+}
 </script>
 <template>
-  <!-- 手機直向轉橫向welcome會被header擋到,已知解法是在該區塊加pt-header的高度,要問 -->
   <div
-    class="flex flex-col tablet:flex-row tablet:h-[90dvh] overflow-hidden landscape:overflow-y-auto landscape:h-auto"
+    class="auth flex flex-col overflow-hidden tablet:flex-row tablet:h-[calc(100dvh-80px)] tablet:overflow-hidden"
   >
-    <div class="h-[45dvh] tablet:h-full tablet:w-1/2 landscape:h-auto landscape:self-stretch">
+    <div class="auth__hero h-[45dvh] tablet:h-full tablet:w-1/2">
       <img
         src="../../assets/images/ui/auth-hero-ring.webp"
         alt="auth-bg"
-        class="w-full h-full object-cover object-[center_35%] tablet:object-[center_25%] laptop:object-[center_45%]"
+        class="w-full h-full object-cover object-[center_35%] tablet:object-[center_25%]"
       />
     </div>
     <div
-      class="w-full mx-auto p-6 pt-0 tablet:flex tablet:flex-1 tablet:flex-col tablet:justify-center tablet:px-16 laptop:px-24 tablet:max-w-[600px] laptop:max-w-[680px] ml-auto landscape:pt-4"
+      class="auth__form w-full mx-auto p-6 pt-0 tablet:flex tablet:flex-1 tablet:flex-col tablet:justify-center tablet:px-16 laptop:px-24 tablet:max-w-[600px] laptop:max-w-[680px] ml-auto"
     >
-      <h2 class="text-[42px] laptop:text-[56px] text-center tracking-wide font-serif pb-8">
+      <h2
+        class="auth-welcome text-[42px] laptop:text-[56px] text-center tracking-wide font-serif pb-8 tablet:landscape:pt-8"
+      >
         Welcome Back
       </h2>
       <form action="#" class="flex flex-col gap-8">
@@ -36,7 +45,7 @@ import BaseButton from '@/components/ui/BaseButton.vue'
         <div class="relative">
           <input
             id="password"
-            type="password"
+            :type="showPassword ? 'text' : 'password'"
             placeholder=" "
             class="w-full pt-5 pb-1 outline-none peer bg-transparent text-gold-500 border-b border-[#3a3530] focus:border-[#c9a84c] transition-colors"
           />
@@ -88,7 +97,10 @@ import BaseButton from '@/components/ui/BaseButton.vue'
         >ENTER</BaseButton
       >
       <p class="py-8 text-center laptop:text-left laptop:text-body">
-        New to Lumière? <span class="text-gold-500 underline">Request Access</span>
+        New to Lumière?
+        <span @click="goToRegister" class="text-gold-500 underline cursor-pointer"
+          >Request Access</span
+        >
       </p>
     </div>
   </div>
@@ -98,5 +110,22 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 input {
   border: 1px solid transparent;
   border-bottom-color: var(--color-gold-500);
+}
+@media (orientation: landscape) and (max-width: 926px) {
+  .auth {
+    flex-direction: row;
+    height: auto;
+    overflow-y: auto;
+  }
+  .auth__hero {
+    width: 50%;
+    height: auto;
+    align-self: stretch;
+  }
+  .auth__form {
+    flex: 1;
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+  }
 }
 </style>

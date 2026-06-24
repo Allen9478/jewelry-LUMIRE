@@ -52,6 +52,18 @@ const routes = [
         component: () => import('@/views/auth/LoginView.vue'),
         meta: { hideFooter: true }, //footer在登入不展現
       },
+      {
+        path: '/forgot-password',
+        name: 'forgot-password',
+        component: () => import('@/views/auth/ForgotPasswordView.vue'),
+        meta: { hideFooter: true }, //footer在登入不展現
+      },
+      {
+        path: '/register',
+        name: 'register',
+        component: () => import('@/views/auth/RegisterView.vue'),
+        meta: { hideFooter: true }, //footer在登入不展現
+      },
       //404頁面
       {
         path: '/:pathMatch(.*)*',

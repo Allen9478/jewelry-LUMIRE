@@ -5,8 +5,8 @@
   --breakpoint-laptop: 1024px;
   --breakpoint-desktop: 1280px;
   --breakpoint-wide: 1536px;
-
-  /* ── Colors ── */
+  /* 一些只有手機版需要特殊處理的 */
+  --breakpoint-mobile-only: 767px; /* ── Colors ── */
   --color-gold-50: #fffaf0;
   --color-gold-100: #f8ebc8;
   --color-gold-200: #f1d999;

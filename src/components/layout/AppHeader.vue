@@ -2,9 +2,15 @@
 import HamburgerMenu from '@/components/layout/HamburgerMenu.vue'
 // 收藏還沒做好這是測試用
 import { useFavoriteStore } from '@/stores/useFavoriteStore'
+import { useRouter } from 'vue-router'
 import { navItems } from '@/constants/navigations'
-console.log(navItems)
+
 const favoriteStore = useFavoriteStore()
+
+const router = useRouter()
+function goToLogin() {
+  router.push({ name: 'login' })
+}
 </script>
 
 <template>
@@ -79,7 +85,7 @@ const favoriteStore = useFavoriteStore()
             />
           </svg>
         </button>
-        <button aria-label="會員" class="nav__icon hidden tablet:block">
+        <button @click="goToLogin" aria-label="會員" class="nav__icon hidden tablet:block">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
