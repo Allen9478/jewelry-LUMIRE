@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -13,7 +13,7 @@ export const useAuthStore = defineStore('auth', () => {
   const user = ref(null)
   const isLoading = ref(false)
   const error = ref('')
-
+  const isLoggedIn = computed(() => !!user.value)
   function initAuthListener() {
     onAuthStateChanged(auth, (firebaseUser) => {
       user.value = firebaseUser
@@ -79,6 +79,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   return {
     user,
+    isLoggedIn,
     isLoading,
     error,
     initAuthListener,
