@@ -1,12 +1,24 @@
 <script setup>
 import HamburgerMenu from '@/components/layout/HamburgerMenu.vue'
-// 收藏還沒做好這是測試用
+import { useAuthStore } from '@/stores/useAuthStore'
 import { useFavoriteStore } from '@/stores/useFavoriteStore'
 import { useRouter } from 'vue-router'
 import { navItems } from '@/constants/navigations'
-
+import { ref, computed } from 'vue'
+const authStore = useAuthStore()
 const favoriteStore = useFavoriteStore()
+const displayName = computed(() => {
+  const email = authStore.user?.email
+  if (!email) return ''
+  return email.split('@')[0] // 取 @ 前面的部分
+})
+const showMenu = ref(false)
 
+async function handleLogout() {
+  await authStore.logout()
+  showMenu.value = false
+  router.push({ name: 'login' })
+}
 const router = useRouter()
 function goToLogin() {
   router.push({ name: 'login' })
@@ -85,25 +97,41 @@ function goToLogin() {
             />
           </svg>
         </button>
-        <button @click="goToLogin" aria-label="會員" class="nav__icon hidden tablet:block">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-6"
+        <!-- 登入後改變成使用者帳號,樣式有待考慮調整 -->
+        <template v-if="authStore.user">
+          <div
+            class="relative group transition-colors duration-300 hover:text-gold-500 focus:outline-none cursor-pointer"
+            :class="{ 'menu-open': showMenu }"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
-            />
-          </svg>
-        </button>
+            <span @click="showMenu = !showMenu" class="text-[16px]">{{ displayName }}</span>
 
+            <div
+              class="absolute w-full right-0 top-full mt-2 text-[16px] opacity-0 invisible group-hover:opacity-100 group-hover:visible [.menu-open_&]:opacity-100 [.menu-open_&]:visible transition-all duration-200"
+            >
+              <button @click="handleLogout">signout</button>
+            </div>
+          </div>
+        </template>
+        <template v-else>
+          <button @click="goToLogin" aria-label="會員" class="nav__icon hidden tablet:block">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+              />
+            </svg>
+          </button>
+        </template>
         <div class="relative justify-center items-center group hidden tablet:flex">
-          <!-- select尚未設置i18n -->
+          <!-- select尚未設置i18n 點擊之後的選單位置也要調整-->
           <select
             aria-label="選擇語言"
             class="appearance-none bg-black px-2 py-2 text-xs lg:text-sm transition-colors duration-300 group-hover:text-gold-500 focus:outline-none cursor-pointer pr-6"

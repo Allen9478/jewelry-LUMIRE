@@ -45,24 +45,27 @@ const routes = [
         name: 'contact',
         component: () => import('@/views/ContactView.vue'),
       },
-      //auth版面,不套用header/footer,還不知怎麼寫暫時先這樣要查
       {
-        path: '/login',
-        name: 'login',
-        component: () => import('@/views/auth/LoginView.vue'),
-        meta: { hideFooter: true }, //footer在登入不展現
-      },
-      {
-        path: '/forgot-password',
-        name: 'forgot-password',
-        component: () => import('@/views/auth/ForgotPasswordView.vue'),
-        meta: { hideFooter: true }, //footer在登入不展現
-      },
-      {
-        path: '/register',
-        name: 'register',
-        component: () => import('@/views/auth/RegisterView.vue'),
-        meta: { hideFooter: true }, //footer在登入不展現
+        path: '/auth',
+        component: () => import('@/views/auth/AuthLayout.vue'),
+        meta: { hideFooter: true },
+        children: [
+          {
+            path: 'login',
+            name: 'login',
+            component: () => import('@/views/auth/LoginView.vue'),
+          },
+          {
+            path: 'register',
+            name: 'register',
+            component: () => import('@/views/auth/RegisterView.vue'),
+          },
+          {
+            path: 'forgot-password',
+            name: 'forgot-password',
+            component: () => import('@/views/auth/ForgotPasswordView.vue'),
+          },
+        ],
       },
       //404頁面
       {
