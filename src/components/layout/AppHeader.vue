@@ -7,6 +7,7 @@ import { navItems } from '@/constants/navigations'
 import { ref, computed } from 'vue'
 const authStore = useAuthStore()
 const favoriteStore = useFavoriteStore()
+const currentLang = ref('EN')
 const displayName = computed(() => {
   const email = authStore.user?.email
   if (!email) return ''
@@ -99,17 +100,25 @@ function goToLogin() {
         </button>
         <!-- 登入後改變成使用者帳號,樣式有待考慮調整 -->
         <template v-if="authStore.user">
-          <div
-            class="relative group transition-colors duration-300 hover:text-gold-500 focus:outline-none cursor-pointer"
-            :class="{ 'menu-open': showMenu }"
-          >
-            <span @click="showMenu = !showMenu" class="text-[16px]">{{ displayName }}</span>
+          <!-- 手機版 -->
+          <div class="tablet:hidden">
+            <span v-if="!showMenu" @click="showMenu = true">
+              {{ displayName }}
+            </span>
+            <span v-else @click="handleLogout" class="text-gold-500 text-[10px]"> SIGN OUT </span>
+          </div>
 
-            <div
-              class="absolute w-full right-0 top-full mt-2 text-[16px] opacity-0 invisible group-hover:opacity-100 group-hover:visible [.menu-open_&]:opacity-100 [.menu-open_&]:visible transition-all duration-200"
+          <!-- 桌機版 -->
+          <div class="relative group cursor-pointer hidden tablet:block">
+            <span class="group-hover:opacity-0 transition-opacity duration-200">
+              {{ displayName }}
+            </span>
+            <span
+              @click="handleLogout"
+              class="absolute inset-0 flex items-center justify-center text-center text-gold-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200 tracking-widest text-sm"
             >
-              <button @click="handleLogout">signout</button>
-            </div>
+              SIGN OUT
+            </span>
           </div>
         </template>
         <template v-else>
@@ -130,27 +139,40 @@ function goToLogin() {
             </svg>
           </button>
         </template>
-        <div class="relative justify-center items-center group hidden tablet:flex">
-          <!-- select尚未設置i18n 點擊之後的選單位置也要調整-->
-          <select
-            aria-label="選擇語言"
-            class="appearance-none bg-black px-2 py-2 text-xs lg:text-sm transition-colors duration-300 group-hover:text-gold-500 focus:outline-none cursor-pointer pr-6"
-          >
-            <option value="en" selected>EN</option>
-            <option value="zh">中文</option>
-          </select>
+        <div class="relative group hidden tablet:flex items-center cursor-pointer">
+          <!-- 顯示目前選項 -->
+          <span class="text-xs lg:text-sm px-2 py-2 group-hover:text-gold-500 transition-colors">
+            {{ currentLang }}
+          </span>
 
-          <!-- pointer-events-none 讓點擊穿透到 select -->
+          <!-- 箭頭 -->
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="size-4 absolute right-0 pointer-events-none text-white transition-colors duration-300 group-hover:text-gold-500"
+            class="size-4 pointer-events-none text-white transition-colors duration-300 group-hover:text-gold-500"
           >
             <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
           </svg>
+          <!-- 自訂下拉 -->
+          <div
+            class="absolute left-0 top-full mt-2 w-20 bg-[#1a1a1a] border border-[#3a3530] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
+          >
+            <button
+              @click="currentLang = 'EN'"
+              class="w-full px-4 py-2 text-left text-sm hover:text-gold-500"
+            >
+              EN
+            </button>
+            <button
+              @click="currentLang = '中文'"
+              class="w-full px-4 py-2 text-left text-sm hover:text-gold-500"
+            >
+              中文
+            </button>
+          </div>
         </div>
       </div>
     </div>

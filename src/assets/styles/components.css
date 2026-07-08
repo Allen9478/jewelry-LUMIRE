@@ -33,4 +33,11 @@
   .footer__icon--social {
     @apply stroke-1 w-6 h-6  group-hover:stroke-2 transition-all duration-300 laptop:w-8 laptop:h-8;
   }
+
+  .auth__form {
+    @apply w-full mx-auto p-6 pt-0 tablet:flex tablet:flex-1 tablet:flex-col tablet:justify-center tablet:px-16 laptop:px-24 tablet:max-w-[600px] laptop:max-w-[680px] ml-auto;
+  }
+  .auth__title {
+    @apply text-[42px] laptop:text-[56px] text-center tracking-wide font-serif pb-8 tablet:landscape:pt-8;
+  }
 }
