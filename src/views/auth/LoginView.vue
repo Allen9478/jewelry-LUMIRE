@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/useAuthStore'
 import AuthInput from '@/components/ui/AuthInput.vue'
@@ -10,6 +10,9 @@ const email = ref('')
 const password = ref('')
 const router = useRouter()
 
+onMounted(() => {
+  authStore.error = ''
+})
 async function handleSubmit() {
   try {
     await authStore.login(email.value, password.value)
