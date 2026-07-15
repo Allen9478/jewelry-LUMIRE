@@ -8,11 +8,7 @@ import { ref, computed } from 'vue'
 const authStore = useAuthStore()
 const favoriteStore = useFavoriteStore()
 const currentLang = ref('EN')
-const displayName = computed(() => {
-  const email = authStore.user?.email
-  if (!email) return ''
-  return email.split('@')[0] // 取 @ 前面的部分
-})
+const isFavoritePage = computed(() => router.currentRoute.value.name === 'favorites')
 const showMenu = ref(false)
 
 async function handleLogout() {
@@ -78,50 +74,99 @@ function goToLogin() {
             />
           </svg>
         </button>
-        <button
-          aria-label="我的最愛收藏"
-          class="nav__icon w-9 flex items-center justify-end tablet:w-6"
-          @click="favoriteStore.toggleFavorite('test')"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-6 transition-colors duration-200 fill-gold-500 stroke-gold-500"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-            />
-          </svg>
-        </button>
+
         <!-- 登入後改變成使用者帳號,樣式有待考慮調整 -->
         <template v-if="authStore.user">
           <!-- 手機版 -->
-          <div class="tablet:hidden">
-            <span v-if="!showMenu" @click="showMenu = true">
-              {{ displayName }}
-            </span>
-            <span v-else @click="handleLogout" class="text-gold-500 text-[10px]"> SIGN OUT </span>
+          <div class="flex gap-2 tablet:hidden">
+            <RouterLink
+              aria-label="我的最愛收藏"
+              class="nav__icon w-9 flex items-center justify-end tablet:w-6"
+              :to="{ name: 'favorites' }"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6 transition-colors duration-200"
+                :class="
+                  isFavoritePage
+                    ? 'fill-gold-500 stroke-gold-500'
+                    : 'hover:fill-gold-500 hover:stroke-gold-500 active:fill-gold-500 active:stroke-gold-500'
+                "
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                />
+              </svg>
+            </RouterLink>
           </div>
 
           <!-- 桌機版 -->
-          <div class="relative group cursor-pointer hidden tablet:block">
-            <span class="group-hover:opacity-0 transition-opacity duration-200">
-              {{ displayName }}
-            </span>
-            <span
-              @click="handleLogout"
-              class="absolute inset-0 flex items-center justify-center text-center text-gold-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200 tracking-widest text-sm"
+          <div class="hidden tablet:flex gap-2 lg:gap-3 xl:gap-4">
+            <RouterLink
+              aria-label="我的最愛收藏"
+              class="nav__icon w-9 flex items-center justify-end tablet:w-6"
+              :to="{ name: 'favorites' }"
             >
-              SIGN OUT
-            </span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6 transition-colors duration-200"
+                :class="
+                  isFavoritePage
+                    ? 'fill-gold-500 stroke-gold-500'
+                    : 'hover:fill-gold-500 hover:stroke-gold-500'
+                "
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                />
+              </svg>
+            </RouterLink>
+            <div class="member relative group cursor-pointer">
+              <span class="group-hover:opacity-0 transition-opacity duration-200">
+                {{ authStore.displayName }}
+              </span>
+              <span
+                @click="handleLogout"
+                class="absolute inset-0 flex items-center justify-center text-center text-gold-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200 tracking-widest text-sm"
+              >
+                SIGN OUT
+              </span>
+            </div>
           </div>
         </template>
         <template v-else>
+          <button
+            aria-label="我的最愛收藏"
+            class="nav__icon w-9 flex items-center justify-end tablet:w-6"
+            @click="favoriteStore.toggleFavorite('test')"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6 transition-colors duration-200 hover:fill-gold-500 hover:stroke-gold-500"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+              />
+            </svg>
+          </button>
           <button @click="goToLogin" aria-label="會員" class="nav__icon hidden tablet:block">
             <svg
               xmlns="http://www.w3.org/2000/svg"

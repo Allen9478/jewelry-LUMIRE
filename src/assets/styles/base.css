@@ -145,6 +145,10 @@
   --bg-page-texture: linear-gradient(160deg, #0f0f0f 0%, #080808 50%, #0a0905 100%);
 }
 @layer base {
+  /* 防止Safari手機不會觸發active */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
   body {
     @apply bg-black text-cream;
   }

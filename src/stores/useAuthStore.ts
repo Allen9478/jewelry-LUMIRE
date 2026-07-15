@@ -14,12 +14,17 @@ export const useAuthStore = defineStore('auth', () => {
   const isLoading = ref(false)
   const error = ref('')
   const isLoggedIn = computed(() => !!user.value)
+
   function initAuthListener() {
     onAuthStateChanged(auth, (firebaseUser) => {
       user.value = firebaseUser
     })
   }
-
+  const displayName = computed(() => {
+    const email = user.value?.email
+    if (!email) return ''
+    return email.split('@')[0]
+  })
   async function register(fullname, email, password) {
     error.value = ''
     isLoading.value = false
@@ -79,6 +84,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   return {
     user,
+    displayName,
     isLoggedIn,
     isLoading,
     error,

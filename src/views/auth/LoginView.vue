@@ -34,17 +34,17 @@ async function handleSubmit() {
       >
     </form>
 
-    <p class="py-8 text-center laptop:text-left laptop:text-body">
-      New to Lumière?
-      <RouterLink :to="{ name: 'register' }" class="link--auth ml-41 mt-1 laptop:mt-0 laptop:ml-2"
-        >Request Access</RouterLink
-      >
-      <RouterLink
-        :to="{ name: 'forgot-password' }"
-        class="link--auth m-0 mt-1 laptop:mt-0 laptop:ml-2"
-        >Forgot password</RouterLink
-      >
-    </p>
+    <div class="py-8 text-center laptop:text-left laptop:text-body">
+      <span>New to Lumière?</span>
+      <div class="block laptop:inline mt-2 laptop:mt-0">
+        <RouterLink :to="{ name: 'register' }" class="link--auth laptop:ml-2"
+          >Request Access</RouterLink
+        >
+        <RouterLink :to="{ name: 'forgot-password' }" class="link--auth ml-2"
+          >Forgot password</RouterLink
+        >
+      </div>
+    </div>
   </div>
 </template>
 

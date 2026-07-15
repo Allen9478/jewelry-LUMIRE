@@ -47,6 +47,11 @@ const routes: RouteRecordRaw[] = [
         component: () => import('@/views/ContactView.vue'),
       },
       {
+        path: '/favorites',
+        name: 'favorites',
+        component: () => import('@/views/FavoritesView.vue'),
+      },
+      {
         path: '/auth',
         component: () => import('@/views/auth/AuthLayout.vue'),
         meta: { hideFooter: true },

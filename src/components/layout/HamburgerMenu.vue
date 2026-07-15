@@ -1,7 +1,11 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import BaseButton from '@/components/ui/BaseButton.vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { navItems } from '@/constants/navigations'
+import { useAuthStore } from '@/stores/useAuthStore'
+import { useRouter } from 'vue-router'
+import BaseButton from '@/components/ui/BaseButton.vue'
+const authStore = useAuthStore()
+const router = useRouter()
 const isOpen = ref(false)
 
 function toggleMenu() {
@@ -16,6 +20,17 @@ function closeMenu() {
 
 function handleKeydown(e) {
   if (e.key === 'Escape') closeMenu()
+}
+
+function goToLogin() {
+  closeMenu()
+  router.push({ name: 'login' })
+}
+
+async function handleLogout() {
+  await authStore.logout()
+  closeMenu()
+  router.push('/')
 }
 
 onMounted(() => window.addEventListener('keydown', handleKeydown))
@@ -77,32 +92,54 @@ onUnmounted(() => {
             <!-- 底部資訊 -->
             <div class="menu__footer">
               <div class="menu__footer-divider"></div>
-
-              <BaseButton
-                variant="ghost"
-                tag="RouterLink"
-                to="/login"
-                @click="closeMenu"
-                class="nav__icon inline-flex normal-case"
-                aria-label="會員"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="size-6"
+              <template v-if="authStore.user">
+                <BaseButton
+                  variant="ghost"
+                  @click="handleLogout"
+                  class="nav__icon inline-flex normal-case py-3 text-sm tracking-widest transition-transform duration-150 active:scale-95"
+                  aria-label="會員"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
-                  />
-                </svg>
-                <span>Member</span>
-              </BaseButton>
-
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                    />
+                  </svg>
+                  <span class="ml-2">{{ authStore.displayName }}/Logout</span>
+                </BaseButton>
+              </template>
+              <template v-else>
+                <BaseButton
+                  variant="ghost"
+                  @click="goToLogin"
+                  class="nav__icon inline-flex normal-case py-3 text-sm tracking-widest transition-transform duration-150 active:scale-95"
+                  aria-label="會員"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                    />
+                  </svg>
+                  <span>Login</span>
+                </BaseButton>
+              </template>
               <p class="menu__footer-copy">© 2026 Lumière Jewelry Gallery. All Rights Reserved.</p>
             </div>
           </nav>
