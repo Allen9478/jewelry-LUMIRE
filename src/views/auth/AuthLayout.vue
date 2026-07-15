@@ -2,7 +2,7 @@
 <template>
   <div class="auth flex flex-col tablet:flex-row tablet:h-[calc(100dvh-80px)] overflow-hidden">
     <!-- 圖片：固定不變 -->
-    <div class="auth__hero h-[45dvh] tablet:h-full tablet:w-1/2">
+    <div class="auth__hero h-[45svh] tablet:h-full tablet:w-1/2">
       <img
         src="../../assets/images/ui/auth-hero-ring.webp"
         alt="auth-bg"
