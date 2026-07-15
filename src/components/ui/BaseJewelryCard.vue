@@ -12,11 +12,11 @@ const getImageUrl = (imgname) => {
 <template>
   <RouterLink
     to="/works"
-    class="card w-full max-w-[300px] mobile:max-w-[360px] tablet:max-w-none relative border border-transparent hover:border-gold-500/40 hover:shadow-gold-glow transition-all group"
+    class="card w-full max-w-[300px] mobile:max-w-[360px] tablet:max-w-[430px] relative border border-transparent hover:border-gold-500/40 hover:shadow-gold-glow group:hover:scale-105 active:border-gold-500/40 active:shadow-gold-glow transition-all group"
   >
     <button
       aria-label="我的最愛收藏"
-      class="nav__icon absolute top-4 right-0 mobile:right-4 opacity-100 tablet:top-2 tablet:right-2 desktop:opacity-0 desktop:group-hover:opacity-100 transition-opacity duration-300 z-10"
+      class="nav__icon absolute top-1 right-1 mobile:right-4 opacity-100 tablet:top-2 tablet:right-2 desktop:opacity-0 desktop:group-hover:opacity-100 transition-opacity duration-300 z-10"
       @click.prevent="favoriteStore.toggleFavorite('test')"
     >
       <svg
@@ -25,7 +25,7 @@ const getImageUrl = (imgname) => {
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor"
-        class="size-6 transition-colors duration-200 hover:fill-gold-500 hover:stroke-gold-500"
+        class="size-6 transition-colors duration-200 hover:fill-gold-500 hover:stroke-gold-500 active:fill-gold-500 active:stroke-gold-500"
       >
         <path
           stroke-linecap="round"
