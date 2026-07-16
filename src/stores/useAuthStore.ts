@@ -8,16 +8,22 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth'
 import { auth } from '@/firebase'
+import { useFavoriteStore } from '@/stores/useFavoriteStore'
 
 export const useAuthStore = defineStore('auth', () => {
   const user = ref(null)
   const isLoading = ref(false)
   const error = ref('')
   const isLoggedIn = computed(() => !!user.value)
-
+  const favoriteStore = useFavoriteStore()
   function initAuthListener() {
     onAuthStateChanged(auth, (firebaseUser) => {
-      user.value = firebaseUser
+      if (user) {
+        user.value = firebaseUser
+        favoriteStore.fetchFavorites() // 登入時載入收藏
+      } else {
+        favoriteStore.favorites = [] // 登出時清空
+      }
     })
   }
   const displayName = computed(() => {

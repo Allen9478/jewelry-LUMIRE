@@ -1,29 +1,60 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { useAuthStore } from './useAuthStore'
-
+import { doc, getDoc, getDocs, collection, setDoc, deleteDoc } from 'firebase/firestore'
+import { db } from '@/firebase'
 export const useFavoriteStore = defineStore('favorite', () => {
   const authStore = useAuthStore()
   const favorites = ref<string[]>([])
   const showLoginModal = ref(false)
 
-  function toggleFavorite(id: string) {
+  async function toggleFavorite(id: string) {
     if (!authStore.isLoggedIn) {
-      showLoginModal.value = true // 未登入就開 Modal
+      showLoginModal.value = true
       return
     }
-    // 已登入才執行收藏邏輯
-    const index = favorites.value.indexOf(id)
-    if (index === -1) {
-      favorites.value.push(id)
+    //防呆
+    if (!id || typeof id !== 'string') {
+      console.warn('toggleFavorite: invalid id', id)
+      return
+    }
+    const userId = authStore.user.uid // Firebase Auth 的使用者 id
+    const docRef = doc(db, 'favorites', userId, 'items', id)
+    const alreadyFavorited = favorites.value.includes(id)
+    if (alreadyFavorited) {
+      favorites.value = favorites.value.filter((f) => f !== id)
     } else {
-      favorites.value.splice(index, 1)
+      favorites.value.push(id)
+    }
+    try {
+      if (alreadyFavorited) {
+        await deleteDoc(docRef)
+      } else {
+        await setDoc(docRef, { productId: id, addedAt: new Date() })
+      }
+    } catch (err) {
+      console.error('toggle failed', err)
+      if (alreadyFavorited) {
+        favorites.value.push(id)
+        console.log('is here')
+      } else {
+        favorites.value = favorites.value.filter((f) => f !== id)
+        console.log('is not here')
+      }
     }
   }
+  async function fetchFavorites() {
+    if (!authStore.isLoggedIn) return
 
-  function isFavorited(id: string) {
+    const userId = authStore.user.uid
+    const colRef = collection(db, 'favorites', userId, 'items')
+
+    const snapshot = await getDocs(colRef)
+    favorites.value = snapshot.docs.map((doc) => doc.id)
+  }
+  function isFavorites(id: string) {
     return favorites.value.includes(id)
   }
 
-  return { favorites, showLoginModal, toggleFavorite, isFavorited }
+  return { favorites, showLoginModal, toggleFavorite, isFavorites, fetchFavorites }
 })

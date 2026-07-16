@@ -38,6 +38,7 @@ import { testWork } from '@/data/testWork.js'
       </div>
     </section>
     <div
+      v-fade-in="{ duration: 600, y: 40 }"
       class="artists grid grid-cols-2 gap-3 pt-10 tablet:pt-14 tablet:grid-cols-4 tablet:gap-5 desktop:gap-7"
     >
       <BaseArtistAvatar
@@ -47,6 +48,7 @@ import { testWork } from '@/data/testWork.js'
         class="flex flex-col items-center"
       ></BaseArtistAvatar>
     </div>
+
     <div class="mt-25"></div>
   </div>
 </template>
