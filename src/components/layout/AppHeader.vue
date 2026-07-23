@@ -32,17 +32,17 @@ function goToLogin() {
         :to="{ name: 'home' }"
         class="inline-flex flex-col font-serif text-center text-gold-500"
       >
-        <span class="text-[22px] tablet:text-[28px] tracking-[0.1em]">LUMIÈRE</span>
-        <span class="text-[8px] tablet:text-[9px] tracking-[0.2em]">JEWELRY GALLERY</span>
+        <span class="text-[26px] tablet:text-[34px] tracking-[0.1em]">LUMIÈRE</span>
+        <span class="text-[9px] tablet:text-[11px] tracking-[0.2em]">JEWELRY GALLERY</span>
       </RouterLink>
       <!-- Nav：flex-1 吸收空間，overflow hidden 防破版 -->
       <nav
         aria-label="主要導覽列"
-        class="hidden tablet:flex flex-1 justify-center overflow-hidden px-2 laptop:px-4"
+        class="hidden tablet:flex flex-1 justify-center min-w-0 overflow-x-auto px-2 laptop:px-4"
       >
         <ul class="flex items-center whitespace-nowrap">
           <li
-            class="px-2 tablet:px-2 laptop:px-4 desktop:px-6"
+            class="px-2 tablet:px-2 laptop:px-4 desktop:px-6 shrink-0"
             v-for="item in navItems"
             :key="item"
           >

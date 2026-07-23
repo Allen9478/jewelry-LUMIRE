@@ -26,6 +26,7 @@
   /* ── Fonts ── */
   --font-serif: 'Playfair Display', 'Noto Serif TC', serif;
   --font-sans: Inter, 'Noto Sans TC', sans-serif;
+  --font-italic: 'Cormorant Garamond', 'Playfair Display', 'Times New Roman', serif;
 
   /* ── Font Size ── */
 
@@ -39,16 +40,22 @@
   --text-title--line-height: 1.15;
   --text-title--letter-spacing: 0.05em;
 
-  /* 區塊標題 */
-  --text-heading: 1.5rem;
-  --text-heading--line-height: 0.7;
-  --text-heading--letter-spacing: 0.03em;
-
+  /* 區塊標題 首頁最大的那個*/
+  --text-heading-1: clamp(2.375rem, 1.507rem + 3.704vw, 5.0625rem);
+  --text-heading-1--line-height: 1.125;
+  --text-heading-1--letter-spacing: 0.05em;
+  /* 區塊標題 除了首頁的全部*/
+  --text-heading-2: clamp(2.025rem, 1.104rem + 2.756vw, 3.95rem);
+  --text-heading-2--line-height: 1.2;
+  --text-heading-2--letter-spacing: 0.05em;
   /* 副標題/區塊名稱 */
   --text-subhead: 1.25rem;
   --text-subhead--line-height: 1.4;
 
   /* 內文 */
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.85;
+
   --text-body: 1rem;
   --text-body--line-height: 1.75;
 
@@ -72,6 +79,10 @@
   --text-price-sm: 1.125rem;
   --text-price-sm--line-height: 1.2;
   /* 按鈕 */
+  --text-btn-lg: 0.9725rem;
+  --text-btn-lg--line-height: 1.125;
+  --text-btn-lg--letter-spacing: 0.16em;
+
   --text-btn: 0.8125rem;
   --text-btn--line-height: 1;
   --text-btn--letter-spacing: 0.12em;
@@ -164,13 +175,17 @@
     background: #000;
   }
   ::-webkit-scrollbar-thumb {
-    background: #d6b46a;
+    background: var(--color-gold-400);
     border-radius: 3px;
   }
 
   /* Firefox 滾動條自訂*/
   html {
+    overflow-x: hidden;
     scrollbar-width: thin;
-    scrollbar-color: #d6b46a #000;
+    scrollbar-color: var(--color-gold-400) #000;
+  }
+  body {
+    overflow-x: hidden;
   }
 }

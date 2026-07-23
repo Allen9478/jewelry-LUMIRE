@@ -155,11 +155,11 @@ const sections = [
             <div
               class="footer-nav-title flex flex-col border-b border-gold-400/30 py-1 laptop:border-none"
             >
-              <div class="flex justify-between laptop:pb-5">
-                <p>{{ section.title }}</p>
+              <div class="flex justify-between items-center gap-2 laptop:pb-5">
+                <p class="min-w-0 truncate">{{ section.title }}</p>
                 <button
                   @click="toggleMenu(section.key)"
-                  class="toggle-bar flex laptop:hidden"
+                  class="toggle-bar flex laptop:hidden shrink-0"
                   :class="{ 'is-open': openSections[section.key] }"
                 >
                   <span class="bar bar-col"></span>
