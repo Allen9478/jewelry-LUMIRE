@@ -154,6 +154,8 @@
   --bg-card-fade: linear-gradient(to top, rgba(8, 8, 8, 0.85) 0%, rgba(8, 8, 8, 0) 60%);
   --bg-gold-line: linear-gradient(to right, transparent, #d6b46a, transparent);
   --bg-page-texture: linear-gradient(160deg, #0f0f0f 0%, #080808 50%, #0a0905 100%);
+  /* ── Header的高度 ── */
+  --header-height: 80px;
 }
 @layer base {
   /* 防止Safari手機不會觸發active */
@@ -187,5 +189,8 @@
   }
   body {
     overflow-x: hidden;
+  }
+  .header-offset {
+    padding-top: var(--header-height, 80px);
   }
 }

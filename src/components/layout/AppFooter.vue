@@ -43,8 +43,8 @@ const sections = [
             :to="{ name: 'home' }"
             class="inline-flex flex-col self-start font-serif text-center text-gold-500"
           >
-            <span class="text-[22px] tablet:text-[28px] tracking-[0.1em]">LUMIÈRE</span>
-            <span class="text-[8px] tablet:text-[9px] tracking-[0.2em]">JEWELRY GALLERY</span>
+            <span class="text-[26px] tablet:text-[34px] tracking-[0.1em]">LUMIÈRE</span>
+            <span class="text-[9px] tablet:text-[11px] tracking-[0.2em]">JEWELRY GALLERY</span>
           </RouterLink>
           <p class="pt-5 laptop:pt-7">Celebrating the artistry of jewelry</p>
           <br />
@@ -176,7 +176,7 @@ const sections = [
         </div>
       </div>
 
-      <p class="pt-6 display-inline laptop:pt-10 text-sm text-cream/50">
+      <p class="py-4 display-inline laptop:pt-10 text-sm text-cream/50">
         © 2026 Lumière Jewelry Gallery. All Rights Reserved.
       </p>
     </div>

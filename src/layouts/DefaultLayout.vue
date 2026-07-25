@@ -7,7 +7,7 @@ const route = useRoute()
 </script>
 <template>
   <AppHeader />
-  <RouterView />
+  <RouterView class="header-offset" />
   <AppFooter v-if="!route.meta.hideFooter" />
 </template>
 <style></style>

@@ -13,7 +13,7 @@ function getUserFavorites() {
   <button
     @click.prevent="getUserFavorites"
     aria-label="我的最愛收藏"
-    class="nav__icon absolute top-1 right-1 mobile:right-4 opacity-100 tablet:top-2 tablet:right-2 desktop:opacity-0 desktop:group-hover:opacity-100 transition-opacity duration-300 z-10"
+    class="nav__icon absolute top-3 right-3 mobile:right-4 opacity-100 tablet:top-2 tablet:right-2 desktop:opacity-0 desktop:group-hover:opacity-100 transition-opacity duration-300 z-10"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"

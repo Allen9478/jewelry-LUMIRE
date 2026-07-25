@@ -4,9 +4,11 @@ import { useAuthStore } from '@/stores/useAuthStore'
 import { useFavoriteStore } from '@/stores/useFavoriteStore'
 import { useRouter } from 'vue-router'
 import { navItems } from '@/constants/navigations'
+import { useScrollDirection } from '@/composables/useScrollDirection'
 import { ref, computed } from 'vue'
 const authStore = useAuthStore()
 const favoriteStore = useFavoriteStore()
+const { isHeaderVisible } = useScrollDirection()
 const currentLang = ref('EN')
 const isFavoritePage = computed(() => router.currentRoute.value.name === 'favorites')
 const showMenu = ref(false)
@@ -24,9 +26,14 @@ function goToLogin() {
 
 <template>
   <!-- 用途：Header 的基礎黑金配色 -->
-  <header class="border-b border-gold-400/20">
+  <!-- 暫時把postion改成fixed來解決select被下面hero圓圈動畫擋道的問題 -->
+  <header
+    class="fixed top-0 left-0 right-0 z-card transition-transform duration-300 border-b border-gold-400/20 bg-black"
+    :class="isHeaderVisible ? 'translate-y-0' : '-translate-y-full'"
+  >
     <div class="page-wrapper flex h-20 items-center justify-between">
-      <HamburgerMenu class="tablet:hidden w-9" />
+      <HamburgerMenu class="w-9" />
+
       <RouterLink
         aria-label="回首頁"
         :to="{ name: 'home' }"

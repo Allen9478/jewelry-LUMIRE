@@ -3,9 +3,11 @@ import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { navItems } from '@/constants/navigations'
 import { useAuthStore } from '@/stores/useAuthStore'
 import { useRouter } from 'vue-router'
+import { useScrollDirection } from '@/composables/useScrollDirection'
 import BaseButton from '@/components/ui/BaseButton.vue'
 const authStore = useAuthStore()
 const router = useRouter()
+const { isHeaderVisible } = useScrollDirection()
 const isOpen = ref(false)
 
 function toggleMenu() {
@@ -40,22 +42,21 @@ onUnmounted(() => {
 })
 </script>
 <template>
-  <div class="hamburger">
-    <!-- 觸發按鈕 -->
-    <button
-      @click="toggleMenu"
-      class="hamburger__btn"
-      :class="{ 'is-open': isOpen }"
-      :aria-expanded="isOpen"
-      aria-label="Toggle navigation menu"
-    >
-      <span class="hamburger__bar hamburger__bar--top"></span>
-      <span class="hamburger__bar hamburger__bar--mid"></span>
-      <span class="hamburger__bar hamburger__bar--bot"></span>
-    </button>
-
+  <div class="hamburger tablet:hidden">
     <!-- 全螢幕選單遮罩 -->
     <Teleport to="body">
+      <!-- 觸發按鈕 -->
+      <button
+        @click="toggleMenu"
+        class="hamburger__btn"
+        :class="{ 'is-open': isOpen, 'hamburger__btn--hidden': !isHeaderVisible && !isOpen }"
+        :aria-expanded="isOpen"
+        aria-label="Toggle navigation menu"
+      >
+        <span class="hamburger__bar hamburger__bar--top"></span>
+        <span class="hamburger__bar hamburger__bar--mid"></span>
+        <span class="hamburger__bar hamburger__bar--bot"></span>
+      </button>
       <Transition name="overlay">
         <div v-if="isOpen" class="menu__overlay" @click.self="closeMenu">
           <!-- 左側裝飾線 -->
@@ -163,10 +164,24 @@ onUnmounted(() => {
   border: none;
   cursor: pointer;
   padding: 0;
-  position: relative;
   z-index: var(--z-index-modal);
+  /* 新增：脫離文件流，用視窗座標固定位置 */
+  position: fixed;
+  top: 24px; /* 對照你 Header 原本按鈕的實際高度微調 */
+  left: 24px; /* 對照你 Header 原本右側的 padding 微調 */
+  transition: transform 0.3s ease;
+  transform: translateY(0); /* 顯示狀態：在原本位置 */
 }
+.hamburger__btn--hidden {
+  transform: translateY(-80px);
 
+  pointer-events: none;
+}
+@media (min-width: 768px) {
+  .hamburger__btn {
+    display: none;
+  }
+}
 .hamburger__bar {
   display: block;
   height: 1px;

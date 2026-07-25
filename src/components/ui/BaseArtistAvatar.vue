@@ -8,11 +8,11 @@ const getImageUrl = (imgname) => {
 }
 </script>
 <template>
-  <RouterLink to="/artists" class="artistscard">
+  <RouterLink to="/artists" class="@container artists-card rounded-full object-cover">
     <img
       :src="getImageUrl(product.artistsimg)"
       :alt="product.name"
-      class="border border-gray-800 object-contain rounded-full w-[150px] h-[150px] tablet:w-[200px] tablet:h-[200px] desktop:w-[250px] desktop:h-[250px]"
+      class="artists-avatar border border-gray-800 object-cover object-[center_20%] rounded-full"
     />
     <h2 class="mt-3 text-cream/80 text-label tablet:text-body desktop:text-subhead">
       {{ product.artist }}
@@ -20,4 +20,10 @@ const getImageUrl = (imgname) => {
   </RouterLink>
 </template>
 
-<style scoped></style>
+<style scoped>
+/* 該元件的 <style> 或全域 css 檔 */
+.artists-avatar {
+  width: clamp(100px, 85cqw, 250px);
+  height: clamp(100px, 85cqw, 250px);
+}
+</style>
