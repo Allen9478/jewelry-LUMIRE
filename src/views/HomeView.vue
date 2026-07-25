@@ -7,19 +7,22 @@ import breathing from '@/assets/images/breathing-bg.png'
 import { testWork } from '@/data/testWork.js'
 </script>
 <template>
-  <main class="page-container">
-    <section class="hero h-auto tablet:h-[95dvh]">
+  <main>
+    <section class="relative page-container hero h-auto tablet:h-[95dvh]">
       <div
         class="hero__container tablet:grid tablet:grid-cols-[50%_50%] mt-2 tablet:mt-0 tablet:h-full"
       >
         <div
-          class="hero__content w-full tablet:flex tablet:flex-col tablet:justify-center tablet:gap-8"
+          class="hero__content w-full tablet:flex tablet:flex-col tablet:justify-center tablet:gap-8 items-start"
         >
-          <p
-            class="hero__eyebrow uppercase pt-5 tablet:pt-0 text-label tablet:text-label-lg text-gold-500"
-          >
-            Extraordinary by Nature
-          </p>
+          <div class="inline-flex flex-col items-start">
+            <p
+              class="hero__eyebrow uppercase pt-5 tablet:pt-0 text-label tablet:text-label-lg text-gold-500"
+            >
+              Extraordinary by Nature
+            </p>
+            <GoldDivider variant="fade" class="mt-2" />
+          </div>
           <h1
             class="hero__heading flex flex-col tablet:block tablet:tracking-wider text-heading-1 font-serif mt-6 tablet:mt-4"
           >
@@ -50,12 +53,12 @@ import { testWork } from '@/data/testWork.js'
             into timeless stories.
           </p>
           <div
-            class="hero__actions flex flex-col ipad:flex-row tablet:flex-col laptop:flex-row tablet:justify-start mt-7 tablet:mt-15"
+            class="hero__actions flex flex-col tablet:justify-start laptop:flex-row laptop:grid laptop:grid-cols-2 flex-wrap mt-7 tablet:mt-15 w-full"
           >
             <BaseButton
               tag="RouterLink"
               to="works"
-              class="hero__actions-item flex items-center w-[60vw] ipad:w-[50%] tablet:w-fit"
+              class="hero__actions-item flex items-center w-[60vw] tablet:w-fit laptop:w-fit laptop:mr-0"
             >
               <span class="text-btn tablet:text-btn-lg">Explore Works</span>
               <svg
@@ -75,7 +78,7 @@ import { testWork } from '@/data/testWork.js'
             </BaseButton>
             <BaseButton
               variant="ghost"
-              class="hero__actions-item flex justify-start items-center ipad:justify-center w-[60vw] ipad:w-[50%] tablet:w-fit mt-6 ipad:mt-0 tablet:mt-6 laptop:mt-0 laptop:ml-8 group"
+              class="hero__actions-item flex justify-start items-center mt-6 laptop:mt-0 w-fit group"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +127,7 @@ import { testWork } from '@/data/testWork.js'
 
     <!-- 呼吸空間留白測試高度數值要調整 -->
     <section
-      class="relative w-screen breathing-height my-20 overflow-hidden ml-[calc(50%-50vw)] mr-[calc(50%-50vw)]"
+      class="relative w-screen breathing-height my-16 overflow-hidden ml-[calc(50%-50vw)] mr-[calc(50%-50vw)]"
     >
       <img
         :src="breathing"
@@ -136,20 +139,25 @@ import { testWork } from '@/data/testWork.js'
       <!-- 手機版暗化遮罩 -->
       <div class="absolute inset-0 bg-black/20" />
     </section>
-    <section class="works-section">
-      <div v-fade-in="{ duration: 600, y: 40 }" class="works-section__container flex flex-col">
-        <p
-          class="works-section__eyebrow tablet:block uppercase text-label tablet:text-label-lg text-gold-500"
-        >
-          FEATURED WORKS
-        </p>
+    <section class="page-container works-section">
+      <div
+        v-fade-in="{ duration: 600, y: 40 }"
+        class="works-section__container flex flex-col items-start"
+      >
+        <div class="inline-flex flex-col items-start">
+          <p
+            class="works-section__eyebrow tablet:block uppercase text-label tablet:text-label-lg text-gold-500"
+          >
+            FEATURED WORKS
+          </p>
+          <GoldDivider variant="fade" class="mt-2" />
+        </div>
         <div
-          class="works-section__heading-group flex flex-col tablet:flex-row tablet:justify-between tablet:items-center tablet:py-8"
+          class="works-section__heading-group flex flex-col tablet:flex-row tablet:justify-between tablet:items-center tablet:py-8 w-full"
         >
-          <div class="works-section__heading-wrap flex flex-col items-start py-4 tablet:py-0">
-            <h2 class="works-section__heading text-heading-2 font-serif">Curated Pieces</h2>
-            <GoldDivider variant="fade" class="max-w-[80px] tablet:max-w-[180px]" />
-          </div>
+          <h2 class="works-section__heading text-heading-2 my-4 tablet:my-0 font-serif">
+            Curated Pieces
+          </h2>
 
           <BaseButton
             variant="ghost"
@@ -173,28 +181,30 @@ import { testWork } from '@/data/testWork.js'
       </div>
       <div
         v-fade-in="{ duration: 600, y: 40, delay: 400 }"
-        class="works-section__grid grid gap-4 tablet:gap-5 laptop:gap-6 tablet:grid-cols-3 laptop:grid-cols-4 place-items-center"
+        class="works-section__grid grid gap-4 tablet:gap-5 laptop:gap-6 tablet:grid-cols-3 laptop:grid-cols-4 pt-10 tablet:pt-15 desktop:pt-20 place-items-center"
       >
         <BaseJewelryCard v-for="item in testWork" :key="item.id" :product="item"></BaseJewelryCard>
       </div>
     </section>
+    <GoldDivider class="w-full my-20 tablet:my-40" />
 
-    <section class="artists-section mt-20 tablet:mt-40">
+    <section class="page-container artists-section">
       <div class="artists-section__container">
-        <p
-          class="artists-section__eyebrow tablet:block uppercase text-label tablet:text-label-lg text-gold-500"
-        >
-          ARTISTS
-        </p>
+        <div class="inline-flex flex-col items-start">
+          <p
+            class="artists-section__eyebrow tablet:block uppercase text-label tablet:text-label-lg text-gold-500"
+          >
+            ARTISTS
+          </p>
+          <GoldDivider variant="fade" class="mt-2" />
+        </div>
         <div
           class="artists-section__heading-group flex flex-col tablet:flex-row tablet:justify-between tablet:items-center tablet:py-8"
         >
-          <div class="artists-section__heading-wrap flex flex-col items-start py-4 tablet:py-0">
-            <h2 class="artists-section__heading text-heading-2 font-serif">
-              Visionaries Behind Beauty
-            </h2>
-            <GoldDivider variant="fade" class="max-w-[80px] tablet:max-w-[280px]" />
-          </div>
+          <h2 class="artists-section__heading text-heading-2 my-4 tablet:my-0 font-serif">
+            Visionaries Behind Beauty
+          </h2>
+
           <BaseButton
             variant="ghost"
             class="artists-section__view-all inline-flex justify-start items-center text-body-sm"
@@ -217,7 +227,7 @@ import { testWork } from '@/data/testWork.js'
       </div>
       <div
         v-fade-in="{ duration: 600, y: 40 }"
-        class="artists-section__grid grid grid-cols-2 gap-3 pt-10 tablet:pt-14 tablet:grid-cols-4 tablet:gap-5 desktop:gap-7"
+        class="artists-section__grid grid grid-cols-2 gap-3 tablet:grid-cols-4 tablet:gap-5 desktop:gap-7 pt-10 tablet:pt-15 desktop:pt-20"
       >
         <BaseArtistAvatar
           v-for="item in testWork"
@@ -227,15 +237,19 @@ import { testWork } from '@/data/testWork.js'
         ></BaseArtistAvatar>
       </div>
     </section>
+    <GoldDivider class="w-full my-20 tablet:my-40" />
 
-    <section class="exhibition-section tablet:grid tablet:grid-cols-[40%_60%] mt-20 tablet:mt-40">
+    <section class="page-container exhibition-section tablet:grid tablet:grid-cols-[40%_60%]">
       <div class="flex justify-start items-center">
         <div class="exhibition-section__container flex flex-col items-start">
-          <p
-            class="exhibition-section__eyebrow tablet:block uppercase text-label tablet:text-label-lg text-gold-500"
-          >
-            CURRENT EXHIBITION
-          </p>
+          <div class="inline-flex flex-col items-start">
+            <p
+              class="exhibition-section__eyebrow tablet:block uppercase text-label tablet:text-label-lg text-gold-500"
+            >
+              CURRENT EXHIBITION
+            </p>
+            <GoldDivider variant="fade" class="mt-2" />
+          </div>
           <h2 class="exhibition-section__heading text-heading-2 font-serif my-3 tablet:mt-5">
             Nature's Forms
           </h2>
@@ -324,7 +338,7 @@ import { testWork } from '@/data/testWork.js'
     </section>
 
     <section
-      class="newsletter-section flex flex-col items-center justify-center gap-8 px-6 py-16 md:py-20 lg:py-24 w-screen ml-[calc(50%_-_50vw)] mr-[calc(50%_-_50vw)] bg-cover bg-center"
+      class="newsletter-section border-y border-gold-400/20 flex flex-col items-center justify-center gap-8 px-6 py-16 md:py-20 lg:py-24 w-screen ml-[calc(50%_-_50vw)] mr-[calc(50%_-_50vw)] bg-cover bg-center"
     >
       <div
         class="newsletter-section__quote-group flex flex-col items-center justify-center text-center text-gold-500 z-10"
@@ -382,7 +396,6 @@ import { testWork } from '@/data/testWork.js'
         </button>
       </form>
     </section>
-    <div class="mt-25"></div>
   </main>
 </template>
 
@@ -417,9 +430,9 @@ import { testWork } from '@/data/testWork.js'
   background: conic-gradient(
     from 0deg,
     rgba(184, 145, 64, 0.18) 0%,
-    rgba(128, 91, 35, 0.65) 25%,
+    rgba(128, 91, 35, 0.85) 25%,
     rgba(184, 145, 64, 0.18) 50%,
-    rgba(128, 91, 35, 0.65) 75%,
+    rgba(128, 91, 35, 0.85) 75%,
     rgba(184, 145, 64, 0.18) 100%
   );
   mask: radial-gradient(
@@ -437,7 +450,7 @@ import { testWork } from '@/data/testWork.js'
     transparent calc(50% + 1.5px)
   );
 
-  animation: ring-rotate 15s linear infinite;
+  animation: ring-rotate 5s linear infinite;
 }
 
 @keyframes ring-rotate {
@@ -455,17 +468,6 @@ import { testWork } from '@/data/testWork.js'
     background-image: url('../assets/images/textures/texture2.webp');
     background-size: cover;
     background-position: center;
-  }
-  .newsletter-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 240px; /* 依實際交界處視覺調整 */
-    background: linear-gradient(to bottom, #0a0a0a 0%, transparent 100%);
-    pointer-events: none;
-    z-index: 1;
   }
 }
 </style>
