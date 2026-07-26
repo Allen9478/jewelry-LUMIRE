@@ -33,7 +33,7 @@ const sections = [
 </script>
 
 <template>
-  <footer class="border-b border-gold-400/20">
+  <footer>
     <div class="page-wrapper flex flex-col">
       <div class="flex flex-col laptop:flex-row laptop:justify-between laptop:items-start">
         <!-- laptop:w-[300px]是為svg的寬度改變時不影響整體排版而寫 -->

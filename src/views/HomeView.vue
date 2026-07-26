@@ -15,7 +15,7 @@ import { testWork } from '@/data/testWork.js'
         <div
           class="hero__content w-full tablet:flex tablet:flex-col tablet:justify-center tablet:gap-8 items-start"
         >
-          <div class="inline-flex flex-col items-start">
+          <div v-fade-in="{ delay: 0, y: 12 }" class="inline-flex flex-col items-start">
             <p
               class="hero__eyebrow uppercase pt-5 tablet:pt-0 text-label tablet:text-label-lg text-gold-500"
             >
@@ -24,6 +24,7 @@ import { testWork } from '@/data/testWork.js'
             <GoldDivider variant="fade" class="mt-2" />
           </div>
           <h1
+            v-fade-in="{ delay: 100, y: 24 }"
             class="hero__heading flex flex-col tablet:block tablet:tracking-wider text-heading-1 font-serif mt-6 tablet:mt-4"
           >
             <span class="block tablet:whitespace-nowrap">Where Art </span>
@@ -33,11 +34,15 @@ import { testWork } from '@/data/testWork.js'
             </span>
           </h1>
           <div
+            v-fade-in="{ delay: 120, y: 24 }"
             class="@container hero__visual-mobile relative w-full aspect-square overflow-hidden block mx-auto tablet:hidden"
           >
             <img
               src="../assets/images/home/home-hero-ring.webp"
               alt="ring on rock"
+              fetchpriority="high"
+              width="1254"
+              height="1254"
               class="hero_visual-img w-full h-full object-cover"
             />
             <div
@@ -47,12 +52,14 @@ import { testWork } from '@/data/testWork.js'
             </div>
           </div>
           <p
+            v-fade-in="{ delay: 180, y: 16 }"
             class="hero__subtext text-body-sm tablet:text-body-lg tracking-wider pt-3 tablet:pt-0 tablet:w-[85%]"
           >
             We showcase exceptional jewelry by visionary artists who transform precious materials
             into timeless stories.
           </p>
           <div
+            v-fade-in="{ delay: 250, y: 16 }"
             class="hero__actions flex flex-col tablet:justify-start laptop:flex-row laptop:grid laptop:grid-cols-2 flex-wrap mt-7 tablet:mt-15 w-full"
           >
             <BaseButton
@@ -109,11 +116,15 @@ import { testWork } from '@/data/testWork.js'
           </div>
         </div>
         <div
+          v-fade-in="{ delay: 120, y: 8 }"
           class="@container hero__visual-desktop relative hidden tablet:flex tablet:items-center tablet:h-full overflow-hidden"
         >
           <img
             src="../assets/images/home/home-hero-ring.webp"
             alt="ring on rock"
+            fetchpriority="high"
+            width="1254"
+            height="1254"
             class="hero__visual-img w-[100cqw] tablet:h-[100cqw] laptop:h-[110cqw] desktop:h-[100cqw] wide:w-[100cqw] object-cover"
           />
           <div
@@ -132,6 +143,9 @@ import { testWork } from '@/data/testWork.js'
       <img
         :src="breathing"
         alt="breathing-bg"
+        width="1774"
+        height="887"
+        loading="lazy"
         class="absolute inset-0 left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/3 min-w-full h-full object-cover animate-shimmer"
         aria-hidden="true"
       />
@@ -140,11 +154,8 @@ import { testWork } from '@/data/testWork.js'
       <div class="absolute inset-0 bg-black/20" />
     </section>
     <section class="page-container works-section">
-      <div
-        v-fade-in="{ duration: 600, y: 40 }"
-        class="works-section__container flex flex-col items-start"
-      >
-        <div class="inline-flex flex-col items-start">
+      <div class="works-section__container flex flex-col items-start">
+        <div v-fade-in="{ delay: 0, y: 12 }" class="inline-flex flex-col items-start">
           <p
             class="works-section__eyebrow tablet:block uppercase text-label tablet:text-label-lg text-gold-500"
           >
@@ -155,11 +166,17 @@ import { testWork } from '@/data/testWork.js'
         <div
           class="works-section__heading-group flex flex-col tablet:flex-row tablet:justify-between tablet:items-center tablet:py-8 w-full"
         >
-          <h2 class="works-section__heading text-heading-2 my-4 tablet:my-0 font-serif">
+          <h2
+            v-fade-in="{ delay: 80, y: 16 }"
+            class="works-section__heading text-heading-2 my-4 tablet:my-0 font-serif"
+          >
             Curated Pieces
           </h2>
 
           <BaseButton
+            tag="RouterLink"
+            to="works"
+            v-fade-in="{ delay: 80, y: 16 }"
             variant="ghost"
             class="works-section__view-all inline-flex justify-start items-center"
             ><span class="text-btn tablet:text-btn-lg"> VIEW ALL WORKS </span>
@@ -180,17 +197,25 @@ import { testWork } from '@/data/testWork.js'
         </div>
       </div>
       <div
-        v-fade-in="{ duration: 600, y: 40, delay: 400 }"
-        class="works-section__grid grid gap-4 tablet:gap-5 laptop:gap-6 tablet:grid-cols-3 laptop:grid-cols-4 pt-10 tablet:pt-15 desktop:pt-20 place-items-center"
+        class="works-section__grid grid gap-4 tablet:gap-5 laptop:gap-6 grid-cols-1 tablet:grid-cols-3 laptop:grid-cols-4 pt-10 tablet:pt-15 desktop:pt-20 place-items-center"
       >
-        <BaseJewelryCard v-for="item in testWork" :key="item.id" :product="item"></BaseJewelryCard>
+        <BaseJewelryCard
+          v-for="(item, i) in testWork"
+          v-fade-in="{
+            delay: 200 + i * 100,
+            y: 28,
+            mobile: { delay: 100 + i * 60, y: 16 },
+          }"
+          :key="item.id"
+          :product="item"
+        ></BaseJewelryCard>
       </div>
     </section>
     <GoldDivider class="w-full my-20 tablet:my-40" />
 
     <section class="page-container artists-section">
-      <div class="artists-section__container">
-        <div class="inline-flex flex-col items-start">
+      <div v-fade-in class="artists-section__container">
+        <div v-fade-in="{ delay: 0, y: 12 }" class="inline-flex flex-col items-start">
           <p
             class="artists-section__eyebrow tablet:block uppercase text-label tablet:text-label-lg text-gold-500"
           >
@@ -201,11 +226,17 @@ import { testWork } from '@/data/testWork.js'
         <div
           class="artists-section__heading-group flex flex-col tablet:flex-row tablet:justify-between tablet:items-center tablet:py-8"
         >
-          <h2 class="artists-section__heading text-heading-2 my-4 tablet:my-0 font-serif">
+          <h2
+            v-fade-in="{ delay: 80, y: 16 }"
+            class="artists-section__heading text-heading-2 my-4 tablet:my-0 font-serif"
+          >
             Visionaries Behind Beauty
           </h2>
 
           <BaseButton
+            tag="RouterLink"
+            to="artists"
+            v-fade-in="{ delay: 80, y: 16 }"
             variant="ghost"
             class="artists-section__view-all inline-flex justify-start items-center text-body-sm"
             ><span class="text-btn tablet:text-btn-lg"> VIEW ALL ARTISTS </span>
@@ -226,11 +257,16 @@ import { testWork } from '@/data/testWork.js'
         </div>
       </div>
       <div
-        v-fade-in="{ duration: 600, y: 40 }"
+        v-fade-in="{ delay: 300 }"
         class="artists-section__grid grid grid-cols-2 gap-3 tablet:grid-cols-4 tablet:gap-5 desktop:gap-7 pt-10 tablet:pt-15 desktop:pt-20"
       >
         <BaseArtistAvatar
-          v-for="item in testWork"
+          v-for="(item, i) in testWork"
+          v-fade-in="{
+            delay: 200 + i * 100,
+            y: 28,
+            mobile: { delay: 100 + i * 60, y: 16 },
+          }"
           :key="item.id"
           :product="item"
           class="flex flex-col items-center"
@@ -242,7 +278,7 @@ import { testWork } from '@/data/testWork.js'
     <section class="page-container exhibition-section tablet:grid tablet:grid-cols-[40%_60%]">
       <div class="flex justify-start items-center">
         <div class="exhibition-section__container flex flex-col items-start">
-          <div class="inline-flex flex-col items-start">
+          <div v-fade-in="{ delay: 0, y: 10 }" class="inline-flex flex-col items-start">
             <p
               class="exhibition-section__eyebrow tablet:block uppercase text-label tablet:text-label-lg text-gold-500"
             >
@@ -250,16 +286,20 @@ import { testWork } from '@/data/testWork.js'
             </p>
             <GoldDivider variant="fade" class="mt-2" />
           </div>
-          <h2 class="exhibition-section__heading text-heading-2 font-serif my-3 tablet:mt-5">
+          <h2
+            v-fade-in="{ delay: 100, y: 20 }"
+            class="exhibition-section__heading text-heading-2 font-serif my-3 tablet:mt-5"
+          >
             Nature's Forms
           </h2>
           <p
+            v-fade-in="{ delay: 180, y: 16 }"
             class="exhibition-section__subtext text-gray-muted text-body-sm tablet:text-body-lg tracking-wider leading-loose tablet:w-[85%]"
           >
             International Jewelry Exhibition 2026
           </p>
           <div class="exhibition-section__cta-group mt-3 tablet:mt-5">
-            <p class="flex items-center">
+            <p v-fade-in="{ delay: 260, y: 16 }" class="flex items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -278,7 +318,7 @@ import { testWork } from '@/data/testWork.js'
                 >MAY 18 - AUG 25. 2026</span
               >
             </p>
-            <p class="flex items-center mt-2 tablet:mt-4">
+            <p v-fade-in="{ delay: 260, y: 16 }" class="flex items-center mt-2 tablet:mt-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -305,7 +345,8 @@ import { testWork } from '@/data/testWork.js'
           </div>
           <BaseButton
             tag="RouterLink"
-            to="works"
+            to="exhibitions"
+            v-fade-in="{ delay: 340, y: 16 }"
             class="hero__actions-item flex items-center w-full tablet:w-fit mt-5 tablet:mt-10"
           >
             <span class="text-btn tablet:text-btn-lg">VIEW EXHIBITION</span>
@@ -330,8 +371,12 @@ import { testWork } from '@/data/testWork.js'
         class="exhibition-section__visual hidden tablet:block relative tablet:items-center tablet:h-full overflow-hidden"
       >
         <img
+          v-fade-in="{ delay: 200, y: 0 }"
           src="../assets/images/home/home-exhibition.webp"
           alt="Molten Flow Ring"
+          loading="lazy"
+          width="1470"
+          height="1070"
           class="w-full h-full object-cover"
         />
       </div>
@@ -341,6 +386,7 @@ import { testWork } from '@/data/testWork.js'
       class="newsletter-section border-y border-gold-400/20 flex flex-col items-center justify-center gap-8 px-6 py-16 md:py-20 lg:py-24 w-screen ml-[calc(50%_-_50vw)] mr-[calc(50%_-_50vw)] bg-cover bg-center"
     >
       <div
+        v-fade-in="{ delay: 250, y: 40 }"
         class="newsletter-section__quote-group flex flex-col items-center justify-center text-center text-gold-500 z-10"
       >
         <span
@@ -362,7 +408,10 @@ import { testWork } from '@/data/testWork.js'
         </p>
       </div>
 
-      <form class="newsletter-section__form flex w-full max-w-xs sm:max-w-sm md:max-w-md z-10">
+      <form
+        v-fade-in="{ delay: 300, y: 40 }"
+        class="newsletter-section__form flex w-full max-w-xs sm:max-w-sm md:max-w-md z-10"
+      >
         <label for="newsletter-email" class="sr-only">Email address</label>
         <input
           id="newsletter-email"
