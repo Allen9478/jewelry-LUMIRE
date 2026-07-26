@@ -13,16 +13,19 @@ const getImageUrl = (imgName) => {
 <template>
   <RouterLink
     to="/works"
-    class="card w-full max-w-[300px] mobile:max-w-[360px] relative border border-gold-500/20 hover:border-gold-500/60 hover:shadow-gold-glow active:border-gold-500/40 active:shadow-gold-glow transition-all duration-500 ease-out group"
+    class="card w-full max-w-[350px] mobile:max-w-[360px] relative border border-gold-500/20 hover:border-gold-500/60 hover:shadow-gold-glow active:border-gold-500/40 active:shadow-gold-glow transition-all duration-500 ease-out group"
   >
     <HeartButton :productId="jewelryId" />
     <div class="card__inner">
       <div class="card__body flex items-center tablet:flex-col">
-        <div class="relative overflow-hidden w-auto tablet:max-w-full">
+        <div class="relative overflow-hidden w-[110px] shrink-0 tablet:w-auto tablet:max-w-full">
           <img
-            class="aspect-[3/4] max-w-full object-cover max-h-[180px] tablet:max-h-[250px] laptop:max-h-[300px] laptop:object-contain"
             :src="getImageUrl(product.jewelryimg)"
             :alt="product.name"
+            loading="lazy"
+            width="1122"
+            height="1402"
+            class="aspect-[3/4] max-w-full object-cover max-h-[180px] tablet:max-h-[250px] laptop:max-h-[300px] laptop:object-contain"
           />
           <div
             class="card__overlay tablet:absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
