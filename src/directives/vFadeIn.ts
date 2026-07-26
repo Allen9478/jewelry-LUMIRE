@@ -7,6 +7,11 @@ interface FadeOptions {
   delay?: number // ms，stagger 時傳入 index * 100
   duration?: number // ms，預設 600
   y?: number // 位移距離 px，預設 28
+  mobile?: {
+    delay?: number
+    duration?: number
+    y?: number
+  }
 }
 
 export const vFadeIn: Directive<HTMLElement, FadeOptions> = {
