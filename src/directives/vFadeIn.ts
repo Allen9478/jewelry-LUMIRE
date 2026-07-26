@@ -11,31 +11,36 @@ interface FadeOptions {
 
 export const vFadeIn: Directive<HTMLElement, FadeOptions> = {
   mounted(el, binding) {
-    const { delay = 0, duration = 600, y = 28 } = binding.value ?? {}
+    //手機端判斷
+    const isTablet = window.innerWidth < 768
+
+    const base = binding.value ?? {}
+    const mobileOverride = base.mobile ?? {}
+    const resolved = isTablet ? { ...base, ...mobileOverride } : base
+    const { delay = 0, duration = 700, y = 28 } = resolved
 
     // 初始狀態：隱藏並位移
-    el.style.opacity = '0'
-    el.style.transform = `translateY(${y}px)`
-    el.style.transition = `opacity ${duration}ms ease-out, transform ${duration}ms ease-out`
+    el.style.setProperty('--fade-duration', `${duration}ms`)
+    el.style.setProperty('--fade-y', `${y}px`)
+    el.classList.add('fade-in-init')
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return
-        setTimeout(() => {
-          el.style.opacity = '1'
-          el.style.transform = 'translateY(0)'
+        const timer = window.setTimeout(() => {
+          el.classList.add('fade-in-visible')
         }, delay)
+        ;(el as any)._fadeTimer = timer
         observer.unobserve(el)
       },
       { threshold: 0.15 },
     )
     observer.observe(el)
-
-    // 把 observer 存在 el 上，unmounted 時清理
     ;(el as any)._fadeObserver = observer
   },
 
   unmounted(el) {
     ;(el as any)._fadeObserver?.disconnect()
+    clearTimeout((el as any)._fadeTimer)
   },
 }
