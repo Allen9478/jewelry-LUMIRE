@@ -8,7 +8,7 @@ const route = useRoute()
 <template>
   <AppHeader />
   <!-- 發現登入頁面自己有計算高度不寫在routerview避免疊加 -->
-  <main class="header-offset">
+  <main class="@container header-offset">
     <RouterView />
   </main>
   <AppFooter v-if="!route.meta.hideFooter" />

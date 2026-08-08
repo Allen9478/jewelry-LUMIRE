@@ -1,11 +1,9 @@
 <script setup>
+import getImageUrl from '@/utils/getImageUrl'
+
 defineProps({
   artist: Object,
 })
-
-const getImageUrl = (imgname) => {
-  return new URL(`../../assets/images/${imgname}`, import.meta.url).href
-}
 </script>
 <template>
   <div
@@ -13,7 +11,7 @@ const getImageUrl = (imgname) => {
   >
     <div class="aspect-[4/5] tablet:aspect-[3/4]">
       <img
-        :src="getImageUrl(artist.image)"
+        :src="getImageUrl(`artists/${artist.image}`)"
         :alt="artist.name"
         class="object-cover object-top w-full h-full"
       />

@@ -30,24 +30,25 @@
 
   /* ── Font Size ── */
 
-  /* 頁面標題 */
-  --text-hero: 3.5rem;
-  --text-hero--line-height: 1.75;
-  --text-hero--letter-spacing: 0.1em;
+  /* 展示級標題 — 首頁 Hero 限定 */
+  --text-display: clamp(2.375rem, 1.507rem + 3.704cqw, 5.0625rem);
+  --text-display--line-height: 1.125;
+  --text-display--letter-spacing: 0.05em;
 
-  /* 標題 */
-  --text-title: 2.25rem;
-  --text-title--line-height: 1.15;
-  --text-title--letter-spacing: 0.05em;
+  /* 區塊標題 — 除了首頁 Hero 以外，全站共用 */
+  --text-heading: clamp(2.025rem, 1.104rem + 2.756cqw, 3.95rem);
+  --text-heading--line-height: 1.2;
+  --text-heading--letter-spacing: 0.05em;
 
-  /* 區塊標題 首頁最大的那個*/
-  --text-heading-1: clamp(2.375rem, 1.507rem + 3.704vw, 5.0625rem);
-  --text-heading-1--line-height: 1.125;
-  --text-heading-1--letter-spacing: 0.05em;
-  /* 區塊標題 除了首頁的全部*/
-  --text-heading-2: clamp(2.025rem, 1.104rem + 2.756vw, 3.95rem);
-  --text-heading-2--line-height: 1.2;
-  --text-heading-2--letter-spacing: 0.05em;
+  /* 標籤文字 — 全站共用，不隨 display/heading 縮放 */
+  --text-eyebrow: clamp(0.75rem, 0.604rem + 0.735cqw, 0.9375rem);
+  --text-eyebrow--line-height: 1.4;
+  --text-eyebrow--letter-spacing: 0.16em;
+
+  /* 說明文字 — 全站共用 */
+  --text-subtext: clamp(0.875rem, 0.804rem + 0.357cqw, 1.125rem);
+  --text-subtext--line-height: 1.6;
+
   /* 副標題/區塊名稱 */
   --text-subhead: 1.25rem;
   --text-subhead--line-height: 1.4;

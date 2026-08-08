@@ -1,40 +1,61 @@
 <script setup>
+import { ref, computed } from 'vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
-import BaseJewelryCard from '@/components/ui/BaseJewelryCard.vue'
+import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
 import BaseArtistAvatar from '@/components/ui/BaseArtistAvatar.vue'
 import GoldDivider from '@/components/ui/GoldDivider.vue'
 import breathing from '@/assets/images/breathing-bg.png'
-import { testWork } from '@/data/testWork.js'
+import artists from '@/data/artists.json'
+import works from '@/data/works.json'
+//ai給我的篩選每個設計師的第一件作品
+const uniqueDesignerWorks = computed(() => {
+  const seenDesigners = new Set()
+
+  return works.filter((work) => {
+    if (!seenDesigners.has(work.designer)) {
+      seenDesigners.add(work.designer)
+      return true // 保留第一次出現的設計師作品
+    }
+    return false // 跳過重複的
+  })
+})
+
+const email = ref('')
+const submitted = ref(false)
+
+function handleSubscribe() {
+  if (!email.value) return
+  submitted.value = true
+  // 純前端展示用，暫不串接後端
+}
 </script>
 <template>
-  <section class="relative page-container hero h-auto tablet:h-[95dvh]">
+  <section class="relative page-container home-hero h-auto tablet:h-[95dvh]">
     <div
-      class="hero__container tablet:grid tablet:grid-cols-[50%_50%] mt-2 tablet:mt-0 tablet:h-full"
+      class="home-hero__container tablet:grid tablet:grid-cols-[50%_50%] mt-2 tablet:mt-0 tablet:h-full"
     >
       <div
-        class="hero__content w-full tablet:flex tablet:flex-col tablet:justify-center tablet:gap-8 items-start"
+        class="home-hero__content w-full tablet:flex tablet:flex-col tablet:justify-center tablet:gap-8 items-start"
       >
         <div v-fade-in="{ delay: 0, y: 12 }" class="inline-flex flex-col items-start">
-          <p
-            class="hero__eyebrow uppercase pt-5 tablet:pt-0 text-label tablet:text-label-lg text-gold-500"
-          >
+          <p class="home-hero__eyebrow uppercase pt-5 tablet:pt-0 text-eyebrow text-gold-500">
             Extraordinary by Nature
           </p>
           <GoldDivider variant="fade" class="mt-2" />
         </div>
         <h1
           v-fade-in="{ delay: 100, y: 24 }"
-          class="hero__heading flex flex-col tablet:block tablet:tracking-wider text-heading-1 font-serif mt-6 tablet:mt-4"
+          class="home-hero__heading flex flex-col tablet:block tablet:tracking-wider text-display font-serif mt-6 tablet:mt-4"
         >
           <span class="block tablet:whitespace-nowrap">Where Art </span>
           <span class="block wide:whitespace-nowrap"
             >Becomes
-            <em class="hero__heading-accent text-gold-500">Timeless</em>
+            <em class="home-hero__heading-accent text-gold-500">Timeless</em>
           </span>
         </h1>
         <div
           v-fade-in="{ delay: 120, y: 24 }"
-          class="@container hero__visual-mobile relative w-full aspect-square overflow-hidden block mx-auto tablet:hidden"
+          class="@container home-hero__visual-mobile relative w-full aspect-square overflow-hidden block mx-auto tablet:hidden"
         >
           <img
             src="../assets/images/home/home-hero-ring.webp"
@@ -42,29 +63,29 @@ import { testWork } from '@/data/testWork.js'
             fetchpriority="high"
             width="1254"
             height="1254"
-            class="hero_visual-img w-full h-full object-cover"
+            class="home-hero_visual-img w-full h-full object-cover"
           />
           <div
-            class="hero__visual-circle absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[150cqw] h-[110cqw] rounded-full pointer-events-none"
+            class="home-hero__visual-circle absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[150cqw] h-[110cqw] rounded-full pointer-events-none"
           >
-            <div class="hero__visual-circle-ring absolute inset-0 rounded-full"></div>
+            <div class="home-hero__visual-circle-ring absolute inset-0 rounded-full"></div>
           </div>
         </div>
         <p
           v-fade-in="{ delay: 180, y: 16 }"
-          class="hero__subtext text-body-sm tablet:text-body-lg tracking-wider pt-3 tablet:pt-0 tablet:w-[85%]"
+          class="home-hero__subtext text-subtext pt-3 tablet:pt-0 tablet:w-[85%]"
         >
           We showcase exceptional jewelry by visionary artists who transform precious materials into
           timeless stories.
         </p>
         <div
           v-fade-in="{ delay: 250, y: 16 }"
-          class="hero__actions flex flex-col tablet:justify-start laptop:flex-row laptop:grid laptop:grid-cols-2 flex-wrap mt-7 tablet:mt-15 w-full"
+          class="home-hero__actions flex flex-col tablet:justify-start laptop:flex-row laptop:grid laptop:grid-cols-2 flex-wrap mt-7 tablet:mt-15 w-full"
         >
           <BaseButton
             tag="RouterLink"
             to="works"
-            class="hero__actions-item flex items-center w-[60vw] tablet:w-fit laptop:w-fit laptop:mr-0"
+            class="home-hero__actions-item flex items-center w-[60vw] tablet:w-fit laptop:w-fit laptop:mr-0"
           >
             <span class="text-btn tablet:text-btn-lg">Explore Works</span>
             <svg
@@ -84,7 +105,7 @@ import { testWork } from '@/data/testWork.js'
           </BaseButton>
           <BaseButton
             variant="ghost"
-            class="hero__actions-item flex justify-start items-center mt-6 laptop:mt-0 w-fit group"
+            class="home-hero__actions-item flex justify-start items-center mt-6 laptop:mt-0 w-fit group"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +137,7 @@ import { testWork } from '@/data/testWork.js'
       </div>
       <div
         v-fade-in="{ delay: 120, y: 8 }"
-        class="@container hero__visual-desktop relative hidden tablet:flex tablet:items-center tablet:h-full overflow-hidden tablet:-mr-10 laptop:-mr-14"
+        class="@container home-hero__visual-desktop relative hidden tablet:flex tablet:items-center tablet:h-full overflow-hidden tablet:-mr-10 laptop:-mr-14"
       >
         <img
           src="../assets/images/home/home-hero-ring.webp"
@@ -124,18 +145,17 @@ import { testWork } from '@/data/testWork.js'
           fetchpriority="high"
           width="1254"
           height="1254"
-          class="hero__visual-img w-[100cqw] tablet:h-[100cqw] laptop:h-[110cqw] desktop:h-[100cqw] wide:w-[100cqw] object-cover"
+          class="home-hero__visual-img w-[100cqw] tablet:h-[100cqw] laptop:h-[110cqw] desktop:h-[100cqw] wide:w-[100cqw] object-cover"
         />
         <div
-          class="hero__visual-circle absolute tablet:top-[48%] tablet:left-[50%] -translate-x-1/2 -translate-y-1/2 tablet:w-[140cqw] tablet:h-[120cqw] wide:w-[140cqw] wide:h-[110cqw] rounded-full pointer-events-none"
+          class="home-hero__visual-circle absolute tablet:top-[48%] tablet:left-[50%] -translate-x-1/2 -translate-y-1/2 tablet:w-[140cqw] tablet:h-[120cqw] wide:w-[140cqw] wide:h-[110cqw] rounded-full pointer-events-none"
         >
-          <div class="hero__visual-circle-ring absolute inset-0 rounded-full"></div>
+          <div class="home-hero__visual-circle-ring absolute inset-0 rounded-full"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 呼吸空間留白測試高度數值要調整 -->
   <section
     class="relative w-screen breathing-height my-16 overflow-hidden ml-[calc(50%-50vw)] mr-[calc(50%-50vw)]"
   >
@@ -152,22 +172,20 @@ import { testWork } from '@/data/testWork.js'
     <!-- 手機版暗化遮罩 -->
     <div class="absolute inset-0 bg-black/20" />
   </section>
-  <section class="page-container works-section">
-    <div class="works-section__container flex flex-col items-start">
+  <section class="page-container home-works-section">
+    <div class="home-works-section__container flex flex-col items-start">
       <div v-fade-in="{ delay: 0, y: 12 }" class="inline-flex flex-col items-start">
-        <p
-          class="works-section__eyebrow tablet:block uppercase text-label tablet:text-label-lg text-gold-500"
-        >
+        <p class="home-works-section__eyebrow tablet:block uppercase text-eyebrow text-gold-500">
           FEATURED WORKS
         </p>
         <GoldDivider variant="fade" class="mt-2" />
       </div>
       <div
-        class="works-section__heading-group flex flex-col tablet:flex-row tablet:justify-between tablet:items-center tablet:py-8 w-full"
+        class="home-works-section__heading-group flex flex-col tablet:flex-row tablet:justify-between tablet:items-center tablet:py-8 w-full"
       >
         <h2
           v-fade-in="{ delay: 80, y: 16 }"
-          class="works-section__heading text-heading-2 my-4 tablet:my-0 font-serif"
+          class="home-works-section__heading text-heading my-4 tablet:my-0 font-serif"
         >
           Curated Pieces
         </h2>
@@ -177,7 +195,7 @@ import { testWork } from '@/data/testWork.js'
           to="works"
           v-fade-in="{ delay: 80, y: 16 }"
           variant="ghost"
-          class="works-section__view-all inline-flex justify-start items-center"
+          class="home-works-section__view-all inline-flex justify-start items-center"
           ><span class="text-btn tablet:text-btn-lg"> VIEW ALL WORKS </span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -196,38 +214,36 @@ import { testWork } from '@/data/testWork.js'
       </div>
     </div>
     <div
-      class="works-section__grid grid gap-4 tablet:gap-5 laptop:gap-6 grid-cols-1 tablet:grid-cols-3 laptop:grid-cols-4 pt-10 tablet:pt-15 desktop:pt-20 place-items-center"
+      class="home-works-section__grid grid gap-4 tablet:gap-5 laptop:gap-6 grid-cols-1 tablet:grid-cols-3 laptop:grid-cols-4 pt-10 tablet:pt-15 desktop:pt-20 place-items-center"
     >
-      <BaseJewelryCard
-        v-for="(item, i) in testWork"
+      <BaseWorkCard
+        v-for="(work, i) in uniqueDesignerWorks"
         v-fade-in="{
           delay: 200 + i * 100,
           y: 28,
           mobile: { delay: 100 + i * 60, y: 16 },
         }"
-        :key="item.id"
-        :product="item"
-      ></BaseJewelryCard>
+        :key="work.id"
+        :work="work"
+      ></BaseWorkCard>
     </div>
   </section>
   <GoldDivider class="w-full my-20 tablet:my-40" />
 
-  <section class="page-container artists-section">
-    <div v-fade-in class="artists-section__container">
+  <section class="page-container home-artists-section">
+    <div v-fade-in class="home-artists-section__container">
       <div v-fade-in="{ delay: 0, y: 12 }" class="inline-flex flex-col items-start">
-        <p
-          class="artists-section__eyebrow tablet:block uppercase text-label tablet:text-label-lg text-gold-500"
-        >
+        <p class="home-artists-section__eyebrow tablet:block uppercase text-eyebrow text-gold-500">
           ARTISTS
         </p>
         <GoldDivider variant="fade" class="mt-2" />
       </div>
       <div
-        class="artists-section__heading-group flex flex-col tablet:flex-row tablet:justify-between tablet:items-center tablet:py-8"
+        class="home-artists-section__heading-group flex flex-col tablet:flex-row tablet:justify-between tablet:items-center tablet:py-8"
       >
         <h2
           v-fade-in="{ delay: 80, y: 16 }"
-          class="artists-section__heading text-heading-2 my-4 tablet:my-0 font-serif"
+          class="home-artists-section__heading text-heading my-4 tablet:my-0 font-serif"
         >
           Visionaries Behind Beauty
         </h2>
@@ -237,7 +253,7 @@ import { testWork } from '@/data/testWork.js'
           to="artists"
           v-fade-in="{ delay: 80, y: 16 }"
           variant="ghost"
-          class="artists-section__view-all inline-flex justify-start items-center text-body-sm"
+          class="home-artists-section__view-all inline-flex justify-start items-center text-body-sm"
           ><span class="text-btn tablet:text-btn-lg"> VIEW ALL ARTISTS </span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -257,17 +273,17 @@ import { testWork } from '@/data/testWork.js'
     </div>
     <div
       v-fade-in="{ delay: 300 }"
-      class="artists-section__grid grid grid-cols-2 gap-3 tablet:grid-cols-4 tablet:gap-5 desktop:gap-7 pt-10 tablet:pt-15 desktop:pt-20"
+      class="home-artists-section__grid grid grid-cols-2 gap-3 tablet:grid-cols-4 tablet:gap-5 desktop:gap-7 pt-10 tablet:pt-15 desktop:pt-20"
     >
       <BaseArtistAvatar
-        v-for="(item, i) in testWork"
+        v-for="(artist, i) in artists"
         v-fade-in="{
           delay: 200 + i * 100,
           y: 28,
           mobile: { delay: 100 + i * 60, y: 16 },
         }"
-        :key="item.id"
-        :product="item"
+        :key="artist.id"
+        :artist="artist"
         class="flex flex-col items-center"
       ></BaseArtistAvatar>
     </div>
@@ -275,13 +291,13 @@ import { testWork } from '@/data/testWork.js'
   <GoldDivider class="w-full my-20 tablet:my-40" />
 
   <section
-    class="page-container exhibition-section tablet:grid tablet:grid-cols-[35%_65%] tablet:mb-5"
+    class="page-container home-exhibition-section tablet:grid tablet:grid-cols-[35%_65%] tablet:mb-5"
   >
     <div class="flex justify-start items-center">
-      <div class="exhibition-section__container flex flex-col items-start">
+      <div class="home-exhibition-section__container flex flex-col items-start">
         <div v-fade-in="{ delay: 0, y: 10 }" class="inline-flex flex-col items-start">
           <p
-            class="exhibition-section__eyebrow tablet:block uppercase text-label tablet:text-label-lg text-gold-500"
+            class="home-exhibition-section__eyebrow tablet:block uppercase text-eyebrow text-gold-500"
           >
             CURRENT EXHIBITION
           </p>
@@ -289,17 +305,17 @@ import { testWork } from '@/data/testWork.js'
         </div>
         <h2
           v-fade-in="{ delay: 100, y: 20 }"
-          class="exhibition-section__heading text-heading-2 font-serif my-3 tablet:mt-5"
+          class="home-exhibition-section__heading text-heading font-serif my-3 tablet:mt-5"
         >
           Nature's Forms
         </h2>
         <p
           v-fade-in="{ delay: 180, y: 16 }"
-          class="exhibition-section__subtext text-gray-muted text-body-sm tablet:text-body-lg tracking-wider leading-loose tablet:w-[85%]"
+          class="home-exhibition-section__subtext text-gray-muted text-subtext tablet:w-[85%]"
         >
           International Jewelry Exhibition 2026
         </p>
-        <div class="exhibition-section__cta-group mt-3 tablet:mt-5">
+        <div class="home-exhibition-section__cta-group mt-3 tablet:mt-5">
           <p v-fade-in="{ delay: 260, y: 16 }" class="flex items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -348,7 +364,7 @@ import { testWork } from '@/data/testWork.js'
           tag="RouterLink"
           to="exhibitions"
           v-fade-in="{ delay: 340, y: 16 }"
-          class="hero__actions-item flex items-center w-full tablet:w-fit mt-5 tablet:mt-10"
+          class="home-exhibition__actions-item flex items-center w-full tablet:w-fit mt-5 tablet:mt-10"
         >
           <span class="text-btn tablet:text-btn-lg">VIEW EXHIBITION</span>
           <svg
@@ -369,7 +385,7 @@ import { testWork } from '@/data/testWork.js'
       </div>
     </div>
     <div
-      class="exhibition-section__visual hidden tablet:block relative tablet:items-center tablet:h-full overflow-hidden tablet:-mr-10 laptop:-mr-14"
+      class="home-exhibition-section__visual hidden tablet:block relative tablet:items-center tablet:h-full overflow-hidden tablet:-mr-10 laptop:-mr-14"
     >
       <img
         v-fade-in="{ delay: 200, y: 0 }"
@@ -384,74 +400,67 @@ import { testWork } from '@/data/testWork.js'
   </section>
 
   <section
-    class="newsletter-section border-y border-gold-400/20 flex flex-col items-center justify-center gap-8 px-6 py-16 my-10 tablet:my-0 tablet:mb-5 tablet:py-20 laptop:py-24 w-screen ml-[calc(50%_-_50vw)] mr-[calc(50%_-_50vw)] bg-cover bg-center"
+    class="home-newsletter-section border-y border-gold-400/20 flex flex-col items-center justify-center gap-8 px-6 py-16 my-10 tablet:my-0 tablet:mb-5 tablet:py-20 laptop:py-24 w-screen ml-[calc(50%_-_50vw)] mr-[calc(50%_-_50vw)] bg-cover bg-center"
   >
     <div
       v-fade-in="{ delay: 200, y: 20 }"
-      class="newsletter-section__quote-group flex flex-col items-center justify-center text-center text-gold-500 z-10"
+      class="home-newsletter-section__quote-group flex flex-col items-center justify-center text-center text-gold-500 z-10"
     >
       <span
-        class="newsletter-section__quote-mark text-4xl leading-none font-serif tablet:text-5xl laptop:text-6xl"
+        class="home-newsletter-section__quote-mark text-4xl leading-none font-serif tablet:text-5xl laptop:text-6xl"
         aria-hidden="true"
         >"</span
       >
 
       <p
-        class="newsletter-section__quote mx-auto mt-2 max-w-[280px] text-lg italic font-serif leading-relaxed [text-wrap:balance] ipad:max-w-md ipad:text-xl tablet:max-w-xl tablet:text-2xl laptop:text-[1.75rem]"
+        class="home-newsletter-section__quote mx-auto mt-2 max-w-[280px] text-lg italic font-serif leading-relaxed [text-wrap:balance] ipad:max-w-md ipad:text-xl tablet:max-w-xl tablet:text-2xl laptop:text-[1.75rem]"
       >
         Jewelry is not just an ornament, it is a story, a memory, a work of art.
       </p>
 
       <p
-        class="newsletter-section__author mt-4 text-xs uppercase tracking-wider text-gold-300 tablet:mt-5 tablet:text-sm"
+        class="home-newsletter-section__author mt-4 text-xs uppercase tracking-wider text-gold-300 tablet:mt-5 tablet:text-sm"
       >
         — Lumière Jewelry Gallery
       </p>
     </div>
 
-    <form
+    <div
       v-fade-in="{ delay: 240, y: 20 }"
-      class="newsletter-section__form flex w-full max-w-xs ipad:max-w-sm tablet:max-w-md z-10"
+      class="home-newsletter-section__form flex w-full max-w-xs ipad:max-w-sm tablet:max-w-md z-10"
     >
-      <label for="newsletter-email" class="sr-only">Email address</label>
+      <label for="home-newsletter-email" class="sr-only">Email address</label>
       <input
-        id="newsletter-email"
+        v-model="email"
+        id="home-newsletter-email"
         name="email"
         type="email"
         autocomplete="email"
         required
-        placeholder="Enter email to get news"
-        class="newsletter-section__input min-w-0 flex-1 border border-gold-600 border-r-0 bg-transparent p-3 text-sm text-white placeholder:text-gold-200/50 focus:outline-none focus:ring-1 focus:ring-gold-400"
+        placeholder="Enter email to Subscribe"
+        :disabled="submitted"
+        class="home-newsletter-section__input min-w-0 flex-1 border border-gold-600 border-r-0 bg-transparent p-3 text-sm text-white placeholder:text-gold-200/50 focus:outline-none focus:ring-1 focus:ring-gold-400"
       />
       <button
-        type="submit"
+        type="button"
         aria-label="Subscribe to newsletter"
-        class="newsletter-section__submit flex h-[46px] w-[46px] shrink-0 items-center justify-center bg-gold-600 text-black transition-colors hover:bg-gold-500 tablet:h-[50px] tablet:w-[50px]"
+        @click="handleSubscribe"
+        :disabled="submitted"
+        class="home-newsletter-section__submit flex shrink-0 items-center justify-center h-[46px] min-w-[110px] bg-gold-500/80 text-black-soft hover:bg-gold-500 hover:text-black transition-colors"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="size-5"
-          aria-hidden="true"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
-          />
-        </svg>
+        {{ submitted ? 'Thank you!' : 'Subscribe' }}
       </button>
-    </form>
+    </div>
   </section>
 </template>
 
 <style scoped>
+/* 呼吸留白高度 */
 .breathing-height {
-  height: clamp(140px, 8.6vw + 108px, 240px);
+  height: clamp(140px, 8.6cqw + 108px, 240px);
 }
+
+/* 呼吸留白動畫 */
 .animate-shimmer {
   animation-duration: 3s;
   animation-fill-mode: forwards;
@@ -459,6 +468,7 @@ import { testWork } from '@/data/testWork.js'
   animation-name: shimmer;
   animation-timing-function: ease-in-out;
 }
+
 @keyframes shimmer {
   0% {
     opacity: 0.85;
@@ -470,12 +480,14 @@ import { testWork } from '@/data/testWork.js'
     opacity: 0.85;
   }
 }
-/* 外層：負責裁掉下方靠岩石那段 */
-.hero__visual-circle {
+
+/* hero外層負責裁掉下方靠岩石那段 */
+.home-hero__visual-circle {
   clip-path: inset(0 0 29.5% 0); /* 依實際畫面微調這個 29.5% */
 }
-/* 內層：負責畫出漸層光圈本身 */
-.hero__visual-circle-ring {
+
+/* hero內層負責畫出漸層光圈本身 */
+.home-hero__visual-circle-ring {
   background: conic-gradient(
     from 0deg,
     rgba(184, 145, 64, 0.18) 0%,
@@ -511,8 +523,9 @@ import { testWork } from '@/data/testWork.js'
   }
 }
 
+/* 768px以上出現背景圖 */
 @media (min-width: 768px) {
-  .newsletter-section {
+  .home-newsletter-section {
     position: relative;
     background-image: url('../assets/images/textures/texture2.webp');
     background-size: cover;

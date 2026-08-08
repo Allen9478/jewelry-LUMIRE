@@ -18,7 +18,7 @@ export const useAuthStore = defineStore('auth', () => {
   const favoriteStore = useFavoriteStore()
   function initAuthListener() {
     onAuthStateChanged(auth, (firebaseUser) => {
-      if (user) {
+      if (firebaseUser) {
         user.value = firebaseUser
         favoriteStore.fetchFavorites() // 登入時載入收藏
       } else {
@@ -46,7 +46,6 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   async function login(email, password) {
-    console.log('login called', email, password)
     error.value = ''
     isLoading.value = true
     try {

@@ -17,7 +17,7 @@ async function handleSubmit() {
   try {
     await authStore.login(email.value, password.value)
     router.push('/')
-  } catch {
+  } catch (err) {
     console.error('登入失败:', err)
   }
 }

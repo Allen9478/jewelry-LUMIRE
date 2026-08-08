@@ -1,11 +1,13 @@
 <script setup>
-import HamburgerMenu from '@/components/layout/HamburgerMenu.vue'
 import { useAuthStore } from '@/stores/useAuthStore'
 import { useFavoriteStore } from '@/stores/useFavoriteStore'
 import { useRouter } from 'vue-router'
 import { navItems } from '@/constants/navigations'
 import { useScrollDirection } from '@/composables/useScrollDirection'
 import { ref, computed } from 'vue'
+import HamburgerMenu from '@/components/layout/HamburgerMenu.vue'
+import HeartIcon from '@/components/common/HeartIcon.vue'
+const router = useRouter()
 const authStore = useAuthStore()
 const favoriteStore = useFavoriteStore()
 const { isHeaderVisible } = useScrollDirection()
@@ -18,7 +20,7 @@ async function handleLogout() {
   showMenu.value = false
   router.push({ name: 'login' })
 }
-const router = useRouter()
+
 function goToLogin() {
   router.push({ name: 'login' })
 }
@@ -37,6 +39,7 @@ function goToLogin() {
       <RouterLink
         aria-label="回首頁"
         :to="{ name: 'home' }"
+        exact-active-class=""
         class="inline-flex flex-col font-serif text-center text-gold-500"
       >
         <span class="text-[26px] tablet:text-[34px] tracking-[0.1em]">LUMIÈRE</span>
@@ -53,10 +56,11 @@ function goToLogin() {
             v-for="item in navItems"
             :key="item"
           >
-            <!-- router要設置 -->
+            <!-- exact-active-class是router完全符合連結時的樣式 -->
             <RouterLink
               :to="item.to"
-              class="relative inline-block py-3 text-xs tablet:text-sm laptop:text-base desktop:text-lg text-stone-50 whitespace-nowrap transition-colors duration-300 hover:text-gold-500 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full"
+              class="relative inline-block py-3 text-xs tablet:text-sm laptop:text-base desktop:text-lg whitespace-nowrap transition-colors duration-300 hover:text-gold-500 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full"
+              exact-active-class="after:w-full text-gold-500"
             >
               {{ item.name }}
             </RouterLink>
@@ -91,25 +95,7 @@ function goToLogin() {
               class="nav__icon w-9 flex items-center justify-end tablet:w-6"
               :to="{ name: 'favorites' }"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="size-6 transition-colors duration-200"
-                :class="
-                  isFavoritePage
-                    ? 'fill-gold-500 stroke-gold-500'
-                    : 'hover:fill-gold-500 hover:stroke-gold-500 active:fill-gold-500 active:stroke-gold-500'
-                "
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-                />
-              </svg>
+              <HeartIcon :filled="isFavoritePage"></HeartIcon>
             </RouterLink>
           </div>
 
@@ -120,25 +106,7 @@ function goToLogin() {
               class="nav__icon w-9 flex items-center justify-end tablet:w-6"
               :to="{ name: 'favorites' }"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="size-6 transition-colors duration-200"
-                :class="
-                  isFavoritePage
-                    ? 'fill-gold-500 stroke-gold-500'
-                    : 'hover:fill-gold-500 hover:stroke-gold-500'
-                "
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-                />
-              </svg>
+              <HeartIcon :filled="isFavoritePage"></HeartIcon>
             </RouterLink>
             <div class="member relative group cursor-pointer">
               <span class="group-hover:opacity-0 transition-opacity duration-200">
@@ -157,22 +125,9 @@ function goToLogin() {
           <button
             aria-label="我的最愛收藏"
             class="nav__icon w-9 flex items-center justify-end tablet:w-6"
-            @click="favoriteStore.toggleFavorite('test')"
+            @click="favoriteStore.toggleFavorite()"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="size-6 transition-colors duration-200 hover:fill-gold-500 hover:stroke-gold-500"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-              />
-            </svg>
+            <HeartIcon :filled="isFavoritePage"></HeartIcon>
           </button>
           <button @click="goToLogin" aria-label="會員" class="nav__icon hidden tablet:block">
             <svg

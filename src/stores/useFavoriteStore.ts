@@ -36,10 +36,8 @@ export const useFavoriteStore = defineStore('favorite', () => {
       console.error('toggle failed', err)
       if (alreadyFavorited) {
         favorites.value.push(id)
-        console.log('is here')
       } else {
         favorites.value = favorites.value.filter((f) => f !== id)
-        console.log('is not here')
       }
     }
   }
@@ -52,9 +50,9 @@ export const useFavoriteStore = defineStore('favorite', () => {
     const snapshot = await getDocs(colRef)
     favorites.value = snapshot.docs.map((doc) => doc.id)
   }
-  function isFavorites(id: string) {
+  function isFavorite(id: string) {
     return favorites.value.includes(id)
   }
 
-  return { favorites, showLoginModal, toggleFavorite, isFavorites, fetchFavorites }
+  return { favorites, showLoginModal, toggleFavorite, isFavorite, fetchFavorites }
 })

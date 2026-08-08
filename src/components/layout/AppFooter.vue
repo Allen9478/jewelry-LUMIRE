@@ -41,6 +41,7 @@ const sections = [
           <RouterLink
             aria-label="回首頁"
             :to="{ name: 'home' }"
+            exact-active-class=""
             class="inline-flex flex-col self-start font-serif text-center text-gold-500"
           >
             <span class="text-[26px] tablet:text-[34px] tracking-[0.1em]">LUMIÈRE</span>

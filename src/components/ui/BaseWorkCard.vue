@@ -1,27 +1,25 @@
 <script setup>
 import HeartButton from '@/components/common/HeartButton.vue'
+import getImageUrl from '@/utils/getImageUrl'
 
 const props = defineProps({
-  product: Object,
+  work: Object,
 })
 
-const jewelryId = props.product.id
-const getImageUrl = (imgName) => {
-  return new URL(`../../assets/images/${imgName}`, import.meta.url).href
-}
+const jewelryId = props.work.id
 </script>
 <template>
   <RouterLink
     to="/works"
-    class="card w-full max-w-[350px] mobile:max-w-[360px] relative border border-gold-500/20 hover:border-gold-500/60 hover:shadow-gold-glow active:border-gold-500/40 active:shadow-gold-glow transition-all duration-500 ease-out group"
+    class="card w-full max-w-[350px] mobile:max-w-[360px] relative border border-gold-500/20 hover:border-gold-500/60 hover:shadow-gold-glow active:scale-[0.98] active:border-gold-500/60 active:shadow-gold-glow transition-all duration-150 ease-out group"
   >
     <HeartButton :productId="jewelryId" />
     <div class="card__inner">
       <div class="card__body flex items-center tablet:flex-col">
         <div class="relative overflow-hidden w-[110px] shrink-0 tablet:w-auto tablet:max-w-full">
           <img
-            :src="getImageUrl(product.jewelryimg)"
-            :alt="product.name"
+            :src="getImageUrl(`jewelry/${work.image}`)"
+            :alt="work.name"
             loading="lazy"
             width="1122"
             height="1402"
@@ -32,19 +30,17 @@ const getImageUrl = (imgName) => {
           ></div>
         </div>
         <!-- 分開寫兩個的原因是解決 mobile切換tablet瞬間文字出現消失的問題,用css能解決就不用js並且這裡code沒很多  -->
-        <div class="flex flex-col pl-4 tablet:hidden">
-          <h2 class="card__name text-white text-body my-2">{{ product.name }}</h2>
-          <p class="card__artist text-white/50 mb-3 text-body-sm">{{ product.artist }}</p>
-          <p class="text-white/30 text-xs mb-3">{{ product.material }}</p>
+        <div class="flex flex-col pl-4 pr-10 tablet:hidden">
+          <h2 class="card__name text-white text-body my-2 line-clamp-2">{{ work.name }}</h2>
+          <p class="card__artist text-white/50 mb-3 text-body-sm">{{ work.designer }}</p>
           <p class="text-xs order-last mb-3 tracking-widest text-gold-500">View →</p>
         </div>
 
         <div
           class="hidden tablet:flex flex-col tablet:absolute tablet:bottom-0 tablet:left-0 tablet:right-0 tablet:p-5 translate-y-2 pointer-events-none opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500"
         >
-          <h2 class="card__name text-white text-body mb-3">{{ product.name }}</h2>
-          <p class="card__artist text-white/90 mb-3 text-body-sm">{{ product.artist }}</p>
-          <p class="text-white/60 text-xs mb-3">{{ product.material }}</p>
+          <h2 class="card__name text-white text-body mb-3">{{ work.name }}</h2>
+          <p class="card__artist text-white/90 mb-3 text-body-sm">{{ work.designer }}</p>
           <p class="text-xs tracking-widest text-gold-500 mb-3">View →</p>
         </div>
       </div>

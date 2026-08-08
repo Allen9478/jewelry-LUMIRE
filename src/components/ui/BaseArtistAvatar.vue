@@ -1,11 +1,8 @@
 <script setup>
+import getImageUrl from '@/utils/getImageUrl'
 defineProps({
-  product: Object,
+  artist: Object,
 })
-
-const getImageUrl = (imgname) => {
-  return new URL(`../../assets/images/${imgname}`, import.meta.url).href
-}
 </script>
 <template>
   <RouterLink
@@ -16,8 +13,8 @@ const getImageUrl = (imgname) => {
       class="artists-avatar rounded-full overflow-hidden border border-gray-800 mx-auto transition-shadow duration-400 ease-out"
     >
       <img
-        :src="getImageUrl(product.artistsimg)"
-        :alt="product.artist"
+        :src="getImageUrl(`artists/${artist.image}`)"
+        :alt="artist.name"
         loading="lazy"
         width="1122"
         height="1402"
@@ -27,7 +24,7 @@ const getImageUrl = (imgname) => {
     <h2
       class="mt-3 text-cream/80 text-label tablet:text-body desktop:text-subhead transition-colors duration-300 ease-out group-hover:text-gold-500"
     >
-      {{ product.artist }}
+      {{ artist.name }}
     </h2>
   </RouterLink>
 </template>

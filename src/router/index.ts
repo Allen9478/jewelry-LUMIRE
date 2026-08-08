@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import type { RouteRecordRaw } from 'vue-router'
+import type { RouteRecordRaw, RouterOptions } from 'vue-router'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -83,9 +83,17 @@ const routes: RouteRecordRaw[] = [
   },
 ]
 
-const router = createRouter({
+const routerOptions: RouterOptions = {
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes,
-})
-
+  scrollBehavior(to, from, savedPosition) {
+    // 如果瀏覽器有動作紀錄，就回去原本動作的位置
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { top: 0, left: 0 }
+    }
+  },
+}
+const router = createRouter(routerOptions)
 export default router
