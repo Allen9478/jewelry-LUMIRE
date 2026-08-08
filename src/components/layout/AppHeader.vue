@@ -57,7 +57,10 @@ function goToLogin() {
             v-for="item in navItems"
             :key="item.name"
           >
-            <BaseUnderlineTab :to="item.to" class="text-xs tablet:text-sm">
+            <BaseUnderlineTab
+              :to="item.to"
+              class="text-xs tablet:text-sm laptop:text-base desktop:text-lg"
+            >
               {{ item.name }}
             </BaseUnderlineTab>
           </li>
