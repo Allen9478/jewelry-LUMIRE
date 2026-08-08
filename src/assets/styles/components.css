@@ -5,7 +5,7 @@
   }
   /* 其他頁面統一用這個 */
   .page-container {
-    @apply mx-auto  w-full  px-8 tablet:px-10 laptop:px-14;
+    @apply mx-auto  w-full  px-6 tablet:px-8 laptop:px-12;
   }
   .btn {
     @apply cursor-pointer inline-flex items-center justify-center;

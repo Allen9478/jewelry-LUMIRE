@@ -5,6 +5,7 @@ import { useRouter } from 'vue-router'
 import { navItems } from '@/constants/navigations'
 import { useScrollDirection } from '@/composables/useScrollDirection'
 import { ref, computed } from 'vue'
+import BaseUnderlineTab from '@/components/common/BaseUnderlineTab.vue'
 import HamburgerMenu from '@/components/layout/HamburgerMenu.vue'
 import HeartIcon from '@/components/common/HeartIcon.vue'
 const router = useRouter()
@@ -54,16 +55,11 @@ function goToLogin() {
           <li
             class="px-2 tablet:px-2 laptop:px-4 desktop:px-6 shrink-0"
             v-for="item in navItems"
-            :key="item"
+            :key="item.name"
           >
-            <!-- exact-active-class是router完全符合連結時的樣式 -->
-            <RouterLink
-              :to="item.to"
-              class="relative inline-block py-3 text-xs tablet:text-sm laptop:text-base desktop:text-lg whitespace-nowrap transition-colors duration-300 hover:text-gold-500 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full"
-              exact-active-class="after:w-full text-gold-500"
-            >
+            <BaseUnderlineTab :to="item.to" class="text-xs tablet:text-sm">
               {{ item.name }}
-            </RouterLink>
+            </BaseUnderlineTab>
           </li>
         </ul>
       </nav>

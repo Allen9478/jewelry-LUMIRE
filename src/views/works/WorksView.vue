@@ -1,6 +1,7 @@
 <script setup>
 import works from '@/data/works.json'
 import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
+import BaseUnderlineTab from '@/components/common/BaseUnderlineTab.vue'
 import GoldDivider from '@/components/ui/GoldDivider.vue'
 import { ref, computed } from 'vue'
 
@@ -15,11 +16,6 @@ const filteredWorks = computed(() => {
   return works.filter((item) => item.category === currentCategory.value)
 })
 
-function getCategoryClass(category) {
-  return currentCategory.value === category
-    ? 'font-bold text-gold-500'
-    : 'text-gray-500 transition-colors'
-}
 // 計算每個作品卡片的淡入延遲時間,還不確定要不要全站套用
 function getFadeDelay(index, base, step) {
   return base + Math.min(index, 8) * step
@@ -28,8 +24,9 @@ function getFadeDelay(index, base, step) {
 </script>
 
 <template>
-  <div class="hero page-container">
-    <div class="text-container flex flex-col items-start">
+  <div class="hero">
+    <!-- //hero要滿版所以page-container寫在文字區塊即可 -->
+    <div class="page-container text-container flex flex-col items-start mt-4">
       <div v-fade-in="{ delay: 0, y: 12 }" class="inline-flex flex-col items-start">
         <p class="works-section__eyebrow tablet:block uppercase text-eyebrow text-gold-500">
           WORKS GALLERY
@@ -38,7 +35,7 @@ function getFadeDelay(index, base, step) {
       </div>
       <h2
         v-fade-in="{ delay: 80, y: 16 }"
-        class="works-section__heading text-heading whitespace-nowrap my-4 font-serif italic"
+        class="works-section__heading text-heading whitespace-nowrap my-2 laptop:my-4 font-serif italic"
       >
         Curated Collection
       </h2>
@@ -52,37 +49,32 @@ function getFadeDelay(index, base, step) {
     </div>
   </div>
   <div class="work-main page-container">
-    <nav aria-label="依作品類別篩選作品">
-      <ul class="flex items-center gap-6 overflow-x-auto whitespace-nowrap no-scrollbar">
+    <nav aria-label="依作品類別篩選作品" class="py-3">
+      <ul
+        class="flex items-center gap-6 pr-4 overflow-x-auto tablet:overflow-visible tablet:justify-around tablet:gap-10 whitespace-nowrap no-scrollbar"
+      >
         <!-- 1. 新增：手動加入「全部」按鈕 -->
         <li class="shrink-0">
-          <a
-            href="#"
-            @click.prevent="currentCategory = null"
-            class="hover:text-gold-500 transition-colors"
-            :class="getCategoryClass(null)"
-          >
+          <BaseUnderlineTab :active="currentCategory === null" @click="currentCategory = null">
             ALL 全部
-          </a>
+          </BaseUnderlineTab>
         </li>
 
         <!-- 2. 原本的作家迴圈 -->
         <li v-for="category in availableCategories" :key="category" class="shrink-0">
-          <button
-            href="#"
-            @click.prevent="currentCategory = category"
-            class="hover:text-gold-500 transition-colors"
-            :class="getCategoryClass(category)"
+          <BaseUnderlineTab
+            :active="currentCategory === category"
+            @click="currentCategory = category"
             :aria-current="currentCategory === category ? 'true' : undefined"
           >
             {{ category }}
-          </button>
+          </BaseUnderlineTab>
         </li>
       </ul>
     </nav>
 
     <div
-      class="home-works-section__grid grid gap-4 tablet:gap-5 laptop:gap-6 grid-cols-1 tablet:grid-cols-3 laptop:grid-cols-4 pt-10 tablet:pt-15 desktop:pt-20 place-items-center"
+      class="home-works-section__grid grid gap-4 tablet:gap-5 laptop:gap-6 grid-cols-1 tablet:grid-cols-3 laptop:grid-cols-4 py-4 place-items-center"
     >
       <!-- 3. 資料來源保持使用篩選後的 filteredWorks -->
       <BaseWorkCard
