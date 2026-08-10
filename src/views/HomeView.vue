@@ -216,7 +216,7 @@ function handleSubscribe() {
     <div
       class="home-works-section__grid grid gap-4 tablet:gap-5 laptop:gap-6 grid-cols-1 tablet:grid-cols-3 laptop:grid-cols-4 pt-10 tablet:pt-15 desktop:pt-20 place-items-center"
     >
-      <BaseWorkCard
+      <div
         v-for="(work, i) in uniqueDesignerWorks"
         v-fade-in="{
           delay: 200 + i * 100,
@@ -224,8 +224,10 @@ function handleSubscribe() {
           mobile: { delay: 100 + i * 60, y: 16 },
         }"
         :key="work.id"
-        :work="work"
-      ></BaseWorkCard>
+        class="flex"
+      >
+        <BaseWorkCard :work="work"></BaseWorkCard>
+      </div>
     </div>
   </section>
   <GoldDivider class="w-full my-20 tablet:my-40" />

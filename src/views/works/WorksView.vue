@@ -2,6 +2,7 @@
 import works from '@/data/works.json'
 import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
 import BaseUnderlineTab from '@/components/common/BaseUnderlineTab.vue'
+import ArtistsCarousel from '@/components/ui/ArtistsCarousel.vue'
 import GoldDivider from '@/components/ui/GoldDivider.vue'
 import { ref, computed } from 'vue'
 
@@ -18,7 +19,7 @@ const filteredWorks = computed(() => {
 
 // 計算每個作品卡片的淡入延遲時間,還不確定要不要全站套用
 function getFadeDelay(index, base, step) {
-  return base + Math.min(index, 8) * step
+  return base + index * step
 }
 //TODO: 邏輯測試完成,把這頁排版css寫好再整理js
 </script>
@@ -57,17 +58,17 @@ function getFadeDelay(index, base, step) {
   <div class="work-main page-container">
     <nav aria-label="依作品類別篩選作品" class="py-3">
       <ul
-        class="tablet:overflow-visible tablet:justify-around no-scrollbar tablet:gap-10 flex items-center gap-6 overflow-x-auto pr-4 whitespace-nowrap"
+        class="tablet:overflow-visible justify-around no-scrollbar tablet:gap-10 flex items-center gap-6 overflow-x-auto tablet:pr-8 whitespace-nowrap"
       >
         <!-- 1. 新增：手動加入「全部」按鈕 -->
-        <li class="shrink-0">
+        <li class="text-eyebrow shrink-0">
           <BaseUnderlineTab :active="currentCategory === null" @click="currentCategory = null">
             ALL 全部
           </BaseUnderlineTab>
         </li>
 
         <!-- 2. 原本的作家迴圈 -->
-        <li v-for="category in availableCategories" :key="category" class="shrink-0">
+        <li v-for="category in availableCategories" :key="category" class="text-eyebrow shrink-0">
           <BaseUnderlineTab
             :active="currentCategory === category"
             @click="currentCategory = category"
@@ -80,22 +81,23 @@ function getFadeDelay(index, base, step) {
     </nav>
 
     <div
-      class="works-section__grid tablet:grid tablet:grid-cols-3 laptop:grid-cols-4 tablet:h-auto tablet:overflow-visible tablet:gap-5 laptop:gap-6 no-scrollbar flex h-[70vh] flex-col place-items-center gap-4 overflow-y-auto py-4"
+      class="works-section__grid tablet:grid tablet:grid-cols-3 laptop:grid-cols-4 tablet:h-auto tablet:overflow-visible tablet:gap-5 laptop:gap-6 flex h-[70vh] flex-col place-items-center gap-4 overflow-y-auto py-4 no-scrollbar"
     >
-      <!-- 3. 資料來源保持使用篩選後的 filteredWorks -->
-      <BaseWorkCard
+      <div
         v-for="(work, i) in filteredWorks"
         v-fade-in="{
-          delay: getFadeDelay(i, 200, 80),
+          delay: getFadeDelay(i, 50, 80),
           y: 28,
-          mobile: { delay: getFadeDelay(i, 100, 50), y: 16 },
+          mobile: { delay: getFadeDelay(i, 100, 30), y: 16 },
         }"
         :key="work.id"
-        :work="work"
-        :loading="i < 4 ? 'eager' : 'lazy'"
-      ></BaseWorkCard>
+        class="flex w-full justify-center"
+      >
+        <BaseWorkCard :work="work" :loading="i < 4 ? 'eager' : 'lazy'"></BaseWorkCard>
+      </div>
     </div>
   </div>
+  <ArtistsCarousel class="page-container mt-16" />
 </template>
 
 <style scoped>

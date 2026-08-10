@@ -23,7 +23,12 @@ export const vFadeIn: Directive<HTMLElement, FadeOptions> = {
     const mobileOverride = base.mobile ?? {}
     const resolved = isTablet ? { ...base, ...mobileOverride } : base
     const { delay = 0, duration = 700, y = 28 } = resolved
-
+    console.log({
+      element: el,
+      delay,
+      duration,
+      y,
+    })
     // 初始狀態：隱藏並位移
     el.style.setProperty('--fade-duration', `${duration}ms`)
     el.style.setProperty('--fade-y', `${y}px`)
