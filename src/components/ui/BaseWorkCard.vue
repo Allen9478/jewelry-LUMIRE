@@ -4,23 +4,25 @@ import getImageUrl from '@/utils/getImageUrl'
 
 const props = defineProps({
   work: Object,
+  loading: {
+    type: String,
+    default: 'lazy',
+  },
 })
-
-const jewelryId = props.work.id
 </script>
 <template>
   <RouterLink
     to="/works"
     class="card w-full max-w-[350px] mobile:max-w-[360px] relative border border-gold-500/20 hover:border-gold-500/60 hover:shadow-gold-glow active:scale-[0.98] active:border-gold-500/60 active:shadow-gold-glow transition-all duration-150 ease-out group"
   >
-    <HeartButton :productId="jewelryId" />
+    <HeartButton :workId="work.id" />
     <div class="card__inner">
       <div class="card__body flex items-center tablet:flex-col">
         <div class="relative overflow-hidden w-[110px] shrink-0 tablet:w-auto tablet:max-w-full">
           <img
             :src="getImageUrl(`jewelry/${work.image}`)"
             :alt="work.name"
-            loading="lazy"
+            :loading="loading"
             width="1122"
             height="1402"
             class="aspect-[3/4] max-w-full object-cover max-h-[180px] tablet:max-h-[250px] laptop:max-h-[300px] laptop:object-contain"

@@ -24,18 +24,18 @@ function getFadeDelay(index, base, step) {
 </script>
 
 <template>
-  <div class="hero">
+  <section class="work-hero">
     <!-- //hero要滿版所以page-container寫在文字區塊即可 -->
-    <div class="page-container text-container flex flex-col items-start mt-4">
+    <div class="page-container text-container mt-4 flex flex-col items-start">
       <div v-fade-in="{ delay: 0, y: 12 }" class="inline-flex flex-col items-start">
-        <p class="works-section__eyebrow tablet:block uppercase text-eyebrow text-gold-500">
+        <p class="works-section__eyebrow tablet:block text-eyebrow text-gold-500 uppercase">
           WORKS GALLERY
         </p>
         <GoldDivider variant="fade" class="mt-2" />
       </div>
       <h2
         v-fade-in="{ delay: 80, y: 16 }"
-        class="works-section__heading text-heading whitespace-nowrap my-2 laptop:my-4 font-serif italic"
+        class="works-section__heading text-heading laptop:my-4 my-2 font-serif whitespace-nowrap italic"
       >
         Curated Collection
       </h2>
@@ -44,14 +44,20 @@ function getFadeDelay(index, base, step) {
         timeless stories.
       </p>
     </div>
-    <div class="hero__image w-full overflow-hidden hidden tablet:block">
-      <img src="../../assets/images/works/works_hero.webp" alt="jewelry on rock" />
+    <div class="work-hero__image tablet:block hidden w-full overflow-hidden">
+      <img
+        src="../../assets/images/works/works_hero.webp"
+        alt="jewelry on rock"
+        fetchpriority="high"
+        width="1704"
+        height="923"
+      />
     </div>
-  </div>
+  </section>
   <div class="work-main page-container">
     <nav aria-label="依作品類別篩選作品" class="py-3">
       <ul
-        class="flex items-center gap-6 pr-4 overflow-x-auto tablet:overflow-visible tablet:justify-around tablet:gap-10 whitespace-nowrap no-scrollbar"
+        class="tablet:overflow-visible tablet:justify-around no-scrollbar tablet:gap-10 flex items-center gap-6 overflow-x-auto pr-4 whitespace-nowrap"
       >
         <!-- 1. 新增：手動加入「全部」按鈕 -->
         <li class="shrink-0">
@@ -74,7 +80,7 @@ function getFadeDelay(index, base, step) {
     </nav>
 
     <div
-      class="home-works-section__grid grid gap-4 tablet:gap-5 laptop:gap-6 grid-cols-1 tablet:grid-cols-3 laptop:grid-cols-4 py-4 place-items-center"
+      class="works-section__grid tablet:grid tablet:grid-cols-3 laptop:grid-cols-4 tablet:h-auto tablet:overflow-visible tablet:gap-5 laptop:gap-6 no-scrollbar flex h-[70vh] flex-col place-items-center gap-4 overflow-y-auto py-4"
     >
       <!-- 3. 資料來源保持使用篩選後的 filteredWorks -->
       <BaseWorkCard
@@ -86,6 +92,7 @@ function getFadeDelay(index, base, step) {
         }"
         :key="work.id"
         :work="work"
+        :loading="i < 4 ? 'eager' : 'lazy'"
       ></BaseWorkCard>
     </div>
   </div>
@@ -99,7 +106,7 @@ function getFadeDelay(index, base, step) {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-.hero {
+.work-hero {
   display: flex;
   align-items: stretch; /* 讓圖片欄「拉伸」去符合文字欄的高度 */
   min-height: 460px; /* 保底高度，避免文字太短時 hero 太扁 */
@@ -118,22 +125,22 @@ function getFadeDelay(index, base, step) {
   color: var(--color-text-muted, #c9c2b3);
 }
 
-.hero__image {
+.work-hero__image {
   flex: 1 1 50%;
   min-height: 0;
   overflow: hidden;
 }
 
-.hero__image img {
+.work-hero__image img {
   width: 100%;
-  height: 100%; /* 完全交給 .text-container 決定，不會反過來撐高 hero */
+  height: 100%; /* 完全交給 .text-container 決定，不會反過來撐高 work-hero */
   object-fit: cover;
   object-position: 80% center;
 }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 768px) {
-  .hero {
+  .work-hero {
     width: 100%;
     aspect-ratio: 3 / 2;
     min-height: 250px;
@@ -147,7 +154,7 @@ function getFadeDelay(index, base, step) {
     justify-content: start;
     /* padding: 20px; */
   }
-  .hero__image {
+  .work-hero__image {
     flex: none;
     /* 手機版圖片給固定高度 */
   }

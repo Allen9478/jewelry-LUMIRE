@@ -30,7 +30,7 @@ export const useFavoriteStore = defineStore('favorite', () => {
       if (alreadyFavorited) {
         await deleteDoc(docRef)
       } else {
-        await setDoc(docRef, { productId: id, addedAt: new Date() })
+        await setDoc(docRef, { workId: id, addedAt: new Date() })
       }
     } catch (err) {
       console.error('toggle failed', err)
