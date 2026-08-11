@@ -97,7 +97,7 @@ function getFadeDelay(index, base, step) {
       </div>
     </div>
   </div>
-  <ArtistsCarousel class="page-container mt-16" />
+  <ArtistsCarousel v-fade-in="{ delay: 0, y: 20 }" class="mt-16" />
 </template>
 
 <style scoped>

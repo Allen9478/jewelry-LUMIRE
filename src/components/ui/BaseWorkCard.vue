@@ -12,7 +12,7 @@ const props = defineProps({
 </script>
 <template>
   <RouterLink
-    to="/works"
+    :to="`/works/${work.id}`"
     class="card relative block w-full max-w-[350px] mobile:max-w-[360px] border border-gold-500/20 hover:border-gold-500/60 hover:shadow-gold-glow active:scale-[0.98] active:border-gold-500/60 active:shadow-gold-glow transition-all duration-150 ease-out group"
   >
     <HeartButton :workId="work.id" />

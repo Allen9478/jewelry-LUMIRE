@@ -3,10 +3,17 @@ import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 import getImageUrl from '@/utils/getImageUrl'
 import artists from '@/data/artists.json'
+import works from '@/data/works.json'
+import GoldDivider from '@/components/ui/GoldDivider.vue'
+
+function getArtistWorks(artistName) {
+  return works.filter((w) => w.designer === artistName).slice(0, 3)
+}
 </script>
 
 <template>
-  <section class="artists-carousel relative w-full overflow-hidden">
+  <section class="@container artists-carousel relative w-full mb-5 overflow-hidden">
+    <GoldDivider variant="full" />
     <Carousel
       :items-to-show="1"
       :wrap-around="true"
@@ -16,10 +23,10 @@ import artists from '@/data/artists.json'
     >
       <Slide v-for="artist in artists" :key="artist.id">
         <div
-          class="artists-carousel__slide grid grid-cols-[50%_50%] tablet:grid-cols-[30%_70%] w-full"
+          class="artists-carousel__slide grid grid-cols-[50%_50%] tablet:grid-cols-[25%_30%_45%] w-full"
         >
           <div
-            class="artists-carousel__image-wrap relative aspect-[4/5] tablet:aspect-[4/5] overflow-hidden"
+            class="artists-carousel__image-wrap relative aspect-[3/5] tablet:aspect-[4/5] overflow-hidden"
           >
             <img
               :src="getImageUrl(`artists/${artist.image_detail}`)"
@@ -29,34 +36,31 @@ import artists from '@/data/artists.json'
             />
           </div>
 
-          <div
-            class="artists-carousel__content flex flex-col justify-center gap-2 p-8 tablet:p-12 bg-black"
-          >
-            <p
-              class="artists-carousel__eyebrow uppercase text-gold-500"
-              style="
-                font-size: var(--text-eyebrow);
-                letter-spacing: var(--text-eyebrow--letter-spacing);
-              "
-            >
-              FEATURED ARTIST
-            </p>
+          <div class="artists-carousel__content flex flex-col p-8 tablet:p-12 bg-black">
+            <div class="artists-carousel__text flex flex-col gap-4 my-auto">
+              <p
+                class="artists-carousel__eyebrow uppercase text-gold-500 text-[11px] tablet:text-eyebrow"
+              >
+                FEATURED ARTIST
+              </p>
 
-            <h2 class="artists-carousel__name font-serif text-white text-heading-sm">
-              {{ artist.name }}
-            </h2>
+              <h2
+                class="artists-carousel__name font-serif text-white text-[18px] tablet:text-heading-sm"
+              >
+                {{ artist.name }}
+              </h2>
 
-            <p
-              class="artists-carousel__bio text-gray-muted"
-              style="font-size: var(--text-subtext); line-height: var(--text-subtext--line-height)"
-            >
-              {{ artist.design_style }}
-            </p>
-
+              <p
+                class="artists-carousel__bio text-gray-muted text-[13px] tablet:text-subtext line-clamp-3 leading-relaxed tablet:max-w-md"
+              >
+                {{ artist.short_bio }}
+              </p>
+            </div>
             <RouterLink
-              class="artists-carousel__link inline-flex items-center mt-3 text-gold-500 hover:text-gold-300 transition-colors"
+              :to="{ name: 'artists-detail', params: { id: artist.id } }"
+              class="artists-carousel__link inline-flex items-center text-gold-500 hover:text-gold-300 transition-colors"
             >
-              <span class="text-btn">VIEW ARTIST PROFILE</span>
+              <span class="text-[11px] tablet:text-btn whitespace-nowrap">VIEW PROFILE</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -73,6 +77,26 @@ import artists from '@/data/artists.json'
               </svg>
             </RouterLink>
           </div>
+          <div
+            class="hidden tablet:flex flex-col justify-center gap-3 border-l border-gold-500/20 p-8"
+          >
+            <p class="text-eyebrow uppercase text-gold-500">Signature pieces</p>
+            <div class="hidden tablet:flex gap-3">
+              <RouterLink
+                v-for="work in getArtistWorks(artist.name)"
+                :key="work.id"
+                :to="{ name: 'work-detail', params: { id: work.id } }"
+                class="flex-1 aspect-square overflow-hidden border border-gold-500/20 hover:border-gold-500/60 transition-colors"
+              >
+                <img
+                  :src="getImageUrl(`jewelry/${work.image}`)"
+                  :alt="work.name"
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </RouterLink>
+            </div>
+          </div>
         </div>
       </Slide>
 
@@ -81,6 +105,7 @@ import artists from '@/data/artists.json'
         <Pagination />
       </template>
     </Carousel>
+    <GoldDivider variant="full" />
   </section>
 </template>
 
@@ -113,7 +138,7 @@ import artists from '@/data/artists.json'
 /* 底部小圓點：改成細線條風格，貼合設計語彙（跟 GoldDivider 呼應） */
 .artists-carousel :deep(.carousel__pagination) {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   gap: 8px;
