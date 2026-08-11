@@ -31,4 +31,18 @@
   .auth__title {
     @apply text-[42px] laptop:text-[56px] text-center tracking-wide font-serif pb-8 tablet:landscape:pt-8;
   }
+
+  /* 給vFadeIn.ts用的 */
+  .fade-in-init {
+    opacity: 0;
+    transform: translateY(var(--fade-y, 28px));
+    transition:
+      opacity var(--fade-duration, 600ms) ease-out,
+      transform var(--fade-duration, 600ms) ease-out;
+  }
+
+  .fade-in-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
