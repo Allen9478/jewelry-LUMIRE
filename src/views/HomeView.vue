@@ -224,7 +224,7 @@ function handleSubscribe() {
           mobile: { delay: 100 + i * 60, y: 16 },
         }"
         :key="work.id"
-        class="flex"
+        class="flex w-full"
       >
         <BaseWorkCard :work="work"></BaseWorkCard>
       </div>

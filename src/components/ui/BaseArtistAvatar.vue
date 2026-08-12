@@ -2,6 +2,10 @@
 import getImageUrl from '@/utils/getImageUrl'
 defineProps({
   artist: Object,
+  showName: {
+    type: Boolean,
+    default: true, // 沒傳入時預設會顯示名字
+  },
 })
 </script>
 <template>
@@ -22,6 +26,7 @@ defineProps({
       />
     </div>
     <h2
+      v-if="showName"
       class="mt-3 text-cream/80 text-label tablet:text-body desktop:text-subhead transition-colors duration-300 ease-out group-hover:text-gold-500"
     >
       {{ artist.name }}
