@@ -402,7 +402,7 @@ function handleSubscribe() {
   </section>
 
   <section
-    class="home-newsletter-section border-y border-gold-400/20 flex flex-col items-center justify-center gap-8 px-6 py-16 my-10 tablet:my-0 tablet:mb-5 tablet:py-20 laptop:py-24 w-screen ml-[calc(50%_-_50vw)] mr-[calc(50%_-_50vw)] bg-cover bg-center"
+    class="home-newsletter-section border-y border-gold-500/20 flex flex-col items-center justify-center gap-8 px-6 py-16 my-10 tablet:my-0 tablet:mb-5 tablet:py-20 laptop:py-24 w-screen ml-[calc(50%_-_50vw)] mr-[calc(50%_-_50vw)] bg-cover bg-center"
   >
     <div
       v-fade-in="{ delay: 200, y: 20 }"

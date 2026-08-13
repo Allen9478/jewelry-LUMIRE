@@ -19,19 +19,36 @@ function getOtherWorks() {
 <template>
   <div
     v-if="work"
-    class="page-wrapper workdetail-hero tablet:grid grid-cols-[60%_1fr] tablet:h-[80vh] tablet:mt-4 gap-6"
+    class="page-wrapper workdetail-hero tablet:grid tablet:grid-cols-[50%_1fr] tablet:h-[90dvh] tablet:mt-2 gap-6"
   >
-    <img
-      :src="getImageUrl(`jewelry/${work.image}`)"
-      :alt="work.name"
-      class="workdetail-hero_image tablet:w-full tablet:h-full object-contain overflow-hidden"
-    />
-    <div class="workdetail-hero__info tablet:h-full">
-      <div class="workdeatail-hero__info__heading-group flex flex-col gap-5">
-        <div class="workdetail-hero__info__eyebrow text-eyebrow text-gold-500">WORK DETAIL</div>
-        <h1 class="workdetail-hero__info__heading text-heading-sm">{{ work.name }}</h1>
+    <div
+      v-fade-in="{ delay: 0, y: 24, mobile: { delay: 0, y: 16 } }"
+      class="workdetail-hero__image tablet:w-full tablet:h-full tablet:min-h-0 aspect-[4/5]"
+    >
+      <!-- 前景:完整圖片 -->
+      <img
+        :src="getImageUrl(`jewelry/${work.image}`)"
+        :alt="work.name"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    <div class="workdetail-hero__info tablet:h-full tablet:min-h-0 overflow-hidden">
+      <div class="workdetail-hero__info-heading-group flex flex-col gap-6 mt-2 tablet:mt-2">
+        <div
+          v-fade-in="{ delay: 80, y: 12, mobile: { delay: 40, y: 8 } }"
+          class="workdetail-hero__info-eyebrow text-eyebrow text-gold-500"
+        >
+          WORK DETAIL
+        </div>
+        <h1
+          v-fade-in="{ delay: 140, y: 16, mobile: { delay: 80, y: 12 } }"
+          class="workdetail-hero__info-heading text-heading-sm font-serif italic"
+        >
+          {{ work.name }}
+        </h1>
         <dl
-          class="workdetail-hero__specs flex flex-col gap-2 text-[12px] border-t border-gold-500/10"
+          v-fade-in="{ delay: 220, y: 16, mobile: { delay: 120, y: 12 } }"
+          class="workdetail-hero__info-specs flex flex-col gap-2 text-label tablet:text-label-lg border-t border-gold-500/10"
         >
           <div class="flex justify-between items-center gap-4 py-2 border-b border-gold-500/10">
             <dt class="text-white/50 uppercase tracking-wide shrink-0">Materials</dt>
@@ -39,32 +56,43 @@ function getOtherWorks() {
           </div>
           <div class="flex justify-between gap-4 py-2 border-b border-gold-500/10">
             <dt class="text-white/50 uppercase tracking-wide shrink-0">Year</dt>
-            <dd class="text-white text-left">2026</dd>
+            <dd class="text-white text-right">2026</dd>
           </div>
           <div class="flex justify-between gap-4 py-2 border-b border-gold-500/10">
             <dt class="text-white/50 uppercase tracking-wide shrink-0">Collection</dt>
             <dd class="text-white text-right">Nature's Forms</dd>
           </div>
         </dl>
-        <p class="workdetail-hero__info__description">{{ work.description }}</p>
+        <p
+          v-fade-in="{ delay: 300, y: 16, mobile: { delay: 160, y: 12 } }"
+          class="workdetail-hero__info-description text-label tablet:text-body-sm tablet:pt-4 text-cream/80 tablet:line-clamp-4"
+        >
+          {{ work.description }}
+        </p>
       </div>
 
-      <div class="workdetail-hero__artist my-5">
+      <div
+        v-fade-in="{ delay: 380, y: 20, mobile: { delay: 200, y: 14 } }"
+        class="workdetail-hero__artist my-8"
+      >
         <p class="text-eyebrow text-gold-500">ABOUT THE ARTIST</p>
-        <div
-          v-if="artist"
-          class="workdetail-hero__artist__info-group grid grid-cols-[35%_65%] mt-2"
-        >
+        <div v-if="artist" class="workdetail-hero__artist-grid grid grid-cols-[35%_65%] mt-4">
           <BaseArtistAvatar :artist="artist" :show-name="false" class="justify-center" />
-          <div class="artist__info flex flex-col gap-3 pl-6">
-            <h2 class="artist__info__name text-heading-sm">{{ artist.name }}</h2>
-            <p class="artist__info__bio text-[12px]">{{ artist.short_bio }}</p>
+          <div class="workdetail-hero__artist-info flex flex-col tablet:justify-center gap-4 pl-6">
+            <h2 class="workdetail-hero__artist-name text-subhead tablet:text-[24px] font-serif">
+              {{ artist.name }}
+            </h2>
+            <p
+              class="workdetail-hero__artist-bio text-label tablet:text-label-lg tablet:line-clamp-3"
+            >
+              {{ artist.short_bio }}
+            </p>
             <BaseButton
               tag="RouterLink"
               :to="`/artists/${artist.id}`"
-              v-fade-in="{ delay: 80, y: 16 }"
+              v-fade-in="{ delay: 460, y: 16, mobile: { delay: 240, y: 12 } }"
               variant="ghost"
-              class="home-artists-section__view-all inline-flex justify-start items-center text-body-sm"
+              class="workdetail-hero__artist-link inline-flex justify-start items-center text-body-sm"
               ><span class="text-btn tablet:text-btn-lg normal-case"> View Artist Profile </span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -85,12 +113,27 @@ function getOtherWorks() {
       </div>
     </div>
   </div>
-  <div class="page-wrapper workdetail-related-works">
-    <p class="text-eyebrow text-gold-500">Related Works</p>
-    <div class="grid grid-cols-1 tablet:grid-cols-3 tablet:justify-items-center gap-6">
-      <BaseWorkCard v-for="work in getOtherWorks()" :key="work.id" :work="work" />
+  <div
+    class="page-wrapper workdetail-related-works border-y border-gold-500/20 my-8 tablet:my-10 tablet:mb-6"
+  >
+    <p
+      v-fade-in="{ delay: 460, y: 16, mobile: { delay: 0, y: 12 } }"
+      class="text-eyebrow text-gold-500 py-4 tablet:py-8"
+    >
+      RELATED WORKS
+    </p>
+    <div
+      class="grid grid-cols-1 tablet:grid-cols-3 tablet:justify-items-center py-8 tablet:py-16 gap-6 tablet:gap-4"
+    >
+      <div
+        v-for="(work, i) in getOtherWorks()"
+        v-fade-in="{ delay: i * 100, y: 24, mobile: { delay: i * 60, y: 16 } }"
+        :key="work.id"
+        class="flex w-full justify-center"
+      >
+        <BaseWorkCard :work="work" />
+      </div>
     </div>
   </div>
 </template>
-
 <style scoped></style>
