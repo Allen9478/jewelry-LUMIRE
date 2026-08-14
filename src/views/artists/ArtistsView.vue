@@ -3,7 +3,7 @@ import BaseArtistCard from '@/components/ui/BaseArtistCard.vue'
 import artists from '@/data/artists.json'
 </script>
 <template>
-  <div class="page-wrapper my-14">
+  <div class="page-container my-14">
     <div class="text__group">
       <h2 class="text-5xl tracking-wider">The Artists</h2>
       <div class="text-body text-cream/70 mt-5 artist-subtitle max-w-xs tablet:max-w-sm">

@@ -9,7 +9,7 @@ const artist = computed(() => artists.find((a) => a.id === route.params.id))
 </script>
 <!-- 測試而已要回來改 -->
 <template>
-  <div v-if="artist" class="page-wrapper max-w-[666px]">
+  <div v-if="artist" class="page-container max-w-[666px]">
     <img :src="getImageUrl(`artists/${artist.image_detail}`)" :alt="artist.name" />
     <h1>{{ artist.name }}</h1>
     <p>{{ artist.current_residence }}</p>

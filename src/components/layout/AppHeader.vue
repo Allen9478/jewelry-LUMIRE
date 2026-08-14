@@ -34,7 +34,7 @@ function goToLogin() {
     class="fixed top-0 left-0 right-0 z-card transition-transform duration-300 border-b border-gold-400/20 bg-black"
     :class="isHeaderVisible ? 'translate-y-0' : '-translate-y-full'"
   >
-    <div class="page-wrapper flex h-20 items-center justify-between">
+    <div class="page-container flex h-20 items-center justify-between">
       <HamburgerMenu class="w-9" />
 
       <RouterLink

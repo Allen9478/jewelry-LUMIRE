@@ -19,7 +19,7 @@ function getOtherWorks() {
 <template>
   <div
     v-if="work"
-    class="page-wrapper workdetail-hero tablet:grid tablet:grid-cols-[50%_1fr] tablet:h-[90dvh] tablet:mt-2 gap-6"
+    class="page-container workdetail-hero tablet:grid tablet:grid-cols-[50%_1fr] tablet:h-[90dvh] tablet:mt-2 gap-6"
   >
     <div
       v-fade-in="{ delay: 0, y: 24, mobile: { delay: 0, y: 16 } }"
@@ -114,7 +114,7 @@ function getOtherWorks() {
     </div>
   </div>
   <div
-    class="page-wrapper workdetail-related-works border-y border-gold-500/20 my-8 tablet:my-10 tablet:mb-6"
+    class="page-container workdetail-related-works border-y border-gold-500/20 my-8 tablet:my-10 tablet:mb-6"
   >
     <p
       v-fade-in="{ delay: 460, y: 16, mobile: { delay: 0, y: 12 } }"

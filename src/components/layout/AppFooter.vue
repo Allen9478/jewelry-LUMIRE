@@ -34,10 +34,12 @@ const sections = [
 
 <template>
   <footer>
-    <div class="page-wrapper flex flex-col">
-      <div class="flex flex-col laptop:flex-row laptop:justify-between laptop:items-start">
-        <!-- laptop:w-[300px]是為svg的寬度改變時不影響整體排版而寫 -->
-        <div class="flex flex-col laptop:shrink-0 laptop:w-[300px]">
+    <div class="page-container flex flex-col">
+      <div
+        class="flex flex-col tablet:flex-row tablet:justify-start tablet:items-start gap-12 tablet:gap-16 laptop:gap-24"
+      >
+        <!-- tablet:w-[300px]是為svg的寬度改變時不影響整體排版而寫 -->
+        <div class="flex flex-col tablet:shrink-0 tablet:w-[300px]">
           <RouterLink
             aria-label="回首頁"
             :to="{ name: 'home' }"
@@ -47,11 +49,11 @@ const sections = [
             <span class="text-[26px] tablet:text-[34px] tracking-[0.1em]">LUMIÈRE</span>
             <span class="text-[9px] tablet:text-[11px] tracking-[0.2em]">JEWELRY GALLERY</span>
           </RouterLink>
-          <p class="pt-5 laptop:pt-7">Celebrating the artistry of jewelry</p>
+          <p class="pt-5 tablet:pt-7">Celebrating the artistry of jewelry</p>
           <br />
           <p>and the beauty of Human expression</p>
           <div
-            class="flex py-4 space-x-6 border-b border-gold-400/30 laptop:flex-row laptop:gap-9 laptop:border-none laptop:space-x-0 laptop:pt-12"
+            class="flex py-4 space-x-6 tablet:flex-row tablet:gap-9 tablet:space-x-0 tablet:pt-12"
           >
             <button class="footer__icon group transition-colors duration-300">
               <svg
@@ -144,32 +146,41 @@ const sections = [
         </div>
 
         <div
-          class="flex flex-col laptop:flex-1 laptop:flex-row laptop:gap-12 laptop:justify-around"
+          class="flex-1 grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-8 tablet:gap-6 laptop:gap-12"
         >
           <!-- section.desktopOnly只會在桌機上顯示 -->
           <div
             v-for="section in sections"
             :key="section.key"
-            :class="{ 'hidden laptop:block': section.desktopOnly }"
+            :class="{ 'hidden tablet:block': section.desktopOnly }"
             class="text-gold-500"
           >
             <div
-              class="footer-nav-title flex flex-col border-b border-gold-400/30 py-1 laptop:border-none"
+              class="footer-nav-title flex flex-col border-b border-gold-400/30 py-2 tablet:py-1 tablet:border-none"
             >
-              <div class="flex justify-between items-center gap-2 laptop:pb-5">
+              <div class="flex justify-between items-center gap-2 tablet:pb-5">
                 <p class="min-w-0 truncate">{{ section.title }}</p>
                 <button
                   @click="toggleMenu(section.key)"
-                  class="toggle-bar flex laptop:hidden shrink-0"
+                  class="toggle-bar flex tablet:hidden shrink-0 -m-2 p-2"
                   :class="{ 'is-open': openSections[section.key] }"
                 >
                   <span class="bar bar-col"></span>
                   <span class="bar bar-flex"></span>
                 </button>
               </div>
-              <ul :class="[openSections[section.key] ? 'block' : 'hidden', 'laptop:block']">
-                <li v-for="item in section.items" :key="item" class="laptop:leading-10">
-                  <a href="#" class="text-cream/60 hover:text-gold-500"> {{ item }}</a>
+              <ul :class="[openSections[section.key] ? 'block' : 'hidden', 'tablet:block']">
+                <li
+                  v-for="item in section.items"
+                  :key="item"
+                  class="py-1 tablet:py-0 tablet:leading-10"
+                >
+                  <a
+                    href="#"
+                    class="inline-block py-1 text-cream/60 hover:text-gold-500 active:text-gold-500 transition-colors duration-200"
+                  >
+                    {{ item }}</a
+                  >
                 </li>
               </ul>
             </div>
@@ -177,7 +188,7 @@ const sections = [
         </div>
       </div>
 
-      <p class="py-4 display-inline laptop:pt-10 text-sm text-cream/50">
+      <p class="py-4 display-inline tablet:pt-10 text-sm text-cream/50">
         © 2026 Lumière Jewelry Gallery. All Rights Reserved.
       </p>
     </div>
