@@ -1,7 +1,7 @@
 /* 同理base.css */
 @layer utilities {
-  /* auth的跳轉link */
-  .link--auth {
-    @apply text-gold-500 border-b border-transparent hover:opacity-70 hover:border-b-gold-500 transition duration-300 cursor-pointer;
+  /* 這隔離header預設高度用的 */
+  .header-offset {
+    padding-top: var(--header-height, 80px);
   }
 }

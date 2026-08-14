@@ -1,9 +1,5 @@
 @layer components {
-  /* header and footer專用 */
-  .page-wrapper {
-    @apply mx-auto  w-full  px-6 tablet:px-8 laptop:px-12;
-  }
-  /* 其他頁面統一用這個 */
+  /* 通用容器寬度限制 */
   .page-container {
     @apply mx-auto  w-full  px-6 tablet:px-8 laptop:px-12;
   }
@@ -30,6 +26,10 @@
   }
   .auth__title {
     @apply text-[42px] laptop:text-[56px] text-center tracking-wide font-serif pb-8 tablet:landscape:pt-8;
+  }
+  /* auth的跳轉link */
+  .link--auth {
+    @apply text-gold-500 border-b border-transparent hover:opacity-70 hover:border-b-gold-500 transition duration-300 cursor-pointer;
   }
 
   /* 給vFadeIn.ts用的 */
