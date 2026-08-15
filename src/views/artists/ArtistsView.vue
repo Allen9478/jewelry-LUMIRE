@@ -4,7 +4,7 @@ import GoldDivider from '@/components/ui/GoldDivider.vue'
 import artists from '@/data/artists.json'
 </script>
 <template>
-  <div class="page-container my-8 tablet:my-12">
+  <div class="page-container my-8 space-y-6 tablet:my-12">
     <div class="text__group flex flex-col items-start">
       <div v-fade-in="{ delay: 0, y: 12 }" class="inline-flex flex-col items-start">
         <p class="text-eyebrow text-gold-500">VOICES IN GOLD AND STONE</p>
@@ -26,6 +26,7 @@ import artists from '@/data/artists.json'
       ></RouterLink>
     </div>
   </div>
+  <GoldDivider variant="full" class="my-12" />
 </template>
 
 <style scoped></style>
