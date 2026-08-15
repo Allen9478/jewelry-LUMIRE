@@ -7,7 +7,7 @@ defineProps({
 </script>
 <template>
   <div
-    class="card w-full overflow-hidden rounded-lg border border-gold-500 shadow-gold-glow tablet:border-transparent tablet:shadow-none tablet:hover:border-gold-500/40 tablet:hover:shadow-gold-glow transition-all group"
+    class="card w-full overflow-hidden rounded-lg border border-gold-500/40 hover:border-gold-500 hover:shadow-gold-glow active:border-gold-500 active:shadow-gold-glow duration-200 transition-all group"
   >
     <div class="aspect-[4/5] tablet:aspect-[3/4]">
       <img
@@ -18,7 +18,7 @@ defineProps({
     </div>
     <div class="card__body px-4 py-2 tablet:px-8">
       <h2
-        class="text-xl ipad:text-2xl desktop:text-3xl ipad:tracking-normal font-serif text-gold-500 tablet:text-cream tablet:group-hover:text-gold-500"
+        class="text-xl ipad:text-2xl desktop:text-3xl ipad:tracking-normal font-serif text-cream group-hover:text-gold-500 group-active:text-gold-500 duration-200 transition-all"
       >
         {{ artist.name }}
       </h2>

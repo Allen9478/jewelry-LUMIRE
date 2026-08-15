@@ -36,7 +36,7 @@ function getFadeDelay(index, base, step) {
       </div>
       <h2
         v-fade-in="{ delay: 80, y: 16 }"
-        class="works-section__heading text-heading laptop:my-4 my-2 font-serif whitespace-nowrap italic"
+        class="works-section__heading text-heading my-2 laptop:my-4 font-serif whitespace-nowrap italic"
       >
         Curated Collection
       </h2>
