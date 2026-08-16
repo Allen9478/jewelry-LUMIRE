@@ -27,7 +27,7 @@
   /* ── Fonts ── */
   --font-serif: 'Playfair Display', 'Noto Serif TC', serif;
   --font-sans: Inter, 'Noto Sans TC', sans-serif;
-  --font-italic: 'Cormorant Garamond', 'Playfair Display', 'Times New Roman', serif;
+  --font-italic: 'Cormorant Garamond', 'Playfair Display', 'Times New Roman';
 
   /* ── Font Size ── */
 
