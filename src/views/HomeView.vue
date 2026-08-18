@@ -1,6 +1,9 @@
 <script setup>
 import { ref, computed } from 'vue'
+import ScrollHint from '@/components/ui/ScrollHint.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
+import SectionHeading from '@/components/ui/SectionHeading.vue'
+import ItemGrid from '@/components/ui/ItemGrid.vue'
 import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
 import BaseArtistAvatar from '@/components/ui/BaseArtistAvatar.vue'
 import GoldDivider from '@/components/ui/GoldDivider.vue'
@@ -154,6 +157,12 @@ function handleSubscribe() {
         </div>
       </div>
     </div>
+    <div
+      class="hidden tablet:block absolute bottom-16 left-1/2 -translate-x-1/2 text-gold-500 z-10"
+      aria-hidden="true"
+    >
+      <ScrollHint />
+    </div>
   </section>
 
   <section
@@ -172,123 +181,36 @@ function handleSubscribe() {
     <!-- 手機版暗化遮罩 -->
     <div class="absolute inset-0 bg-black/20" />
   </section>
-  <section class="page-container home-works-section">
-    <div class="home-works-section__container flex flex-col items-start">
-      <div v-fade-in="{ delay: 0, y: 12 }" class="inline-flex flex-col items-start">
-        <p class="home-works-section__eyebrow tablet:block uppercase text-eyebrow text-gold-500">
-          FEATURED WORKS
-        </p>
-        <GoldDivider variant="fade" class="mt-2" />
-      </div>
-      <div
-        class="home-works-section__heading-group flex flex-col tablet:flex-row tablet:justify-between tablet:items-center tablet:py-8 w-full"
-      >
-        <h2
-          v-fade-in="{ delay: 80, y: 16 }"
-          class="home-works-section__heading text-heading my-4 tablet:my-0 font-serif"
-        >
-          Curated Pieces
-        </h2>
-
-        <BaseButton
-          tag="RouterLink"
-          to="works"
-          v-fade-in="{ delay: 80, y: 16 }"
-          variant="ghost"
-          class="home-works-section__view-all inline-flex justify-start items-center"
-          ><span class="text-btn tablet:text-btn-lg"> VIEW ALL WORKS </span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-6 ml-2"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
-            /></svg
-        ></BaseButton>
-      </div>
-    </div>
-    <div
-      class="home-works-section__grid grid gap-4 tablet:gap-5 laptop:gap-6 grid-cols-1 tablet:grid-cols-3 laptop:grid-cols-4 pt-10 tablet:pt-15 desktop:pt-20 place-items-center"
+  <section class="page-container home-works-section space-y-8 tablet:space-y-12">
+    <SectionHeading
+      eyebrow="FEATURED WORKS"
+      title="Curated Pieces"
+      linkTo="works"
+      linkText="VIEW ALL WORKS"
+    />
+    <ItemGrid
+      :items="uniqueDesignerWorks"
+      grid-class="grid-cols-1 tablet:grid-cols-3 laptop:grid-cols-4"
     >
-      <div
-        v-for="(work, i) in uniqueDesignerWorks"
-        v-fade-in="{
-          delay: 200 + i * 100,
-          y: 28,
-          mobile: { delay: 100 + i * 60, y: 16 },
-        }"
-        :key="work.id"
-        class="flex w-full"
-      >
-        <BaseWorkCard :work="work"></BaseWorkCard>
-      </div>
-    </div>
+      <template #default="{ item }">
+        <BaseWorkCard :work="item" />
+      </template>
+    </ItemGrid>
   </section>
-  <GoldDivider class="w-full my-20 tablet:my-40" />
+  <GoldDivider variant="full" class="w-full my-20 tablet:my-40" />
 
-  <section class="page-container home-artists-section">
-    <div v-fade-in class="home-artists-section__container">
-      <div v-fade-in="{ delay: 0, y: 12 }" class="inline-flex flex-col items-start">
-        <p class="home-artists-section__eyebrow tablet:block uppercase text-eyebrow text-gold-500">
-          ARTISTS
-        </p>
-        <GoldDivider variant="fade" class="mt-2" />
-      </div>
-      <div
-        class="home-artists-section__heading-group flex flex-col tablet:flex-row tablet:justify-between tablet:items-center tablet:py-8"
-      >
-        <h2
-          v-fade-in="{ delay: 80, y: 16 }"
-          class="home-artists-section__heading text-heading my-4 tablet:my-0 font-serif"
-        >
-          Visionaries Behind Beauty
-        </h2>
-
-        <BaseButton
-          tag="RouterLink"
-          to="artists"
-          v-fade-in="{ delay: 80, y: 16 }"
-          variant="ghost"
-          class="home-artists-section__view-all inline-flex justify-start items-center text-body-sm"
-          ><span class="text-btn tablet:text-btn-lg"> VIEW ALL ARTISTS </span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-6 ml-2"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
-            /></svg
-        ></BaseButton>
-      </div>
-    </div>
-    <div
-      v-fade-in="{ delay: 300 }"
-      class="home-artists-section__grid grid grid-cols-2 gap-3 tablet:grid-cols-4 tablet:gap-5 desktop:gap-7 pt-10 tablet:pt-15 desktop:pt-20"
-    >
-      <BaseArtistAvatar
-        v-for="(artist, i) in artists"
-        v-fade-in="{
-          delay: 200 + i * 100,
-          y: 28,
-          mobile: { delay: 100 + i * 60, y: 16 },
-        }"
-        :key="artist.id"
-        :artist="artist"
-        class="flex flex-col items-center"
-      ></BaseArtistAvatar>
-    </div>
+  <section class="page-container home-artists-section space-y-8 tablet:space-y-12">
+    <SectionHeading
+      eyebrow="ARTISTS"
+      title="Visionaries Behind Beauty"
+      linkTo="artists"
+      linkText="VIEW ALL ARTISTS"
+    />
+    <ItemGrid :items="artists" grid-class="grid-cols-2 tablet:grid-cols-4">
+      <template #default="{ item }">
+        <BaseArtistAvatar :artist="item" />
+      </template>
+    </ItemGrid>
   </section>
   <GoldDivider class="w-full my-20 tablet:my-40" />
 
@@ -402,7 +324,7 @@ function handleSubscribe() {
   </section>
 
   <section
-    class="home-newsletter-section border-y border-gold-500/20 flex flex-col items-center justify-center gap-8 px-6 py-16 my-10 tablet:my-0 tablet:mb-5 tablet:py-20 laptop:py-24 w-screen ml-[calc(50%_-_50vw)] mr-[calc(50%_-_50vw)] bg-cover bg-center"
+    class="home-newsletter-section border-y border-gold-500/30 flex flex-col items-center justify-center gap-8 px-6 py-16 my-10 tablet:my-0 tablet:mb-5 tablet:py-20 laptop:py-24 w-screen ml-[calc(50%_-_50vw)] mr-[calc(50%_-_50vw)] bg-cover bg-center"
   >
     <div
       v-fade-in="{ delay: 200, y: 20 }"

@@ -29,7 +29,7 @@ function getArtistWorks(artistName) {
             class="artists-carousel__image-wrap relative aspect-[3/5] tablet:aspect-[4/5] overflow-hidden"
           >
             <img
-              :src="getImageUrl(`artists/${artist.image_detail}`)"
+              :src="getImageUrl(`artists/${artist.image}`)"
               :alt="artist.name"
               class="artists-carousel__image w-full h-full object-cover"
               loading="lazy"

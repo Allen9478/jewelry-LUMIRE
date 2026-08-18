@@ -13,7 +13,7 @@ defineExpose({ infoSectionRef })
 <template>
   <div
     ref="infoSectionRef"
-    class="page-container artist-detail__info mt-12 tablet:mt-24 space-y-6 tablet:grid tablet:grid-cols-[minmax(0,600px)_1fr] tablet:max-w-[1200px] tablet:mx-auto tablet:gap-24"
+    class="page-container artist-detail__info mt-12 tablet:mt-24 space-y-6 tablet:grid tablet:grid-cols-[minmax(0,600px)_1fr] tablet:max-w-[1200px] tablet:mx-auto tablet:gap-24 desktop:gap-48"
   >
     <div class="artist-detail__info-content space-y-4">
       <p class="text-eyebrow text-gold-500">BIOGRAPHY</p>

@@ -11,7 +11,7 @@ defineProps({
 <template>
   <RouterLink
     to="/artists"
-    class="@container artists-card group inline-flex flex-col items-center focus-visible:outline-none"
+    class="@container artists-card w-full inline-flex flex-col items-center focus-visible:outline-none group"
   >
     <div
       class="artists-avatar rounded-full overflow-hidden border border-gray-800 mx-auto transition-shadow duration-400 ease-out"

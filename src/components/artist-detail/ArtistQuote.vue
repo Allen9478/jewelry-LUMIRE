@@ -5,14 +5,17 @@ defineProps({
 </script>
 <template>
   <div
-    class="artist-detail__quote-group border-y border-gold-500/20 flex flex-col items-center justify-center text-center gap-4 px-6 py-16 my-10 tablet:my-0 tablet:mb-5 tablet:py-20 laptop:py-24 w-screen ml-[calc(50%_-_50vw)] mr-[calc(50%_-_50vw)] bg-cover bg-center"
+    class="artist-detail__quote-group border-y border-gold-500/30 flex flex-col items-center justify-center text-center gap-4 px-6 py-16 my-10 tablet:my-0 tablet:mb-5 tablet:py-20 laptop:py-24 w-screen ml-[calc(50%_-_50vw)] mr-[calc(50%_-_50vw)] bg-cover bg-center"
   >
     <span
       class="artist-detail__quote-mark text-gold-500 text-4xl leading-none font-serif tablet:text-5xl laptop:text-6xl"
       aria-hidden="true"
       >"</span
     >
-    <p class="artist-detail__quote text-body-lg font-italic italic">
+    <!-- 這邊字體有點亂看到要來整理 -->
+    <p
+      class="artist-detail__quote text-body-lg tablet:max-w-2xl tablet:text-2xl font-italic italic"
+    >
       {{ artist.quote }}
     </p>
     <div class="w-12 h-px bg-gold-500 my-4" aria-hidden="true"></div>
