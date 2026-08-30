@@ -1,0 +1,51 @@
+{
+  "id": "natures-forms",
+  "title": "Nature’s Forms",
+  "subtitle": "International Jewelry Exhibition 2024",
+  "status": "CURRENT EXHIBITION",
+
+  "date": "MAY 18 — AUG 25, 2024",
+  "location": "LUMIÈRE GALLERY, TAIPEI",
+  "hours": "TUESDAY–SUNDAY, 10AM–7PM",
+
+  "quote": "Nature does not hurry, yet everything is accomplished.",
+
+  "description": [
+    "Nature's Forms explores the quiet magnificence found in the organic world — the curves of eroded stone, the rhythm of waves, the intricate veins of leaves, and the raw beauty of growth and transformation.",
+    "Through the artistic lens of contemporary jewelers, these natural elements are transformed into timeless works of art in precious metal. Each piece is a dialogue between nature and craft, reflecting the harmony of imperfection and the power of enduring beauty."
+  ],
+
+  "featuredArtist": {
+    "name": "Yu-An Lin",
+    "country": "TAIWAN",
+    "title": "METALSCULPTOR",
+    "bio": [
+      "Yu-An Lin draws inspiration from natural forces and organic decay, translating their raw energy into sculptural jewelry.",
+      "His works embrace imperfection, celebrating the beauty of transformation and the passage of time.",
+      "Each piece is hand-sculpted, capturing a moment of nature's ephemeral grace in enduring metal."
+    ]
+  },
+
+  "visit": {
+    "name": "Lumière Gallery, Taipei",
+    "address": "No. 88, Songgao Rd., Xinyi Dist., Taipei City 110, Taiwan",
+    "viewing": "By appointment for private viewings",
+    "description": "We welcome you to experience the exhibition in an intimate setting.",
+    "button": "Book a Visit →"
+  },
+
+  "pastExhibitions": [
+    {
+      "title": "Ethereal Geometry",
+      "subtitle": "International Jewelry Exhibition 2023"
+    },
+    {
+      "title": "Golden Narratives",
+      "subtitle": "International Jewelry Exhibition 2022"
+    },
+    {
+      "title": "Elements in Motion",
+      "subtitle": "International Jewelry Exhibition 2021"
+    }
+  ]
+}

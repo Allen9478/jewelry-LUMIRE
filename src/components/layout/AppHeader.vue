@@ -59,6 +59,7 @@ function goToLogin() {
           >
             <BaseUnderlineTab
               :to="item.to"
+              :match-names="item.matchNames"
               class="text-xs tablet:text-sm laptop:text-base desktop:text-lg"
             >
               {{ item.name }}

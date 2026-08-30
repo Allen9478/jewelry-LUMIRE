@@ -18,7 +18,7 @@ const routes: RouteRecordRaw[] = [
       },
       {
         path: '/works/:id',
-        name: 'work-detail',
+        name: 'works-detail',
         component: () => import('@/views/works/WorkDetailView.vue'),
       },
       {

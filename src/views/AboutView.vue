@@ -1,11 +1,8 @@
 <script setup>
-import BaseButton from '@/components/ui/BaseButton.vue'
+import AboutTimeLine from '@/components/ui/AboutTimeLine.vue'
 </script>
 <template>
-  <div class="pt-[80px]">
-    <p>我是about</p>
-    <BaseButton v-fade-in="{ delay: 80, y: 16 }" variant="ghost">test</BaseButton>
-  </div>
+  <AboutTimeLine />
 </template>
 
 <style scoped></style>

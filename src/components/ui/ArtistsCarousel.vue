@@ -85,7 +85,7 @@ function getArtistWorks(artistName) {
               <RouterLink
                 v-for="work in getArtistWorks(artist.name)"
                 :key="work.id"
-                :to="{ name: 'work-detail', params: { id: work.id } }"
+                :to="{ name: 'works-detail', params: { id: work.id } }"
                 class="flex-1 aspect-square overflow-hidden border border-gold-500/20 hover:border-gold-500/60 transition-colors"
               >
                 <img

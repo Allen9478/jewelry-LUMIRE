@@ -140,7 +140,7 @@ function handleSubscribe() {
       </div>
       <div
         v-fade-in="{ delay: 120, y: 8 }"
-        class="@container home-hero__visual-desktop relative hidden tablet:flex tablet:items-center tablet:h-full overflow-hidden tablet:-mr-10 laptop:-mr-14"
+        class="@container home-hero__visual-desktop relative hidden tablet:flex tablet:items-center rounded-t-full tablet:aspect-square tablet:self-center overflow-hidden tablet:-mr-10 laptop:-mr-14 wide:mt-16"
       >
         <img
           src="../assets/images/home/home-hero-ring.webp"
@@ -148,10 +148,10 @@ function handleSubscribe() {
           fetchpriority="high"
           width="1254"
           height="1254"
-          class="home-hero__visual-img w-[100cqw] tablet:h-[100cqw] laptop:h-[110cqw] desktop:h-[100cqw] wide:w-[100cqw] object-cover"
+          class="home-hero__visual-img absolute top-0 left-0 w-full h-full object-cover object-bottom"
         />
         <div
-          class="home-hero__visual-circle absolute tablet:top-[48%] tablet:left-[50%] -translate-x-1/2 -translate-y-1/2 tablet:w-[140cqw] tablet:h-[120cqw] wide:w-[140cqw] wide:h-[110cqw] rounded-full pointer-events-none"
+          class="home-hero__visual-circle absolute tablet:top-[47%] tablet:left-[50%] -translate-x-1/2 -translate-y-1/2 tablet:w-[140cqw] tablet:h-[120cqw] rounded-full pointer-events-none"
         >
           <div class="home-hero__visual-circle-ring absolute inset-0 rounded-full"></div>
         </div>

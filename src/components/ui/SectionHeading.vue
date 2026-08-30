@@ -5,6 +5,7 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 defineProps({
   eyebrow: { type: String, required: true },
   title: { type: String, required: true },
+  desc: { type: String, default: null },
   linkTo: { type: String, default: null },
   linkText: { type: String, default: null },
 })
@@ -26,6 +27,7 @@ defineProps({
       >
         {{ title }}
       </h2>
+
       <!-- 都有值btn才會出現 -->
       <BaseButton
         v-if="linkTo && linkText"
@@ -50,6 +52,7 @@ defineProps({
           /></svg
       ></BaseButton>
     </div>
+    <p v-if="desc" class="text-subtext text-cream">{{ desc }}</p>
   </div>
 </template>
 
