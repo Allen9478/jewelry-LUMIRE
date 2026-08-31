@@ -37,15 +37,18 @@
   "pastExhibitions": [
     {
       "title": "Ethereal Geometry",
-      "subtitle": "International Jewelry Exhibition 2023"
+      "subtitle": "International Jewelry Exhibition 2023",
+      "img": "silent-reflections-entrance.webp"
     },
     {
       "title": "Golden Narratives",
-      "subtitle": "International Jewelry Exhibition 2022"
+      "subtitle": "International Jewelry Exhibition 2022",
+      "img": "sovereign-light-entrance.webp"
     },
     {
       "title": "Elements in Motion",
-      "subtitle": "International Jewelry Exhibition 2021"
+      "subtitle": "International Jewelry Exhibition 2021",
+      "img": "fractured-light-entrance.webp"
     }
   ]
 }
