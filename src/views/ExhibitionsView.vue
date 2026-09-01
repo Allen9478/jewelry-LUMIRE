@@ -4,7 +4,6 @@ import visitImage from '@/assets/images/exhibition/exhibition-location拷貝.web
 import ItemGrid from '@/components/ui/ItemGrid.vue'
 import SectionHeading from '@/components/ui/SectionHeading.vue'
 import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
-import BaseArtistAvatar from '@/components/ui/BaseArtistAvatar.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import getImageUrl from '@/utils/getImageUrl'
 import GoldDivider from '@/components/ui/GoldDivider.vue'
@@ -12,11 +11,7 @@ import exhibitions from '@/data/exhibitions.json'
 import works from '@/data/works.json'
 import artists from '@/data/artists.json'
 
-console.log('artists 原始資料:', artists)
-console.log('第一筆資料長相:', artists[0])
-
 const artistExample = artists.find((a) => a.id === 'yu_an_lin')
-console.log('找到的結果:', artistExample)
 
 function randomWorks(arr, count) {
   const work = [...arr]
@@ -33,7 +28,7 @@ function randomWorks(arr, count) {
 
   return work.slice(min)
 }
-const fuckData = randomWorks(works, 3)
+const fuckData = randomWorks(works, 6)
 </script>
 <template>
   <div class="exhibitions space-y-10">
@@ -53,14 +48,9 @@ const fuckData = randomWorks(works, 3)
         :desc="exhibitions.subtitle"
         class="page-container absolute bottom-0 tablet:bottom-12 tablet:left-12 z-10"
       />
-      <!-- <div class="page-container absolute bottom-0 tablet:bottom-12 tablet:left-12 z-10 text-white">
-        <p class="text-gold-500 text-sm tracking-widest">CURRENT EXHIBITION</p>
-        <h1 class="font-serif italic text-heading">{{ exhibitions.title }}</h1>
-        <p class="text-gray-300">International Jewelry Exhibition 2026</p>
-      </div> -->
     </div>
     <div
-      class="exhibitions__info page-container flex flex-col tablet:flex-row my-6 space-y-4 text-cream/80"
+      class="exhibitions__info page-container flex flex-col tablet:flex-row tablet:justify-around space-y-4 tablet:space-y-0 text-cream/80"
     >
       <p class="flex space-x-4 items-center">
         <svg
@@ -79,6 +69,7 @@ const fuckData = randomWorks(works, 3)
         </svg>
         <span>{{ exhibitions.date }}</span>
       </p>
+      <div class="hidden laptop:block w-px h-6 bg-gold-500/60"></div>
       <p class="flex space-x-4 items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -101,7 +92,9 @@ const fuckData = randomWorks(works, 3)
         </svg>
         <span>{{ exhibitions.location }}</span>
       </p>
-      <p class="flex space-x-4">
+      <div class="hidden laptop:block w-px h-6 bg-gold-500/60"></div>
+
+      <p class="flex space-x-4 items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -120,78 +113,106 @@ const fuckData = randomWorks(works, 3)
         <span>{{ exhibitions.hours }}</span>
       </p>
     </div>
-    <div class="exhibitions__quote page-container">
+    <div
+      class="exhibitions__quote page-container grid tablet:grid-cols-[40%_60%] space-y-4 tablet:space-y-0 tablet:space-x-4"
+    >
       <p class="relative texttt text-heading-sm text-gold-500 p-8 italic">
         {{ exhibitions.quote }}
       </p>
-      <p v-for="(description, index) in exhibitions.description" :key="index">
-        {{ description }}
-      </p>
+      <div
+        class="flex flex-col tablet:justify-center tablet:border-l tablet:border-gold-500/60 space-y-4 tablet:px-8"
+      >
+        <p v-for="(description, index) in exhibitions.description" :key="index">
+          {{ description }}
+        </p>
+      </div>
     </div>
-    <section class="exhibitions__works page-container">
-      <p class="text-subhead text-gold-500 my-4">WORK IN EXHIBITIONS</p>
-      <ItemGrid :items="fuckData" grid-class="grid-cols-1 tablet:grid-cols-3 desktop:grid-cols-4">
+    <section class="exhibitions__works page-container space-y-6">
+      <p class="text-subhead text-gold-500">WORK IN EXHIBITIONS</p>
+      <ItemGrid :items="fuckData" grid-class="grid-cols-1 tablet:grid-cols-3 " class="">
         <template #default="{ item }">
           <BaseWorkCard :work="item" />
         </template>
       </ItemGrid>
     </section>
-    <!-- 從別的頁面搬過來的看看樣式先 -->
-    <div
+    <section
       v-fade-in="{ delay: 380, y: 20, mobile: { delay: 200, y: 14 } }"
       class="exhibitions__artist page-container"
     >
-      <p class="text-subhead text-gold-500">ABOUT THE ARTIST</p>
-      <div v-if="artistExample" class="workdetail-hero__artist-grid grid grid-cols-[35%_65%] mt-4">
-        <BaseArtistAvatar :artist="artistExample" :show-name="false" class="justify-center" />
-        <div class="workdetail-hero__artist-info flex flex-col tablet:justify-center gap-4 pl-6">
-          <h2 class="workdetail-hero__artist-name text-subhead tablet:text-[24px] font-serif">
-            {{ artistExample.name }}
-          </h2>
-          <p
-            class="workdetail-hero__artist-bio text-label tablet:text-label-lg tablet:line-clamp-3"
-          >
-            {{ artistExample.short_bio }}
-          </p>
-          <BaseButton
-            tag="RouterLink"
-            :to="`/artists/${artistExample.id}`"
-            v-fade-in="{ delay: 460, y: 16, mobile: { delay: 240, y: 12 } }"
-            variant="ghost"
-            class="workdetail-hero__artist-link inline-flex justify-start items-center text-body-sm"
-            ><span class="text-btn tablet:text-btn-lg normal-case"> View Artist Profile </span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="size-6 ml-2"
+      <p class="tablet:hidden text-subhead text-gold-500">FEATURED ARTIST</p>
+      <div
+        v-if="artistExample"
+        class="exhibitions__artist-grid grid grid-cols-[40%_60%] tablet:grid-cols-[50%_50%] laptop:grid-cols-[40%_60%] desktop:grid-cols-[30%_70%]"
+      >
+        <div class="wrapper-img aspect-[3/4] max-h-[500px] overflow-hidden">
+          <img
+            src="../assets/images/artists/yu_an_lin-profilesmall.webp"
+            alt="#"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="exhibitions__artist-info flex flex-col justify-center">
+          <div class="space-y-4 mt-10 tablet:ml-8 laptop:ml-12 desktop:ml-16">
+            <p class="hidden tablet:block text-subhead text-gold-500">FEATURED ARTIST</p>
+
+            <h2 class="exhibitions__artist-name text-heading font-serif">
+              {{ artistExample.name }}
+            </h2>
+            <div class="exhibitions__artist-info flex text-label">
+              <p class="pr-2 border-r border-gold-500/60">
+                {{ exhibitions.featuredArtist.country }}
+              </p>
+              <p class="pl-2">{{ exhibitions.featuredArtist.title }}</p>
+            </div>
+            <p
+              v-for="(bio, index) in exhibitions.featuredArtist.bio"
+              :key="index"
+              class="exhibitions__artist-bio hidden tablet:block text-label tablet:text-label-lg"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
-              /></svg
-          ></BaseButton>
+              {{ bio }}
+            </p>
+            <BaseButton
+              tag="RouterLink"
+              :to="`/artists/${artistExample.id}`"
+              v-fade-in="{ delay: 460, y: 16, mobile: { delay: 240, y: 12 } }"
+              variant="ghost"
+              class="workdetail-hero__artist-link inline-flex justify-start items-center text-body-sm"
+              ><span class="text-btn tablet:text-btn-lg normal-case"> View Artist Profile </span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6 ml-2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
+                /></svg
+            ></BaseButton>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
     <!-- 先寫股價樣式明天記得條 -->
     <section class="exhibitions__visit flex flex-col">
       <h2 class="text-gold-500 text-subhead page-container">VISIT</h2>
-      <div class="exhibitions__visit-group flex flex-col tablet:grid tablet:grid-cols-[3fr_4fr]">
+      <div
+        class="exhibitions__visit-group flex flex-col tablet:grid tablet:grid-cols-[50%_50%] laptop:grid-cols-[45%_55%] desktop:grid-cols-[35%_65%]"
+      >
         <div
-          class="exhibitions__visit-info page-container flex flex-col gap-8 p-10 tablet:justify-center tablet:p-16"
+          class="exhibitions__visit-info page-container flex flex-col justify-center gap-8 p-8 tablet:p-16"
         >
-          <div class="flex space-x-4">
+          <div class="flex items-start space-x-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="size-10 text-gold-500"
+              class="shrink-0 size-8 text-gold-500"
             >
               <path
                 stroke-linecap="round"
@@ -209,14 +230,14 @@ const fuckData = randomWorks(works, 3)
               <span>{{ exhibitions.visit.address }}</span>
             </div>
           </div>
-          <div class="flex space-x-4">
+          <div class="flex items-start space-x-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="size-10 text-gold-500"
+              class="shrink-0 size-8 text-gold-500"
             >
               <path
                 stroke-linecap="round"
@@ -230,7 +251,7 @@ const fuckData = randomWorks(works, 3)
               <span>{{ exhibitions.visit.description }}</span>
             </div>
           </div>
-          <BaseButton>
+          <BaseButton class="w-72 mx-auto laptop:ml-0">
             <span class="text-btn tablet:text-btn-lg">{{ exhibitions.visit.button }}</span>
           </BaseButton>
         </div>
@@ -247,16 +268,56 @@ const fuckData = randomWorks(works, 3)
     </section>
     <section class="exhibitions__pastExhibitions page-container">
       <h2 class="text-gold-500 text-subhead my-4">PAST EXHIBITIONS</h2>
-      <div class="exhibitions__pastExhibitions-group flex flex-col space-y-2">
+      <div
+        class="exhibitions__pastExhibitions-group flex flex-col tablet:flex-row space-y-2 tablet:space-y-0 tablet:space-x-4"
+      >
         <div
           v-for="(pastExhibitions, index) in exhibitions.pastExhibitions"
           :key="index"
-          class="pastExhibitions__item flex border border-gold-500/20"
+          class="pastExhibitions__item flex tablet:block relative border border-gold-500/20 tablet:w-1/3 tablet:h-[220px] tablet:overflow-hidden"
         >
-          <img :src="getImageUrl(`exhibition/${pastExhibitions.img}`)" class="w-1/4 object-cover" />
-          <div class="pastExhibitions__item-info w-3/4 px-12">
-            <p>{{ pastExhibitions.title }}</p>
+          <img
+            :src="getImageUrl(`exhibition/${pastExhibitions.img}`)"
+            class="w-1/4 object-cover tablet:absolute tablet:inset-0 tablet:w-full tablet:h-full"
+          />
+          <!-- 桌機版加一層漸層遮罩,讓文字在圖片上更好讀 -->
+          <div
+            class="hidden tablet:block tablet:absolute tablet:inset-0 tablet:bg-gradient-to-t tablet:from-black/70 tablet:via-black/20 tablet:to-transparent"
+          ></div>
+
+          <div
+            class="pastExhibitions__item-info w-3/4 px-12 tablet:absolute tablet:bottom-6 tablet:left-6 tablet:z-10 tablet:w-auto tablet:px-0"
+          >
+            <p class="text-body">{{ pastExhibitions.title }}</p>
             <span class="text-label">{{ pastExhibitions.subtitle }}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="exhibitions__pastExhibitions page-container">
+      <h2 class="text-gold-500 text-subhead my-4">PAST EXHIBITIONS</h2>
+      <div
+        class="exhibitions__pastExhibitions-group flex flex-col tablet:flex-row space-y-4 tablet:space-y-0 tablet:space-x-4"
+      >
+        <div
+          v-for="(pastExhibitions, index) in exhibitions.pastExhibitions"
+          :key="index"
+          class="pastExhibitions__item block relative border border-gold-500/20 tablet:w-1/3 h-[220px] overflow-hidden"
+        >
+          <img
+            :src="getImageUrl(`exhibition/${pastExhibitions.img}`)"
+            class="object-cover absolute inset-0 w-full h-full"
+          />
+          <!-- 桌機版加一層漸層遮罩,讓文字在圖片上更好讀 -->
+          <div
+            class="block absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"
+          ></div>
+
+          <div
+            class="pastExhibitions__item-info absolute bottom-6 left-6 z-10 w-auto px-0 space-y-2"
+          >
+            <p class="text-subhead">{{ pastExhibitions.title }}</p>
+            <span class="text-label text-gray-muted">{{ pastExhibitions.subtitle }}</span>
           </div>
         </div>
       </div>
