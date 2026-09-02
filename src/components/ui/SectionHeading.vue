@@ -52,7 +52,7 @@ defineProps({
           /></svg
       ></BaseButton>
     </div>
-    <p v-if="desc" class="text-subtext text-cream">{{ desc }}</p>
+    <p v-if="desc" class="text-subtext text-gray-muted">{{ desc }}</p>
   </div>
 </template>
 
