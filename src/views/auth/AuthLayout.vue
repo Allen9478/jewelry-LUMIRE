@@ -90,7 +90,9 @@
     </div>
 
     <!-- 表單區：用 Transition 切換 -->
-    <div class="auth__form-wrap tablet:flex-1 tablet:flex tablet:flex-col tablet:justify-center">
+    <div
+      class="auth__form-wrap tablet:flex-1 tablet:flex tablet:flex-col tablet:justify-center header-offset-mobile-only"
+    >
       <RouterView v-slot="{ Component }">
         <Transition name="flip" mode="out-in">
           <component :is="Component" />
