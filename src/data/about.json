@@ -1,0 +1,94 @@
+{
+  "brand": {
+    "name": "LUMIÈRE JEWELRY GALLERY"
+  },
+  "navigation": [
+    { "label": "Home", "link": "#" },
+    { "label": "Works", "link": "#" },
+    { "label": "Artists", "link": "#" },
+    { "label": "Exhibitions", "link": "#" },
+    { "label": "About", "link": "#", "active": true },
+    { "label": "Contact", "link": "#" }
+  ],
+  "languages": ["EN"],
+  "hero": {
+    "subtitle": "ABOUT LUMIÈRE",
+    "title": "We believe jewelry is not decoration. It is memory made tangible."
+  },
+  "philosophy": {
+    "sectionTitle": "OUR PHILOSOPHY",
+    "paragraphs": [
+      "Lumière Jewelry Gallery was founded on a simple conviction: jewelry is one of the most intimate forms of art. It holds emotion, carries stories, and outlives generations.",
+      "We work with visionary artists who transform rare materials into enduring expressions of identity, culture, and memory.",
+      "Our role is not to follow trends, but to reveal significance. Through thoughtful curation and deep collaboration, we create a space where exceptional craftsmanship meets meaningful connection."
+    ]
+  },
+  "exhibitionHighlights": [
+    {
+      "year": 2018,
+      "title": "Founding Exhibition",
+      "subtitle": "Origins"
+    },
+    {
+      "year": 2019,
+      "title": "Forms of Devotion",
+      "subtitle": "Group Exhibition"
+    },
+    {
+      "year": 2021,
+      "title": "Natural Expressions",
+      "subtitle": "Curated by Lumière"
+    },
+    {
+      "year": 2022,
+      "title": "Beyond Ornament",
+      "subtitle": "Solo Focus"
+    },
+    {
+      "year": 2024,
+      "title": "Memory, Transformed",
+      "subtitle": "Anniversary Exhibition"
+    }
+  ],
+  "pillars": [
+    {
+      "title": "Curation",
+      "description": "We seek works of depth and intention. Each piece is chosen for its artistic voice, cultural relevance, and timeless resonance."
+    },
+    {
+      "title": "Craft",
+      "description": "We honor uncompromising craftsmanship and the mastery behind every detail. True luxury lies in integrity of making."
+    },
+    {
+      "title": "Community",
+      "description": "We foster meaningful relationships between artists, collectors, and ideas—building a community around contemporary jewelry as art."
+    }
+  ],
+  "team": [
+    {
+      "id": "Isabella_Chen",
+      "name": "Isabella Chen",
+      "title": "FOUNDER & DIRECTOR",
+      "image": "isabella-chen.webp"
+    },
+    {
+      "id": "Marcus_Lin",
+      "name": "Marcus Lin",
+      "title": "CURATOR",
+      "image": "marcus-lin.webp"
+    },
+    {
+      "id": "Sophia_Wu",
+      "name": "Sophia Wu",
+      "title": "COLLECTOR RELATIONS",
+      "image": "sophia-wu.webp"
+    },
+    {
+      "id": "Henry_Chang",
+      "name": "Henry Chang",
+      "title": "GALLERY MANAGER",
+      "image": "henry-chang.webp"
+    }
+  ],
+  "quote": "Jewelry is what remains when the moment has passed, and what gives that moment its meaning."
+}

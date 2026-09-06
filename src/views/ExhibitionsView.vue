@@ -32,7 +32,7 @@ const fuckData = randomWorks(works, 6)
 </script>
 <template>
   <div class="exhibitions flex flex-col gap-8 desktop:gap-12">
-    <div class="exhibitions__hero relative w-full h-[250px] md:h-[600px] overflow-hidden">
+    <div class="exhibitions__hero relative w-full h-[350px] md:h-[600px] overflow-hidden">
       <img
         :src="heroImage"
         :alt="natural"

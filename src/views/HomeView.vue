@@ -5,7 +5,8 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 import SectionHeading from '@/components/ui/SectionHeading.vue'
 import ItemGrid from '@/components/ui/ItemGrid.vue'
 import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
-import BaseArtistAvatar from '@/components/ui/BaseArtistAvatar.vue'
+import BaseAvatar from '@/components/ui/BaseAvatar.vue'
+import QuoteBlock from '@/components/ui/QuoteBlock.vue'
 import GoldDivider from '@/components/ui/GoldDivider.vue'
 import breathing from '@/assets/images/breathing-bg.png'
 import artists from '@/data/artists.json'
@@ -33,7 +34,7 @@ function handleSubscribe() {
 }
 </script>
 <template>
-  <section class="relative page-container home-hero h-auto tablet:h-[95dvh]">
+  <section class="relative page-container home-hero h-auto tablet:h-[95dvh] header-offset">
     <div
       class="home-hero__container tablet:grid tablet:grid-cols-[50%_50%] mt-2 tablet:mt-0 tablet:h-full"
     >
@@ -140,7 +141,7 @@ function handleSubscribe() {
       </div>
       <div
         v-fade-in="{ delay: 120, y: 8 }"
-        class="@container home-hero__visual-desktop relative hidden tablet:flex tablet:items-center rounded-t-full tablet:aspect-square tablet:self-center overflow-hidden tablet:-mr-10 laptop:-mr-14 wide:mt-16"
+        class="@container home-hero__visual-desktop relative hidden tablet:flex tablet:items-center rounded-t-full tablet:aspect-square tablet:self-center overflow-hidden tablet:-mr-10 laptop:-mr-14 wide:mt-12"
       >
         <img
           src="../assets/images/home/home-hero-ring.webp"
@@ -158,7 +159,7 @@ function handleSubscribe() {
       </div>
     </div>
     <div
-      class="hidden tablet:block absolute bottom-16 left-1/2 -translate-x-1/2 text-gold-500 z-10"
+      class="hidden tablet:block absolute bottom-4 left-1/2 -translate-x-1/2 text-gold-500 z-10"
       aria-hidden="true"
     >
       <ScrollHint />
@@ -208,7 +209,7 @@ function handleSubscribe() {
     />
     <ItemGrid :items="artists" grid-class="grid-cols-2 tablet:grid-cols-4">
       <template #default="{ item }">
-        <BaseArtistAvatar :artist="item" />
+        <BaseAvatar :artist="item" />
       </template>
     </ItemGrid>
   </section>
@@ -323,59 +324,33 @@ function handleSubscribe() {
     </div>
   </section>
 
-  <section
-    class="home-newsletter-section border-y border-gold-500/30 flex flex-col items-center justify-center gap-8 px-6 py-16 my-10 tablet:my-0 tablet:mb-5 tablet:py-20 laptop:py-24 w-screen ml-[calc(50%_-_50vw)] mr-[calc(50%_-_50vw)] bg-cover bg-center"
+  <QuoteBlock
+    variant="home"
+    quote="Jewelry is not just an ornament, it is a story, a memory, a work of art."
+    author="LUMIÈRE JEWELRY GALLERY"
   >
-    <div
-      v-fade-in="{ delay: 200, y: 20 }"
-      class="home-newsletter-section__quote-group flex flex-col items-center justify-center text-center text-gold-500 z-10"
-    >
-      <span
-        class="home-newsletter-section__quote-mark text-4xl leading-none font-serif tablet:text-5xl laptop:text-6xl"
-        aria-hidden="true"
-        >"</span
-      >
-
-      <p
-        class="home-newsletter-section__quote mx-auto mt-2 max-w-[280px] text-lg italic font-serif leading-relaxed [text-wrap:balance] ipad:max-w-md ipad:text-xl tablet:max-w-xl tablet:text-2xl laptop:text-[1.75rem]"
-      >
-        Jewelry is not just an ornament, it is a story, a memory, a work of art.
-      </p>
-
-      <p
-        class="home-newsletter-section__author mt-4 text-xs uppercase tracking-wider text-gold-300 tablet:mt-5 tablet:text-sm"
-      >
-        — Lumière Jewelry Gallery
-      </p>
-    </div>
-
-    <div
-      v-fade-in="{ delay: 240, y: 20 }"
-      class="home-newsletter-section__form flex w-full max-w-xs ipad:max-w-sm tablet:max-w-md z-10"
-    >
-      <label for="home-newsletter-email" class="sr-only">Email address</label>
-      <input
-        v-model="email"
-        id="home-newsletter-email"
-        name="email"
-        type="email"
-        autocomplete="email"
-        required
-        placeholder="Enter email to Subscribe"
-        :disabled="submitted"
-        class="home-newsletter-section__input min-w-0 flex-1 border border-gold-600 border-r-0 bg-transparent p-3 text-sm text-white placeholder:text-gold-200/50 focus:outline-none focus:ring-1 focus:ring-gold-400"
-      />
-      <button
-        type="button"
-        aria-label="Subscribe to newsletter"
-        @click="handleSubscribe"
-        :disabled="submitted"
-        class="home-newsletter-section__submit flex shrink-0 items-center justify-center h-[46px] min-w-[110px] bg-gold-500/80 text-black-soft hover:bg-gold-500 hover:text-black transition-colors"
-      >
-        {{ submitted ? 'Thank you!' : 'Subscribe' }}
-      </button>
-    </div>
-  </section>
+    <template #extra>
+      <div class="flex w-[290px] ipad:max-w-sm tablet:max-w-md z-10">
+        <input
+          v-model="email"
+          id="home-newsletter-email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          required
+          placeholder="Enter email to Subscribe"
+          :disabled="submitted"
+          class="min-w-0 flex-1 border border-gold-600 border-r-0 bg-transparent p-3 text-sm text-white placeholder:text-gold-200/50 focus:outline-none focus:ring-1 focus:ring-gold-400"
+        />
+        <button
+          type="submit"
+          class="flex shrink-0 items-center justify-center h-[46px] min-w-[110px] bg-gold-500/80 text-black-soft hover:bg-gold-500 hover:text-black transition-colors"
+        >
+          {{ submitted ? 'Thank you!' : 'Subscribe' }}
+        </button>
+      </div>
+    </template>
+  </QuoteBlock>
 </template>
 
 <style scoped>
@@ -444,16 +419,6 @@ function handleSubscribe() {
   }
   to {
     transform: rotate(360deg);
-  }
-}
-
-/* 768px以上出現背景圖 */
-@media (min-width: 768px) {
-  .home-newsletter-section {
-    position: relative;
-    background-image: url('../assets/images/textures/texture2.webp');
-    background-size: cover;
-    background-position: center;
   }
 }
 </style>

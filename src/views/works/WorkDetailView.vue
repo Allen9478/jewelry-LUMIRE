@@ -3,7 +3,7 @@ import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import works from '@/data/works.json'
 import artists from '@/data/artists.json'
-import BaseArtistAvatar from '@/components/ui/BaseArtistAvatar.vue'
+import BaseAvatar from '@/components/ui/BaseAvatar.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
 import getImageUrl from '@/utils/getImageUrl'
@@ -19,7 +19,7 @@ function getOtherWorks() {
 <template>
   <div
     v-if="work"
-    class="page-container workdetail-hero tablet:grid tablet:grid-cols-[50%_1fr] tablet:h-[90dvh] tablet:mt-2 gap-6"
+    class="page-container workdetail-hero tablet:grid tablet:grid-cols-[50%_1fr] tablet:h-[90dvh] header-offset tablet:mt-2 gap-6"
   >
     <div
       v-fade-in="{ delay: 0, y: 24, mobile: { delay: 0, y: 16 } }"
@@ -77,7 +77,7 @@ function getOtherWorks() {
       >
         <p class="text-eyebrow text-gold-500">ABOUT THE ARTIST</p>
         <div v-if="artist" class="workdetail-hero__artist-grid grid grid-cols-[35%_65%] mt-4">
-          <BaseArtistAvatar :artist="artist" :show-name="false" class="justify-center" />
+          <BaseAvatar :artist="artist" :show-name="false" class="justify-center" />
           <div class="workdetail-hero__artist-info flex flex-col tablet:justify-center gap-4 pl-6">
             <h2 class="workdetail-hero__artist-name text-subhead tablet:text-[24px] font-serif">
               {{ artist.name }}

@@ -10,7 +10,7 @@ const emit = defineEmits(['scroll-to-info'])
 </script>
 <template>
   <div
-    class="relative artist-detail__hero max-w-full tablet:h-[90vh] tablet:w-full tablet:max-h-[900px] overflow-hidden"
+    class="relative artist-detail__hero header-offset-mobile-only max-w-full tablet:h-[90vh] tablet:w-full tablet:max-h-[900px] overflow-hidden"
   >
     <img
       :src="getImageUrl(`artists/${artist.image_detail}`)"

@@ -21,5 +21,5 @@ const variantClass = computed(
 )
 </script>
 <template>
-  <component :is="tag" :class="['h-px w-full', `${variantClass}`]" />
+  <component :is="tag" :class="['h-px ', `${variantClass}`]" />
 </template>

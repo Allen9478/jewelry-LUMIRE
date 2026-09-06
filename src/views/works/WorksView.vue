@@ -25,9 +25,9 @@ function getFadeDelay(index, base, step) {
 </script>
 
 <template>
-  <section class="work-hero">
+  <section class="work-hero tablet:min-h-[460px]">
     <!-- //hero要滿版所以page-container寫在文字區塊即可 -->
-    <div class="page-container text-container mt-4 flex flex-col items-start">
+    <div class="page-container text-container mt-4 flex flex-col items-start header-offset">
       <div v-fade-in="{ delay: 0, y: 12 }" class="inline-flex flex-col items-start">
         <p class="works-section__eyebrow tablet:block text-eyebrow text-gold-500 uppercase">
           WORKS GALLERY
@@ -45,7 +45,8 @@ function getFadeDelay(index, base, step) {
         timeless stories.
       </p>
     </div>
-    <div class="work-hero__image tablet:block hidden w-full overflow-hidden">
+
+    <div class="work-hero__image-desktop tablet:block hidden w-full overflow-hidden">
       <img
         src="../../assets/images/works/works_hero.webp"
         alt="jewelry on rock"
@@ -111,7 +112,6 @@ function getFadeDelay(index, base, step) {
 .work-hero {
   display: flex;
   align-items: stretch; /* 讓圖片欄「拉伸」去符合文字欄的高度 */
-  min-height: 460px; /* 保底高度，避免文字太短時 hero 太扁 */
 }
 
 .text-container {
@@ -127,13 +127,13 @@ function getFadeDelay(index, base, step) {
   color: var(--color-text-muted, #c9c2b3);
 }
 
-.work-hero__image {
+.work-hero__image-desktop {
   flex: 1 1 50%;
   min-height: 0;
   overflow: hidden;
 }
 
-.work-hero__image img {
+.work-hero__image-desktop img {
   width: 100%;
   height: 100%; /* 完全交給 .text-container 決定，不會反過來撐高 work-hero */
   object-fit: cover;
@@ -142,23 +142,9 @@ function getFadeDelay(index, base, step) {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 768px) {
-  .work-hero {
-    width: 100%;
-    aspect-ratio: 3 / 2;
-    min-height: 250px;
-    position: relative;
-    background-image: url('../../assets/images/works/works_hero.webp');
-    background-size: cover;
-    background-position: left -10% center;
-    background-repeat: no-repeat;
-  }
   .text-container {
     justify-content: start;
     /* padding: 20px; */
-  }
-  .work-hero__image {
-    flex: none;
-    /* 手機版圖片給固定高度 */
   }
 }
 </style>

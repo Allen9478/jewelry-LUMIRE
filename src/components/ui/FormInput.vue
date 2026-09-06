@@ -1,14 +1,16 @@
-<!-- AuthInput.vue -->
+<!-- FormInput.vue -->
 <script setup>
 import { ref, computed } from 'vue'
 
 const props = defineProps({
   type: { type: String, default: 'text' },
   label: { type: String, required: true },
+  id: { type: String, default: '' },
 })
 const modelValue = defineModel()
 const showPassword = ref(false)
 
+const inputId = computed(() => props.id || props.label)
 const isPassword = computed(() => props.type === 'password')
 const inputType = computed(() =>
   isPassword.value ? (showPassword.value ? 'text' : 'password') : props.type,
@@ -18,14 +20,14 @@ const inputType = computed(() =>
 <template>
   <div class="relative group">
     <input
-      :id="label"
+      :id="inputId"
       v-model="modelValue"
       :type="inputType"
       placeholder=" "
       class="w-full pt-5 pb-1 outline-none peer bg-transparent text-gold-500 border-b border-gray-muted group-focus-within:border-gold-500"
     />
     <label
-      :for="label"
+      :for="inputId"
       class="absolute origin-[0_0] left-0 top-4 text-body-sm laptop:text-body tracking-[1px] peer-focus:top-0 peer-focus:scale-75 group-focus-within:text-gold-500 peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:scale-75"
       >{{ label }}</label
     >

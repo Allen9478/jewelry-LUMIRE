@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/useAuthStore'
-import AuthInput from '@/components/ui/AuthInput.vue'
+import FormInput from '@/components/ui/FormInput.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 const authStore = useAuthStore()
 const fullname = ref('')
@@ -28,10 +28,10 @@ async function handleSubmit() {
   <div class="auth__form">
     <h2 class="auth__title">New Here?</h2>
     <form @submit.prevent="handleSubmit" class="flex flex-col gap-8">
-      <AuthInput v-model="fullname" type="text" label="FULL NAME" />
-      <AuthInput v-model="email" type="email" label="EMAIL" />
-      <AuthInput v-model="password" type="password" label="PASSWORD" />
-      <AuthInput v-model="confirmPassword" type="password" label="CONFIRM PASSWORD" />
+      <FormInput v-model="fullname" type="text" label="FULL NAME" />
+      <FormInput v-model="email" type="email" label="EMAIL" />
+      <FormInput v-model="password" type="password" label="PASSWORD" />
+      <FormInput v-model="confirmPassword" type="password" label="CONFIRM PASSWORD" />
       <p v-if="authStore.error" class="text-red-500 text-sm">{{ authStore.error }}</p>
       <p v-if="passwordMismatch" class="text-red-500 text-sm">两次密码输入不一致</p>
       <BaseButton

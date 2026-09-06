@@ -7,6 +7,7 @@ export const useFavoriteStore = defineStore('favorite', () => {
   const authStore = useAuthStore()
   const favorites = ref<string[]>([])
   const showLoginModal = ref(false)
+  const isLoading = ref(true) //避免還沒載好時被判斷沒資料
 
   async function toggleFavorite(id: string) {
     if (!authStore.isLoggedIn) {
@@ -21,6 +22,7 @@ export const useFavoriteStore = defineStore('favorite', () => {
     const userId = authStore.user.uid // Firebase Auth 的使用者 id
     const docRef = doc(db, 'favorites', userId, 'items', id)
     const alreadyFavorited = favorites.value.includes(id)
+
     if (alreadyFavorited) {
       favorites.value = favorites.value.filter((f) => f !== id)
     } else {
@@ -42,17 +44,37 @@ export const useFavoriteStore = defineStore('favorite', () => {
     }
   }
   async function fetchFavorites() {
-    if (!authStore.isLoggedIn) return
-
-    const userId = authStore.user.uid
-    const colRef = collection(db, 'favorites', userId, 'items')
-
-    const snapshot = await getDocs(colRef)
-    favorites.value = snapshot.docs.map((doc) => doc.id)
+    if (!authStore.isLoggedIn || !authStore.user?.uid) {
+      favorites.value = []
+      isLoading.value = false
+      return
+    }
+    isLoading.value = true
+    try {
+      const userId = authStore.user.uid
+      const colRef = collection(db, 'favorites', userId, 'items')
+      const snapshot = await getDocs(colRef)
+      favorites.value = snapshot.docs.map((doc) => doc.id)
+    } catch (err) {
+      console.error('fetch favorites failed:', err)
+    } finally {
+      isLoading.value = false
+    }
   }
   function isFavorite(id: string) {
     return favorites.value.includes(id)
   }
-
-  return { favorites, showLoginModal, toggleFavorite, isFavorite, fetchFavorites }
+  function resetFavorites() {
+    favorites.value = []
+    isLoading.value = false
+  }
+  return {
+    favorites,
+    showLoginModal,
+    isLoading,
+    toggleFavorite,
+    isFavorite,
+    fetchFavorites,
+    resetFavorites,
+  }
 })

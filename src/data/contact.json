@@ -1,0 +1,35 @@
+{
+  "title": "Get in Touch",
+  "inquiries": [
+    {
+      "title": "For Acquisitions",
+      "email": "acquisitions@lumiergallery.com",
+      "description": "Inquiries regarding artwork acquisition and private viewings."
+    },
+    {
+      "title": "For Press & Collaboration",
+      "email": "press@lumiergallery.com",
+      "description": "Media inquiries, features, and partnership opportunities."
+    },
+    {
+      "title": "For Exhibition Enquiries",
+      "email": "exhibitions@lumiergallery.com",
+      "description": "Information on upcoming exhibitions and participating artists."
+    }
+  ],
+  "form": {
+    "name": "NAME",
+    "email": "EMAIL",
+    "message": "MESSAGE",
+    "submit": "SEND MESSAGE"
+  },
+  "location": {
+    "name": "Lumière Jewelry Gallery",
+    "address": ["12/F, 8 Pedder Street", "Central, Hong Kong"]
+  },
+  "studioHours": {
+    "label": "STUDIO HOURS",
+    "days": "TUESDAY – SATURDAY",
+    "hours": "11:00 AM – 7:00 PM"
+  }
+}

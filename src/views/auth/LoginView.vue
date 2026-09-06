@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/useAuthStore'
-import AuthInput from '@/components/ui/AuthInput.vue'
+import FormInput from '@/components/ui/FormInput.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 
 const authStore = useAuthStore()
@@ -26,8 +26,8 @@ async function handleSubmit() {
   <div class="auth__form">
     <h2 class="auth__title">Welcome Back</h2>
     <form @submit.prevent="handleSubmit" class="flex flex-col gap-8">
-      <AuthInput v-model="email" type="email" label="EMAIL" />
-      <AuthInput v-model="password" type="password" label="PASSWORD" />
+      <FormInput v-model="email" type="email" label="EMAIL" />
+      <FormInput v-model="password" type="password" label="PASSWORD" />
       <p v-if="authStore.error" class="text-red-500 text-sm">{{ authStore.error }}</p>
       <BaseButton
         type="submit"

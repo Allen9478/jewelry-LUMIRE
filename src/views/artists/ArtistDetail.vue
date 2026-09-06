@@ -8,7 +8,7 @@ import SectionHeading from '@/components/ui/SectionHeading.vue'
 import ItemGrid from '@/components/ui/ItemGrid.vue'
 import ArtistHero from '@/components/artist-detail/ArtistHero.vue'
 import ArtistInfo from '@/components/artist-detail/ArtistInfo.vue'
-import ArtistQuote from '@/components/artist-detail/ArtistQuote.vue'
+import QuoteBlock from '@/components/ui/QuoteBlock.vue'
 
 const route = useRoute()
 
@@ -26,7 +26,7 @@ const scrollToInfo = () => {
 }
 </script>
 <template>
-  <div v-if="artist">
+  <div v-if="artist" class="flex flex-col gap-8 tablet:gap-12">
     <ArtistHero :artist="artist" @scroll-to-info="scrollToInfo" />
 
     <div
@@ -47,6 +47,6 @@ const scrollToInfo = () => {
         </template>
       </ItemGrid>
     </section>
-    <ArtistQuote :artist="artist" class="tablet:mt-24" />
+    <QuoteBlock variant="artist" :quote="artist.quote" :author="artist.name" />
   </div>
 </template>

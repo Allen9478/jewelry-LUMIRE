@@ -4,10 +4,12 @@ import { useFavoriteStore } from '@/stores/useFavoriteStore'
 import { useRouter } from 'vue-router'
 import { navItems } from '@/constants/navigations'
 import { useScrollDirection } from '@/composables/useScrollDirection'
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import BaseUnderlineTab from '@/components/common/BaseUnderlineTab.vue'
 import HamburgerMenu from '@/components/layout/HamburgerMenu.vue'
 import HeartIcon from '@/components/common/HeartIcon.vue'
+
+const isScrolled = ref(false)
 const router = useRouter()
 const authStore = useAuthStore()
 const favoriteStore = useFavoriteStore()
@@ -21,18 +23,26 @@ async function handleLogout() {
   showMenu.value = false
   router.push({ name: 'login' })
 }
-
+function handleScroll() {
+  isScrolled.value = window.scrollY > 50
+}
 function goToLogin() {
   router.push({ name: 'login' })
 }
+
+onMounted(() => window.addEventListener('scroll', handleScroll))
+onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 </script>
 
 <template>
   <!-- 用途：Header 的基礎黑金配色 -->
   <!-- 暫時把postion改成fixed來解決select被下面hero圓圈動畫擋道的問題 -->
   <header
-    class="fixed top-0 left-0 right-0 z-card transition-transform duration-300 border-b border-gold-400/20 bg-black"
-    :class="isHeaderVisible ? 'translate-y-0' : '-translate-y-full'"
+    class="fixed top-0 left-0 right-0 z-card transition-transform duration-300"
+    :class="[
+      isHeaderVisible ? 'translate-y-0' : '-translate-y-full',
+      isScrolled ? 'bg-black' : 'bg-gradient-to-b from-black/60 to-transparent',
+    ]"
   >
     <div class="page-container flex h-20 items-center justify-between">
       <HamburgerMenu class="w-9" />
@@ -186,4 +196,8 @@ function goToLogin() {
   </header>
 </template>
 
-<style scoped></style>
+<style scoped>
+.header-bg-test {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+}
+</style>

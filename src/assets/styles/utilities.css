@@ -2,6 +2,16 @@
 @layer utilities {
   /* 這隔離header預設高度用的 */
   .header-offset {
-    padding-top: var(--header-height, 80px);
+    padding-top: var(--header-height);
+  }
+
+  .header-offset-mobile-only {
+    padding-top: var(--header-height);
+  }
+
+  @media (min-width: 768px) {
+    .header-offset-mobile-only {
+      padding-top: 0;
+    }
   }
 }

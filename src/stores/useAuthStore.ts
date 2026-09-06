@@ -13,17 +13,21 @@ import { useFavoriteStore } from '@/stores/useFavoriteStore'
 export const useAuthStore = defineStore('auth', () => {
   const user = ref(null)
   const isLoading = ref(false)
+  const isAuthReady = ref(false) // Firebase 是否已回報過
   const error = ref('')
   const isLoggedIn = computed(() => !!user.value)
   const favoriteStore = useFavoriteStore()
+
   function initAuthListener() {
     onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
         user.value = firebaseUser
         favoriteStore.fetchFavorites() // 登入時載入收藏
       } else {
-        favoriteStore.favorites = [] // 登出時清空
+        user.value = null
+        favoriteStore.resetFavorites() // 登出時清空,並標記為「已載入完成、空清單」
       }
+      isAuthReady.value = true // 關鍵:不管有沒有登入,只要 Firebase 回報過一次就設為 true
     })
   }
   const displayName = computed(() => {
@@ -33,7 +37,7 @@ export const useAuthStore = defineStore('auth', () => {
   })
   async function register(fullname, email, password) {
     error.value = ''
-    isLoading.value = false
+    isLoading.value = true
     try {
       const result = await createUserWithEmailAndPassword(auth, email, password)
       user.value = result.user
@@ -61,6 +65,7 @@ export const useAuthStore = defineStore('auth', () => {
   async function logout() {
     await signOut(auth)
     user.value = null
+    favoriteStore.resetFavorites() //主動清空資料不等 onAuthStateChanged
   }
 
   async function resetPassword(email) {
@@ -92,6 +97,7 @@ export const useAuthStore = defineStore('auth', () => {
     displayName,
     isLoggedIn,
     isLoading,
+    isAuthReady,
     error,
     initAuthListener,
     register,
