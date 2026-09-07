@@ -6,23 +6,27 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 <template>
   <div class="contact flex flex-col tablet:flex-row">
     <section
-      class="contact__hero hidden tablet:block tablet:sticky tablet:w-1/2 tablet:top-0 tablet:h-screen tablet:self-start"
+      class="contact__hero hidden tablet:block tablet:sticky tablet:w-[50%] tablet:top-0 tablet:h-screen tablet:self-start"
     >
       <img
         src="@/assets/images/contact/contact-hero.webp"
         alt="contact hero image"
-        class="contact__hero-img w-full h-full object-cover"
+        class="contact__hero-img w-full h-full object-cover tablet:object-left laptop:object-center"
       />
     </section>
-    <section class="contact__content page-container flex flex-col header-offset gap-8 tablet:w-1/2">
-      <h1 class="text-5xl text-center font-italic italic">{{ contact.title }}</h1>
-      <div class="contact__content-inquiries flex flex-col gap-8">
+    <section
+      class="contact__content page-container header-offset flex flex-col gap-6 tablet:gap-8 tablet:w-[50%] max-w-[400px] tablet:max-w-[640px]"
+    >
+      <h1 class="text-5xl text-center tablet:text-start font-italic italic mt-6 tablet:mt-12">
+        {{ contact.title }}
+      </h1>
+      <div class="contact__content-inquiries flex flex-col gap-8 mt-8">
         <div
           v-for="(inquiries, index) in contact.inquiries"
           :key="index"
-          class="contact__content-inquiries-option flex flex-row items-center justify-between border-b border-gold-500/40 pb-4"
+          class="contact__content-inquiries-option flex flex-row items-center justify-between border-b last:border-b-0 border-gold-500/40 pb-4 last:pb-0"
         >
-          <div class="max-w-[300px] tablet:max-w-xl flex flex-col gap-2 pr-8">
+          <div class="max-w-[250px] tablet:max-w-xl flex flex-col gap-2">
             <p class="text-subhead font-serif">{{ inquiries.title }}</p>
             <p class="text-gold-500">{{ inquiries.email }}</p>
             <p class="text-gray-muted">{{ inquiries.description }}</p>
@@ -61,7 +65,9 @@ import BaseButton from '@/components/ui/BaseButton.vue'
         </div>
         <BaseButton class="w-full mt-4">{{ contact.form.submit }}</BaseButton>
       </form>
-      <section class="contact__content-info flex flex-col tablet:flex-row gap-6">
+      <section
+        class="contact__content-info flex flex-col desktop:flex-row desktop:justify-between gap-8 my-8"
+      >
         <div class="contact__content-info-location flex justify-start">
           <svg
             xmlns="http://www.w3.org/2000/svg"
