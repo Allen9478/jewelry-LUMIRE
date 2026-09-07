@@ -62,7 +62,7 @@ function getFadeDelay(index, base, step) {
       class="py-3 overflow-x-auto no-scrollbar tablet:overflow-visible"
     >
       <ul
-        class="tablet:gap-10 flex w-max items-center tablet:w-full tablet:justify-around gap-4 mx-auto tablet:pr-8 whitespace-nowrap"
+        class="flex w-max items-center tablet:w-full tablet:justify-around gap-8 tablet:gap-10 mx-auto tablet:pr-8 whitespace-nowrap tablet:landscape:justify-around"
       >
         <!-- 1. 新增：手動加入「全部」按鈕 -->
         <li class="text-eyebrow shrink-0">
@@ -85,7 +85,7 @@ function getFadeDelay(index, base, step) {
     </nav>
     <!-- 這是給navbar的漸層遮罩 -->
     <div
-      class="tablet:hidden pointer-events-none absolute top-0 right-0 h-full w-10 bg-gradient-to-l from-black to-transparent"
+      class="tablet:hidden pointer-events-none absolute top-0 right-0 h-full w-12 bg-gradient-to-l from-black to-transparent"
       aria-hidden="true"
     ></div>
     <div
@@ -114,12 +114,16 @@ function getFadeDelay(index, base, step) {
 </template>
 
 <style scoped>
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch; /* 舊版 iOS 慣性捲動保險 */
+  touch-action: pan-x; /* 關鍵：明確宣告此元素允許水平觸控 */
+  overscroll-behavior-x: contain; /* 避免捲到底時把手勢傳給外層 body 造成連動抖動或觸發返回手勢 */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 .work-hero {
   display: flex;
