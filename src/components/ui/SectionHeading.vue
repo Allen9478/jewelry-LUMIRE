@@ -52,7 +52,9 @@ defineProps({
           /></svg
       ></BaseButton>
     </div>
-    <p v-if="desc" class="text-subtext text-gray-muted">{{ desc }}</p>
+    <p v-if="desc" v-fade-in="{ delay: 120, y: 20 }" class="text-subtext text-gray-muted">
+      {{ desc }}
+    </p>
   </div>
 </template>
 
