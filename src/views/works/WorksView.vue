@@ -56,10 +56,13 @@ function getFadeDelay(index, base, step) {
       />
     </div>
   </section>
-  <div class="work-main page-container">
-    <nav aria-label="依作品類別篩選作品" class="py-3">
+  <div class="work-main page-container relative">
+    <nav
+      aria-label="依作品類別篩選作品"
+      class="py-3 overflow-x-auto no-scrollbar tablet:overflow-visible"
+    >
       <ul
-        class="tablet:overflow-visible justify-around no-scrollbar tablet:gap-10 flex items-center gap-6 overflow-x-auto tablet:pr-8 whitespace-nowrap"
+        class="tablet:gap-10 flex w-max items-center tablet:w-full tablet:justify-around gap-4 mx-auto tablet:pr-8 whitespace-nowrap"
       >
         <!-- 1. 新增：手動加入「全部」按鈕 -->
         <li class="text-eyebrow shrink-0">
@@ -80,9 +83,13 @@ function getFadeDelay(index, base, step) {
         </li>
       </ul>
     </nav>
-
+    <!-- 這是給navbar的漸層遮罩 -->
     <div
-      class="works-section__grid tablet:grid tablet:grid-cols-3 laptop:grid-cols-4 tablet:h-auto tablet:overflow-visible tablet:gap-5 laptop:gap-6 flex h-[70vh] flex-col place-items-center gap-4 overflow-y-auto py-4 no-scrollbar"
+      class="tablet:hidden pointer-events-none absolute top-0 right-0 h-full w-10 bg-gradient-to-l from-black to-transparent"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="works-section__grid tablet:grid tablet:grid-cols-3 laptop:grid-cols-4 h-[80vh] tablet:h-auto tablet:overflow-visible tablet:gap-5 laptop:gap-6 flex flex-col place-items-center gap-4 overflow-y-auto py-4 no-scrollbar"
     >
       <div
         v-for="(work, i) in filteredWorks"
@@ -97,6 +104,11 @@ function getFadeDelay(index, base, step) {
         <BaseWorkCard :work="work" :loading="i < 4 ? 'eager' : 'lazy'"></BaseWorkCard>
       </div>
     </div>
+    <!-- 這是給item捲動的漸層遮罩 -->
+    <div
+      class="tablet:hidden pointer-events-none absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black to-transparent"
+      aria-hidden="true"
+    ></div>
   </div>
   <ArtistsCarousel v-fade-in="{ delay: 0, y: 20 }" class="mt-16" />
 </template>
