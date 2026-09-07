@@ -62,7 +62,7 @@ function getFadeDelay(index, base, step) {
       class="py-3 overflow-x-auto no-scrollbar tablet:overflow-visible"
     >
       <ul
-        class="flex w-max items-center tablet:w-full tablet:justify-around gap-8 tablet:gap-10 mx-auto tablet:pr-8 whitespace-nowrap tablet:landscape:justify-around"
+        class="flex w-max items-center tablet:w-full tablet:justify-around gap-8 tablet:gap-10 mx-auto pr-4 tablet:pr-8 whitespace-nowrap"
       >
         <!-- 1. 新增：手動加入「全部」按鈕 -->
         <li class="text-eyebrow shrink-0">
