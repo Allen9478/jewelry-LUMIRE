@@ -32,6 +32,7 @@ const { frameEl, isLit, onMouseMove, onMouseLeave, lightStyle, imageTransform } 
             <p
               v-for="(paragraph, index) in aboutData.philosophy.paragraphs"
               :key="index"
+              titleTag="h1"
               class="about__philosophy-paragraph"
             >
               {{ paragraph }}

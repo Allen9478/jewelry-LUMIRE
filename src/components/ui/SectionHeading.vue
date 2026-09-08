@@ -2,12 +2,16 @@
 <script setup>
 import GoldDivider from '@/components/ui/GoldDivider.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
+
 defineProps({
   eyebrow: { type: String, required: true },
   title: { type: String, required: true },
   desc: { type: String, default: null },
   linkTo: { type: String, default: null },
   linkText: { type: String, default: null },
+  titleTag: { type: String, default: 'h2' },
+  titleClass: { type: String, default: 'py-4 tablet:py-8' },
+  descClass: { type: String, default: null },
 })
 </script>
 <template>
@@ -19,14 +23,16 @@ defineProps({
       <GoldDivider variant="fade" class="mt-2" />
     </div>
     <div
-      class="section-heading__group flex flex-col tablet:flex-row tablet:justify-between tablet:items-center tablet:py-8 w-full"
+      class="section-heading__group flex flex-col tablet:flex-row tablet:justify-between tablet:items-center w-full"
     >
-      <h2
+      <component
+        :is="titleTag"
         v-fade-in="{ delay: 80, y: 16 }"
-        class="section-heading__title text-heading my-4 tablet:my-0 font-serif"
+        class="section-heading__title text-heading font-serif"
+        :class="titleClass"
       >
         {{ title }}
-      </h2>
+      </component>
 
       <!-- 都有值btn才會出現 -->
       <BaseButton
@@ -52,7 +58,12 @@ defineProps({
           /></svg
       ></BaseButton>
     </div>
-    <p v-if="desc" v-fade-in="{ delay: 120, y: 20 }" class="text-subtext text-gray-muted">
+    <p
+      v-if="desc"
+      v-fade-in="{ delay: 120, y: 20 }"
+      class="text-subtext text-gray-muted"
+      :class="descClass"
+    >
       {{ desc }}
     </p>
   </div>

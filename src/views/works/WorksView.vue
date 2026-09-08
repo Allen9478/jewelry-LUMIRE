@@ -1,5 +1,6 @@
 <script setup>
 import works from '@/data/works.json'
+import SectionHeading from '@/components/ui/SectionHeading.vue'
 import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
 import BaseUnderlineTab from '@/components/common/BaseUnderlineTab.vue'
 import ArtistsCarousel from '@/components/ui/ArtistsCarousel.vue'
@@ -27,7 +28,7 @@ function getFadeDelay(index, base, step) {
 <template>
   <section class="work-hero tablet:min-h-[460px]">
     <!-- //hero要滿版所以page-container寫在文字區塊即可 -->
-    <div class="page-container text-container mt-4 flex flex-col items-start header-offset">
+    <!-- <div class="page-container text-container mt-4 flex flex-col items-start header-offset">
       <div v-fade-in="{ delay: 0, y: 12 }" class="inline-flex flex-col items-start">
         <p class="works-section__eyebrow tablet:block text-eyebrow text-gold-500 uppercase">
           WORKS GALLERY
@@ -41,6 +42,19 @@ function getFadeDelay(index, base, step) {
         Curated Collection
       </h2>
       <p class="works-section__desc text-subtext">
+        We showcase exceptional jewelry by visionary artists who transform precious materials into
+        timeless stories.
+      </p>
+    </div> -->
+
+    <div class="page-container text-container mt-4 flex flex-col items-start header-offset">
+      <SectionHeading
+        eyebrow="WORKS GALLERY"
+        title="Curated Collection"
+        titleTag="h1"
+        titleClass="whitespace-nowrap italic py-2 tablet:py-4"
+      />
+      <p v-fade-in="{ delay: 120, y: 20 }" class="works-section__desc text-subtext">
         We showcase exceptional jewelry by visionary artists who transform precious materials into
         timeless stories.
       </p>

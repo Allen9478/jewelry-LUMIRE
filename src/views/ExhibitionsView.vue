@@ -46,6 +46,7 @@ const fuckData = randomWorks(works, 6)
         :eyebrow="exhibitions.status"
         :title="exhibitions.title"
         :desc="exhibitions.subtitle"
+        titleTag="h1"
         class="page-container absolute bottom-0 tablet:bottom-12 tablet:left-4 z-1"
       />
     </div>

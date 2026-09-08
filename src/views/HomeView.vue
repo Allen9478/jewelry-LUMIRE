@@ -220,26 +220,12 @@ function handleSubscribe() {
   >
     <div class="flex justify-start items-center">
       <div class="home-exhibition-section__container flex flex-col items-start">
-        <div v-fade-in="{ delay: 0, y: 10 }" class="inline-flex flex-col items-start">
-          <p
-            class="home-exhibition-section__eyebrow tablet:block uppercase text-eyebrow text-gold-500"
-          >
-            CURRENT EXHIBITION
-          </p>
-          <GoldDivider variant="fade" class="mt-2" />
-        </div>
-        <h2
-          v-fade-in="{ delay: 100, y: 20 }"
-          class="home-exhibition-section__heading text-heading font-serif my-3 tablet:mt-5"
-        >
-          Nature's Forms
-        </h2>
-        <p
-          v-fade-in="{ delay: 180, y: 16 }"
-          class="home-exhibition-section__subtext text-gray-muted text-subtext tablet:w-[85%]"
-        >
-          International Jewelry Exhibition 2026
-        </p>
+        <SectionHeading
+          eyebrow="CURRENT EXHIBITION"
+          title="Nature's Forms"
+          desc="International Jewelry Exhibition 2026"
+          titleClass="py-2 tablet:py-4"
+        />
         <div class="home-exhibition-section__cta-group mt-3 tablet:mt-5">
           <p v-fade-in="{ delay: 260, y: 16 }" class="flex items-center">
             <svg
