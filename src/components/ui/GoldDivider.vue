@@ -21,5 +21,6 @@ const variantClass = computed(
 )
 </script>
 <template>
-  <component :is="tag" :class="['h-px ', `${variantClass}`]" />
+  <!-- hr時不寫無障礙 -->
+  <component :is="tag" :class="['h-px ', `${variantClass}`]" :aria-hidden="true !== 'hr'" />
 </template>
