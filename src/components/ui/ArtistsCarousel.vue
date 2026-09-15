@@ -5,6 +5,7 @@ import getImageUrl from '@/utils/getImageUrl'
 import artists from '@/data/artists.json'
 import works from '@/data/works.json'
 import GoldDivider from '@/components/ui/GoldDivider.vue'
+import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
 
 function getArtistWorks(artistName) {
   return works.filter((w) => w.designer === artistName).slice(0, 3)
@@ -58,23 +59,10 @@ function getArtistWorks(artistName) {
             </div>
             <RouterLink
               :to="{ name: 'artists-detail', params: { id: artist.id } }"
-              class="artists-carousel__link inline-flex items-center text-gold-500 hover:text-gold-300 transition-colors"
+              class="artists-carousel__link inline-flex items-center text-gold-500 hover:text-gold-300 transition-colors group"
             >
               <span class="text-[11px] tablet:text-btn whitespace-nowrap">VIEW PROFILE</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="size-5 ml-2"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
-                />
-              </svg>
+              <BaseArrowIcon />
             </RouterLink>
           </div>
           <div

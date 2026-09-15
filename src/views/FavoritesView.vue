@@ -6,6 +6,8 @@ import { storeToRefs } from 'pinia'
 import GoldDivider from '@/components/ui/GoldDivider.vue'
 import SectionHeading from '@/components/ui/SectionHeading.vue'
 import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
+import BaseButton from '@/components/ui/BaseButton.vue'
+import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
 import ItemGrid from '@/components/ui/ItemGrid.vue'
 import works from '@/data/works.json'
 
@@ -90,14 +92,20 @@ const sortedFavorites = computed(() => {
         <p class="text-gray-muted">
           Explore works by visionary artists and save the pieces that speak to you.
         </p>
-        <RouterLink to="/works" class="text-gold-500">Browse Works →</RouterLink>
+        <BaseButton tag="RouterLink" :to="'works'" variant="ghost">
+          <span class="text-btn">Browse Works</span>
+          <BaseArrowIcon />
+        </BaseButton>
       </div>
     </template>
 
     <template v-else>
       <section class="flex flex-col gap-8 tablet:gap-10">
         <div class="flex flex-col tablet:flex-row justify-between tablet:items-center gap-4">
-          <RouterLink to="/works" class="text-gold-500">Browse Works →</RouterLink>
+          <BaseButton tag="RouterLink" :to="'works'" variant="ghost">
+            <span class="text-btn">Browse Works</span>
+            <BaseArrowIcon />
+          </BaseButton>
           <fieldset class="filter-group flex flex-col tablet:flex-row gap-4">
             <legend class="sr-only">Filter and sort your collection</legend>
             <div class="flex gap-2">

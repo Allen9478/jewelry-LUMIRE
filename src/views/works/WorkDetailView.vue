@@ -5,6 +5,7 @@ import works from '@/data/works.json'
 import artists from '@/data/artists.json'
 import BaseAvatar from '@/components/ui/BaseAvatar.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
+import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
 import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
 import getImageUrl from '@/utils/getImageUrl'
 
@@ -19,7 +20,7 @@ function getOtherWorks() {
 <template>
   <div
     v-if="work"
-    class="page-container workdetail-hero tablet:grid tablet:grid-cols-[50%_1fr] tablet:h-[90dvh] header-offset tablet:mt-2 gap-6"
+    class="page-container workdetail-hero tablet:grid tablet:grid-cols-[50%_1fr] wide:grid-cols-[40%_1fr] tablet:h-full wide:h-[90dvh] header-offset tablet:mt-2 gap-6"
   >
     <div
       v-fade-in="{ delay: 0, y: 24, mobile: { delay: 0, y: 16 } }"
@@ -94,20 +95,8 @@ function getOtherWorks() {
               variant="ghost"
               class="workdetail-hero__artist-link inline-flex justify-start items-center text-body-sm"
               ><span class="text-btn tablet:text-btn-lg normal-case"> View Artist Profile </span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="size-6 ml-2"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
-                /></svg
-            ></BaseButton>
+              <BaseArrowIcon />
+            </BaseButton>
           </div>
         </div>
       </div>

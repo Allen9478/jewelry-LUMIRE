@@ -1,6 +1,6 @@
 <script setup>
 import getImageUrl from '@/utils/getImageUrl'
-
+import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
 defineProps({
   artist: Object,
 })
@@ -18,23 +18,26 @@ defineProps({
     </div>
     <div class="card__body px-4 py-2 tablet:px-8">
       <h2
-        class="text-xl ipad:text-2xl desktop:text-3xl ipad:tracking-normal font-serif text-cream group-hover:text-gold-500 group-active:text-gold-500 duration-200 transition-all"
+        class="text-xl ipad:text-2xl desktop:text-3xl ipad:tracking-normal font-serif text-gold-500 tablet:text-cream group-hover:text-gold-500 group-active:text-gold-500 duration-200 transition-all"
       >
         {{ artist.name }}
       </h2>
       <div
-        class="flex flex-col tablet:flex-row tablet:items-center mt-1 laptop:mt-2 tracking-wider"
+        class="flex flex-col tablet:flex-row tablet:items-center mt-1 laptop:mt-2 tracking-wider group-hover:text-gold-500 duration-200 transition-all"
       >
         <p class="text-xs laptop:text-sm">{{ artist.current_residence }}</p>
         <span class="text-3xl hidden tablet:inline tablet:mx-1 desktop:mx-3">·</span>
         <p class="text-xs laptop:text-sm py-1">{{ artist.works }} WORKS</p>
       </div>
-      <div class="mt-2 hidden tablet:mb-3 tablet:flex">
+      <div
+        class="mt-2 hidden tablet:mb-3 tablet:flex items-center group-hover:text-gold-500 duration-200 transition-all"
+      >
         <p class="text-xs desktop:text-sm tracking-wider">VIEW PROFILE</p>
-        <span
+        <!-- <span
           class="text-gold-500 tablet:text-lg tablet:ml-5 laptop:text-xl translate-y-[-8px] desktop:translate-y-[-5px] desktop:mr-15"
           >→</span
-        >
+        > -->
+        <BaseArrowIcon class="tablet:ml-2 desktop:mr-15" />
       </div>
     </div>
   </div>

@@ -200,4 +200,12 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 .header-bg-test {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
 }
+/* 解決768px時navbar有橫向捲軸 */
+nav {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+nav::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
 </style>

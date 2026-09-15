@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue'
 import ScrollHint from '@/components/ui/ScrollHint.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
+import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
 import SectionHeading from '@/components/ui/SectionHeading.vue'
 import ItemGrid from '@/components/ui/ItemGrid.vue'
 import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
@@ -92,20 +93,7 @@ function handleSubscribe() {
             class="home-hero__actions-item flex items-center w-[60vw] tablet:w-fit laptop:w-fit laptop:mr-0"
           >
             <span class="text-btn tablet:text-btn-lg">Explore Works</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="size-6 ml-2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
-              />
-            </svg>
+            <BaseArrowIcon />
           </BaseButton>
           <BaseButton
             variant="ghost"
@@ -278,20 +266,7 @@ function handleSubscribe() {
           class="home-exhibition__actions-item flex items-center w-full tablet:w-fit mt-5 tablet:mt-10"
         >
           <span class="text-btn tablet:text-btn-lg">VIEW EXHIBITION</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-6 ml-2"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
-            />
-          </svg>
+          <BaseArrowIcon />
         </BaseButton>
       </div>
     </div>

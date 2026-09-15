@@ -24,7 +24,7 @@ const variantClass = computed(
 
 <template>
   <!-- :is是我在tag裡寫button或a改變相對應html -->
-  <component :is="tag" :class="['btn', `${variantClass}`]">
+  <component :is="tag" :class="['btn', 'group', `${variantClass}`]">
     <slot />
   </component>
 </template>

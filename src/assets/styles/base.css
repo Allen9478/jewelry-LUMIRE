@@ -146,6 +146,9 @@
   --duration-600: 600ms;
   --duration-800: 800ms;
 
+  /* 自訂base箭頭animation */
+  --animate-arrow-loop: arrow-loop 1s ease-in-out infinite;
+
   /* ── Background Image ── */
   --bg-gold-sheen: linear-gradient(135deg, #e8c46f 0%, #d6b46a 40%, #a98335 100%);
   --bg-hero-fade: linear-gradient(
@@ -191,5 +194,15 @@
   /* firefox游標hover沒變所以寫這個 */
   button {
     @apply cursor-pointer;
+  }
+}
+
+@keyframes arrow-loop {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(6px);
   }
 }

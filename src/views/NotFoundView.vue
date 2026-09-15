@@ -1,6 +1,6 @@
-<script setup lang="ts"></script>
+<script setup></script>
 <template>
-  <p>我是404</p>
+  <section class="header-offset"><p>我是404</p></section>
 </template>
 
 <style scoped></style>
