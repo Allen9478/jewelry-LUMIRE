@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/useAuthStore'
 import FormInput from '@/components/ui/FormInput.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
@@ -8,6 +8,7 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 const authStore = useAuthStore()
 const email = ref('')
 const password = ref('')
+const route = useRoute()
 const router = useRouter()
 
 onMounted(() => {
@@ -15,8 +16,18 @@ onMounted(() => {
 })
 async function handleSubmit() {
   try {
+    console.log('登入前 route.query:', route.query)
+    console.log('登入前 redirect:', route.query.redirect)
     await authStore.login(email.value, password.value)
-    router.push('/')
+
+    const redirect = route.query.redirect
+    console.log('登入後 redirect:', redirect)
+    console.log('redirect type:', typeof redirect)
+    if (typeof redirect === 'string') {
+      router.push(redirect)
+    } else {
+      router.push('/')
+    }
   } catch (err) {
     console.error('登入失败:', err)
   }

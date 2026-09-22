@@ -1,8 +1,7 @@
 <script setup>
 import { useAuthStore } from '@/stores/useAuthStore'
-import { useFavoriteStore } from '@/stores/useFavoriteStore'
 import { useI18n } from 'vue-i18n'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { navItems } from '@/constants/navigations'
 import { useScrollDirection } from '@/composables/useScrollDirection'
 import { ref, computed, onMounted, onUnmounted } from 'vue'
@@ -13,11 +12,11 @@ import HeartIcon from '@/components/common/HeartIcon.vue'
 
 const isScrolled = ref(false)
 const router = useRouter()
-const { t } = useI18n()
+const route = useRoute()
 const authStore = useAuthStore()
-const favoriteStore = useFavoriteStore()
+const { t } = useI18n()
 const { isHeaderVisible } = useScrollDirection()
-const isFavoritePage = computed(() => router.currentRoute.value.name === 'favorites')
+const isFavoritePage = computed(() => route.name === 'favorites')
 const showMenu = ref(false)
 
 async function handleLogout() {
@@ -38,7 +37,6 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
 <template>
   <!-- 用途：Header 的基礎黑金配色 -->
-  <!-- 暫時把postion改成fixed來解決select被下面hero圓圈動畫擋道的問題 -->
   <header
     class="fixed top-0 left-0 right-0 z-card transition-transform duration-300"
     :class="[
@@ -134,13 +132,13 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
           </div>
         </template>
         <template v-else>
-          <button
+          <RouterLink
             aria-label="我的最愛收藏"
             class="nav__icon w-9 flex items-center justify-end tablet:w-6"
-            @click="favoriteStore.toggleFavorite()"
+            :to="{ name: 'favorites' }"
           >
-            <HeartIcon :filled="isFavoritePage"></HeartIcon>
-          </button>
+            <HeartIcon :filled="isFavoritePage" />
+          </RouterLink>
           <button @click="goToLogin" aria-label="會員" class="nav__icon hidden tablet:block">
             <svg
               xmlns="http://www.w3.org/2000/svg"

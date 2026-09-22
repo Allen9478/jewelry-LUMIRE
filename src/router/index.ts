@@ -1,6 +1,30 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import type { RouteRecordRaw, RouterOptions } from 'vue-router'
 
+// 這裡的邏輯沒理解好要多看
+import { watch } from 'vue'
+import { useAuthStore } from '@/stores/useAuthStore'
+
+function waitForAuthReady() {
+  const authStore = useAuthStore()
+
+  if (authStore.isAuthReady) {
+    return Promise.resolve()
+  }
+
+  return new Promise<void>((resolve) => {
+    const stop = watch(
+      () => authStore.isAuthReady,
+      (ready) => {
+        if (ready) {
+          stop()
+          resolve()
+        }
+      },
+    )
+  })
+}
+
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
@@ -51,6 +75,21 @@ const routes: RouteRecordRaw[] = [
         path: '/favorites',
         name: 'favorites',
         component: () => import('@/views/FavoritesView.vue'),
+
+        beforeEnter: async (to) => {
+          await waitForAuthReady()
+
+          const authStore = useAuthStore()
+
+          if (!authStore.isLoggedIn) {
+            return {
+              name: 'login',
+              query: {
+                redirect: to.fullPath,
+              },
+            }
+          }
+        },
       },
       {
         path: '/auth',
