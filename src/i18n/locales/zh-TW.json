@@ -1,0 +1,105 @@
+{
+  "navItem": {
+    "home": "首頁",
+    "works": "作品",
+    "artists": "藝術家",
+    "exhibitions": "展覽",
+    "about": "關於",
+    "contact": "聯絡"
+  },
+  "category": {
+    "all": "全部",
+    "necklace": "項鍊",
+    "earrings": "耳環",
+    "bracelet": "手鍊",
+    "ring": "戒指"
+  },
+  "card": {
+    "view": "查看"
+  },
+  "page": {
+    "home": {
+      "hero": {
+        "eyebrow": "渾然天成",
+        "headingLine1": "當藝術",
+        "headingLine2Prefix": "化為",
+        "headingAccent": "永恆",
+        "subtext": "我們呈獻視野獨到的藝術家所打造的非凡珠寶，將珍貴材質轉化為永恆的故事。",
+        "exploreWorks": "探索作品",
+        "watchStory": "觀看故事",
+        "imageAlt": "岩石上的戒指"
+      },
+      "featuredWorks": {
+        "eyebrow": "精選作品",
+        "title": "臻選之作",
+        "linkText": "查看全部作品"
+      },
+      "featuredArtists": {
+        "eyebrow": "藝術家",
+        "title": "美的幕後推手",
+        "linkText": "查看全部藝術家"
+      },
+      "exhibition": {
+        "eyebrow": "當期展覽",
+        "title": "自然之形",
+        "desc": "2026 國際珠寶展",
+        "dateRange": "2026年5月18日－8月25日",
+        "location": "光影藝廊．台北",
+        "button": "查看展覽"
+      },
+      "quote": {
+        "text": "珠寶不只是裝飾，它是一則故事、一段記憶、一件藝術品。",
+        "author": "光影珠寶藝廊"
+      },
+      "newsletter": {
+        "placeholder": "輸入 Email 訂閱電子報",
+        "submit": "訂閱",
+        "submitted": "感謝訂閱！"
+      }
+    },
+    "works": {
+      "heading": {
+        "eyebrow": "典藏系列",
+        "title": "全部作品"
+      }
+    },
+    "artists": {
+      "heading": {
+        "eyebrow": "匠心巨擘",
+        "title": "藝術家群像"
+      }
+    }
+  },
+  "footer": {
+    "tagline": {
+      "line1": "禮讚珠寶的工藝之美",
+      "line2": "與人性表達的動人光輝"
+    },
+    "explore": {
+      "title": "探索",
+      "workGallery": "作品藝廊",
+      "artists": "藝術家",
+      "exhibitions": "展覽",
+      "collections": "系列"
+    },
+    "support": {
+      "title": "支援服務",
+      "faqs": "常見問題",
+      "careGuide": "保養指南",
+      "shipping": "運送與退換貨",
+      "terms": "條款與條件"
+    },
+    "contact": {
+      "title": "聯絡我們",
+      "email": "info@gmail.com",
+      "phone": "+886 123-456-789",
+      "address": "台灣台北"
+    },
+    "membership": {
+      "title": "會員專區",
+      "login": "登入",
+      "benefits": "會員權益",
+      "privateViewings": "私人賞鑑"
+    }
+  }
+}

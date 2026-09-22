@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import ScrollHint from '@/components/ui/ScrollHint.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
@@ -12,7 +13,8 @@ import GoldDivider from '@/components/ui/GoldDivider.vue'
 import breathing from '@/assets/images/breathing-bg.png'
 import artists from '@/data/artists.json'
 import works from '@/data/works.json'
-//ai給我的篩選每個設計師的第一件作品
+
+const { t, locale } = useI18n()
 const uniqueDesignerWorks = computed(() => {
   const seenDesigners = new Set()
 
@@ -44,7 +46,7 @@ function handleSubscribe() {
       >
         <div v-fade-in="{ delay: 0, y: 12 }" class="inline-flex flex-col items-start">
           <p class="home-hero__eyebrow uppercase pt-5 tablet:pt-0 text-eyebrow text-gold-500">
-            Extraordinary by Nature
+            {{ t('page.home.hero.eyebrow') }}
           </p>
           <GoldDivider variant="fade" class="mt-2" />
         </div>
@@ -52,10 +54,14 @@ function handleSubscribe() {
           v-fade-in="{ delay: 100, y: 24 }"
           class="home-hero__heading flex flex-col tablet:block tablet:tracking-wider text-display font-serif mt-6 tablet:mt-4"
         >
-          <span class="block tablet:whitespace-nowrap">Where Art </span>
-          <span class="block wide:whitespace-nowrap"
-            >Becomes
-            <em class="home-hero__heading-accent text-gold-500">Timeless</em>
+          <span class="block tablet:whitespace-nowrap"
+            >{{ t('page.home.hero.headingLine1') }}
+          </span>
+          <span class="block wide:whitespace-nowrap">
+            {{ t('page.home.hero.headingLine2Prefix') }}
+            <em class="home-hero__heading-accent text-gold-500">{{
+              t('page.home.hero.headingAccent')
+            }}</em>
           </span>
         </h1>
         <div
@@ -80,8 +86,7 @@ function handleSubscribe() {
           v-fade-in="{ delay: 180, y: 16 }"
           class="home-hero__subtext text-subtext pt-3 tablet:pt-0 tablet:w-[85%]"
         >
-          We showcase exceptional jewelry by visionary artists who transform precious materials into
-          timeless stories.
+          {{ t('page.home.hero.subtext') }}
         </p>
         <div
           v-fade-in="{ delay: 250, y: 16 }"
@@ -92,7 +97,7 @@ function handleSubscribe() {
             to="works"
             class="home-hero__actions-item flex items-center w-[60vw] tablet:w-fit laptop:w-fit laptop:mr-0"
           >
-            <span class="text-btn tablet:text-btn-lg">Explore Works</span>
+            <span class="text-btn tablet:text-btn-lg">{{ t('page.home.hero.exploreWorks') }}</span>
             <BaseArrowIcon />
           </BaseButton>
           <BaseButton
@@ -122,7 +127,7 @@ function handleSubscribe() {
 
             <span
               class="ml-2 text-btn tablet:text-btn-lg text-cream group-hover:text-gold-500 group-active:text-gold-500 transition-colors"
-              >WATCH THE STORY</span
+              >{{ t('page.home.hero.watchStory') }}</span
             >
           </BaseButton>
         </div>
@@ -172,10 +177,10 @@ function handleSubscribe() {
   </section>
   <section class="page-container home-works-section space-y-8 tablet:space-y-12">
     <SectionHeading
-      eyebrow="FEATURED WORKS"
-      title="Curated Pieces"
+      :eyebrow="t('page.home.featuredWorks.eyebrow')"
+      :title="t('page.home.featuredWorks.title')"
       linkTo="works"
-      linkText="VIEW ALL WORKS"
+      :linkText="t('page.home.featuredWorks.linkText')"
     />
     <ItemGrid
       :items="uniqueDesignerWorks"
@@ -190,10 +195,10 @@ function handleSubscribe() {
 
   <section class="page-container home-artists-section space-y-8 tablet:space-y-12">
     <SectionHeading
-      eyebrow="ARTISTS"
-      title="Visionaries Behind Beauty"
+      :eyebrow="t('page.home.featuredArtists.eyebrow')"
+      :title="t('page.home.featuredArtists.title')"
       linkTo="artists"
-      linkText="VIEW ALL ARTISTS"
+      :linkText="t('page.home.featuredArtists.linkText')"
     />
     <ItemGrid :items="artists" grid-class="grid-cols-2 tablet:grid-cols-4">
       <template #default="{ item }">
@@ -209,9 +214,9 @@ function handleSubscribe() {
     <div class="flex justify-start items-center">
       <div class="home-exhibition-section__container flex flex-col items-start">
         <SectionHeading
-          eyebrow="CURRENT EXHIBITION"
-          title="Nature's Forms"
-          desc="International Jewelry Exhibition 2026"
+          :eyebrow="t('page.home.exhibition.eyebrow')"
+          :title="t('page.home.exhibition.title')"
+          :desc="t('page.home.exhibition.desc')"
           titleClass="py-2 tablet:py-4"
         />
         <div class="home-exhibition-section__cta-group mt-3 tablet:mt-5">
@@ -230,9 +235,9 @@ function handleSubscribe() {
                 d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z"
               />
             </svg>
-            <span class="ml-2 text-gray-muted text-body-sm tracking-wider"
-              >MAY 18 - AUG 25. 2026</span
-            >
+            <span class="ml-2 text-gray-muted text-body-sm tracking-wider">{{
+              t('page.home.exhibition.dateRange')
+            }}</span>
           </p>
           <p v-fade-in="{ delay: 260, y: 16 }" class="flex items-center mt-2 tablet:mt-4">
             <svg
@@ -254,9 +259,9 @@ function handleSubscribe() {
                 d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
               />
             </svg>
-            <span class="ml-2 text-gray-muted text-body-sm tracking-wider"
-              >LUMIERE GALLERY. TAIPEI</span
-            >
+            <span class="ml-2 text-gray-muted text-body-sm tracking-wider">{{
+              t('page.home.exhibition.location')
+            }}</span>
           </p>
         </div>
         <BaseButton
@@ -265,7 +270,7 @@ function handleSubscribe() {
           v-fade-in="{ delay: 340, y: 16 }"
           class="home-exhibition__actions-item flex items-center w-full tablet:w-fit mt-5 tablet:mt-10"
         >
-          <span class="text-btn tablet:text-btn-lg">VIEW EXHIBITION</span>
+          <span class="text-btn tablet:text-btn-lg">{{ t('page.home.exhibition.button') }}</span>
           <BaseArrowIcon />
         </BaseButton>
       </div>
@@ -287,8 +292,8 @@ function handleSubscribe() {
 
   <QuoteBlock
     variant="home"
-    quote="Jewelry is not just an ornament, it is a story, a memory, a work of art."
-    author="LUMIÈRE JEWELRY GALLERY"
+    :quote="t('page.home.quote.text')"
+    :author="t('page.home.quote.author')"
   >
     <template #extra>
       <div class="flex w-[290px] ipad:max-w-sm tablet:max-w-md z-10">
@@ -299,7 +304,7 @@ function handleSubscribe() {
           type="email"
           autocomplete="email"
           required
-          placeholder="Enter email to Subscribe"
+          :placeholder="t('page.home.newsletter.placeholder')"
           :disabled="submitted"
           class="min-w-0 flex-1 border border-gold-600 border-r-0 bg-transparent p-3 text-sm text-white placeholder:text-gold-200/50 focus:outline-none focus:ring-1 focus:ring-gold-400"
         />
@@ -307,7 +312,7 @@ function handleSubscribe() {
           type="submit"
           class="flex shrink-0 items-center justify-center h-[46px] min-w-[110px] bg-gold-500/80 text-black-soft hover:bg-gold-500 hover:text-black transition-colors"
         >
-          {{ submitted ? 'Thank you!' : 'Subscribe' }}
+          {{ submitted ? t('page.home.newsletter.submitted') : t('page.home.newsletter.submit') }}
         </button>
       </div>
     </template>

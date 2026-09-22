@@ -1,20 +1,22 @@
 <script setup>
 import { useAuthStore } from '@/stores/useAuthStore'
 import { useFavoriteStore } from '@/stores/useFavoriteStore'
+import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { navItems } from '@/constants/navigations'
 import { useScrollDirection } from '@/composables/useScrollDirection'
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import BaseUnderlineTab from '@/components/common/BaseUnderlineTab.vue'
+import LangSwitch from '@/components/ui/LangSwitch.vue'
 import HamburgerMenu from '@/components/layout/HamburgerMenu.vue'
 import HeartIcon from '@/components/common/HeartIcon.vue'
 
 const isScrolled = ref(false)
 const router = useRouter()
+const { t } = useI18n()
 const authStore = useAuthStore()
 const favoriteStore = useFavoriteStore()
 const { isHeaderVisible } = useScrollDirection()
-const currentLang = ref('EN')
 const isFavoritePage = computed(() => router.currentRoute.value.name === 'favorites')
 const showMenu = ref(false)
 
@@ -72,7 +74,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
               :match-names="item.matchNames"
               class="text-xs tablet:text-sm laptop:text-base desktop:text-lg"
             >
-              {{ item.name }}
+              {{ t(item.labelKey) }}
             </BaseUnderlineTab>
           </li>
         </ul>
@@ -156,41 +158,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
             </svg>
           </button>
         </template>
-        <div class="relative group hidden tablet:flex items-center cursor-pointer">
-          <!-- 顯示目前選項 -->
-          <span class="text-xs lg:text-sm px-2 py-2 group-hover:text-gold-500 transition-colors">
-            {{ currentLang }}
-          </span>
-
-          <!-- 箭頭 -->
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-4 pointer-events-none text-white transition-colors duration-300 group-hover:text-gold-500"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-          </svg>
-          <!-- 自訂下拉 -->
-          <div
-            class="absolute left-0 top-full mt-2 w-20 bg-[#1a1a1a] border border-[#3a3530] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
-          >
-            <button
-              @click="currentLang = 'EN'"
-              class="w-full px-4 py-2 text-left text-sm hover:text-gold-500"
-            >
-              EN
-            </button>
-            <button
-              @click="currentLang = '中文'"
-              class="w-full px-4 py-2 text-left text-sm hover:text-gold-500"
-            >
-              中文
-            </button>
-          </div>
-        </div>
+        <LangSwitch variant="desktop" />
       </div>
     </div>
   </header>

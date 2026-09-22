@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
+const { t, locale } = useI18n()
 const openSections = ref({})
 
 function toggleMenu(key) {
@@ -9,24 +11,37 @@ function toggleMenu(key) {
 const sections = [
   {
     key: 'explore',
-    title: 'EXPLORE',
-    items: ['Work Gallery', 'Artists', 'Exhibitions', 'Collections'],
+    titleKey: 'footer.explore.title',
+    itemKeys: [
+      'footer.explore.workGallery',
+      'footer.explore.artists',
+      'footer.explore.exhibitions',
+      'footer.explore.collections',
+    ],
   },
   {
     key: 'support',
-    title: 'SUPPORT',
-    items: ['FAQs', 'Care Guide', 'Shipping & Returns', 'Terms & Conditions'],
+    titleKey: 'footer.support.title',
+    itemKeys: [
+      'footer.support.faqs',
+      'footer.support.careGuide',
+      'footer.support.shipping',
+      'footer.support.terms',
+    ],
   },
   {
     key: 'contact',
-    title: 'CONTACT',
-    items: ['info@gmail.com', '+886 123-456-789', 'Taipei, Taiwan'],
+    titleKey: 'footer.contact.title',
+    itemKeys: ['footer.contact.email', 'footer.contact.phone', 'footer.contact.address'],
   },
   {
     key: 'membership',
-    title: 'MEMBERSHIP',
-    items: ['Log In', 'Membership Benefits', 'Private Viewings'],
-    //讓membership只在桌機上顯示
+    titleKey: 'footer.membership.title',
+    itemKeys: [
+      'footer.membership.login',
+      'footer.membership.benefits',
+      'footer.membership.privateViewings',
+    ],
     desktopOnly: true,
   },
 ]
@@ -49,9 +64,9 @@ const sections = [
             <span class="text-[26px] tablet:text-[34px] tracking-[0.1em]">LUMIÈRE</span>
             <span class="text-[9px] tablet:text-[11px] tracking-[0.2em]">JEWELRY GALLERY</span>
           </RouterLink>
-          <p class="pt-5 tablet:pt-7">Celebrating the artistry of jewelry</p>
+          <p class="pt-5 tablet:pt-7">{{ t('footer.tagline.line1') }}</p>
           <br />
-          <p>and the beauty of Human expression</p>
+          <p>{{ t('footer.tagline.line2') }}</p>
           <div
             class="flex py-4 space-x-6 tablet:flex-row tablet:gap-9 tablet:space-x-0 tablet:pt-12"
           >
@@ -159,7 +174,7 @@ const sections = [
               class="footer-nav-title flex flex-col border-b border-gold-400/30 py-2 tablet:py-1 tablet:border-none"
             >
               <div class="flex justify-between items-center gap-2 tablet:pb-5">
-                <p class="min-w-0 truncate">{{ section.title }}</p>
+                <p class="min-w-0 truncate">{{ t(section.titleKey) }}</p>
                 <button
                   @click="toggleMenu(section.key)"
                   class="toggle-bar flex tablet:hidden shrink-0 -m-2 p-2"
@@ -169,17 +184,17 @@ const sections = [
                   <span class="bar bar-flex"></span>
                 </button>
               </div>
-              <ul :class="[openSections[section.key] ? 'block' : 'hidden', 'tablet:block']">
+              <ul :class="[openSections[section.itemKeys] ? 'block' : 'hidden', 'tablet:block']">
                 <li
-                  v-for="item in section.items"
-                  :key="item"
+                  v-for="itemKey in section.itemKeys"
+                  :key="itemKey"
                   class="py-1 tablet:py-0 tablet:leading-10"
                 >
                   <a
                     href="#"
                     class="inline-block py-1 text-cream/60 hover:text-gold-500 active:text-gold-500 transition-colors duration-200"
                   >
-                    {{ item }}</a
+                    {{ t(itemKey) }}</a
                   >
                 </li>
               </ul>

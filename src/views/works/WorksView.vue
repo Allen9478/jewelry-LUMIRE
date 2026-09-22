@@ -4,9 +4,11 @@ import SectionHeading from '@/components/ui/SectionHeading.vue'
 import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
 import BaseUnderlineTab from '@/components/common/BaseUnderlineTab.vue'
 import ArtistsCarousel from '@/components/ui/ArtistsCarousel.vue'
-import GoldDivider from '@/components/ui/GoldDivider.vue'
+// import GoldDivider from '@/components/ui/GoldDivider.vue'
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const currentCategory = ref(null)
 
 const availableCategories = computed(() => {
@@ -81,7 +83,7 @@ function getFadeDelay(index, base, step) {
         <!-- 1. 新增：手動加入「全部」按鈕 -->
         <li class="text-eyebrow shrink-0">
           <BaseUnderlineTab :active="currentCategory === null" @click="currentCategory = null">
-            ALL 全部
+            {{ t('category.all') }}
           </BaseUnderlineTab>
         </li>
 
@@ -92,7 +94,7 @@ function getFadeDelay(index, base, step) {
             @click="currentCategory = category"
             :aria-current="currentCategory === category ? 'true' : undefined"
           >
-            {{ category }}
+            {{ t('category.' + category.toLowerCase()) }}
           </BaseUnderlineTab>
         </li>
       </ul>

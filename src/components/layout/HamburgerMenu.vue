@@ -4,6 +4,7 @@ import { navItems } from '@/constants/navigations'
 import { useAuthStore } from '@/stores/useAuthStore'
 import { useRouter } from 'vue-router'
 import { useScrollDirection } from '@/composables/useScrollDirection'
+import LangSwitch from '@/components/ui/LangSwitch.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 const authStore = useAuthStore()
 const router = useRouter()
@@ -92,6 +93,7 @@ onUnmounted(() => {
 
             <!-- 底部資訊 -->
             <div class="menu__footer">
+              <LangSwitch variant="mobile" />
               <div class="menu__footer-divider"></div>
               <template v-if="authStore.user">
                 <BaseButton

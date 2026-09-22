@@ -3,144 +3,225 @@
     "id": "wei_chen-necklace",
     "designer": "Wei Chen",
     "category": "Necklace",
-    "name": "Imperial Jade Cascade Necklace",
+    "name": { "zh-TW": "帝王翡翠瀑布項鍊", "en": "Imperial Jade Cascade Necklace" },
     "image": "wei_chen-necklace.webp",
-    "materials": "18K Yellow Gold, Hand-Carved Nephrite Jade",
-    "description": "A majestic bib necklace featuring eleven hand-carved nephrite jade plaques suspended from layered gold chains. The collar is adorned with intricate filigree work and a central pagoda motif flanked by mythical creatures, evoking the grandeur of imperial Chinese craftsmanship."
+    "materials": {
+      "zh-TW": "18K 黃金，手工雕刻軟玉",
+      "en": "18K Yellow Gold, Hand-Carved Nephrite Jade"
+    },
+    "description": {
+      "zh-TW": "一款氣勢恢宏的胸前項鍊，十一片手工雕刻的軟玉牌飾懸掛於層疊金鏈之上。項圈飾以精緻的花絲工藝，中央塔形圖騰兩側環繞神獸，展現中華帝王工藝的宏偉氣度。",
+      "en": "A majestic bib necklace featuring eleven hand-carved nephrite jade plaques suspended from layered gold chains. The collar is adorned with intricate filigree work and a central pagoda motif flanked by mythical creatures, evoking the grandeur of imperial Chinese craftsmanship."
+    }
   },
   {
     "id": "yu_an_lin-necklace",
     "designer": "Yu An Lin",
     "category": "Necklace",
-    "name": "Molten Flow Pendant Necklace",
+    "name": { "zh-TW": "熔流墜飾項鍊", "en": "Molten Flow Pendant Necklace" },
     "image": "yu_an_lin-necklace.webp",
-    "materials": "18K Yellow Gold",
-    "description": "An avant-garde statement necklace featuring a dramatic draping pendant of organically flowing gold strands with lattice-like perforations. The sculptural centerpiece evokes molten metal in motion, suspended from a hand-forged link chain."
+    "materials": { "zh-TW": "18K 黃金", "en": "18K Yellow Gold" },
+    "description": {
+      "zh-TW": "一款前衛的宣言型項鍊，垂墜的墜飾以有機流動的鏤空金絲線條構成戲劇性層次。雕塑感十足的主體彷彿熔金流動的瞬間，懸掛於手工鍛造的鏈條之上。",
+      "en": "An avant-garde statement necklace featuring a dramatic draping pendant of organically flowing gold strands with lattice-like perforations. The sculptural centerpiece evokes molten metal in motion, suspended from a hand-forged link chain."
+    }
   },
   {
     "id": "wei_chen-earring",
     "designer": "Wei Chen",
     "category": "Earrings",
-    "name": "Phoenix Jade Chandelier Earrings",
+    "name": { "zh-TW": "鳳凰翡翠吊燈耳環", "en": "Phoenix Jade Chandelier Earrings" },
     "image": "wei_chen-earring.webp",
-    "materials": "18K Yellow Gold, Hand-Carved Nephrite Jade",
-    "description": "Elaborate drop earrings featuring a sculpted phoenix hook suspending a gold-framed nephrite jade plaque engraved with ancient taotie motifs. A tiered fringe of chains, gold beads, and jade pendants cascades below, blending dynastic Chinese symbolism with fine jewelry artistry."
+    "materials": {
+      "zh-TW": "18K 黃金，手工雕刻軟玉",
+      "en": "18K Yellow Gold, Hand-Carved Nephrite Jade"
+    },
+    "description": {
+      "zh-TW": "精緻的垂墜耳環，以雕琢鳳凰鉤懸掛鑲金邊的軟玉牌飾，牌面刻有古代饕餮紋樣。下方垂墜層疊的鏈條、金珠與玉墜流蘇，融合朝代象徵與精品珠寶工藝。",
+      "en": "Elaborate drop earrings featuring a sculpted phoenix hook suspending a gold-framed nephrite jade plaque engraved with ancient taotie motifs. A tiered fringe of chains, gold beads, and jade pendants cascades below, blending dynastic Chinese symbolism with fine jewelry artistry."
+    }
   },
   {
     "id": "wei_chen-bracelet",
     "designer": "Wei Chen",
     "category": "Bracelet",
-    "name": "Imperial Jade Cuff Bracelet",
+    "name": { "zh-TW": "帝王翡翠手鐲", "en": "Imperial Jade Cuff Bracelet" },
     "image": "wei_chen-bracelet.webp",
-    "materials": "18K Yellow Gold, Nephrite Jade",
-    "description": "A wide cuff bracelet composed of smooth nephrite jade panels set within an ornate gold framework of Greek-key borders and a central taotie mask motif. The inner band carries repeating geometric fretwork, reflecting the architectural splendor of imperial Chinese palace design."
+    "materials": { "zh-TW": "18K 黃金，軟玉", "en": "18K Yellow Gold, Nephrite Jade" },
+    "description": {
+      "zh-TW": "寬版手鐲以光滑軟玉面板鑲嵌於華麗金框之中，飾以希臘回紋邊框與中央饕餮面具圖騰。內圈飾有重複幾何回紋，映照中華帝王宮殿建築的華美風采。",
+      "en": "A wide cuff bracelet composed of smooth nephrite jade panels set within an ornate gold framework of Greek-key borders and a central taotie mask motif. The inner band carries repeating geometric fretwork, reflecting the architectural splendor of imperial Chinese palace design."
+    }
   },
   {
     "id": "marco_bianchi-earring",
     "designer": "Marco Bianchi",
     "category": "Earrings",
-    "name": "Art Deco Sapphire & Ruby Tower Earrings",
+    "name": {
+      "zh-TW": "裝飾藝術藍寶石紅寶石塔形耳環",
+      "en": "Art Deco Sapphire & Ruby Tower Earrings"
+    },
     "image": "marco_bianchi-earring.webp",
-    "materials": "18K Rose Gold, Blue Sapphire, Ruby, Diamond Baguettes",
-    "description": "Striking Art Deco drop earrings with a tiered architectural silhouette. Each piece features a step-cut blue sapphire stud atop a trapezoidal pendant framed by calibré-set rubies and diamond baguettes, capturing the bold geometry and opulent color contrasts of the 1920s."
+    "materials": {
+      "zh-TW": "18K 玫瑰金，藍寶石，紅寶石，長階梯形切割鑽石",
+      "en": "18K Rose Gold, Blue Sapphire, Ruby, Diamond Baguettes"
+    },
+    "description": {
+      "zh-TW": "引人注目的裝飾藝術風垂墜耳環，呈層疊建築輪廓。每件皆以階梯式切割藍寶石鑲嵌於梯形墜飾頂端，四周環繞密釘鑲紅寶石與長階梯形鑽石，捕捉 1920 年代大膽幾何與絢麗色彩的對比。",
+      "en": "Striking Art Deco drop earrings with a tiered architectural silhouette. Each piece features a step-cut blue sapphire stud atop a trapezoidal pendant framed by calibré-set rubies and diamond baguettes, capturing the bold geometry and opulent color contrasts of the 1920s."
+    }
   },
   {
     "id": "elena_volkov-bracelet",
     "designer": "Elena Volkov",
     "category": "Bracelet",
-    "name": "Duality Edge Cuff",
+    "name": { "zh-TW": "雙面刃口手環", "en": "Duality Edge Cuff" },
     "image": "elena_volkov-bracelet.webp",
-    "materials": "White Gold, Black Ceramic, Pavé Diamonds",
-    "description": "A sleek open-cuff bracelet with a razor-sharp faceted profile that transitions seamlessly from polished white metal with black ceramic inlay on one side to a pavé diamond-encrusted arc on the other — a study in contrasts between raw precision and luminous luxury."
+    "materials": {
+      "zh-TW": "白金，黑陶瓷，密釘鑲鑽",
+      "en": "White Gold, Black Ceramic, Pavé Diamonds"
+    },
+    "description": {
+      "zh-TW": "俐落的開口手環，銳利多面的輪廓一側是拋光白金搭配黑陶瓷鑲嵌，另一側則過渡為密釘鑲鑽的弧形，呈現原始精密與璀璨奢華之間的對比研究。",
+      "en": "A sleek open-cuff bracelet with a razor-sharp faceted profile that transitions seamlessly from polished white metal with black ceramic inlay on one side to a pavé diamond-encrusted arc on the other — a study in contrasts between raw precision and luminous luxury."
+    }
   },
   {
     "id": "yu_an_lin-ring",
     "designer": "Yu An Lin",
     "category": "Ring",
-    "name": "Lace Lattice Elongated Ring",
+    "name": { "zh-TW": "蕾絲格網延伸戒指", "en": "Lace Lattice Elongated Ring" },
     "image": "yu_an_lin-ring.webp",
-    "materials": "18K Yellow Gold",
-    "description": "A sculptural statement ring extending well beyond the finger with an open, reticulated structure inspired by organic cellular forms. The freeform lattice of flowing gold threads creates a dramatic, armor-like piece that blurs the boundary between jewelry and wearable sculpture."
+    "materials": { "zh-TW": "18K 黃金", "en": "18K Yellow Gold" },
+    "description": {
+      "zh-TW": "一款延伸超越手指範圍的雕塑感宣言戒指，開放式鏤空結構取材自有機細胞形態。自由流動的金絲網格交織出如盔甲般的戲劇性造型，模糊珠寶與穿戴雕塑之間的界線。",
+      "en": "A sculptural statement ring extending well beyond the finger with an open, reticulated structure inspired by organic cellular forms. The freeform lattice of flowing gold threads creates a dramatic, armor-like piece that blurs the boundary between jewelry and wearable sculpture."
+    }
   },
   {
     "id": "marco_bianchi-bracelet",
     "designer": "Marco Bianchi",
     "category": "Bracelet",
-    "name": "Art Deco Ruby & Sapphire Panel Bracelet",
+    "name": {
+      "zh-TW": "裝飾藝術紅寶石藍寶石鑲板手環",
+      "en": "Art Deco Ruby & Sapphire Panel Bracelet"
+    },
     "image": "marco_bianchi-bracelet.webp",
-    "materials": "18K Yellow Gold, Ruby, Blue Sapphire, Square-Cut Diamonds",
-    "description": "A wide Art Deco bracelet with a grid of alternating ruby and sapphire columns set within a milgrain-edged gold framework. Square-cut diamonds punctuate the intersections, creating a bold rhythmic pattern reminiscent of stained-glass windows in a jazz-age skyscraper."
+    "materials": {
+      "zh-TW": "18K 黃金，紅寶石，藍寶石，方形切割鑽石",
+      "en": "18K Yellow Gold, Ruby, Blue Sapphire, Square-Cut Diamonds"
+    },
+    "description": {
+      "zh-TW": "寬版裝飾藝術手環，以交錯排列的紅寶石與藍寶石縱列鑲嵌於米粒紋金框之中。方形切割鑽石點綴於交會處，構成如爵士時代摩天大樓彩繪玻璃般的強烈節奏圖案。",
+      "en": "A wide Art Deco bracelet with a grid of alternating ruby and sapphire columns set within a milgrain-edged gold framework. Square-cut diamonds punctuate the intersections, creating a bold rhythmic pattern reminiscent of stained-glass windows in a jazz-age skyscraper."
+    }
   },
   {
     "id": "marco_bianchi-ring",
     "designer": "Marco Bianchi",
     "category": "Ring",
-    "name": "Art Deco Chevron Signet Ring",
+    "name": { "zh-TW": "裝飾藝術人字紋印章戒指", "en": "Art Deco Chevron Signet Ring" },
     "image": "marco_bianchi-ring.webp",
-    "materials": "18K Yellow Gold, Blue Sapphire, Ruby",
-    "description": "A substantial Art Deco signet ring featuring a multi-tiered face inlaid with chevron-patterned blue sapphires bordered by calibré-set rubies. The stepped pyramid profile and filigree-engraved shoulders evoke the bold symmetry and chromatic richness of 1920s decorative arts."
+    "materials": {
+      "zh-TW": "18K 黃金，藍寶石，紅寶石",
+      "en": "18K Yellow Gold, Blue Sapphire, Ruby"
+    },
+    "description": {
+      "zh-TW": "厚實的裝飾藝術印章戒指，多層次戒面鑲嵌人字紋排列的藍寶石，周圍鑲以密釘紅寶石。階梯金字塔輪廓與花絲雕刻肩部，展現 1920 年代裝飾藝術對稱之美與色彩的豐富層次。",
+      "en": "A substantial Art Deco signet ring featuring a multi-tiered face inlaid with chevron-patterned blue sapphires bordered by calibré-set rubies. The stepped pyramid profile and filigree-engraved shoulders evoke the bold symmetry and chromatic richness of 1920s decorative arts."
+    }
   },
   {
     "id": "yu_an_lin-bracelet",
     "designer": "Yu An Lin",
     "category": "Bracelet",
-    "name": "Voronoi Cuff Bracelet",
+    "name": { "zh-TW": "沃羅諾伊手環", "en": "Voronoi Cuff Bracelet" },
     "image": "yu_an_lin-bracelet.webp",
-    "materials": "18K Yellow Gold",
-    "description": "A bold wide cuff bracelet with a richly textured Voronoi-inspired surface — an organic network of irregular cells and perforations that catches light from every angle. Handcrafted in warm gold, the piece evokes natural cellular structures like coral or bone, rendered in liquid metal."
+    "materials": { "zh-TW": "18K 黃金", "en": "18K Yellow Gold" },
+    "description": {
+      "zh-TW": "大膽的寬版手環，表面呈現豐富紋理的沃羅諾伊式圖案——不規則細胞與鏤空交織的有機網絡，從各角度折射光線。以溫潤黃金手工打造，宛如珊瑚或骨骼等自然細胞結構化為流動金屬。",
+      "en": "A bold wide cuff bracelet with a richly textured Voronoi-inspired surface — an organic network of irregular cells and perforations that catches light from every angle. Handcrafted in warm gold, the piece evokes natural cellular structures like coral or bone, rendered in liquid metal."
+    }
   },
   {
     "id": "yu_an_lin-earring",
     "designer": "Yu An Lin",
     "category": "Earrings",
-    "name": "Cascade Lattice Drop Earrings",
+    "name": { "zh-TW": "瀑布格網垂墜耳環", "en": "Cascade Lattice Drop Earrings" },
     "image": "yu_an_lin-earring.webp",
-    "materials": "18K Yellow Gold",
-    "description": "Long, fluid drop earrings composed of an open gold lattice that narrows and drips into a pointed tapered end. The honeycombed perforations and undulating silhouette give the impression of suspended liquid metal, merging organic form with artisanal goldsmithing."
+    "materials": { "zh-TW": "18K 黃金", "en": "18K Yellow Gold" },
+    "description": {
+      "zh-TW": "細長流動的垂墜耳環，由收窄並滴落至尖端的鏤空金格構成。蜂巢狀鏤空與波動輪廓營造出懸浮液態金屬的視覺效果，融合有機造型與工匠金工技藝。",
+      "en": "Long, fluid drop earrings composed of an open gold lattice that narrows and drips into a pointed tapered end. The honeycombed perforations and undulating silhouette give the impression of suspended liquid metal, merging organic form with artisanal goldsmithing."
+    }
   },
   {
     "id": "elena_volkov-earring",
     "designer": "Elena Volkov",
     "category": "Earrings",
-    "name": "Minimalist Diamond Bar Bracelet",
+    "name": { "zh-TW": "極簡鑽石條形手環", "en": "Minimalist Diamond Bar Bracelet" },
     "image": "elena_volkov-earring.webp",
-    "materials": "18K Rose Gold, Princess-Cut Diamonds",
-    "description": "An elegant linear bracelet composed of three faceted rose gold bar segments connected by princess-cut diamond stations. The understated geometric design balances architectural restraint with delicate brilliance, making it an ideal everyday fine jewelry piece."
+    "materials": {
+      "zh-TW": "18K 玫瑰金，公主方形切割鑽石",
+      "en": "18K Rose Gold, Princess-Cut Diamonds"
+    },
+    "description": {
+      "zh-TW": "優雅的線性手環，由三段多面切割玫瑰金條形連接公主方形切割鑽石座組成。簡約幾何設計在建築感的克制與細膩光彩之間取得平衡，是日常精品珠寶的理想之選。",
+      "en": "An elegant linear bracelet composed of three faceted rose gold bar segments connected by princess-cut diamond stations. The understated geometric design balances architectural restraint with delicate brilliance, making it an ideal everyday fine jewelry piece."
+    }
   },
   {
     "id": "wei_chen-ring",
     "designer": "Wei Chen",
     "category": "Ring",
-    "name": "Pavilion Gate Jade Ring",
+    "name": { "zh-TW": "亭台之門翡翠戒指", "en": "Pavilion Gate Jade Ring" },
     "image": "elena_volkov-earring.webp",
-    "materials": "18K Yellow Gold, Nephrite Jade",
-    "description": "An extraordinary statement ring featuring a nephrite jade centerpiece framed within a gold architectural surround modeled after a classical Chinese pavilion gate. Flanking panels are filled with scrolling cloud and ruyi motifs in deep relief, creating a wearable monument to traditional Chinese heritage architecture."
+    "materials": { "zh-TW": "18K 黃金，軟玉", "en": "18K Yellow Gold, Nephrite Jade" },
+    "description": {
+      "zh-TW": "非凡的宣言戒指，軟玉主石鑲嵌於仿古典中式亭台大門造型的金質建築框架之中。兩側面板以深浮雕手法飾滿卷雲與如意紋，化身為傳統中華傳統建築遺產的可穿戴紀念碑。",
+      "en": "An extraordinary statement ring featuring a nephrite jade centerpiece framed within a gold architectural surround modeled after a classical Chinese pavilion gate. Flanking panels are filled with scrolling cloud and ruyi motifs in deep relief, creating a wearable monument to traditional Chinese heritage architecture."
+    }
   },
   {
     "id": "elena_volkov-necklace",
     "designer": "Elena Volkov",
     "category": "Necklace",
-    "name": "Baguette Diamond Bar Necklace",
+    "name": { "zh-TW": "長階梯形鑽石條形項鍊", "en": "Baguette Diamond Bar Necklace" },
     "image": "elena_volkov-necklace.webp",
-    "materials": "18K Rose Gold, Baguette Diamonds",
-    "description": "A refined and architectural bar necklace with a full row of channel-set baguette diamonds spanning a clean horizontal pendant. The sleek rose gold setting and geometric precision create a minimalist modern aesthetic with understated luminosity."
+    "materials": {
+      "zh-TW": "18K 玫瑰金，長階梯形切割鑽石",
+      "en": "18K Rose Gold, Baguette Diamonds"
+    },
+    "description": {
+      "zh-TW": "洗練且具建築感的條形項鍊，整排密釘鑲嵌長階梯形鑽石橫跨簡潔的水平墜飾。俐落的玫瑰金鑲座與幾何精準度，共同構築低調現代又不失光彩的美學。",
+      "en": "A refined and architectural bar necklace with a full row of channel-set baguette diamonds spanning a clean horizontal pendant. The sleek rose gold setting and geometric precision create a minimalist modern aesthetic with understated luminosity."
+    }
   },
   {
     "id": "marco_bianchi-necklace",
     "designer": "Marco Bianchi",
     "category": "Necklace",
-    "name": "Soleil Yin-Yang Art Deco Necklace",
+    "name": { "zh-TW": "太陽陰陽裝飾藝術項鍊", "en": "Soleil Yin-Yang Art Deco Necklace" },
     "image": "marco_bianchi-necklace.webp",
-    "materials": "18K Yellow Gold, Blue Sapphire, Ruby, Diamond Baguettes, Black Onyx",
-    "description": "A spectacular Art Deco statement necklace centered on a sunburst medallion with a yin-yang core of pear-cut rubies and sapphires. Radiating fan-shaped spokes of black onyx, baguette diamonds, and calibré-set gemstones surround the central motif, while a geometric chain of sapphires, rubies, and diamonds completes the composition."
+    "materials": {
+      "zh-TW": "18K 黃金，藍寶石，紅寶石，長階梯形切割鑽石，黑瑪瑙",
+      "en": "18K Yellow Gold, Blue Sapphire, Ruby, Diamond Baguettes, Black Onyx"
+    },
+    "description": {
+      "zh-TW": "壯麗的裝飾藝術宣言項鍊，以太陽光芒獎章為中心，鑲嵌梨形切割紅寶石與藍寶石構成陰陽核心。放射狀扇形的黑瑪瑙、長階梯形鑽石與密釘鑲寶石環繞中央圖騰，藍寶石、紅寶石與鑽石交織的幾何鏈條完成整體構圖。",
+      "en": "A spectacular Art Deco statement necklace centered on a sunburst medallion with a yin-yang core of pear-cut rubies and sapphires. Radiating fan-shaped spokes of black onyx, baguette diamonds, and calibré-set gemstones surround the central motif, while a geometric chain of sapphires, rubies, and diamonds completes the composition."
+    }
   },
   {
     "id": "elena_volkov-ring",
     "designer": "Elena Volkov",
     "category": "Ring",
-    "name": "Geometric Tension-Set Diamond Ring",
+    "name": { "zh-TW": "幾何張力鑲嵌鑽石戒指", "en": "Geometric Tension-Set Diamond Ring" },
     "image": "elena_volkov-ring.webp",
-    "materials": "White Gold, Emerald-Cut Diamond",
-    "description": "A bold architectural ring with a flat trapezoidal top panel tension-set with a single emerald-cut diamond. The angular, wing-like profile and mirror-polished white metal surface give this piece a futuristic, sculptural presence — where precision engineering meets fine gem-setting."
+    "materials": { "zh-TW": "白金，祖母綠切割鑽石", "en": "White Gold, Emerald-Cut Diamond" },
+    "description": {
+      "zh-TW": "大膽的建築感戒指，扁平梯形頂面以張力鑲嵌方式固定單顆祖母綠切割鑽石。稜角分明如羽翼般的輪廓與鏡面拋光白金表面，賦予這件作品未來感的雕塑存在——精密工藝與精湛鑲嵌工藝的交會。",
+      "en": "A bold architectural ring with a flat trapezoidal top panel tension-set with a single emerald-cut diamond. The angular, wing-like profile and mirror-polished white metal surface give this piece a futuristic, sculptural presence — where precision engineering meets fine gem-setting."
+    }
   }
 ]

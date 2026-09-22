@@ -1,0 +1,105 @@
+{
+  "navItem": {
+    "home": "Home",
+    "works": "Works",
+    "artists": "Artists",
+    "exhibitions": "Exhibitions",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "category": {
+    "all": "ALL",
+    "necklace": "Necklace",
+    "earrings": "Earrings",
+    "bracelet": "Bracelet",
+    "ring": "Ring"
+  },
+  "card": {
+    "view": "View"
+  },
+  "page": {
+    "home": {
+      "hero": {
+        "eyebrow": "Extraordinary by Nature",
+        "headingLine1": "Where Art",
+        "headingLine2Prefix": "Becomes",
+        "headingAccent": "Timeless",
+        "subtext": "We showcase exceptional jewelry by visionary artists who transform precious materials into timeless stories.",
+        "exploreWorks": "Explore Works",
+        "watchStory": "WATCH THE STORY",
+        "imageAlt": "ring on rock"
+      },
+      "featuredWorks": {
+        "eyebrow": "FEATURED WORKS",
+        "title": "Curated Pieces",
+        "linkText": "VIEW ALL WORKS"
+      },
+      "featuredArtists": {
+        "eyebrow": "ARTISTS",
+        "title": "Visionaries Behind Beauty",
+        "linkText": "VIEW ALL ARTISTS"
+      },
+      "exhibition": {
+        "eyebrow": "CURRENT EXHIBITION",
+        "title": "Nature's Forms",
+        "desc": "International Jewelry Exhibition 2026",
+        "dateRange": "MAY 18 - AUG 25. 2026",
+        "location": "LUMIERE GALLERY. TAIPEI",
+        "button": "VIEW EXHIBITION"
+      },
+      "quote": {
+        "text": "Jewelry is not just an ornament, it is a story, a memory, a work of art.",
+        "author": "LUMIÈRE JEWELRY GALLERY"
+      },
+      "newsletter": {
+        "placeholder": "Enter email to Subscribe",
+        "submit": "Subscribe",
+        "submitted": "Thank you!"
+      }
+    },
+    "works": {
+      "heading": {
+        "eyebrow": "Archive",
+        "title": "All Works"
+      }
+    },
+    "artists": {
+      "heading": {
+        "eyebrow": "Masters",
+        "title": "Our Artists"
+      }
+    }
+  },
+  "footer": {
+    "tagline": {
+      "line1": "Celebrating the artistry of jewelry",
+      "line2": "and the beauty of Human expression"
+    },
+    "explore": {
+      "title": "EXPLORE",
+      "workGallery": "Work Gallery",
+      "artists": "Artists",
+      "exhibitions": "Exhibitions",
+      "collections": "Collections"
+    },
+    "support": {
+      "title": "SUPPORT",
+      "faqs": "FAQs",
+      "careGuide": "Care Guide",
+      "shipping": "Shipping & Returns",
+      "terms": "Terms & Conditions"
+    },
+    "contact": {
+      "title": "CONTACT",
+      "email": "info@gmail.com",
+      "phone": "+886 123-456-789",
+      "address": "Taipei, Taiwan"
+    },
+    "membership": {
+      "title": "MEMBERSHIP",
+      "login": "Log In",
+      "benefits": "Membership Benefits",
+      "privateViewings": "Private Viewings"
+    }
+  }
+}
