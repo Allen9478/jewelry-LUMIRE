@@ -1,6 +1,6 @@
 <script setup>
-import heroImage from '@/assets/images/exhibition/exhibition-hero拷貝.webp'
-import visitImage from '@/assets/images/exhibition/exhibition-location拷貝.webp'
+import heroImage from '@/assets/images/exhibition/exhibition-hero.webp'
+import visitImage from '@/assets/images/exhibition/exhibition-location.webp'
 import ItemGrid from '@/components/ui/ItemGrid.vue'
 import SectionHeading from '@/components/ui/SectionHeading.vue'
 import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
