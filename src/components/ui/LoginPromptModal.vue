@@ -9,7 +9,10 @@ const router = useRouter()
 
 function goToLogin() {
   favoriteStore.showLoginModal = false
-  router.push({ name: 'login' })
+  router.push({
+    name: 'login',
+    query: favoriteStore.pendingRedirect ? { redirect: favoriteStore.pendingRedirect } : {},
+  })
 }
 </script>
 

@@ -194,6 +194,8 @@ const sections = [
                     href="#"
                     class="inline-block py-1 text-cream/60 hover:text-gold-500 active:text-gold-500 transition-colors duration-200"
                   >
+                    <!--  zh.json 跟 en.json 中的 email 必須寫成 {'info@gmail.com'}，
+                    因為 vue-i18n 會把 @ 當成連結訊息語法，直接寫會報紅字但不影響運行  -->
                     {{ t(itemKey) }}</a
                   >
                 </li>

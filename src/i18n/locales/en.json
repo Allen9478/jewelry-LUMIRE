@@ -91,7 +91,7 @@
     },
     "contact": {
       "title": "CONTACT",
-      "email": "info@gmail.com",
+      "email": "{'info@gmail.com'}",
       "phone": "+886 123-456-789",
       "address": "Taipei, Taiwan"
     },

@@ -7,6 +7,7 @@ export const useFavoriteStore = defineStore('favorite', () => {
   const authStore = useAuthStore()
   const favorites = ref<string[]>([])
   const showLoginModal = ref(false)
+  const pendingRedirect = ref<string | null>(null)
   const isLoading = ref(true) //避免還沒載好時被判斷沒資料
 
   async function toggleFavorite(id: string) {
@@ -71,6 +72,7 @@ export const useFavoriteStore = defineStore('favorite', () => {
   return {
     favorites,
     showLoginModal,
+    pendingRedirect,
     isLoading,
     toggleFavorite,
     isFavorite,

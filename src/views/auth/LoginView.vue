@@ -16,18 +16,12 @@ onMounted(() => {
 })
 async function handleSubmit() {
   try {
-    console.log('登入前 route.query:', route.query)
-    console.log('登入前 redirect:', route.query.redirect)
     await authStore.login(email.value, password.value)
 
     const redirect = route.query.redirect
-    console.log('登入後 redirect:', redirect)
-    console.log('redirect type:', typeof redirect)
-    if (typeof redirect === 'string') {
-      router.push(redirect)
-    } else {
-      router.push('/')
-    }
+    const target = typeof redirect === 'string' ? redirect : '/'
+
+    router.push(target)
   } catch (err) {
     console.error('登入失败:', err)
   }

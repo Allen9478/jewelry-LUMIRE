@@ -91,7 +91,7 @@
     },
     "contact": {
       "title": "聯絡我們",
-      "email": "info@gmail.com",
+      "email": "{'info@gmail.com'}",
       "phone": "+886 123-456-789",
       "address": "台灣台北"
     },
