@@ -4,8 +4,8 @@ import { useAuthStore } from '@/stores/useAuthStore'
 import { vFadeIn } from './directives/vFadeIn'
 import './assets/styles/main.css'
 import App from './App.vue'
-import router from './router/index.ts'
-import i18n from './i18n/index.js'
+import router from './router'
+import i18n from './i18n'
 const app = createApp(App)
 
 app.use(createPinia())

@@ -1,4 +1,13 @@
-export const navItems = [
+interface NavItem {
+  name: string
+  labelKey: string
+  to: {
+    name: string
+  }
+  matchNames: string[]
+}
+
+export const navItems: NavItem[] = [
   { name: 'Home', labelKey: 'navItem.home', to: { name: 'home' }, matchNames: ['home'] },
   {
     name: 'Works',
