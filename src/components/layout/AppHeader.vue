@@ -4,12 +4,14 @@ import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 import { navItems } from '@/constants/navigations'
 import { useScrollDirection } from '@/composables/useScrollDirection'
+import { useUiStore } from '@/stores/useUiStore'
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import BaseUnderlineTab from '@/components/common/BaseUnderlineTab.vue'
 import LangSwitch from '@/components/ui/LangSwitch.vue'
 import HamburgerMenu from '@/components/layout/HamburgerMenu.vue'
 import HeartIcon from '@/components/common/HeartIcon.vue'
 
+const uiStore = useUiStore()
 const isScrolled = ref(false)
 const router = useRouter()
 const route = useRoute()
@@ -79,7 +81,11 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
       </nav>
 
       <div class="flex shrink-0 items-center gap-2 lg:gap-3 xl:gap-4 text-stone-50">
-        <button aria-label="站內搜尋" class="nav__icon hidden tablet:block">
+        <button
+          @click="uiStore.openSearchModal"
+          aria-label="站內搜尋"
+          class="nav__icon hidden tablet:block"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
