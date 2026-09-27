@@ -1,13 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 import getImageUrl from '@/utils/getImageUrl'
-// defineProps({
-//   artist: Object,
-//   showName: {
-//     type: Boolean,
-//     default: true, // 沒傳入時預設會顯示名字
-//   },
-// })
+
 const props = defineProps({
   artist: Object,
   variant: {
@@ -18,6 +12,10 @@ const props = defineProps({
   folder: {
     type: String,
     default: 'artists', // 圖片資料夾,team 使用時傳 'team'
+  },
+  showName: {
+    type: Boolean,
+    default: true,
   },
 })
 const imageSrc = computed(() => getImageUrl(`${props.folder}/${props.artist.image}`))
@@ -43,6 +41,7 @@ const linkTo = computed(() => `/artists/${props.artist.id ?? ''}`)
       />
     </div>
     <h2
+      v-if="showName"
       class="mt-3 text-cream/80 text-label-lg tablet:text-body desktop:text-subhead transition-colors duration-300 ease-out group-hover:text-gold-500"
     >
       {{ artist.name }}
