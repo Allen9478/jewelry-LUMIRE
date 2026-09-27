@@ -1,6 +1,7 @@
 import { ref, computed, watch, type Ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import { useUiStore } from '@/stores/useUiStore'
 import { createSearchIndex } from '@/utils/search'
 import type { WorkItem } from '@/type/work'
 import type { Artist } from '@/type/artist'
@@ -19,8 +20,8 @@ import type { SearchResult } from '@/type/search'
  */
 export function useSearch(works: Ref<WorkItem[]>, artists: Ref<Artist[]>) {
   const router = useRouter()
+  const uiStore = useUiStore()
   const { locale } = useI18n()
-
   const keyword = ref('') // 使用者輸入的關鍵字
   const activeIndex = ref(-1) // 目前鍵盤（↑↓）選取到第幾筆，-1 代表沒選
   const isOpen = ref(false) // 搜尋結果下拉選單是否顯示
@@ -76,11 +77,16 @@ export function useSearch(works: Ref<WorkItem[]>, artists: Ref<Artist[]>) {
     activeIndex.value = -1
   }
 
+  function selectItem(item?: SearchResult) {
+    goTo(item)
+    if (item) uiStore.closeSearchModal()
+  }
+
   // Enter：優先導向鍵盤選取的那筆，沒有選取過就導向第一筆（最佳匹配）
   function onEnter() {
     if (results.value.length === 0) return
     const target = activeIndex.value >= 0 ? results.value[activeIndex.value] : results.value[0]
-    goTo(target)
+    selectItem(target)
   }
 
   // ↓：往下移動選取索引，超出範圍時循環回第一筆
@@ -108,6 +114,7 @@ export function useSearch(works: Ref<WorkItem[]>, artists: Ref<Artist[]>) {
     results,
     displayLabel,
     goTo,
+    selectItem,
     onEnter,
     onArrowDown,
     onArrowUp,

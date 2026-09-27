@@ -20,6 +20,7 @@ const {
   results,
   displayLabel,
   goTo,
+  selectItem,
   onEnter,
   onArrowDown,
   onArrowUp,
@@ -48,7 +49,7 @@ const uiStore = useUiStore()
           :key="`${result.type}-${result.item.id}`"
           :class="{ active: index === activeIndex }"
           @mouseenter="activeIndex = index"
-          @click="goTo(result)"
+          @click="selectItem(result)"
         >
           <strong>{{ displayLabel(result) }}</strong>
           <!-- type 標籤讓使用者一眼分辨這筆結果是「作品」還是「藝術家」 -->
