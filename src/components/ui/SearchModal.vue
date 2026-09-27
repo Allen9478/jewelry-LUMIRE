@@ -57,7 +57,7 @@ const uiStore = useUiStore()
             index === activeIndex ? 'bg-gold-500/10' : 'hover:bg-gold-500/5',
           ]"
           @mouseenter="activeIndex = index"
-          @click="goTo(result)"
+          @click="selectItem(result)"
         >
           <strong class="text-cream/90 text-label-lg font-normal truncate">
             {{ displayLabel(result) }}
