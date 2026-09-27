@@ -139,6 +139,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
         </template>
         <template v-else>
           <RouterLink
+            @click="uiStore.openLoginModal"
             aria-label="我的最愛收藏"
             class="nav__icon w-9 flex items-center justify-end tablet:w-6"
             :to="{ name: 'favorites' }"

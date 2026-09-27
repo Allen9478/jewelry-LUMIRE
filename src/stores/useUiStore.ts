@@ -5,7 +5,7 @@ import { ref } from 'vue'
 export const useUiStore = defineStore('ui', () => {
   const showLoginModal = ref(false)
   const showSearchModal = ref(false)
-
+  const pendingRedirect = ref<string | null>(null)
   function openLoginModal() {
     showLoginModal.value = true
   }
@@ -18,13 +18,21 @@ export const useUiStore = defineStore('ui', () => {
   function closeSearchModal() {
     showSearchModal.value = false
   }
-
+  function setPendingRedirect(path: string | null) {
+    pendingRedirect.value = path
+  }
+  function clearPendingRedirect() {
+    pendingRedirect.value = null
+  }
   return {
     showLoginModal,
     openLoginModal,
+    pendingRedirect,
     closeLoginModal,
     showSearchModal,
     openSearchModal,
     closeSearchModal,
+    setPendingRedirect,
+    clearPendingRedirect,
   }
 })

@@ -1,18 +1,20 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { useAuthStore } from './useAuthStore'
+import { useUiStore } from './useUiStore'
 import { doc, getDoc, getDocs, collection, setDoc, deleteDoc } from 'firebase/firestore'
 import { db } from '@/firebase'
 export const useFavoriteStore = defineStore('favorite', () => {
   const authStore = useAuthStore()
+  const uiStore = useUiStore()
+
   const favorites = ref<string[]>([])
-  const showLoginModal = ref(false)
-  const pendingRedirect = ref<string | null>(null)
+
   const isLoading = ref(true) //避免還沒載好時被判斷沒資料
 
   async function toggleFavorite(id: string) {
     if (!authStore.isLoggedIn) {
-      showLoginModal.value = true
+      uiStore.openLoginModal()
       return
     }
     //防呆
@@ -71,8 +73,6 @@ export const useFavoriteStore = defineStore('favorite', () => {
   }
   return {
     favorites,
-    showLoginModal,
-    pendingRedirect,
     isLoading,
     toggleFavorite,
     isFavorite,
