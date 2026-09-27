@@ -46,7 +46,9 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
       isScrolled ? 'bg-black' : 'bg-gradient-to-b from-black/60 to-transparent',
     ]"
   >
-    <div class="page-container flex h-20 items-center justify-between">
+    <div
+      class="page-container grid grid-cols-[1fr_auto_1fr] tablet:grid-cols-[auto_1fr_auto] h-20 items-center"
+    >
       <HamburgerMenu class="w-9" />
 
       <RouterLink
@@ -80,12 +82,8 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
         </ul>
       </nav>
 
-      <div class="flex shrink-0 items-center gap-2 lg:gap-3 xl:gap-4 text-stone-50">
-        <button
-          @click="uiStore.openSearchModal"
-          aria-label="站內搜尋"
-          class="nav__icon hidden tablet:block"
-        >
+      <div class="flex shrink-0 justify-end items-center gap-2 lg:gap-3 xl:gap-4 text-stone-50">
+        <button @click="uiStore.openSearchModal" aria-label="站內搜尋" class="nav__icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
