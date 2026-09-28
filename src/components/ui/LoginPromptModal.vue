@@ -1,7 +1,6 @@
-<script setup>
+<script setup lang="ts">
 import BaseModal from './BaseModal.vue'
 import BaseButton from './BaseButton.vue'
-import { useFavoriteStore } from '@/stores/useFavoriteStore'
 import { useRouter } from 'vue-router'
 import { useUiStore } from '@/stores/useUiStore'
 const uiStore = useUiStore()

@@ -1,12 +1,13 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
+import type { ArtistItem } from '@/type/artist'
 
-const infoSectionRef = ref(null)
+const infoSectionRef = ref<HTMLElement | null>(null)
 
-defineProps({
-  artist: { type: Object, required: true },
-  collectionTitles: { type: Array, required: true },
-})
+defineProps<{
+  artist: ArtistItem
+  collectionTitles: String[]
+}>()
 
 defineExpose({ infoSectionRef })
 </script>

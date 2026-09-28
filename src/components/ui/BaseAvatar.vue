@@ -1,23 +1,27 @@
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue'
 import getImageUrl from '@/utils/getImageUrl'
+import type { ArtistItem } from '@/type/artist'
 
-const props = defineProps({
-  artist: Object,
-  variant: {
-    type: String,
-    default: 'artist', // 'artist' | 'team'
-    validator: (val) => ['artist', 'team'].includes(val),
+type Variant = 'artist' | 'team'
+
+const props = withDefaults(
+  defineProps<{
+    artist: Pick<ArtistItem, 'name' | 'image'> & {
+      id?: string
+      title?: string
+    }
+    variant?: Variant
+    folder?: string
+    showName?: boolean
+  }>(),
+  {
+    variant: 'artist',
+    folder: 'artists',
+    showName: true,
   },
-  folder: {
-    type: String,
-    default: 'artists', // 圖片資料夾,team 使用時傳 'team'
-  },
-  showName: {
-    type: Boolean,
-    default: true,
-  },
-})
+)
+
 const imageSrc = computed(() => getImageUrl(`${props.folder}/${props.artist.image}`))
 // team 版本不需要連結,artist 版本連去該藝術家的頁面
 const linkTo = computed(() => `/artists/${props.artist.id ?? ''}`)

@@ -3,13 +3,13 @@ import BaseModal from '@/components/ui/BaseModal.vue'
 import { toRef } from 'vue'
 import { useSearch } from '@/composables/useSearch'
 import type { WorkItem } from '@/type/work'
-import type { Artist } from '@/type/artist'
+import type { ArtistItem } from '@/type/artist'
 
 import { useUiStore } from '@/stores/useUiStore'
 
 const props = defineProps<{
   works: WorkItem[]
-  artists: Artist[]
+  artists: ArtistItem[]
 }>()
 const works = toRef(props, 'works')
 const artists = toRef(props, 'artists')

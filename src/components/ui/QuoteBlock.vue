@@ -1,27 +1,22 @@
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue'
-
-const props = defineProps({
-  variant: {
-    type: String,
-    required: true,
-    validator: (v) => ['home', 'artist', 'about'].includes(v),
-  },
-  quote: {
-    type: String,
-    required: true,
-  },
-  // 作者/來源文字,about 目前沒有就傳空字串或不傳
-  author: {
-    type: String,
-    default: '',
-  },
-})
-
 import texture2 from '../../assets/images/textures/texture2.webp'
 import textureForward from '../../assets/images/textures/texture-forward.webp'
 
-const backgroundImageMap = {
+type Variant = 'home' | 'artist' | 'about'
+
+const props = withDefaults(
+  defineProps<{
+    variant: Variant
+    quote: string
+    author?: string
+  }>(),
+  {
+    author: '',
+  },
+)
+
+const backgroundImageMap: Record<Variant, string> = {
   home: texture2,
   artist: textureForward,
   about: textureForward,
@@ -29,7 +24,7 @@ const backgroundImageMap = {
 
 const backgroundImage = computed(() => backgroundImageMap[props.variant])
 
-const textStyles = {
+const textStyles: Record<Variant, { quote: string; author: string }> = {
   home: {
     quote: 'italic font-serif text-gold-500',
     author: 'text-gold-300',
@@ -64,7 +59,7 @@ const displayAuthor = computed(() => {
       <div class="quote-block__quote-wrap relative w-full flex justify-center">
         <p
           :class="styles.quote"
-          class="quote-block__text mx-auto mt-2 max-w-[280px] ipad:max-w-md tablet:max-w-xl text-quote pt-16 italic font-serif"
+          class="quote-block__text mx-auto mt-2 max-w-[280px] ipad:max-w-md tablet:max-w-xl text-quote pt-16"
         >
           {{ quote }}
         </p>

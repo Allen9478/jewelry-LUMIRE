@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { useAuthStore } from '@/stores/useAuthStore'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'

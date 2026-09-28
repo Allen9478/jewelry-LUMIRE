@@ -1,13 +1,18 @@
-<script setup>
+<script setup lang="ts">
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 import getImageUrl from '@/utils/getImageUrl'
-import artists from '@/data/artists.json'
-import works from '@/data/works.json'
+import artistsData from '@/data/artists.json'
+import worksData from '@/data/works.json'
+import type { WorkItem } from '@/type/work'
+import { useLocalized } from '@/composables/useLocalized'
 import GoldDivider from '@/components/ui/GoldDivider.vue'
 import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
 
-function getArtistWorks(artistName) {
+const works: WorkItem[] = worksData
+const { localized } = useLocalized()
+
+function getArtistWorks(artistName: string) {
   return works.filter((w) => w.designer === artistName).slice(0, 3)
 }
 </script>
@@ -22,7 +27,7 @@ function getArtistWorks(artistName) {
       :pause-autoplay-on-hover="true"
       :transition="600"
     >
-      <Slide v-for="artist in artists" :key="artist.id">
+      <Slide v-for="artist in artistsData" :key="artist.id">
         <div
           class="artists-carousel__slide grid grid-cols-[50%_50%] tablet:grid-cols-[25%_30%_45%] w-full"
         >
@@ -78,7 +83,7 @@ function getArtistWorks(artistName) {
               >
                 <img
                   :src="getImageUrl(`jewelry/${work.image}`)"
-                  :alt="work.name"
+                  :alt="localized(work.name)"
                   class="w-full h-full object-cover"
                   loading="lazy"
                 />

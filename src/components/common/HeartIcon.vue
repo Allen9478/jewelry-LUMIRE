@@ -1,6 +1,8 @@
 <!-- //只寫三個地方其實不一定要拆分是為了避免日後更多地方要用到這個 -->
-<script setup>
-defineProps({ filled: Boolean })
+<script setup lang="ts">
+defineProps<{
+  filled: boolean
+}>()
 </script>
 <template>
   <svg

@@ -4,7 +4,7 @@ import { useI18n } from 'vue-i18n'
 import { useUiStore } from '@/stores/useUiStore'
 import { createSearchIndex } from '@/utils/search'
 import type { WorkItem } from '@/type/work'
-import type { Artist } from '@/type/artist'
+import type { ArtistItem } from '@/type/artist'
 import type { SearchResult } from '@/type/search'
 
 /**
@@ -14,11 +14,11 @@ import type { SearchResult } from '@/type/search'
  * 元件只需要呼叫這個 composable、把回傳值綁到 template 上即可，
  * 之後要換搜尋邏輯或加功能，只改這一個檔案，不用動元件。
  *
- * 參數用 Ref<WorkItem[]> / Ref<Artist[]>，而不是直接傳陣列，
+ * 參數用 Ref<WorkItem[]> / Ref<ArtistItem[]>，而不是直接傳陣列，
  * 是因為如果資料是非同步載入（例如 API fetch 完才有值），
  * 用 ref 包起來，資料一到位，computed 的 search 才會跟著重新建立。
  */
-export function useSearch(works: Ref<WorkItem[]>, artists: Ref<Artist[]>) {
+export function useSearch(works: Ref<WorkItem[]>, artists: Ref<ArtistItem[]>) {
   const router = useRouter()
   const uiStore = useUiStore()
   const { locale } = useI18n()

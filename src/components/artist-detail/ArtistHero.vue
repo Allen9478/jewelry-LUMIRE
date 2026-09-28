@@ -1,12 +1,15 @@
-<script setup>
+<script setup lang="ts">
 import getImageUrl from '@/utils/getImageUrl'
 import ScrollHint from '@/components/ui/ScrollHint.vue'
+import type { ArtistItem } from '@/type/artist'
 
-defineProps({
-  artist: { type: Object, required: true },
-})
+defineProps<{
+  artist: ArtistItem
+}>()
 
-const emit = defineEmits(['scroll-to-info'])
+const emit = defineEmits<{
+  'scroll-to-info': []
+}>()
 </script>
 <template>
   <div
@@ -18,7 +21,7 @@ const emit = defineEmits(['scroll-to-info'])
       class="object-cover object-[center_10%] h-full w-full"
     />
     <div
-      class="hidden tablet:block absolute bottom-4 left-1/2 -translate-x-1/2 text-gold-500 z-10"
+      class="hidden tablet:block absolute bottom-0 left-1/2 -translate-x-1/2 text-gold-500 z-10"
       aria-hidden="true"
     >
       <ScrollHint />
