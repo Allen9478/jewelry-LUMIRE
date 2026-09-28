@@ -1,23 +1,26 @@
-<!-- BaseUnderlineTab.vue -->
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, type RouteLocationRaw } from 'vue-router'
 
-const props = defineProps({
-  to: String,
-  active: Boolean,
-  matchNames: {
-    type: Array,
-    default: () => [],
+const props = withDefaults(
+  defineProps<{
+    to?: RouteLocationRaw
+    active?: boolean
+    matchNames?: string[]
+  }>(),
+  {
+    matchNames: () => [],
   },
-})
-defineEmits(['click'])
+)
+defineEmits<{
+  click: []
+}>()
 
 const route = useRoute()
 
 const isActive = computed(() => {
   if (!props.matchNames.length) return false
-  return route.matched.some((r) => props.matchNames.includes(r.name))
+  return route.matched.some((r) => props.matchNames.includes(r.name as string))
 })
 
 const baseClass =

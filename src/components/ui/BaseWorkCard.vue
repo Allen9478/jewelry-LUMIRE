@@ -1,17 +1,22 @@
-<script setup>
+<script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import HeartButton from '@/components/common/HeartButton.vue'
 import getImageUrl from '@/utils/getImageUrl'
+import type { WorkItem } from '@/type/work'
+import { useLocalized } from '@/composables/useLocalized'
 
-const { t, locale } = useI18n()
+const { t } = useI18n()
+const { localized } = useLocalized()
 
-const props = defineProps({
-  work: Object,
-  loading: {
-    type: String,
-    default: 'lazy',
+withDefaults(
+  defineProps<{
+    work: WorkItem
+    loading?: 'lazy' | 'eager'
+  }>(),
+  {
+    loading: 'lazy',
   },
-})
+)
 </script>
 <template>
   <RouterLink
@@ -24,7 +29,7 @@ const props = defineProps({
         <div class="relative overflow-hidden w-[110px] shrink-0 tablet:w-auto tablet:max-w-full">
           <img
             :src="getImageUrl(`jewelry/${work.image}`)"
-            :alt="work.name"
+            :alt="localized(work.name)"
             :loading="loading"
             width="1122"
             height="1402"
@@ -37,7 +42,7 @@ const props = defineProps({
         <!-- 分開寫兩個的原因是解決 mobile切換tablet瞬間文字出現消失的問題,用css能解決就不用js並且這裡code沒很多  -->
         <div class="flex flex-col pl-4 pr-10 tablet:hidden">
           <h2 class="card__name text-white text-body my-2 line-clamp-2">
-            {{ work.name[locale] }}
+            {{ localized(work.name) }}
           </h2>
           <p class="card__artist text-white/50 mb-3 text-body-sm">{{ work.designer }}</p>
           <p class="text-xs order-last mb-3 tracking-widest text-gold-500">View →</p>
@@ -46,7 +51,7 @@ const props = defineProps({
         <div
           class="hidden tablet:flex flex-col tablet:absolute tablet:bottom-0 tablet:left-0 tablet:right-0 tablet:p-5 translate-y-2 pointer-events-none opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500"
         >
-          <h2 class="card__name text-white text-body mb-3">{{ work.name[locale] }}</h2>
+          <h2 class="card__name text-white text-body mb-3">{{ localized(work.name) }}</h2>
           <p class="card__artist text-white/90 mb-3 text-body-sm">{{ work.designer }}</p>
           <p class="text-xs tracking-widest text-gold-500 mb-3">{{ t('card.view') }} →</p>
         </div>

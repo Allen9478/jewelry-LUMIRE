@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { navItems } from '@/constants/navigations'
 import { useAuthStore } from '@/stores/useAuthStore'
@@ -20,8 +20,8 @@ function closeMenu() {
   isOpen.value = false
   document.body.style.overflow = ''
 }
-
-function handleKeydown(e) {
+// KeyboardEvent是內建的型別
+function handleKeydown(e: KeyboardEvent) {
   if (e.key === 'Escape') closeMenu()
 }
 

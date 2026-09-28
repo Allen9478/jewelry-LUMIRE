@@ -1,11 +1,16 @@
-<script setup>
-defineProps({
-  items: { type: Array, required: true },
-  gridClass: {
-    type: String,
-    default: 'grid-cols-1 tablet:grid-cols-3 laptop:grid-cols-4',
+<script setup lang="ts" generic="T extends { id: string }">
+withDefaults(
+  defineProps<{
+    items: T[]
+    gridClass?: string
+  }>(),
+  {
+    gridClass: 'grid-cols-1 tablet:grid-cols-3 laptop:grid-cols-4',
   },
-})
+)
+defineSlots<{
+  default(props: { item: T; index: number }): unknown
+}>()
 </script>
 <template>
   <div :class="['item-grid grid gap-4 tablet:gap-5 laptop:gap-6 place-items-center', gridClass]">
@@ -23,5 +28,3 @@ defineProps({
     </div>
   </div>
 </template>
-
-<style scoped></style>

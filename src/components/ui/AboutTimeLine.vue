@@ -1,18 +1,23 @@
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 
+interface TimelineItem {
+  year: string
+  title: string
+  subtitle: string
+}
 // 共用同一份資料，桌機/手機兩套 DOM 都吃這裡
-const timeline = ref([
+const timeline: TimelineItem[] = [
   { year: '2018', title: 'Founding Exhibition', subtitle: 'Origins' },
   { year: '2019', title: 'Forms of Devotion', subtitle: 'Group Exhibition' },
   { year: '2021', title: 'Natural Expressions', subtitle: 'Curated by Lumière' },
   { year: '2022', title: 'Beyond Ornament', subtitle: 'Solo Focus' },
   { year: '2024', title: 'Memory, Transformed', subtitle: 'Anniversary Exhibition' },
-])
+]
 
-const timelineRef = ref(null)
+const timelineRef = ref<HTMLElement | null>(null)
 const isVisible = ref(false)
-let observer = null
+let observer: IntersectionObserver | null = null
 
 onMounted(() => {
   // 判斷使用者是否偏好減少動態效果（無障礙）

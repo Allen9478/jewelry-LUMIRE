@@ -1,7 +1,7 @@
 // src/utils/search.ts
 import Fuse, { type IFuseOptions } from 'fuse.js'
 import type { WorkItem } from '@/type/work'
-import type { Artist } from '@/type/artist'
+import type { ArtistItem } from '@/type/artist'
 import type { SearchResult } from '@/type/search'
 
 const workFuseOptions: IFuseOptions<WorkItem> = {
@@ -21,14 +21,14 @@ const workFuseOptions: IFuseOptions<WorkItem> = {
   minMatchCharLength: 1,
 }
 
-const artistFuseOptions: IFuseOptions<Artist> = {
+const artistFuseOptions: IFuseOptions<ArtistItem> = {
   keys: [{ name: 'name', weight: 1 }],
   threshold: 0.35,
   ignoreLocation: true,
   minMatchCharLength: 1,
 }
 
-export function createSearchIndex(works: WorkItem[], artists: Artist[]) {
+export function createSearchIndex(works: WorkItem[], artists: ArtistItem[]) {
   const workFuse = new Fuse(works, workFuseOptions)
   const artistFuse = new Fuse(artists, artistFuseOptions)
 

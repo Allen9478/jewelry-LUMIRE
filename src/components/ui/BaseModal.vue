@@ -1,8 +1,11 @@
-<script setup>
-defineProps({
-  isOpen: Boolean,
-})
-defineEmits(['close'])
+<script setup lang="ts">
+defineProps<{
+  isOpen: boolean
+}>()
+
+defineEmits<{
+  close: []
+}>()
 </script>
 
 <template>

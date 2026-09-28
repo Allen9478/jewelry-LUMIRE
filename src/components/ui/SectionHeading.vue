@@ -1,19 +1,25 @@
 <!-- 區塊eyebrow加標題加button重複所以拆分出這元件,有帶判斷是否必要 -->
-<script setup>
+<script setup lang="ts">
 import GoldDivider from '@/components/ui/GoldDivider.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
 
-defineProps({
-  eyebrow: { type: String, required: true },
-  title: { type: String, required: true },
-  desc: { type: String, default: null },
-  linkTo: { type: String, default: null },
-  linkText: { type: String, default: null },
-  titleTag: { type: String, default: 'h2' },
-  titleClass: { type: String, default: 'py-4 tablet:py-8' },
-  descClass: { type: String, default: null },
-})
+withDefaults(
+  defineProps<{
+    eyebrow: string
+    title: string
+    desc?: string
+    linkTo?: string
+    linkText?: string
+    titleTag?: string
+    titleClass?: string
+    descClass?: string
+  }>(),
+  {
+    titleTag: 'h2',
+    titleClass: 'py-4 tablet:py-8',
+  },
+)
 </script>
 <template>
   <div class="section-heading__container flex flex-col items-start">

@@ -1,5 +1,4 @@
-<!-- components/ui/ScrollHint.vue -->
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const isVisible = ref(true)

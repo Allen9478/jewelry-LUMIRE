@@ -1,15 +1,22 @@
-<script setup>
+<script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import type { LocalizedText } from '@/type/work'
 
-const props = defineProps({
-  variant: {
-    type: String,
-    default: 'desktop', // 'desktop' 或 'mobile'
+type Variant = 'desktop' | 'mobile'
+type Locale = keyof LocalizedText
+
+withDefaults(
+  defineProps<{
+    variant?: Variant
+  }>(),
+  {
+    variant: 'desktop',
   },
-})
+)
+
 const { locale } = useI18n()
 
-function switchLocale(lang) {
+function switchLocale(lang: Locale) {
   locale.value = lang
 }
 </script>
@@ -39,12 +46,14 @@ function switchLocale(lang) {
       class="absolute left-0 top-full mt-2 w-20 bg-[#1a1a1a] border border-[#3a3530] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
     >
       <button
+        type="button"
         @click="switchLocale('en')"
         class="w-full px-4 py-2 text-left text-sm hover:text-gold-500"
       >
         EN
       </button>
       <button
+        type="button"
         @click="switchLocale('zh-TW')"
         class="w-full px-4 py-2 text-left text-sm hover:text-gold-500"
       >
@@ -54,6 +63,7 @@ function switchLocale(lang) {
   </div>
   <div v-else class="flex items-center gap-3">
     <button
+      type="button"
       @click="switchLocale('zh-TW')"
       class="text-sm px-1 py-2 transition-colors"
       :class="locale === 'zh-TW' ? 'text-gold-500' : 'text-white hover:text-gold-500'"
@@ -62,6 +72,7 @@ function switchLocale(lang) {
     </button>
     <span class="text-white/40">|</span>
     <button
+      type="button"
       @click="switchLocale('en')"
       class="text-sm px-1 py-2 transition-colors"
       :class="locale === 'en' ? 'text-gold-500' : 'text-white hover:text-gold-500'"

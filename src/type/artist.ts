@@ -1,4 +1,4 @@
-export interface Artist {
+export interface ArtistItem {
   id: string
   name: string
   birth_year_and_nationality: string

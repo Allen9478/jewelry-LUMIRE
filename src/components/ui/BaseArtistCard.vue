@@ -1,9 +1,11 @@
-<script setup>
+<script setup lang="ts">
 import getImageUrl from '@/utils/getImageUrl'
 import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
-defineProps({
-  artist: Object,
-})
+import type { ArtistItem } from '@/type/artist'
+
+defineProps<{
+  artist: ArtistItem
+}>()
 </script>
 <template>
   <div

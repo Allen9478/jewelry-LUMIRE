@@ -1,13 +1,20 @@
 <!-- FormInput.vue -->
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from 'vue'
 
-const props = defineProps({
-  type: { type: String, default: 'text' },
-  label: { type: String, required: true },
-  id: { type: String, default: '' },
-})
-const modelValue = defineModel()
+const props = withDefaults(
+  defineProps<{
+    type?: 'text' | 'password' | 'email'
+    label: string
+    id?: string
+  }>(),
+  {
+    type: 'text',
+    id: '',
+  },
+)
+
+const modelValue = defineModel<string>()
 const showPassword = ref(false)
 
 const inputId = computed(() => props.id || props.label)
@@ -21,8 +28,8 @@ const inputType = computed(() =>
   <div class="relative group">
     <input
       :id="inputId"
-      v-model="modelValue"
       :type="inputType"
+      v-model="modelValue"
       placeholder=" "
       class="w-full pt-5 pb-1 outline-none peer bg-transparent text-gold-500 border-b border-gray-muted group-focus-within:border-gold-500"
     />
@@ -36,8 +43,9 @@ const inputType = computed(() =>
       v-if="isPassword"
       type="button"
       class="toggle-pw absolute right-0 bottom-2 group-focus-within:text-gold-500"
-      @click="showPassword = !showPassword"
       :aria-label="showPassword ? 'Hide password' : 'Show password'"
+      :aria-pressed="showPassword"
+      @click="showPassword = !showPassword"
     >
       <!-- Eye icon -->
       <svg

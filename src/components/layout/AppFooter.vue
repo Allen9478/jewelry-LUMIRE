@@ -1,14 +1,21 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-const { t, locale } = useI18n()
-const openSections = ref({})
+interface FooterSection {
+  key: string
+  titleKey: string
+  itemKeys: string[]
+  desktopOnly?: boolean
+}
 
-function toggleMenu(key) {
+const { t } = useI18n()
+const openSections = ref<Record<string, boolean>>({})
+
+function toggleMenu(key: string) {
   openSections.value[key] = !openSections.value[key]
 }
-const sections = [
+const sections: FooterSection[] = [
   {
     key: 'explore',
     titleKey: 'footer.explore.title',
@@ -184,7 +191,7 @@ const sections = [
                   <span class="bar bar-flex"></span>
                 </button>
               </div>
-              <ul :class="[openSections[section.itemKeys] ? 'block' : 'hidden', 'tablet:block']">
+              <ul :class="[openSections[section.key] ? 'block' : 'hidden', 'tablet:block']">
                 <li
                   v-for="itemKey in section.itemKeys"
                   :key="itemKey"
