@@ -14,7 +14,7 @@ import breathing from '@/assets/images/breathing-bg.png'
 import artists from '@/data/artists.json'
 import works from '@/data/works.json'
 
-const { t, locale } = useI18n()
+const { t } = useI18n()
 const uniqueDesignerWorks = computed(() => {
   const seenDesigners = new Set()
 
@@ -29,12 +29,6 @@ const uniqueDesignerWorks = computed(() => {
 
 const email = ref('')
 const submitted = ref(false)
-
-function handleSubscribe() {
-  if (!email.value) return
-  submitted.value = true
-  // 純前端展示用，暫不串接後端
-}
 </script>
 <template>
   <section class="relative page-container home-hero h-auto tablet:h-[95dvh] header-offset">

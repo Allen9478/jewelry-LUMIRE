@@ -11,7 +11,7 @@ import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
 import getImageUrl from '@/utils/getImageUrl'
 
 const route = useRoute()
-const { t, locale } = useI18n()
+const { locale } = useI18n()
 const work = computed(() => works.find((w) => w.id === route.params.id))
 const artist = computed(() => artists.find((a) => a.name === work.value.designer))
 
