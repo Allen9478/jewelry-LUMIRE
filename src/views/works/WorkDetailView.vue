@@ -1,6 +1,6 @@
-<script setup>
+<script setup lang="ts">
 import { useRoute } from 'vue-router'
-import { useI18n } from 'vue-i18n'
+import { useLocalized } from '@/composables/useLocalized'
 import { computed } from 'vue'
 import works from '@/data/works.json'
 import artists from '@/data/artists.json'
@@ -11,12 +11,14 @@ import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
 import getImageUrl from '@/utils/getImageUrl'
 
 const route = useRoute()
-const { locale } = useI18n()
+const { localized } = useLocalized()
 const work = computed(() => works.find((w) => w.id === route.params.id))
-const artist = computed(() => artists.find((a) => a.name === work.value.designer))
+const artist = computed(() => artists.find((a) => a.name === work.value?.designer))
 
 function getOtherWorks() {
-  return works.filter((w) => w.designer === artist.value.name && w.id !== work.value.id).slice(0, 3)
+  return works
+    .filter((w) => w.designer === artist.value?.name && w.id !== work.value?.id)
+    .slice(0, 3)
 }
 </script>
 <template>
@@ -31,7 +33,7 @@ function getOtherWorks() {
       <!-- 前景:完整圖片 -->
       <img
         :src="getImageUrl(`jewelry/${work.image}`)"
-        :alt="work.name"
+        :alt="localized(work.name)"
         class="w-full h-full object-cover"
       />
     </div>
@@ -47,7 +49,7 @@ function getOtherWorks() {
           v-fade-in="{ delay: 140, y: 16, mobile: { delay: 80, y: 12 } }"
           class="workdetail-hero__info-heading text-heading-sm font-serif italic"
         >
-          {{ work.name[locale] }}
+          {{ localized(work.name) }}
         </h1>
         <dl
           v-fade-in="{ delay: 220, y: 16, mobile: { delay: 120, y: 12 } }"
@@ -55,7 +57,7 @@ function getOtherWorks() {
         >
           <div class="flex justify-between items-center gap-4 py-2 border-b border-gold-500/10">
             <dt class="text-white/50 uppercase tracking-wide shrink-0">Materials</dt>
-            <dd class="text-white text-right">{{ work.materials[locale] }}</dd>
+            <dd class="text-white text-right">{{ localized(work.materials) }}</dd>
           </div>
           <div class="flex justify-between gap-4 py-2 border-b border-gold-500/10">
             <dt class="text-white/50 uppercase tracking-wide shrink-0">Year</dt>
@@ -70,7 +72,7 @@ function getOtherWorks() {
           v-fade-in="{ delay: 300, y: 16, mobile: { delay: 160, y: 12 } }"
           class="workdetail-hero__info-description text-label tablet:text-body-sm tablet:pt-4 text-cream/80 tablet:line-clamp-4"
         >
-          {{ work.description[locale] }}
+          {{ localized(work.description) }}
         </p>
       </div>
 

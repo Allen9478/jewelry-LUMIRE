@@ -1,7 +1,8 @@
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useFavoriteStore } from '@/stores/useFavoriteStore'
 import { useAuthStore } from '@/stores/useAuthStore'
+import { useLocalized } from '@/composables/useLocalized'
 import { storeToRefs } from 'pinia'
 import GoldDivider from '@/components/ui/GoldDivider.vue'
 import SectionHeading from '@/components/ui/SectionHeading.vue'
@@ -13,6 +14,7 @@ import works from '@/data/works.json'
 
 const favoriteStore = useFavoriteStore()
 const authStore = useAuthStore()
+const { localized } = useLocalized()
 const { favorites, isLoading: isFavoritesLoading } = storeToRefs(favoriteStore)
 const { isAuthReady } = storeToRefs(authStore)
 
@@ -59,7 +61,7 @@ const sortedFavorites = computed(() => {
     case 'oldest':
       return list.sort((a, b) => favorites.value.indexOf(a.id) - favorites.value.indexOf(b.id))
     case 'name-asc':
-      return list.sort((a, b) => a.name.localeCompare(b.name))
+      return list.sort((a, b) => localized(a.name).localeCompare(localized(b.name)))
     case 'artist-asc':
       return list.sort((a, b) => a.designer.localeCompare(b.designer))
     default:
@@ -71,7 +73,7 @@ const sortedFavorites = computed(() => {
   <div
     class="page-container header-offset my-12 flex flex-col gap-12 tablet:gap-8"
     aria-live="polite"
-    aria-busy="isLoading"
+    :aria-busy="isLoading"
   >
     <section>
       <SectionHeading

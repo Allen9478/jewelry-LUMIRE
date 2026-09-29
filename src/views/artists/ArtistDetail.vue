@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { useRoute } from 'vue-router'
 import { ref, computed } from 'vue'
 import artists from '@/data/artists.json'
@@ -13,13 +13,17 @@ import QuoteBlock from '@/components/ui/QuoteBlock.vue'
 const route = useRoute()
 
 const artist = computed(() => artists.find((a) => a.id === route.params.id))
-const work = computed(() => works.filter((w) => w.designer === artist.value.name))
+const work = computed(() => works.filter((w) => w.designer === artist.value?.name))
 const collectionTitles = computed(() => {
-  return artist.value.collections.map((item) => item.split(' — ')[0].trim())
+  return artist.value?.collections.map((item) => item.split(' — ')[0]?.trim() ?? item) ?? []
 })
 
-// 父層自己拿子元件實例
-const artistInfoRef = ref(null)
+// 父層用 ref 拿到子元件 ArtistInfo 的實例（對應模板裡的 ref="artistInfoRef"）
+// - typeof ArtistInfo：取得元件本身的型別（建構函式）
+// - InstanceType<...>：把它轉成「元件實例」的型別，才能存取實例上公開的屬性
+// - | null：元件還沒掛載完成前，ref 的初始值是 null
+// 注意：子元件必須用 defineExpose 公開 infoSectionRef，父層才拿得到
+const artistInfoRef = ref<InstanceType<typeof ArtistInfo> | null>(null)
 
 const scrollToInfo = () => {
   artistInfoRef.value?.infoSectionRef?.scrollIntoView({ behavior: 'smooth' })

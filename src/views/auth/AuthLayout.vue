@@ -1,4 +1,3 @@
-<!-- views/auth/AuthLayout.vue -->
 <template>
   <div class="auth flex flex-col tablet:flex-row tablet:h-screen overflow-hidden">
     <!-- 圖片：固定不變 -->

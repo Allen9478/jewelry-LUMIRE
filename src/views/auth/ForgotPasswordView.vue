@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 import { useAuthStore } from '@/stores/useAuthStore'
 import FormInput from '@/components/ui/FormInput.vue'
@@ -14,9 +14,8 @@ async function handleSubmit() {
     sucMsg.value = ''
     await authStore.resetPassword(email.value)
     sucMsg.value = 'A reset link has been sent to your email'
-  } catch (err) {
-    console.error('reset password failed', err)
-    error.value = err.message || 'Something went wrong'
+  } catch {
+    error.value = authStore.error || 'Something went wrong'
   }
 }
 </script>

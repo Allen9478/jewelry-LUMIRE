@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import LoginPromptModal from './components/ui/LoginPromptModal.vue'
 import SearchModal from '@/components/ui/SearchModal.vue'
 import { useCatalogStore } from '@/stores/useCatalogStore'
