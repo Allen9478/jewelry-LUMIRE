@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import contact from '@/data/contact.json'
 import FormInput from '@/components/ui/FormInput.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'

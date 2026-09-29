@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import heroImage from '@/assets/images/exhibition/exhibition-hero.webp'
 import visitImage from '@/assets/images/exhibition/exhibition-location.webp'
 import ItemGrid from '@/components/ui/ItemGrid.vue'
@@ -14,20 +14,18 @@ import artists from '@/data/artists.json'
 
 const artistExample = artists.find((a) => a.id === 'yu_an_lin')
 
-function randomWorks(arr, count) {
-  const work = [...arr]
-  let i = arr.length
-  const min = i - count
+function randomWorks<T>(arr: readonly T[], count: number): T[] {
+  const pool = [...arr]
+  const result: T[] = []
+  const n = Math.min(count, pool.length)
 
-  while (i-- > min) {
-    const index = Math.floor((i + 1) * Math.random())
-
-    const temp = work[index]
-    work[index] = work[i]
-    work[i] = temp
+  for (let k = 0; k < n; k++) {
+    const index = Math.floor(Math.random() * pool.length)
+    const [picked] = pool.splice(index, 1)
+    if (picked !== undefined) result.push(picked)
   }
 
-  return work.slice(min)
+  return result
 }
 const fuckData = randomWorks(works, 6)
 </script>
@@ -36,7 +34,7 @@ const fuckData = randomWorks(works, 6)
     <div class="exhibitions__hero relative w-full h-[350px] md:h-[600px] overflow-hidden">
       <img
         :src="heroImage"
-        :alt="natural"
+        alt="natural"
         class="absolute inset-0 w-full h-full object-cover object-center"
       />
 
@@ -261,7 +259,7 @@ const fuckData = randomWorks(works, 6)
         >
           <img
             :src="visitImage"
-            :alt="visit"
+            alt="visit"
             class="exhibitions__visit-img w-full h-full object-cover object-center tablet:absolute tablet:inset-0"
           />
         </div>

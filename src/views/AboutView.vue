@@ -1,4 +1,5 @@
-<script setup>
+<script setup lang="ts">
+import { useTemplateRef } from 'vue'
 import aboutData from '@/data/about.json'
 import ItemGrid from '@/components/ui/ItemGrid.vue'
 import SectionHeading from '@/components/ui/SectionHeading.vue'
@@ -8,7 +9,8 @@ import BaseAvatar from '@/components/ui/BaseAvatar.vue'
 import QuoteBlock from '@/components/ui/QuoteBlock.vue'
 import { useLightFollow } from '@/composables/useLightFollow'
 
-const { frameEl, isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow({
+const frameRef = useTemplateRef<HTMLElement>('frame')
+const { isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow(frameRef, {
   tiltStrength: 6,
   zoomOnLit: 1.06,
 })
@@ -45,7 +47,7 @@ const { frameEl, isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow
 
       <div class="about__intro-image hidden tablet:block h-full min-h-[400px]">
         <div
-          ref="frameEl"
+          ref="frame"
           class="frame relative h-full overflow-hidden"
           :class="{ 'is-lit': isLit }"
           :style="lightStyle"

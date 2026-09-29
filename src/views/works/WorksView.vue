@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import works from '@/data/works.json'
 import SectionHeading from '@/components/ui/SectionHeading.vue'
 import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
@@ -9,7 +9,7 @@ import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
-const currentCategory = ref(null)
+const currentCategory = ref<string | null>(null)
 
 const availableCategories = computed(() => {
   return [...new Set(works.map((item) => item.category))]
@@ -21,7 +21,7 @@ const filteredWorks = computed(() => {
 })
 
 // 計算每個作品卡片的淡入延遲時間,還不確定要不要全站套用
-function getFadeDelay(index, base, step) {
+function getFadeDelay(index: number, base: number, step: number) {
   return base + index * step
 }
 //TODO: 邏輯測試完成,把這頁排版css寫好再整理js

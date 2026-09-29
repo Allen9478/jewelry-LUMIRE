@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import BaseArtistCard from '@/components/ui/BaseArtistCard.vue'
 import SectionHeading from '@/components/ui/SectionHeading.vue'
 import GoldDivider from '@/components/ui/GoldDivider.vue'
