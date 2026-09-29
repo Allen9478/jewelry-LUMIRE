@@ -6,10 +6,6 @@ import type { ArtistItem } from '@/type/artist'
 defineProps<{
   artist: ArtistItem
 }>()
-
-const emit = defineEmits<{
-  'scroll-to-info': []
-}>()
 </script>
 <template>
   <div

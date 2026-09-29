@@ -29,15 +29,15 @@ onMounted(() => {
   }
 
   observer = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting) {
-        isVisible.value = true
-        observer.disconnect() // 只觸發一次，滑出滑入不重播
-      }
+    (entries, obs) => {
+      const entry = entries[0]
+      if (!entry?.isIntersecting) return
+      isVisible.value = true
+      obs.disconnect() // 只觸發一次，滑出滑入不重播
     },
     { threshold: 0.3 },
   )
-  observer.observe(timelineRef.value)
+  if (timelineRef.value) observer.observe(timelineRef.value)
 })
 
 onUnmounted(() => {

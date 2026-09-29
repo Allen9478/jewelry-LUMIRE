@@ -3,7 +3,6 @@ import type { RouteRecordRaw, RouterOptions } from 'vue-router'
 import { watch } from 'vue'
 import { useAuthStore } from '@/stores/useAuthStore'
 import { useUiStore } from '@/stores/useUiStore'
-import { useFavoriteStore } from '@/stores/useFavoriteStore'
 
 function waitForAuthReady() {
   const authStore = useAuthStore()
@@ -126,7 +125,8 @@ const routes: RouteRecordRaw[] = [
 const routerOptions: RouterOptions = {
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes,
-  scrollBehavior(to, from, savedPosition) {
+  // 參數加底線TS會略過
+  scrollBehavior(_to, _from, savedPosition) {
     // 如果瀏覽器有動作紀錄，就回去原本動作的位置
     if (savedPosition) {
       return savedPosition

@@ -6,7 +6,7 @@ const infoSectionRef = ref<HTMLElement | null>(null)
 
 defineProps<{
   artist: ArtistItem
-  collectionTitles: String[]
+  collectionTitles: string[]
 }>()
 
 defineExpose({ infoSectionRef })

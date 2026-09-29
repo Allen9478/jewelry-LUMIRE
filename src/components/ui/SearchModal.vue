@@ -19,7 +19,6 @@ const {
   isOpen,
   results,
   displayLabel,
-  goTo,
   selectItem,
   onEnter,
   onArrowDown,

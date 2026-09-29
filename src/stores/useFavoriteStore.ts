@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { useAuthStore } from './useAuthStore'
 import { useUiStore } from './useUiStore'
-import { doc, getDoc, getDocs, collection, setDoc, deleteDoc } from 'firebase/firestore'
+import { doc, getDocs, collection, setDoc, deleteDoc } from 'firebase/firestore'
 import { db } from '@/firebase'
 export const useFavoriteStore = defineStore('favorite', () => {
   const authStore = useAuthStore()
@@ -22,7 +22,9 @@ export const useFavoriteStore = defineStore('favorite', () => {
       console.warn('toggleFavorite: invalid id', id)
       return
     }
-    const userId = authStore.user.uid // Firebase Auth 的使用者 id
+    const uid = authStore.user?.uid // Firebase Auth 的使用者 id
+    if (!uid) return
+    const userId = uid
     const docRef = doc(db, 'favorites', userId, 'items', id)
     const alreadyFavorited = favorites.value.includes(id)
 

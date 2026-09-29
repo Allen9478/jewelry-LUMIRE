@@ -8,7 +8,7 @@ import BaseAvatar from '@/components/ui/BaseAvatar.vue'
 import QuoteBlock from '@/components/ui/QuoteBlock.vue'
 import { useLightFollow } from '@/composables/useLightFollow'
 
-const { frameEl, isLit, onMouseMove, onMouseLeave, lightStyle, imageTransform } = useLightFollow({
+const { frameEl, isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow({
   tiltStrength: 6,
   zoomOnLit: 1.06,
 })
