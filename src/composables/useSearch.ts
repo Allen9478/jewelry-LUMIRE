@@ -3,9 +3,9 @@ import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useUiStore } from '@/stores/useUiStore'
 import { createSearchIndex } from '@/utils/search'
-import type { WorkItem } from '@/type/work'
-import type { ArtistItem } from '@/type/artist'
-import type { SearchResult } from '@/type/search'
+import type { WorkItem } from '@/types/work'
+import type { ArtistItem } from '@/types/artist'
+import type { SearchResult } from '@/types/search'
 
 /**
  * useSiteSearch

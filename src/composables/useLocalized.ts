@@ -1,6 +1,6 @@
 // 功能是選取多語系相對應的字串
 import { useI18n } from 'vue-i18n'
-import type { LocalizedText } from '@/type/work'
+import type { LocalizedText } from '@/types/work'
 
 export function useLocalized() {
   const { locale } = useI18n()

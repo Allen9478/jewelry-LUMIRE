@@ -4,7 +4,6 @@ import SectionHeading from '@/components/ui/SectionHeading.vue'
 import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
 import BaseUnderlineTab from '@/components/common/BaseUnderlineTab.vue'
 import ArtistsCarousel from '@/components/ui/ArtistsCarousel.vue'
-// import GoldDivider from '@/components/ui/GoldDivider.vue'
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -24,31 +23,10 @@ const filteredWorks = computed(() => {
 function getFadeDelay(index: number, base: number, step: number) {
   return base + index * step
 }
-//TODO: 邏輯測試完成,把這頁排版css寫好再整理js
 </script>
 
 <template>
   <section class="work-hero tablet:min-h-[460px]">
-    <!-- //hero要滿版所以page-container寫在文字區塊即可 -->
-    <!-- <div class="page-container text-container mt-4 flex flex-col items-start header-offset">
-      <div v-fade-in="{ delay: 0, y: 12 }" class="inline-flex flex-col items-start">
-        <p class="works-section__eyebrow tablet:block text-eyebrow text-gold-500 uppercase">
-          WORKS GALLERY
-        </p>
-        <GoldDivider variant="fade" class="mt-2" />
-      </div>
-      <h2
-        v-fade-in="{ delay: 80, y: 16 }"
-        class="works-section__heading text-heading my-2 laptop:my-4 font-serif whitespace-nowrap italic"
-      >
-        Curated Collection
-      </h2>
-      <p class="works-section__desc text-subtext">
-        We showcase exceptional jewelry by visionary artists who transform precious materials into
-        timeless stories.
-      </p>
-    </div> -->
-
     <div class="page-container text-container mt-4 flex flex-col items-start header-offset">
       <SectionHeading
         eyebrow="WORKS GALLERY"

@@ -3,7 +3,7 @@
     <!-- 圖片：固定不變 -->
     <div class="auth__hero h-[45svh] tablet:h-full tablet:w-1/2">
       <img
-        src="../../assets/images/ui/auth-hero-ring.webp"
+        src="../assets/images/auth/auth-hero-ring.webp"
         alt="auth-bg"
         class="w-full h-full object-cover object-[center_35%] tablet:object-[center_25%]"
       />

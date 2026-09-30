@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { ArtistItem } from '@/type/artist'
+import type { ArtistItem } from '@/types/artist'
 
 const infoSectionRef = ref<HTMLElement | null>(null)
 

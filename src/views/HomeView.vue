@@ -10,7 +10,7 @@ import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
 import BaseAvatar from '@/components/ui/BaseAvatar.vue'
 import QuoteBlock from '@/components/ui/QuoteBlock.vue'
 import GoldDivider from '@/components/ui/GoldDivider.vue'
-import breathing from '@/assets/images/breathing-bg.png'
+import breathing from '@/assets/images/home/breathing-bg.png'
 import artists from '@/data/artists.json'
 import works from '@/data/works.json'
 
@@ -158,7 +158,7 @@ const submitted = ref(false)
   >
     <img
       :src="breathing"
-      alt="breathing-bg"
+      alt="呼吸空間背景圖"
       width="1774"
       height="887"
       loading="lazy"

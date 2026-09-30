@@ -41,5 +41,3 @@ async function handleSubmit() {
     </p>
   </div>
 </template>
-
-<style scoped></style>

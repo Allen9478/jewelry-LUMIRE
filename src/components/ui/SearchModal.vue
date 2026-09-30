@@ -2,8 +2,8 @@
 import BaseModal from '@/components/ui/BaseModal.vue'
 import { toRef } from 'vue'
 import { useSearch } from '@/composables/useSearch'
-import type { WorkItem } from '@/type/work'
-import type { ArtistItem } from '@/type/artist'
+import type { WorkItem } from '@/types/work'
+import type { ArtistItem } from '@/types/artist'
 
 import { useUiStore } from '@/stores/useUiStore'
 

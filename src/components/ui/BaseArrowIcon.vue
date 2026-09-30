@@ -5,7 +5,7 @@
     viewBox="0 0 24 24"
     stroke-width="1.5"
     stroke="currentColor"
-    class="size-6 ml-2 group-hover:animate-arrow-loop"
+    class="size-8 ml-2 group-hover:animate-arrow-loop"
   >
     <path
       stroke-linecap="round"

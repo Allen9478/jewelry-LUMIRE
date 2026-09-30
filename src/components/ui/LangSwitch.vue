@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import type { LocalizedText } from '@/type/work'
+import type { LocalizedText } from '@/types/work'
 
 type Variant = 'desktop' | 'mobile'
 type Locale = keyof LocalizedText

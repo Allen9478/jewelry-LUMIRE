@@ -2,7 +2,7 @@
 import { useI18n } from 'vue-i18n'
 import HeartButton from '@/components/common/HeartButton.vue'
 import getImageUrl from '@/utils/getImageUrl'
-import type { WorkItem } from '@/type/work'
+import type { WorkItem } from '@/types/work'
 import { useLocalized } from '@/composables/useLocalized'
 
 const { t } = useI18n()

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import texture2 from '../../assets/images/textures/texture2.webp'
+import textureHome from '../../assets/images/textures/texture-home.webp'
 import textureForward from '../../assets/images/textures/texture-forward.webp'
 
 type Variant = 'home' | 'artist' | 'about'
@@ -17,7 +17,7 @@ const props = withDefaults(
 )
 
 const backgroundImageMap: Record<Variant, string> = {
-  home: texture2,
+  home: textureHome,
   artist: textureForward,
   about: textureForward,
 }

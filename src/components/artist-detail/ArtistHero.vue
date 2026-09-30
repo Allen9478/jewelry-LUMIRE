@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import getImageUrl from '@/utils/getImageUrl'
 import ScrollHint from '@/components/ui/ScrollHint.vue'
-import type { ArtistItem } from '@/type/artist'
+import type { ArtistItem } from '@/types/artist'
 
 defineProps<{
   artist: ArtistItem
