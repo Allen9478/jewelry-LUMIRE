@@ -33,7 +33,7 @@ async function handleSubmit() {
     <form @submit.prevent="handleSubmit" class="flex flex-col gap-8">
       <FormInput v-model="email" type="email" label="EMAIL" />
       <FormInput v-model="password" type="password" label="PASSWORD" />
-      <p v-if="authStore.error" class="text-red-500 text-sm">{{ authStore.error }}</p>
+      <p v-if="authStore.error" class="text-red-500 text-label-lg">{{ authStore.error }}</p>
       <BaseButton
         type="submit"
         variant="primary"

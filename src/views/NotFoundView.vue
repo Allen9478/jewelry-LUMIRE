@@ -32,16 +32,16 @@ function goHome(): void {
     <p class="sr-only">404</p>
     <span aria-hidden="true" class="not-found__code">404</span>
 
-    <h1 class="relative mt-2 text-2xl text-white tablet:text-3xl">
+    <h1 class="relative mt-2 text-heading-sm text-white">
       {{ localized(copy.title) }}
     </h1>
-    <p class="relative mt-3 max-w-md text-sm text-white/60">
+    <p class="relative mt-3 max-w-md text-label-lg text-white/60">
       {{ localized(copy.body) }}
     </p>
     <BaseButton class="relative mt-8" @click="goHome">
       {{ localized(copy.cta) }}
     </BaseButton>
-    <p class="relative mt-6 text-xs text-white/40">
+    <p class="relative mt-6 text-label text-white/40">
       {{ localized(copy.hint) }}
     </p>
   </main>

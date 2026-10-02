@@ -6,8 +6,9 @@
   --breakpoint-desktop: 1280px;
   --breakpoint-wide: 1536px;
   /* 一些只有手機版需要特殊處理的 */
-  --breakpoint-mobile-only: 767px; /* ── Colors ── */
+  --breakpoint-mobile-only: 767px;
 
+  /* ── Colors ── */
   --color-gold-50: #fffaf0;
   --color-gold-100: #f8ebc8;
   --color-gold-200: #f1d999;
@@ -18,7 +19,6 @@
   --color-gold-700: #866626;
   --color-gold-800: #5e4819;
   --color-gold-900: #3a2c0f;
-
   --color-black: #080808;
   --color-black-soft: #121212;
   --color-cream: #f8f5ef;

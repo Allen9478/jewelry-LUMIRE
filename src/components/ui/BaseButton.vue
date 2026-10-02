@@ -16,9 +16,9 @@ const props = withDefaults(
 
 const variantClasses: Record<Variant, string> = {
   primary:
-    'border border-gold-500 text-gold-500 px-6 py-3 text-xs tracking-[0.2em] uppercase font-sans transition-all duration-300 hover:bg-gold-500 hover:text-black',
+    'border border-gold-500 text-gold-500 px-6 py-3 text-label tracking-[0.2em] uppercase font-sans transition-all duration-300 hover:bg-gold-500 hover:text-black',
   ghost:
-    'text-gold-500 text-xs tracking-luxury uppercase font-sans transition-opacity duration-300 hover:opacity-70',
+    'text-gold-500 text-label tracking-luxury uppercase font-sans transition-opacity duration-300 hover:opacity-70',
 }
 
 const variantClass = computed(() => variantClasses[props.variant])

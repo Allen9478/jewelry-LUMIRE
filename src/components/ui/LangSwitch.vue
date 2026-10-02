@@ -26,7 +26,9 @@ function switchLocale(lang: Locale) {
     class="relative group hidden tablet:flex items-center cursor-pointer"
   >
     <!-- 顯示目前選項 -->
-    <span class="text-xs lg:text-sm px-2 py-2 group-hover:text-gold-500 transition-colors">
+    <span
+      class="text-label laptop:text-label-lg px-2 py-2 group-hover:text-gold-500 transition-colors"
+    >
       {{ locale === 'zh-TW' ? '中文' : 'EN' }}
     </span>
 
@@ -48,14 +50,14 @@ function switchLocale(lang: Locale) {
       <button
         type="button"
         @click="switchLocale('en')"
-        class="w-full px-4 py-2 text-left text-sm hover:text-gold-500"
+        class="w-full px-4 py-2 text-left text-label-lg hover:text-gold-500"
       >
         EN
       </button>
       <button
         type="button"
         @click="switchLocale('zh-TW')"
-        class="w-full px-4 py-2 text-left text-sm hover:text-gold-500"
+        class="w-full px-4 py-2 text-left text-label-lg hover:text-gold-500"
       >
         中文
       </button>
@@ -74,7 +76,7 @@ function switchLocale(lang: Locale) {
     <button
       type="button"
       @click="switchLocale('en')"
-      class="text-sm px-1 py-2 transition-colors"
+      class="text-label px-1 py-2 transition-colors"
       :class="locale === 'en' ? 'text-gold-500' : 'text-white hover:text-gold-500'"
     >
       EN

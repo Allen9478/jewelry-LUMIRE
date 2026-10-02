@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+<<<<<<< HEAD
 import textureHome from '../../assets/images/textures/texture-home.webp'
+=======
+import textureHero from '../../assets/images/textures/texture-hero.webp'
+>>>>>>> refactor/styles-rename
 import textureForward from '../../assets/images/textures/texture-forward.webp'
 
 type Variant = 'home' | 'artist' | 'about'
@@ -17,7 +21,11 @@ const props = withDefaults(
 )
 
 const backgroundImageMap: Record<Variant, string> = {
+<<<<<<< HEAD
   home: textureHome,
+=======
+  home: textureHero,
+>>>>>>> refactor/styles-rename
   artist: textureForward,
   about: textureForward,
 }
@@ -69,7 +77,7 @@ const displayAuthor = computed(() => {
 
       <p
         v-if="displayAuthor"
-        class="quote-block__author text-xs uppercase tracking-wider text-gold-300 tablet:mt-5 tablet:text-sm"
+        class="quote-block__author text-label uppercase tracking-wider text-gold-300 tablet:mt-5 tablet:text-label-lg"
       >
         {{ displayAuthor }}
       </p>

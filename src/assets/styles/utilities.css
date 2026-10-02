@@ -1,4 +1,3 @@
-/* 同理base.css */
 @layer utilities {
   /* 這隔離header預設高度用的 */
   .header-offset {

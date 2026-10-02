@@ -40,5 +40,3 @@ defineExpose({ infoSectionRef })
     </div>
   </div>
 </template>
-
-<style scoped></style>

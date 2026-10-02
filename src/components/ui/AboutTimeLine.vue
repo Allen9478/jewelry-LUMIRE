@@ -64,7 +64,7 @@ onUnmounted(() => {
         :key="item.year"
         class="flex flex-col items-center text-center gap-2 px-2"
       >
-        <span class="text-sm text-gray-400">{{ item.year }}</span>
+        <span class="text-label-lg text-gray-400">{{ item.year }}</span>
         <!-- 圓點：固定在線條的高度上，並依序延遲變色 -->
         <span
           class="w-3 h-3 rounded-full z-10 transition-colors duration-500 my-4"
@@ -73,7 +73,7 @@ onUnmounted(() => {
         ></span>
 
         <h3 class="font-serif italic text-white text-base">{{ item.title }}</h3>
-        <p class="text-xs text-gray-400 italic">{{ item.subtitle }}</p>
+        <p class="text-label text-gray-400 italic">{{ item.subtitle }}</p>
       </div>
     </div>
 
@@ -95,9 +95,9 @@ onUnmounted(() => {
           :style="{ transitionDelay: isVisible ? `${index * 200}ms` : '0ms' }"
         ></span>
         <div class="ml-6">
-          <span class="text-sm text-gray-400">{{ item.year }}</span>
-          <h3 class="font-serif italic text-white text-base">{{ item.title }}</h3>
-          <p class="text-xs text-gray-400 italic">{{ item.subtitle }}</p>
+          <span class="text-label-lg text-gray-400">{{ item.year }}</span>
+          <h3 class="font-serif italic text-white text-body">{{ item.title }}</h3>
+          <p class="text-label text-gray-400 italic">{{ item.subtitle }}</p>
         </div>
       </div>
     </div>

@@ -11,7 +11,6 @@ function getUserFavorites() {
 </script>
 
 <template>
-  <!-- 先把動畫相關關掉在桌機再寫出來解決rwd切換icon瞬間閃爍 -->
   <button
     @click.prevent="getUserFavorites"
     aria-label="我的最愛收藏"
