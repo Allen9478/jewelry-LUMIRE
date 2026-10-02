@@ -118,7 +118,7 @@ const fuckData = randomWorks(works, 6)
     >
       <div class="exhibitions__quote-main relative flex items-center">
         <p
-          class="exhibitions__quote-text text-2xl tablet:text-3xl text-gold-500 p-10 tablet:px-8 desktop:px-12 wide:px-16 italic"
+          class="exhibitions__quote-text text-quote text-gold-500 p-10 tablet:px-8 desktop:px-12 wide:px-16 italic"
         >
           {{ exhibitions.quote }}
         </p>
@@ -165,7 +165,7 @@ const fuckData = randomWorks(works, 6)
           <div class="space-y-4 mt-10 tablet:ml-8 laptop:ml-12 desktop:ml-16">
             <p class="hidden tablet:block text-subhead text-gold-500">FEATURED ARTIST</p>
 
-            <h2 class="exhibitions__artist-name text-heading font-serif">
+            <h2 class="exhibitions__artist-name text-heading-sm font-serif">
               {{ artistExample.name }}
             </h2>
             <div class="exhibitions__artist-meta flex text-body text-cream/85">

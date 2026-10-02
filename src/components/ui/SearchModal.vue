@@ -62,7 +62,7 @@ const uiStore = useUiStore()
             {{ displayLabel(result) }}
           </strong>
           <span
-            class="shrink-0 text-xs tracking-wide text-gold-500/80 border border-gold-500/30 rounded-full px-2 py-0.5"
+            class="shrink-0 text-label tracking-wide text-gold-500/80 border border-gold-500/30 rounded-full px-2 py-0.5"
           >
             {{ result.type === 'work' ? '珠寶' : '藝術家' }}
           </span>

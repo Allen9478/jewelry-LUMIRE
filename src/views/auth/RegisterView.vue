@@ -32,8 +32,8 @@ async function handleSubmit() {
       <FormInput v-model="email" type="email" label="EMAIL" />
       <FormInput v-model="password" type="password" label="PASSWORD" />
       <FormInput v-model="confirmPassword" type="password" label="CONFIRM PASSWORD" />
-      <p v-if="authStore.error" class="text-red-500 text-sm">{{ authStore.error }}</p>
-      <p v-if="passwordMismatch" class="text-red-500 text-sm">两次密码输入不一致</p>
+      <p v-if="authStore.error" class="text-red-500 text-label-lg">{{ authStore.error }}</p>
+      <p v-if="passwordMismatch" class="text-red-500 text-label-lg">两次密码输入不一致</p>
       <BaseButton
         type="submit"
         variant="primary"

@@ -25,8 +25,8 @@ async function handleSubmit() {
     <p class="text-center">Enter your email and we'll send you a link to reset your password.</p>
     <form @submit.prevent="handleSubmit" class="flex flex-col gap-8">
       <FormInput v-model="email" type="email" label="EMAIL" class="mt-5" />
-      <p v-if="sucMsg" class="text-[#c9a84c] text-sm">{{ sucMsg }}</p>
-      <p v-if="error" class="text-red-500 text-sm">{{ error }}</p>
+      <p v-if="sucMsg" class="text-gold-500 text-label-lg">{{ sucMsg }}</p>
+      <p v-if="error" class="text-red-500 text-label-lg">{{ error }}</p>
       <BaseButton
         type="submit"
         variant="primary"

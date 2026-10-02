@@ -10,6 +10,7 @@ import BaseUnderlineTab from '@/components/common/BaseUnderlineTab.vue'
 import LangSwitch from '@/components/ui/LangSwitch.vue'
 import HamburgerMenu from '@/components/layout/HamburgerMenu.vue'
 import HeartIcon from '@/components/common/HeartIcon.vue'
+import AppLogo from './AppLogo.vue'
 
 const uiStore = useUiStore()
 const isScrolled = ref(false)
@@ -57,8 +58,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
         exact-active-class=""
         class="inline-flex flex-col font-serif text-center text-gold-500"
       >
-        <span class="text-[26px] tablet:text-[34px] tracking-[0.1em]">LUMIÈRE</span>
-        <span class="text-[9px] tablet:text-[11px] tracking-[0.2em]">JEWELRY GALLERY</span>
+        <AppLogo />
       </RouterLink>
       <!-- Nav：flex-1 吸收空間，overflow hidden 防破版 -->
       <nav

@@ -45,7 +45,7 @@ withDefaults(
             {{ localized(work.name) }}
           </h2>
           <p class="card__artist text-white/50 mb-3 text-body-sm">{{ work.designer }}</p>
-          <p class="text-xs order-last mb-3 tracking-widest text-gold-500">View →</p>
+          <p class="text-label order-last mb-3 tracking-widest text-gold-500">View →</p>
         </div>
 
         <div
@@ -53,7 +53,7 @@ withDefaults(
         >
           <h2 class="card__name text-white text-body mb-3">{{ localized(work.name) }}</h2>
           <p class="card__artist text-white/90 mb-3 text-body-sm">{{ work.designer }}</p>
-          <p class="text-xs tracking-widest text-gold-500 mb-3">{{ t('card.view') }} →</p>
+          <p class="text-label tracking-widest text-gold-500 mb-3">{{ t('card.view') }} →</p>
         </div>
       </div>
     </div>

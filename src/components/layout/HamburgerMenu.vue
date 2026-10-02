@@ -4,8 +4,10 @@ import { navItems } from '@/constants/navigations'
 import { useAuthStore } from '@/stores/useAuthStore'
 import { useRouter } from 'vue-router'
 import { useScrollDirection } from '@/composables/useScrollDirection'
+import AppLogo from './AppLogo.vue'
 import LangSwitch from '@/components/ui/LangSwitch.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
+
 const authStore = useAuthStore()
 const router = useRouter()
 const { isHeaderVisible } = useScrollDirection()
@@ -71,8 +73,7 @@ onUnmounted(() => {
               @click="closeMenu"
               class="inline-flex flex-col font-serif self-start text-center text-gold-500 mt-12 menu__logo"
             >
-              <span class="text-[28px] tracking-[0.1em]">LUMIÈRE</span>
-              <span class="text-[9px] tracking-[0.2em]">JEWELRY GALLERY</span>
+              <AppLogo />
             </RouterLink>
 
             <!-- 主要連結 -->
@@ -99,7 +100,7 @@ onUnmounted(() => {
                 <BaseButton
                   variant="ghost"
                   @click="handleLogout"
-                  class="nav__icon inline-flex normal-case py-3 text-sm tracking-widest transition-transform duration-150 active:scale-95"
+                  class="nav__icon inline-flex normal-case py-3 text-label-lg tracking-widest transition-transform duration-150 active:scale-95"
                   aria-label="會員"
                 >
                   <svg
@@ -123,7 +124,7 @@ onUnmounted(() => {
                 <BaseButton
                   variant="ghost"
                   @click="goToLogin"
-                  class="nav__icon inline-flex normal-case py-3 text-sm tracking-widest transition-transform duration-150 active:scale-95"
+                  class="nav__icon inline-flex normal-case py-3 text-label-lg tracking-widest transition-transform duration-150 active:scale-95"
                   aria-label="會員"
                 >
                   <svg

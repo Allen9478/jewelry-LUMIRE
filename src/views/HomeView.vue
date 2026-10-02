@@ -300,7 +300,7 @@ const submitted = ref(false)
           required
           :placeholder="t('page.home.newsletter.placeholder')"
           :disabled="submitted"
-          class="min-w-0 flex-1 border border-gold-600 border-r-0 bg-transparent p-3 text-sm text-white placeholder:text-gold-200/50 focus:outline-none focus:ring-1 focus:ring-gold-400"
+          class="min-w-0 flex-1 border border-gold-600 border-r-0 bg-transparent p-3 text-label-lg text-white placeholder:text-gold-200/50 focus:outline-none focus:ring-1 focus:ring-gold-400"
         />
         <button
           type="submit"
