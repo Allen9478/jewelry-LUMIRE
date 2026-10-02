@@ -4,7 +4,6 @@ import SectionHeading from '@/components/ui/SectionHeading.vue'
 import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
 import BaseUnderlineTab from '@/components/common/BaseUnderlineTab.vue'
 import ArtistsCarousel from '@/components/ui/ArtistsCarousel.vue'
-// import GoldDivider from '@/components/ui/GoldDivider.vue'
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -24,7 +23,6 @@ const filteredWorks = computed(() => {
 function getFadeDelay(index: number, base: number, step: number) {
   return base + index * step
 }
-//TODO: 邏輯測試完成,把這頁排版css寫好再整理js
 </script>
 
 <template>
@@ -42,7 +40,10 @@ function getFadeDelay(index: number, base: number, step: number) {
       </p>
     </div>
 
-    <div class="work-hero__image-desktop tablet:block hidden w-full overflow-hidden">
+    <div
+      v-fade-in="{ delay: 160, y: 12, duration: 900 }"
+      class="work-hero__image-desktop tablet:block hidden w-full overflow-hidden"
+    >
       <img
         src="../../assets/images/works/works_hero.webp"
         alt="jewelry on rock"
@@ -54,6 +55,7 @@ function getFadeDelay(index: number, base: number, step: number) {
   </section>
   <div class="work-main page-container relative">
     <nav
+      v-fade-in="{ delay: 0, y: 12, mobile: { delay: 200, y: 12 } }"
       aria-label="依作品類別篩選作品"
       class="py-3 overflow-x-auto no-scrollbar tablet:overflow-visible"
     >
@@ -94,7 +96,7 @@ function getFadeDelay(index: number, base: number, step: number) {
           y: 28,
           mobile: { delay: getFadeDelay(i, 100, 30), y: 16 },
         }"
-        :key="work.id"
+        :key="`${currentCategory}-${work.id}`"
         class="flex w-full justify-center"
       >
         <BaseWorkCard :work="work" :loading="i < 4 ? 'eager' : 'lazy'"></BaseWorkCard>

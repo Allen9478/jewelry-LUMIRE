@@ -1,8 +1,8 @@
 // src/utils/search.ts
 import Fuse, { type IFuseOptions } from 'fuse.js'
-import type { WorkItem } from '@/type/work'
-import type { ArtistItem } from '@/type/artist'
-import type { SearchResult } from '@/type/search'
+import type { WorkItem } from '@/types/work'
+import type { ArtistItem } from '@/types/artist'
+import type { SearchResult } from '@/types/search'
 
 const workFuseOptions: IFuseOptions<WorkItem> = {
   keys: [

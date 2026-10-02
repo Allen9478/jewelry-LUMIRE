@@ -27,12 +27,20 @@ const { isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow(frameRef
         <SectionHeading :eyebrow="aboutData.hero.subtitle" :title="aboutData.hero.title" />
 
         <div class="about__philosophy space-y-8">
-          <h2 class="about__philosophy-title text-gold-500">
+          <h2
+            v-fade-in="{ delay: 160, y: 16, mobile: { delay: 120, y: 12 } }"
+            class="about__philosophy-title text-gold-500"
+          >
             {{ aboutData.philosophy.sectionTitle }}
           </h2>
           <div class="space-y-6">
             <p
               v-for="(paragraph, index) in aboutData.philosophy.paragraphs"
+              v-fade-in="{
+                delay: 200 + Math.min(index, 3) * 60,
+                y: 16,
+                mobile: { delay: 0, y: 12 },
+              }"
               :key="index"
               titleTag="h1"
               class="about__philosophy-paragraph"
@@ -45,7 +53,10 @@ const { isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow(frameRef
 
       <!-- 右欄:互動圖片,h-full 撐滿跟左欄一樣高 -->
 
-      <div class="about__intro-image hidden tablet:block h-full min-h-[400px]">
+      <div
+        v-fade-in="{ delay: 100, y: 16, duration: 900 }"
+        class="about__intro-image hidden tablet:block h-full min-h-[400px]"
+      >
         <div
           ref="frame"
           class="frame relative h-full overflow-hidden"
@@ -75,17 +86,29 @@ const { isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow(frameRef
     </section>
 
     <section class="about__exhibition-highlights page-container">
-      <h2 class="about__exhibition-highlights-title text-gold-500">EXHIBITION HIGHLIGHTS</h2>
-      <AboutTimeLine :timelineData="aboutData.exhibitionHighlights" />
+      <h2 v-fade-in="{ delay: 0, y: 12 }" class="about__exhibition-highlights-title text-gold-500">
+        EXHIBITION HIGHLIGHTS
+      </h2>
+      <AboutTimeLine
+        v-fade-in="{ delay: 40, y: 12 }"
+        :timelineData="aboutData.exhibitionHighlights"
+      />
     </section>
 
     <section class="about__pillars page-container space-y-10">
-      <h2 class="about__pillars-title text-gold-500">OUR PILLARS</h2>
+      <h2 v-fade-in="{ delay: 0, y: 12 }" class="about__pillars-title text-gold-500">
+        OUR PILLARS
+      </h2>
       <div
         class="about__pillars-content w-4/5 tablet:w-full flex flex-col tablet:flex-row items-center tablet:items-stretch gap-8 mx-auto desktop:gap-12"
       >
         <div
           v-for="(pillar, index) in aboutData.pillars"
+          v-fade-in="{
+            delay: 100 + index * 100,
+            y: 24,
+            mobile: { delay: 0, y: 16 },
+          }"
           :key="index"
           class="flex flex-col p-8 border border-gold-500/20 gap-8"
         >
@@ -98,6 +121,7 @@ const { isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow(frameRef
 
     <section class="about__gallery">
       <img
+        v-fade-in="{ delay: 0, y: 12, duration: 900 }"
         src="../assets/images/about/about-hero.webp"
         alt="Lumière Jewelry Gallery 展場空間"
         class="about__gallery-image w-full h-[250px] object-cover"
@@ -105,7 +129,7 @@ const { isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow(frameRef
     </section>
 
     <section class="about__team page-container space-y-8">
-      <h2 class="about__team-title text-gold-500">OUR TEAM</h2>
+      <h2 v-fade-in="{ delay: 0, y: 12 }" class="about__team-title text-gold-500">OUR TEAM</h2>
       <ItemGrid :items="aboutData.team" grid-class="grid-cols-2 laptop:grid-cols-4">
         <template #default="{ item }">
           <BaseAvatar :artist="item" variant="team" folder="about" />
@@ -114,6 +138,7 @@ const { isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow(frameRef
     </section>
 
     <QuoteBlock
+      v-fade-in="{ delay: 0, y: 20, duration: 900 }"
       variant="about"
       quote="Jewelry is what remains when the moment has passed, and what gives that moment its meaning."
     />

@@ -92,7 +92,7 @@ const routes: RouteRecordRaw[] = [
       },
       {
         path: '/auth',
-        component: () => import('@/views/auth/AuthLayout.vue'),
+        component: () => import('@/layouts/AuthLayout.vue'),
         meta: { hideFooter: true },
         children: [
           {

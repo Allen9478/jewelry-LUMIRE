@@ -50,6 +50,7 @@ const fuckData = randomWorks(works, 6)
       />
     </div>
     <div
+      v-fade-in="{ delay: 0, y: 12 }"
       class="exhibitions__info page-container flex flex-col tablet:flex-row tablet:justify-around space-y-4 tablet:space-y-0 text-cream/80"
     >
       <p class="flex space-x-4 items-center">
@@ -116,7 +117,10 @@ const fuckData = randomWorks(works, 6)
     <div
       class="exhibitions__quote page-container grid tablet:grid-cols-[50%_50%] laptop:grid-cols-[40%_60%] desktop:grid-cols-[35%_65%] wide:grid-cols-[30%_70%] space-y-4 tablet:space-y-0 tablet:space-x-4 wide:mt-24"
     >
-      <div class="exhibitions__quote-main relative flex items-center">
+      <div
+        v-fade-in="{ delay: 0, y: 16, mobile: { delay: 0, y: 12 } }"
+        class="exhibitions__quote-main relative flex items-center"
+      >
         <p
           class="exhibitions__quote-text text-quote text-gold-500 p-10 tablet:px-8 desktop:px-12 wide:px-16 italic"
         >
@@ -124,6 +128,7 @@ const fuckData = randomWorks(works, 6)
         </p>
       </div>
       <div
+        v-fade-in="{ delay: 100, y: 16, mobile: { delay: 0, y: 12 } }"
         class="laptop:w-[90%] flex flex-col tablet:justify-center tablet:border-l tablet:border-gold-500/60 space-y-4 tablet:px-8"
       >
         <p v-for="(description, index) in exhibitions.description" :key="index">
@@ -134,19 +139,19 @@ const fuckData = randomWorks(works, 6)
     <section
       class="exhibitions__works page-container space-y-6 tablet:space-y-10 desktop:space-y-16"
     >
-      <p class="text-subhead text-gold-500">WORK IN EXHIBITIONS</p>
+      <p v-fade-in="{ delay: 0, y: 12 }" class="text-subhead text-gold-500">WORK IN EXHIBITIONS</p>
       <ItemGrid
         :items="fuckData"
         grid-class="grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4 "
         class=""
       >
         <template #default="{ item }">
-          <BaseWorkCard :work="item" />
+          <BaseWorkCard v-fade-in="{ delay: 0, y: 28, mobile: { delay: 0, y: 16 } }" :work="item" />
         </template>
       </ItemGrid>
     </section>
     <section
-      v-fade-in="{ delay: 380, y: 20, mobile: { delay: 200, y: 14 } }"
+      v-fade-in="{ delay: 0, y: 20, mobile: { delay: 0, y: 14 } }"
       class="exhibitions__artist page-container"
     >
       <p class="tablet:hidden text-subhead text-gold-500">FEATURED ARTIST</p>
@@ -184,7 +189,6 @@ const fuckData = randomWorks(works, 6)
             <BaseButton
               tag="RouterLink"
               :to="`/artists/${artistExample.id}`"
-              v-fade-in="{ delay: 460, y: 16, mobile: { delay: 240, y: 12 } }"
               variant="ghost"
               class="exhibitions__artist-link inline-flex justify-start items-center text-body-sm"
               ><span class="text-btn tablet:text-btn-lg normal-case"> View Artist Profile </span>
@@ -196,11 +200,14 @@ const fuckData = randomWorks(works, 6)
     </section>
     <!-- 先寫股價樣式明天記得條 -->
     <section class="exhibitions__visit flex flex-col mt-6">
-      <h2 class="text-gold-500 text-subhead page-container">VISIT</h2>
+      <h2 v-fade-in="{ delay: 0, y: 12 }" class="text-gold-500 text-subhead page-container">
+        VISIT
+      </h2>
       <div
         class="exhibitions__visit-group flex flex-col tablet:grid tablet:grid-cols-[50%_50%] laptop:grid-cols-[45%_55%] desktop:grid-cols-[35%_65%]"
       >
         <div
+          v-fade-in="{ delay: 80, y: 16, mobile: { delay: 0, y: 12 } }"
           class="exhibitions__visit-info page-container flex flex-col justify-center gap-8 p-8 tablet:p-16"
         >
           <div class="flex items-start space-x-4">
@@ -255,6 +262,7 @@ const fuckData = randomWorks(works, 6)
           </BaseButton>
         </div>
         <div
+          v-fade-in="{ delay: 160, y: 12, duration: 900, mobile: { delay: 0, y: 12 } }"
           class="exhibitions__visit-img-wrap relative aspect-[16/7] tablet:aspect-auto tablet:h-full"
         >
           <img
@@ -267,14 +275,21 @@ const fuckData = randomWorks(works, 6)
     </section>
 
     <section class="exhibitions__past-exhibitions page-container mt-6">
-      <h2 class="text-gold-500 text-subhead py-8 tablet:py-10">PAST EXHIBITIONS</h2>
+      <h2 v-fade-in="{ delay: 0, y: 12 }" class="text-gold-500 text-subhead py-8 tablet:py-10">
+        PAST EXHIBITIONS
+      </h2>
       <div
         class="exhibitions__past-exhibitions-group flex flex-col tablet:flex-row space-y-4 tablet:space-y-0 tablet:space-x-4"
       >
         <div
           v-for="(pastExhibitions, index) in exhibitions.pastExhibitions"
+          v-fade-in="{
+            delay: Math.min(index, 2) * 150,
+            y: 24,
+            mobile: { delay: 0, y: 16 },
+          }"
           :key="index"
-          class="exhibitions__past-exhibitions-item block relative border border-gold-500/20 tablet:w-1/3 h-[140px] tablet:h-[220px] overflow-hidden transition-all hover:border-gold-500 active:border-gold-500 duration-300 group"
+          class="exhibitions__past-exhibitions-item block relative border border-gold-500/20 tablet:w-1/3 h-[140px] tablet:h-[220px] overflow-hidden transition-md hover:border-gold-500 active:border-gold-500 duration-300 group"
         >
           <img
             :src="getImageUrl(`exhibition/${pastExhibitions.img}`)"

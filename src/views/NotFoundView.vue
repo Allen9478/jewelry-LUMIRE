@@ -2,7 +2,7 @@
 import { useRouter } from 'vue-router'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import { useLocalized } from '@/composables/useLocalized'
-import type { LocalizedText } from '@/type/work'
+import type { LocalizedText } from '@/types/work'
 
 const router = useRouter()
 const { localized } = useLocalized()

@@ -23,6 +23,11 @@ import BaseButton from '@/components/ui/BaseButton.vue'
       <div class="contact__content-inquiries flex flex-col gap-8 mt-8">
         <div
           v-for="(inquiries, index) in contact.inquiries"
+          v-fade-in="{
+            delay: 80 + index * 100,
+            y: 24,
+            mobile: { delay: 0, y: 16 },
+          }"
           :key="index"
           class="contact__content-inquiries-option flex flex-row items-center justify-between border-b last:border-b-0 border-gold-500/40 pb-4 last:pb-0"
         >
@@ -48,9 +53,17 @@ import BaseButton from '@/components/ui/BaseButton.vue'
         </div>
       </div>
       <form action="" class="contact__content-form flex flex-col gap-4">
-        <FormInput :label="contact.form.name" type="text" />
-        <FormInput :label="contact.form.email" type="text" />
-        <div class="relative group">
+        <FormInput
+          v-fade-in="{ delay: 320, y: 20, mobile: { delay: 0, y: 16 } }"
+          :label="contact.form.name"
+          type="text"
+        />
+        <FormInput
+          v-fade-in="{ delay: 380, y: 20, mobile: { delay: 0, y: 16 } }"
+          :label="contact.form.email"
+          type="text"
+        />
+        <div v-fade-in="{ delay: 440, y: 20, mobile: { delay: 0, y: 16 } }" class="relative group">
           <textarea
             id="message"
             rows="5"
@@ -68,7 +81,10 @@ import BaseButton from '@/components/ui/BaseButton.vue'
       <section
         class="contact__content-info flex flex-col desktop:flex-row desktop:justify-between gap-8 my-8"
       >
-        <div class="contact__content-info-location flex justify-start">
+        <div
+          v-fade-in="{ delay: 120, y: 16, mobile: { delay: 0, y: 12 } }"
+          class="contact__content-info-location flex justify-start"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -95,7 +111,10 @@ import BaseButton from '@/components/ui/BaseButton.vue'
             </p>
           </div>
         </div>
-        <div class="contact__content-info-studio flex">
+        <div
+          v-fade-in="{ delay: 200, y: 16, mobile: { delay: 0, y: 12 } }"
+          class="contact__content-info-studio flex"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

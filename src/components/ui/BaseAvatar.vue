@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import getImageUrl from '@/utils/getImageUrl'
-import type { ArtistItem } from '@/type/artist'
+import type { ArtistItem } from '@/types/artist'
 
 type Variant = 'artist' | 'team'
 
