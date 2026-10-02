@@ -48,7 +48,7 @@ withDefaults(
         :to="linkTo"
         v-fade-in="{ delay: 80, y: 16 }"
         variant="ghost"
-        class="section-heading__view-all inline-flex justify-start items-center text-body-sm"
+        class="section-heading__view-all inline-flex justify-start items-center"
         ><span class="text-btn tablet:text-btn-lg"> {{ linkText }} </span>
         <BaseArrowIcon />
       </BaseButton>

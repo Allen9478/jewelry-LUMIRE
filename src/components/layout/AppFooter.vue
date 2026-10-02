@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import AppLogo from './AppLogo.vue'
 
 interface FooterSection {
   key: string
@@ -68,8 +69,7 @@ const sections: FooterSection[] = [
             exact-active-class=""
             class="inline-flex flex-col self-start font-serif text-center text-gold-500"
           >
-            <span class="text-[26px] tablet:text-[34px] tracking-[0.1em]">LUMIÈRE</span>
-            <span class="text-[9px] tablet:text-[11px] tracking-[0.2em]">JEWELRY GALLERY</span>
+            <AppLogo />
           </RouterLink>
           <p class="pt-5 tablet:pt-7">{{ t('footer.tagline.line1') }}</p>
           <br />
@@ -212,7 +212,7 @@ const sections: FooterSection[] = [
         </div>
       </div>
 
-      <p class="py-4 display-inline tablet:pt-10 text-sm text-cream/50">
+      <p class="py-4 display-inline tablet:pt-10 text-label-lg text-cream/50">
         © 2026 Lumière Jewelry Gallery. All Rights Reserved.
       </p>
     </div>

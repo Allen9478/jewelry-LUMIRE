@@ -26,5 +26,3 @@ import artists from '@/data/artists.json'
   </div>
   <GoldDivider variant="full" class="my-12" />
 </template>
-
-<style scoped></style>

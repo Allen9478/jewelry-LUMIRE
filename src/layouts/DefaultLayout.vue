@@ -12,4 +12,3 @@ const route = useRoute()
   </main>
   <AppFooter v-if="!route.meta.hideFooter" />
 </template>
-<style></style>

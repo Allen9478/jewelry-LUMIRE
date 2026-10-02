@@ -52,7 +52,7 @@ const linkTo = computed(() => `/artists/${props.artist.id ?? ''}`)
     </h2>
     <p
       v-if="variant === 'team' && artist.title"
-      class="mt-1 text-xs tracking-wider text-gray-muted/60"
+      class="mt-1 text-label tracking-wider text-gray-muted/60"
     >
       {{ artist.title }}
     </p>
