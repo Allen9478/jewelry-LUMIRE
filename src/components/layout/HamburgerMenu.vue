@@ -80,9 +80,9 @@ onUnmounted(() => {
             <ul class="menu__links">
               <li
                 v-for="(item, index) in navItems"
+                v-fade-in="{ delay: 100 + index * 70, y: 24, duration: 600 }"
                 :key="item.name"
                 class="menu__item"
-                :style="{ '--delay': `${0.1 + index * 0.07}s` }"
               >
                 <RouterLink :to="item.to" class="menu__link" @click="closeMenu">
                   <span class="menu__link-number">0{{ index + 1 }}</span>
@@ -287,7 +287,6 @@ onUnmounted(() => {
 }
 
 .menu__item {
-  animation: fadeUp 0.6s var(--delay, 0.1s) var(--ease-luxury) both;
   border-bottom: 1px solid rgba(214, 180, 106, 0.102);
 }
 
@@ -363,9 +362,6 @@ onUnmounted(() => {
 }
 
 /* ── Footer ── */
-.menu__footer {
-  animation: fadeUp 0.6s 0.55s var(--ease-luxury) both;
-}
 
 .menu__footer-divider {
   width: 40px;
