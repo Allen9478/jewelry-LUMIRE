@@ -29,20 +29,30 @@ async function handleSubmit() {
 </script>
 <template>
   <div class="auth__form">
-    <h2 class="auth__title">Welcome Back</h2>
+    <h2 v-fade-in="{ delay: 0, y: 12 }" class="auth__title">Welcome Back</h2>
     <form @submit.prevent="handleSubmit" class="flex flex-col gap-8">
-      <FormInput v-model="email" type="email" label="EMAIL" />
-      <FormInput v-model="password" type="password" label="PASSWORD" />
+      <FormInput v-fade-in="{ delay: 60, y: 16 }" v-model="email" type="email" label="EMAIL" />
+      <FormInput
+        v-fade-in="{ delay: 120, y: 16 }"
+        v-model="password"
+        type="password"
+        label="PASSWORD"
+      />
       <p v-if="authStore.error" class="text-red-500 text-label-lg">{{ authStore.error }}</p>
-      <BaseButton
-        type="submit"
-        variant="primary"
-        class="w-full font-bold p-4 text-label-lg mt-8 laptop:mt-12"
-        >ENTER</BaseButton
-      >
+      <div v-fade-in="{ delay: 240, y: 12 }">
+        <BaseButton
+          type="submit"
+          variant="primary"
+          class="w-full font-bold p-4 text-label-lg mt-8 laptop:mt-12"
+          >ENTER</BaseButton
+        >
+      </div>
     </form>
 
-    <div class="py-8 text-center laptop:text-left laptop:text-body">
+    <div
+      v-fade-in="{ delay: 240, y: 12 }"
+      class="py-8 text-center laptop:text-left laptop:text-body"
+    >
       <span>New to Lumière?</span>
       <div class="block laptop:inline mt-2 laptop:mt-0">
         <RouterLink :to="{ name: 'register' }" class="link--auth laptop:ml-2"

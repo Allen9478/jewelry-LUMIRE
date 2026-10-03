@@ -16,7 +16,12 @@ import artists from '@/data/artists.json'
     />
     <div class="mt-6 grid grid-cols-2 tablet:grid-cols-3 laptop:grid-cols-4 gap-4 tablet:gap-8">
       <RouterLink
-        v-for="item in artists"
+        v-for="(item, i) in artists"
+        v-fade-in="{
+          delay: 160 + Math.min(i, 3) * 80,
+          y: 24,
+          mobile: { delay: 160 + Math.min(i, 3) * 60, y: 16 },
+        }"
         :key="item.id"
         :to="{ name: 'artists-detail', params: { id: item.id } }"
       >

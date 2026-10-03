@@ -85,11 +85,16 @@ const sortedFavorites = computed(() => {
       />
     </section>
     <template v-if="isLoading">
-      <p>載入中...</p>
+      <div class="min-h-[50vh]">
+        <p>載入中...</p>
+      </div>
     </template>
 
     <template v-else-if="favoriteWorks.length === 0">
-      <div class="empty-state flex flex-col text-center gap-6">
+      <div
+        v-fade-in="{ delay: 160, y: 16, mobile: { delay: 160, y: 12 } }"
+        class="empty-state flex flex-col text-center gap-6"
+      >
         <h2 class="text-cream text-heading-sm">Begin curating your collection</h2>
         <p class="text-gray-muted">
           Explore works by visionary artists and save the pieces that speak to you.
@@ -103,7 +108,10 @@ const sortedFavorites = computed(() => {
 
     <template v-else>
       <section class="flex flex-col gap-8 tablet:gap-10">
-        <div class="flex flex-col tablet:flex-row justify-between tablet:items-center gap-4">
+        <div
+          v-fade-in="{ delay: 160, y: 12 }"
+          class="flex flex-col tablet:flex-row justify-between tablet:items-center gap-4"
+        >
           <BaseButton tag="RouterLink" :to="'works'" variant="ghost">
             <span class="text-btn">Browse Works</span>
             <BaseArrowIcon />
@@ -154,8 +162,8 @@ const sortedFavorites = computed(() => {
             </div>
           </fieldset>
         </div>
-        <GoldDivider />
-        <div class="flex items-center">
+        <GoldDivider v-fade-in="{ delay: 220, y: 0 }" />
+        <div v-fade-in="{ delay: 260, y: 12 }" class="flex items-center">
           <h2 class="text-subhead font-serif">{{ collectionTitle }}</h2>
           <span class="text-gray-muted ml-4">{{ sortedFavorites.length }} pieces</span>
         </div>
