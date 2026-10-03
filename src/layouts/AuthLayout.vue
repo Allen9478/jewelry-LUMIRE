@@ -1,11 +1,13 @@
 <template>
-  <div class="auth flex flex-col tablet:flex-row tablet:h-screen overflow-hidden">
+  <div
+    class="auth flex flex-col tablet:flex-row tablet:h-screen max-w-lg mx-auto tablet:max-w-full overflow-hidden"
+  >
     <!-- 圖片：固定不變 -->
-    <div class="auth__hero h-[45svh] tablet:h-full tablet:w-1/2">
+    <div class="auth__hero h-[clamp(240px,40svh,380px)] tablet:h-full tablet:w-1/2">
       <img
         src="../assets/images/auth/auth-hero-ring.webp"
         alt="auth-bg"
-        class="w-full h-full object-cover object-[center_35%] tablet:object-[center_25%]"
+        class="w-full h-full object-cover object-[center_30%] tablet:object-[center_25%]"
       />
       <div class="hidden tablet:block">
         <span
@@ -142,10 +144,13 @@
   transform: rotateY(90deg);
   opacity: 0;
 }
-@media (orientation: landscape) and (max-width: 926px) {
+
+/* 加上高度限制解決在桌機版也會觸發的問題*/
+@media (orientation: landscape) and (max-width: 926px) and (max-height: 500px) {
   .auth {
     flex-direction: row;
     height: auto;
+    min-height: 100svh;
     overflow-y: auto;
   }
   .auth__hero {
@@ -153,7 +158,7 @@
     height: auto;
     align-self: stretch;
   }
-  .auth__form--wrap {
+  .auth__form-wrap {
     flex: 1;
     padding-top: 5rem;
     padding-bottom: 2rem;
