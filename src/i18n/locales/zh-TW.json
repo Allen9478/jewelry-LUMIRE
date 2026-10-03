@@ -101,5 +101,8 @@
       "benefits": "會員權益",
       "privateViewings": "私人賞鑑"
     }
+  },
+  "searchModal": {
+    "placeholder": "搜尋藝術家或珠寶"
   }
 }

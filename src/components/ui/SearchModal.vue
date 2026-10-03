@@ -2,11 +2,13 @@
 import BaseModal from '@/components/ui/BaseModal.vue'
 import { ref, watch, toRef, nextTick } from 'vue'
 import { useSearch } from '@/composables/useSearch'
+import { useI18n } from 'vue-i18n'
 import type { WorkItem } from '@/types/work'
 import type { ArtistItem } from '@/types/artist'
 
 import { useUiStore } from '@/stores/useUiStore'
 
+const { t } = useI18n()
 const props = defineProps<{
   works: WorkItem[]
   artists: ArtistItem[]
@@ -67,8 +69,8 @@ watch(
           ref="searchInputRef"
           v-model="keyword"
           type="search"
-          placeholder="搜尋藝術家或珠寶 / Search artist or jewelry"
-          aria-label="搜尋藝術家或珠寶"
+          :placeholder="t('searchModal.placeholder')"
+          :aria-label="t('searchModal.placeholder')"
           role="combobox"
           :aria-expanded="isOpen"
           aria-autocomplete="list"

@@ -101,5 +101,8 @@
       "benefits": "Membership Benefits",
       "privateViewings": "Private Viewings"
     }
+  },
+  "searchModal": {
+    "placeholder": "Search artist or jewelry"
   }
 }
