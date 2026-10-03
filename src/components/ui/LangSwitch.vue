@@ -51,6 +51,7 @@ function switchLocale(lang: Locale) {
         type="button"
         @click="switchLocale('en')"
         class="w-full px-4 py-2 text-left text-label-lg hover:text-gold-500"
+        aria-label="english"
       >
         EN
       </button>
@@ -58,6 +59,7 @@ function switchLocale(lang: Locale) {
         type="button"
         @click="switchLocale('zh-TW')"
         class="w-full px-4 py-2 text-left text-label-lg hover:text-gold-500"
+        aria-label="chinese"
       >
         中文
       </button>
@@ -68,6 +70,7 @@ function switchLocale(lang: Locale) {
       type="button"
       @click="switchLocale('zh-TW')"
       class="text-sm px-1 py-2 transition-colors"
+      aria-label="chinese"
       :class="locale === 'zh-TW' ? 'text-gold-500' : 'text-white hover:text-gold-500'"
     >
       中文
@@ -77,6 +80,7 @@ function switchLocale(lang: Locale) {
       type="button"
       @click="switchLocale('en')"
       class="text-label px-1 py-2 transition-colors"
+      aria-label="english"
       :class="locale === 'en' ? 'text-gold-500' : 'text-white hover:text-gold-500'"
     >
       EN

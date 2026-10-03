@@ -77,11 +77,15 @@ const sections: FooterSection[] = [
           <div
             class="flex py-4 space-x-6 tablet:flex-row tablet:gap-9 tablet:space-x-0 tablet:pt-12"
           >
-            <button class="footer__icon group transition-colors duration-300">
+            <button
+              aria-label="instagram"
+              class="footer__icon group transition-colors duration-300"
+            >
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
                 class="footer__icon--social"
               >
                 <path
@@ -102,11 +106,12 @@ const sections: FooterSection[] = [
                 ></path>
               </svg>
             </button>
-            <button class="footer__icon group">
+            <button aria-label="facebook" class="footer__icon group">
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
                 class="footer__icon--social"
               >
                 <path
@@ -129,12 +134,13 @@ const sections: FooterSection[] = [
                 ></path>
               </svg>
             </button>
-            <button class="footer__icon group">
+            <button aria-label="email" class="footer__icon group">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
+                aria-hidden="true"
                 class="footer__icon--social"
               >
                 <path
@@ -144,11 +150,12 @@ const sections: FooterSection[] = [
                 />
               </svg>
             </button>
-            <button class="footer__icon group">
+            <button aria-label="youtube" class="footer__icon group">
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
                 class="footer__icon--social"
               >
                 <path

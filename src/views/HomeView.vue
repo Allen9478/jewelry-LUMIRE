@@ -10,7 +10,7 @@ import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
 import BaseAvatar from '@/components/ui/BaseAvatar.vue'
 import QuoteBlock from '@/components/ui/QuoteBlock.vue'
 import GoldDivider from '@/components/ui/GoldDivider.vue'
-import breathing from '@/assets/images/home/breathing-bg.png'
+import breathing from '@/assets/images/home/breathing-bg.webp'
 import artists from '@/data/artists.json'
 import works from '@/data/works.json'
 
@@ -304,6 +304,8 @@ const submitted = ref(false)
         />
         <button
           type="submit"
+          :disabled="submitted"
+          :aria-disabled="submitted"
           class="flex shrink-0 items-center justify-center h-[46px] min-w-[110px] bg-gold-500/80 text-black-soft hover:bg-gold-500 hover:text-black transition-colors"
         >
           {{ submitted ? t('page.home.newsletter.submitted') : t('page.home.newsletter.submit') }}
