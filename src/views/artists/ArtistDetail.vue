@@ -37,8 +37,18 @@ const scrollToInfo = () => {
       class="relative page-container artist-detail__heading space-y-16 tablet:space-y-24 tablet:-mt-32"
     >
       <div class="artist-detail__heading-group space-y-2">
-        <h1 class="text-display font-italic italic">{{ artist.name }}</h1>
-        <p class="text-eyebrow text-gold-500">{{ artist.current_residence }}</p>
+        <h1
+          v-fade-in="{ delay: 0, y: 20, duration: 900, mobile: { y: 14 } }"
+          class="text-display font-italic italic"
+        >
+          {{ artist.name }}
+        </h1>
+        <p
+          v-fade-in="{ delay: 100, y: 12, mobile: { delay: 80, y: 10 } }"
+          class="text-eyebrow text-gold-500"
+        >
+          {{ artist.current_residence }}
+        </p>
       </div>
     </div>
     <ArtistInfo ref="artistInfoRef" :artist="artist" :collection-titles="collectionTitles" />

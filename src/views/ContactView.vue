@@ -17,7 +17,10 @@ import BaseButton from '@/components/ui/BaseButton.vue'
     <section
       class="contact__content page-container header-offset flex flex-col gap-6 tablet:gap-8 tablet:w-[50%] max-w-[400px] tablet:max-w-[640px]"
     >
-      <h1 class="text-heading text-center tablet:text-start font-italic italic mt-6 tablet:mt-12">
+      <h1
+        v-fade-in="{ delay: 0, y: 12 }"
+        class="text-heading text-center tablet:text-start font-italic italic mt-6 tablet:mt-12"
+      >
         {{ contact.title }}
       </h1>
       <div class="contact__content-inquiries flex flex-col gap-8 mt-8">
