@@ -93,7 +93,7 @@ onUnmounted(() => {
             </ul>
 
             <!-- 底部資訊 -->
-            <div class="menu__footer">
+            <div v-fade-in="{ delay: 600, y: 24, duration: 600 }" class="menu__footer">
               <LangSwitch variant="mobile" />
               <div class="menu__footer-divider"></div>
               <template v-if="authStore.user">
@@ -144,7 +144,6 @@ onUnmounted(() => {
                   <span>Login</span>
                 </BaseButton>
               </template>
-              <p class="menu__footer-copy">© 2026 Lumière Jewelry Gallery. All Rights Reserved.</p>
             </div>
           </nav>
         </div>
@@ -336,7 +335,7 @@ onUnmounted(() => {
 
 .menu__link-name {
   font-family: var(--font-serif);
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 400;
   letter-spacing: 0.02em;
   line-height: 1;
