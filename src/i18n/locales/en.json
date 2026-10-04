@@ -59,9 +59,20 @@
     },
     "works": {
       "heading": {
-        "eyebrow": "Archive",
-        "title": "All Works"
+        "eyebrow": "WORKS GALLERY",
+        "title": "Curated Collection",
+        "desc": "We showcase exceptional jewelry by visionary artists who transform precious materials into timeless stories."
       }
+    },
+    "workDetail": {
+      "title": "WORK DETAIL",
+      "materials": "Materials",
+      "year": "Year",
+      "collection": "Collection",
+      "collectionName": "Nature's Forms",
+      "aboutArtist": "ABOUT THE ARTIST",
+      "viewArtistProfile": "View Artist Profile",
+      "relatedWorks": "RELATED WORKS"
     },
     "artists": {
       "heading": {

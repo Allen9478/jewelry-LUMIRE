@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { useLocalized } from '@/composables/useLocalized'
 import { computed } from 'vue'
 import works from '@/data/works.json'
@@ -11,6 +12,7 @@ import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
 import getImageUrl from '@/utils/getImageUrl'
 
 const route = useRoute()
+const { t } = useI18n()
 const { localized } = useLocalized()
 const work = computed(() => works.find((w) => w.id === route.params.id))
 const artist = computed(() => artists.find((a) => a.name === work.value?.designer))
@@ -46,7 +48,7 @@ function getOtherWorks() {
           v-fade-in="{ delay: 80, y: 12, mobile: { delay: 40, y: 8 } }"
           class="work-detail-hero__info-eyebrow text-eyebrow text-gold-500"
         >
-          WORK DETAIL
+          {{ t('page.workDetail.title') }}
         </div>
         <h1
           v-fade-in="{ delay: 140, y: 16, mobile: { delay: 80, y: 12 } }"
@@ -59,16 +61,22 @@ function getOtherWorks() {
           class="work-detail-hero__info-specs flex flex-col gap-2 text-label tablet:text-label-lg border-t border-gold-500/10"
         >
           <div class="flex justify-between items-center gap-4 py-2 border-b border-gold-500/10">
-            <dt class="text-white/50 uppercase tracking-wide shrink-0">Materials</dt>
+            <dt class="text-white/50 uppercase tracking-wide shrink-0">
+              {{ t('page.workDetail.materials') }}
+            </dt>
             <dd class="text-white text-right">{{ localized(work.materials) }}</dd>
           </div>
           <div class="flex justify-between gap-4 py-2 border-b border-gold-500/10">
-            <dt class="text-white/50 uppercase tracking-wide shrink-0">Year</dt>
+            <dt class="text-white/50 uppercase tracking-wide shrink-0">
+              {{ t('page.workDetail.year') }}
+            </dt>
             <dd class="text-white text-right">2026</dd>
           </div>
           <div class="flex justify-between gap-4 py-2 border-b border-gold-500/10">
-            <dt class="text-white/50 uppercase tracking-wide shrink-0">Collection</dt>
-            <dd class="text-white text-right">Nature's Forms</dd>
+            <dt class="text-white/50 uppercase tracking-wide shrink-0">
+              {{ t('page.workDetail.collection') }}
+            </dt>
+            <dd class="text-white text-right">{{ t('page.workDetail.collectionName') }}</dd>
           </div>
         </dl>
         <p
@@ -83,7 +91,7 @@ function getOtherWorks() {
         v-fade-in="{ delay: 380, y: 20, mobile: { delay: 200, y: 14 } }"
         class="work-detail-hero__artist my-8"
       >
-        <p class="text-eyebrow text-gold-500">ABOUT THE ARTIST</p>
+        <p class="text-eyebrow text-gold-500">{{ t('page.workDetail.aboutArtist') }}</p>
         <div v-if="artist" class="work-detail-hero__artist-grid grid grid-cols-[35%_65%] mt-4">
           <BaseAvatar :artist="artist" :show-name="false" class="justify-center" />
           <div class="work-detail-hero__artist-info flex flex-col tablet:justify-center gap-4 pl-6">
@@ -101,7 +109,9 @@ function getOtherWorks() {
               v-fade-in="{ delay: 460, y: 16, mobile: { delay: 240, y: 12 } }"
               variant="ghost"
               class="work-detail-hero__artist-link inline-flex justify-start items-center text-body-sm"
-              ><span class="text-btn tablet:text-btn-lg normal-case"> View Artist Profile </span>
+              ><span class="text-btn tablet:text-btn-lg normal-case">
+                {{ t('page.workDetail.viewArtistProfile') }}
+              </span>
               <BaseArrowIcon />
             </BaseButton>
           </div>
@@ -114,9 +124,9 @@ function getOtherWorks() {
   >
     <p
       v-fade-in="{ delay: 460, y: 16, mobile: { delay: 0, y: 12 } }"
-      class="text-eyebrow text-gold-500 py-4 tablet:py-8"
+      class="text-subhead text-gold-500 py-4 tablet:py-8"
     >
-      RELATED WORKS
+      {{ t('page.workDetail.relatedWorks') }}
     </p>
     <div
       class="grid grid-cols-1 tablet:grid-cols-3 tablet:justify-items-center py-8 tablet:py-16 gap-6 tablet:gap-4"
