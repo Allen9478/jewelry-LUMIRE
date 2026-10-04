@@ -34,7 +34,10 @@ const fuckData = randomWorks(works, 6)
     <div class="exhibitions__hero relative w-full h-[350px] md:h-[600px] overflow-hidden">
       <img
         :src="heroImage"
-        alt="natural"
+        alt="Natural Form Exhibition"
+        fetchpriority="high"
+        width="1536"
+        height="1024"
         class="absolute inset-0 w-full h-full object-cover object-center"
       />
 
@@ -267,7 +270,10 @@ const fuckData = randomWorks(works, 6)
         >
           <img
             :src="visitImage"
-            alt="visit"
+            alt="exhibition location"
+            loading="lazy"
+            width="1536"
+            height="1024"
             class="exhibitions__visit-img w-full h-full object-cover object-center tablet:absolute tablet:inset-0"
           />
         </div>
@@ -293,6 +299,10 @@ const fuckData = randomWorks(works, 6)
         >
           <img
             :src="getImageUrl(`exhibition/${pastExhibitions.img}`)"
+            :alt="pastExhibitions.title"
+            loading="lazy"
+            width="1774"
+            height="887"
             class="object-cover absolute inset-0 w-full h-full"
           />
           <!-- 桌機版加一層漸層遮罩,讓文字在圖片上更好讀 -->

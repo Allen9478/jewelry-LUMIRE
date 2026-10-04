@@ -15,6 +15,9 @@ defineProps<{
       <img
         :src="getImageUrl(`artists/${artist.image}`)"
         :alt="artist.name"
+        fetchpriority="high"
+        width="1122"
+        height="1402"
         class="object-cover object-top w-full h-full hover:scale-105 transition-all duration-300"
       />
     </div>

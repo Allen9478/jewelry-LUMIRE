@@ -21,7 +21,7 @@ async function handleSubmit() {
 </script>
 <template>
   <div class="auth__form">
-    <h2 class="auth__title">Reset Password</h2>
+    <h1 class="auth__title">Reset Password</h1>
     <p class="text-center">Enter your email and we'll send you a link to reset your password.</p>
     <form @submit.prevent="handleSubmit" class="flex flex-col gap-8">
       <FormInput v-model="email" type="email" label="EMAIL" class="mt-5" />

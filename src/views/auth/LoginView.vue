@@ -29,7 +29,7 @@ async function handleSubmit() {
 </script>
 <template>
   <div class="auth__form">
-    <h2 v-fade-in="{ delay: 0, y: 12 }" class="auth__title">Welcome Back</h2>
+    <h1 v-fade-in="{ delay: 0, y: 12 }" class="auth__title">Welcome Back</h1>
     <form @submit.prevent="handleSubmit" class="flex flex-col gap-8">
       <FormInput v-fade-in="{ delay: 60, y: 16 }" v-model="email" type="email" label="EMAIL" />
       <FormInput

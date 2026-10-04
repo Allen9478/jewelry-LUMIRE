@@ -158,7 +158,7 @@ const submitted = ref(false)
   >
     <img
       :src="breathing"
-      alt="呼吸空間背景圖"
+      alt=""
       width="1774"
       height="887"
       loading="lazy"
