@@ -29,14 +29,13 @@ function getFadeDelay(index: number, base: number, step: number) {
   <section class="work-hero tablet:min-h-[460px]">
     <div class="page-container text-container mt-4 flex flex-col items-start header-offset">
       <SectionHeading
-        eyebrow="WORKS GALLERY"
-        title="Curated Collection"
+        :eyebrow="t('page.works.heading.eyebrow')"
+        :title="t('page.works.heading.title')"
         titleTag="h1"
         titleClass="whitespace-nowrap italic py-2 tablet:py-4"
       />
       <p v-fade-in="{ delay: 120, y: 20 }" class="works-section__desc text-subtext">
-        We showcase exceptional jewelry by visionary artists who transform precious materials into
-        timeless stories.
+        {{ t('page.works.heading.desc') }}
       </p>
     </div>
 

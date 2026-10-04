@@ -59,9 +59,20 @@
     },
     "works": {
       "heading": {
-        "eyebrow": "典藏系列",
-        "title": "全部作品"
+        "eyebrow": "作品展廊",
+        "title": "精選系列",
+        "desc": "我們展示由富有遠見的藝術家所創作的非凡珠寶，他們將珍貴的材質轉化為永恆的故事。"
       }
+    },
+    "workDetail": {
+      "title": "作品詳情",
+      "materials": "材質",
+      "year": "年份",
+      "collection": "系列",
+      "collectionName": "自然之形",
+      "aboutArtist": "關於藝術家",
+      "viewArtistProfile": "查看藝術家簡介",
+      "relatedWorks": "相關作品"
     },
     "artists": {
       "heading": {
