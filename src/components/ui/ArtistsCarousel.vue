@@ -39,6 +39,8 @@ function getArtistWorks(artistName: string) {
               :alt="artist.name"
               class="artists-carousel__image w-full h-full object-cover"
               loading="lazy"
+              width="1122"
+              height="1402"
             />
           </div>
 
@@ -86,6 +88,8 @@ function getArtistWorks(artistName: string) {
                   :alt="localized(work.name)"
                   class="w-full h-full object-cover"
                   loading="lazy"
+                  width="1122"
+                  height="1402"
                 />
               </RouterLink>
             </div>

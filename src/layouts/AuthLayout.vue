@@ -7,6 +7,7 @@
       <img
         src="../assets/images/auth/auth-hero-ring.webp"
         alt="auth-bg"
+        fetchpriority="high"
         class="w-full h-full object-cover object-[center_30%] tablet:object-[center_25%]"
       />
       <div class="hidden tablet:block">

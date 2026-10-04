@@ -14,6 +14,9 @@ defineProps<{
     <img
       :src="getImageUrl(`artists/${artist.image_detail}`)"
       :alt="artist.name"
+      fetchpriority="high"
+      width="1672"
+      height="941"
       class="object-cover object-[center_10%] h-full w-full"
     />
     <div

@@ -24,7 +24,11 @@ const { isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow(frameRef
       <div
         class="about__intro-text page-container flex flex-col gap-8 tablet:gap-20 mt-8 tablet:mt-32"
       >
-        <SectionHeading :eyebrow="aboutData.hero.subtitle" :title="aboutData.hero.title" />
+        <SectionHeading
+          :eyebrow="aboutData.hero.subtitle"
+          :title="aboutData.hero.title"
+          titleTag="h1"
+        />
 
         <div class="about__philosophy space-y-8">
           <h2
@@ -42,7 +46,6 @@ const { isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow(frameRef
                 mobile: { delay: 0, y: 12 },
               }"
               :key="index"
-              titleTag="h1"
               class="about__philosophy-paragraph"
             >
               {{ paragraph }}
@@ -68,14 +71,20 @@ const { isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow(frameRef
           <!-- 底層:永遠黑白 -->
           <img
             src="../assets/images/about/about-craft-detail.webp"
-            alt="#"
+            alt="about hero image"
+            fetchpriority="high"
+            width="1122"
+            height="1402"
             class="frame__image frame__image--base w-full h-full object-cover"
           />
 
           <!-- 上層:彩色,用 mask 做出跟隨游標的圓形視窗 -->
           <img
             src="../assets/images/about/about-craft-detail.webp"
-            alt="#"
+            alt="about hero image"
+            fetchpriority="high"
+            width="1122"
+            height="1402"
             class="frame__image frame__image--color absolute inset-0 w-full h-full object-cover"
           />
 
@@ -124,6 +133,9 @@ const { isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow(frameRef
         v-fade-in="{ delay: 0, y: 12, duration: 900 }"
         src="../assets/images/about/about-hero.webp"
         alt="Lumière Jewelry Gallery 展場空間"
+        loading="lazy"
+        width="1672"
+        height="971"
         class="about__gallery-image w-full h-[250px] object-cover"
       />
     </section>

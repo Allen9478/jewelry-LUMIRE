@@ -11,6 +11,9 @@ import BaseButton from '@/components/ui/BaseButton.vue'
       <img
         src="@/assets/images/contact/contact-hero.webp"
         alt="contact hero image"
+        fetchpriority="high"
+        width="1023"
+        height="1537"
         class="contact__hero-img w-full h-full object-cover tablet:object-left laptop:object-center"
       />
     </section>

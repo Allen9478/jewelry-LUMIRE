@@ -26,7 +26,7 @@ async function handleSubmit() {
 </script>
 <template>
   <div class="auth__form">
-    <h2 class="auth__title">New Here?</h2>
+    <h1 class="auth__title">New Here?</h1>
     <form @submit.prevent="handleSubmit" class="flex flex-col gap-8">
       <FormInput v-model="fullname" type="text" label="FULL NAME" />
       <FormInput v-model="email" type="email" label="EMAIL" />

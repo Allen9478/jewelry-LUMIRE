@@ -34,6 +34,9 @@ function getOtherWorks() {
       <img
         :src="getImageUrl(`jewelry/${work.image}`)"
         :alt="localized(work.name)"
+        fetchpriority="high"
+        width="1122"
+        height="1402"
         class="w-full h-full object-cover"
       />
     </div>
