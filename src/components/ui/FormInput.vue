@@ -52,6 +52,8 @@ const inputType = computed(() =>
         v-if="!showPassword"
         class="size-6"
         fill="none"
+        aria-hidden="true"
+        focusable="false"
         stroke="currentColor"
         stroke-width="1.5"
         stroke-linecap="round"
@@ -65,6 +67,8 @@ const inputType = computed(() =>
         v-else
         class="size-6"
         fill="none"
+        aria-hidden="true"
+        focusable="false"
         stroke="currentColor"
         stroke-width="1.5"
         stroke-linecap="round"

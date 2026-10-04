@@ -5,8 +5,11 @@ defineProps<{
 }>()
 </script>
 <template>
+  <!-- aria & focusable是讓父層飆去做無障礙說明 -->
   <svg
     viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
     stroke-width="1.5"
     class="size-6"
     :class="

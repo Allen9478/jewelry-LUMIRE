@@ -51,11 +51,12 @@ watch(
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
+          aria-hidden="true"
+          focusable="false"
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
           class="absolute left-0 size-6 text-gold-500/80 pointer-events-none"
-          aria-hidden="true"
         >
           <path
             stroke-linecap="round"

@@ -87,6 +87,8 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
+            aria-hidden="true"
+            focusable="false"
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
@@ -149,6 +151,8 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
               stroke-width="1.5"
               stroke="currentColor"
               class="size-6"
