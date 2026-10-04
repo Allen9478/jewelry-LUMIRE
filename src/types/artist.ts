@@ -1,15 +1,20 @@
+export interface LocalizedText {
+  'zh-TW': string
+  en: string
+}
+
 export interface ArtistItem {
   id: string
   name: string
-  birth_year_and_nationality: string
-  current_residence: string
+  birth_year_and_nationality: LocalizedText
+  current_residence: LocalizedText
   works: string
   image: string
   image_detail: string
-  medium: string[]
+  medium: LocalizedText[]
   design_style: string
-  quote: string
-  short_bio: string
-  biography: string
-  collections: string[]
+  quote: LocalizedText
+  short_bio: LocalizedText
+  biography: LocalizedText
+  collections: LocalizedText[]
 }

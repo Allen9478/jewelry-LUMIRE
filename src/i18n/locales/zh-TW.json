@@ -65,9 +65,25 @@
     },
     "artists": {
       "heading": {
-        "eyebrow": "匠心巨擘",
-        "title": "藝術家群像"
-      }
+        "eyebrow": "金與石之聲",
+        "title": "藝術家",
+        "desc": "非凡的工藝，以及對永恆設計的共同追求。"
+      },
+      "viewProfile": "查看簡介"
+    },
+    "artistCarousel": {
+      "featuredArtist": "精選藝術家",
+      "viewProfile": "查看簡介",
+      "signaturePieces": "代表作品"
+    },
+    "artistDetail": {
+      "biography": "藝術家生平",
+      "born": "出生",
+      "based": "現居",
+      "medium": "材質",
+      "collections": "系列",
+      "selectedWorks": "精選作品",
+      "selectedWorksSubtitle": "非凡之作"
     }
   },
   "footer": {

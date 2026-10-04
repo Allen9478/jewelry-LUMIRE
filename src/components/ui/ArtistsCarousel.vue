@@ -4,12 +4,16 @@ import 'vue3-carousel/dist/carousel.css'
 import getImageUrl from '@/utils/getImageUrl'
 import artistsData from '@/data/artists.json'
 import worksData from '@/data/works.json'
+import type { ArtistItem } from '@/types/artist'
 import type { WorkItem } from '@/types/work'
+import { useI18n } from 'vue-i18n'
 import { useLocalized } from '@/composables/useLocalized'
 import GoldDivider from '@/components/ui/GoldDivider.vue'
 import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
 
 const works: WorkItem[] = worksData
+const artists: ArtistItem[] = artistsData
+const { t } = useI18n()
 const { localized } = useLocalized()
 
 function getArtistWorks(artistName: string) {
@@ -27,7 +31,7 @@ function getArtistWorks(artistName: string) {
       :pause-autoplay-on-hover="true"
       :transition="600"
     >
-      <Slide v-for="artist in artistsData" :key="artist.id">
+      <Slide v-for="artist in artists" :key="artist.id">
         <div
           class="artists-carousel__slide grid grid-cols-[50%_50%] tablet:grid-cols-[25%_30%_45%] w-full"
         >
@@ -49,7 +53,7 @@ function getArtistWorks(artistName: string) {
               <p
                 class="artists-carousel__eyebrow uppercase text-gold-500 text-[11px] tablet:text-eyebrow"
               >
-                FEATURED ARTIST
+                {{ t('page.artistCarousel.featuredArtist') }}
               </p>
 
               <h2
@@ -61,21 +65,23 @@ function getArtistWorks(artistName: string) {
               <p
                 class="artists-carousel__bio text-gray-muted text-[13px] tablet:text-subtext line-clamp-3 leading-relaxed tablet:max-w-md"
               >
-                {{ artist.short_bio }}
+                {{ localized(artist.short_bio) }}
               </p>
             </div>
             <RouterLink
               :to="{ name: 'artists-detail', params: { id: artist.id } }"
               class="artists-carousel__link inline-flex items-center text-gold-500 hover:text-gold-300 transition-colors group"
             >
-              <span class="text-[11px] tablet:text-btn whitespace-nowrap">VIEW PROFILE</span>
+              <span class="text-[11px] tablet:text-btn whitespace-nowrap">{{
+                t('page.artists.viewProfile')
+              }}</span>
               <BaseArrowIcon />
             </RouterLink>
           </div>
           <div
             class="hidden tablet:flex flex-col justify-center gap-3 border-l border-gold-500/20 p-8"
           >
-            <p class="text-eyebrow uppercase text-gold-500">Signature pieces</p>
+            <p class="text-eyebrow text-gold-500">{{ t('page.artistCarousel.signaturePieces') }}</p>
             <div class="hidden tablet:flex gap-3">
               <RouterLink
                 v-for="work in getArtistWorks(artist.name)"

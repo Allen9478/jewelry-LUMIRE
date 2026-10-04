@@ -1,7 +1,12 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+import { useLocalized } from '@/composables/useLocalized'
 import getImageUrl from '@/utils/getImageUrl'
 import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
 import type { ArtistItem } from '@/types/artist'
+
+const { t } = useI18n()
+const { localized } = useLocalized()
 
 defineProps<{
   artist: ArtistItem
@@ -30,14 +35,16 @@ defineProps<{
       <div
         class="flex flex-col tablet:flex-row tablet:items-center mt-1 laptop:mt-2 tracking-wider group-hover:text-gold-500 duration-200 transition-all"
       >
-        <p class="text-label laptop:text-label-lg">{{ artist.current_residence }}</p>
+        <p class="text-label laptop:text-label-lg">{{ localized(artist.current_residence) }}</p>
         <span class="text-3xl hidden tablet:inline tablet:mx-1 desktop:mx-3">·</span>
         <p class="text-label laptop:text-label-lg py-1">{{ artist.works }} WORKS</p>
       </div>
       <div
         class="mt-2 hidden tablet:mb-3 tablet:flex items-center group-hover:text-gold-500 duration-200 transition-all"
       >
-        <p class="text-label desktop:text-label-lg tracking-wider">VIEW PROFILE</p>
+        <p class="text-label desktop:text-label-lg tracking-wider">
+          {{ t('page.artists.viewProfile') }}
+        </p>
         <BaseArrowIcon class="tablet:ml-2 desktop:mr-15" />
       </div>
     </div>
