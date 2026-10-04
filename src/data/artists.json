@@ -2,81 +2,229 @@
   {
     "id": "wei_chen",
     "name": "Wei Chen",
-    "birth_year_and_nationality": "Born 1978, China",
-    "current_residence": "China",
+    "birth_year_and_nationality": {
+      "zh-TW": "1978 年出生，中國",
+      "en": "Born 1978, China"
+    },
+    "current_residence": {
+      "zh-TW": "中國",
+      "en": "China"
+    },
     "works": "4",
     "image": "wei_chen-profilesmall.webp",
     "image_detail": "wei_chen-detail.webp",
-    "medium": ["18K Yellow Gold", "Hand-Carved Nephrite Jade"],
+    "medium": [
+      {
+        "zh-TW": "18K 黃金",
+        "en": "18K Yellow Gold"
+      },
+      {
+        "zh-TW": "手工雕刻軟玉",
+        "en": "Hand-Carved Nephrite Jade"
+      }
+    ],
     "design_style": "Imperial Heritage Revival — Wei Chen draws from the visual language of China's dynastic courts, reinterpreting ancient motifs such as taotie masks, cloud scrolls, and palace architecture through the lens of contemporary high jewelry. His work is characterized by monumental scale, meticulous hand-engraving, and the pairing of imperial jade with richly worked gold.",
-    "quote": "Jade does not forget. Every cut I make is a conversation with hands that came before mine, a language older than the words we use to describe it.",
-    "short_bio": "Reimagines China’s imperial heritage through monumental jade and gold, blending ancient symbolism with contemporary high jewelry.",
-    "biography": "Wei Chen studied classical metalsmithing at the Central Academy of Fine Arts in Beijing before spending a decade apprenticing under master jade carvers in Suzhou.<br><br> His debut collection drew immediate attention for its archaeological depth and technical virtuosity, earning him recognition as one of Asia's most significant voices in heritage jewelry.<br><br> Wei believes that fine jewelry is a form of living history — each piece a vessel for cultural memory passed down through generations.",
+    "quote": {
+      "zh-TW": "玉不會遺忘。我下的每一刀，都是與前人之手的對話，那是一種比我們用來描述它的文字更古老的語言。",
+      "en": "Jade does not forget. Every cut I make is a conversation with hands that came before mine, a language older than the words we use to describe it."
+    },
+    "short_bio": {
+      "zh-TW": "透過宏偉的玉石與黃金作品重新詮釋中國皇室傳統，將古老象徵與當代高級珠寶融為一體。",
+      "en": "Reimagines China’s imperial heritage through monumental jade and gold, blending ancient symbolism with contemporary high jewelry."
+    },
+    "biography": {
+      "zh-TW": "Wei Chen 先在北京的中央美術學院學習古典金工，隨後在蘇州跟隨玉雕大師學藝十年。<br><br> 他的首個系列以深厚的考古底蘊與精湛技藝立即受到矚目，也讓他成為亞洲傳統文化珠寶領域最具份量的聲音之一。<br><br> Wei 相信高級珠寶是一種活的歷史——每一件作品都是承載文化記憶、代代相傳的容器。",
+      "en": "Wei Chen studied classical metalsmithing at the Central Academy of Fine Arts in Beijing before spending a decade apprenticing under master jade carvers in Suzhou.<br><br> His debut collection drew immediate attention for its archaeological depth and technical virtuosity, earning him recognition as one of Asia's most significant voices in heritage jewelry.<br><br> Wei believes that fine jewelry is a form of living history — each piece a vessel for cultural memory passed down through generations."
+    },
     "collections": [
-      "Dynasty Reliquary — A collection of jade and gold pieces inspired by imperial burial ornaments and ritual objects of the Han and Tang dynasties.",
-      "Celestial Court — Necklaces, earrings, and cuffs referencing the architectural grandeur of the Forbidden City, featuring pagoda motifs and phoenix symbolism.",
-      "Jade Codex — A series of carved jade plaques suspended in elaborate gold frameworks, each engraved with scenes from classical Chinese mythology.",
-      "Nine Dragons — A bold collection exploring the dragon as a symbol of imperial power, rendered in layered gold filigree and deep-green nephrite jade."
+      {
+        "zh-TW": "王朝遺珍 — 靈感來自漢唐兩代皇室陪葬飾物與禮器的玉石與黃金作品系列。",
+        "en": "Dynasty Reliquary — A collection of jade and gold pieces inspired by imperial burial ornaments and ritual objects of the Han and Tang dynasties."
+      },
+      {
+        "zh-TW": "天朝宮闕 — 以紫禁城的建築氣勢為靈感的項鍊、耳環與寬版手環，飾有寶塔圖騰與鳳凰象徵。",
+        "en": "Celestial Court — Necklaces, earrings, and cuffs referencing the architectural grandeur of the Forbidden City, featuring pagoda motifs and phoenix symbolism."
+      },
+      {
+        "zh-TW": "玉典 — 一系列雕刻玉牌，懸於精巧繁複的黃金框架之中，每一塊皆刻有中國古典神話場景。",
+        "en": "Jade Codex — A series of carved jade plaques suspended in elaborate gold frameworks, each engraved with scenes from classical Chinese mythology."
+      },
+      {
+        "zh-TW": "九龍 — 大膽探索龍作為皇權象徵的系列，以層疊的黃金金絲工藝與深綠色軟玉呈現。",
+        "en": "Nine Dragons — A bold collection exploring the dragon as a symbol of imperial power, rendered in layered gold filigree and deep-green nephrite jade."
+      }
     ]
   },
   {
     "id": "yu_an_lin",
     "name": "Yu An Lin",
-    "birth_year_and_nationality": "Born 1985, Taiwan",
-    "current_residence": "Taiwan",
+    "birth_year_and_nationality": {
+      "zh-TW": "1985 年出生，台灣",
+      "en": "Born 1985, Taiwan"
+    },
+    "current_residence": {
+      "zh-TW": "台灣",
+      "en": "Taiwan"
+    },
     "works": "4",
     "image": "yu_an_lin-profilesmall.webp",
     "image_detail": "yu_an_lin-detail.webp",
-    "medium": ["18K Yellow Gold"],
+    "medium": [
+      {
+        "zh-TW": "18K 黃金",
+        "en": "18K Yellow Gold"
+      }
+    ],
     "design_style": "Organic Biomimicry — Yu An Lin treats gold as a living material, sculpting forms inspired by cellular structures, mycelium networks, and fluid dynamics. Her pieces reject symmetry and ornamentation in favor of raw structural beauty — open lattices, dripping forms, and honeycombed surfaces that appear to have grown rather than been made.",
-    "quote": "Gold remembers the shape of growth. I do not design it—I let it grow, tracing the same quiet logic that guides a root through stone.",
-    "short_bio": "Transforms gold into organic forms inspired by cellular structures, mycelium, and the ever-changing patterns of nature.",
-    "biography": "Yu An Lin trained in industrial design at National Taiwan University of Science and Technology before pivoting to jewelry after discovering the expressive potential of cast metal. <br><br> Influenced by natural sciences and computational design, she pioneered a technique of hand-sculpting wax models to mimic organic growth patterns, resulting in pieces that feel simultaneously ancient and futuristic.<br><br> Her work has been exhibited across Asia and Europe and is held in several private design collections.",
+    "quote": {
+      "zh-TW": "黃金記得生長的形狀。我並不設計它——我讓它自己生長，循著引領根系穿越岩石的那份靜默邏輯。",
+      "en": "Gold remembers the shape of growth. I do not design it—I let it grow, tracing the same quiet logic that guides a root through stone."
+    },
+    "short_bio": {
+      "zh-TW": "將黃金轉化為有機造型，靈感來自細胞結構、菌絲網絡，以及大自然千變萬化的紋理。",
+      "en": "Transforms gold into organic forms inspired by cellular structures, mycelium, and the ever-changing patterns of nature."
+    },
+    "biography": {
+      "zh-TW": "Yu An Lin 在國立臺灣科技大學學習工業設計，之後在發現鑄造金屬的表現潛力後轉向珠寶創作。<br><br> 受到自然科學與運算設計的影響，她開創了以手工雕塑蠟模來模擬有機生長形態的技法，使作品同時兼具古老與未來感。<br><br> 她的作品曾於亞洲與歐洲各地展出，並為多位私人設計收藏家所典藏。",
+      "en": "Yu An Lin trained in industrial design at National Taiwan University of Science and Technology before pivoting to jewelry after discovering the expressive potential of cast metal. <br><br> Influenced by natural sciences and computational design, she pioneered a technique of hand-sculpting wax models to mimic organic growth patterns, resulting in pieces that feel simultaneously ancient and futuristic.<br><br> Her work has been exhibited across Asia and Europe and is held in several private design collections."
+    },
     "collections": [
-      "Mycelium — Rings, cuffs, and necklaces modeled on fungal root networks, with branching gold threads forming irregular but interconnected structures.",
-      "Lava Flow — A collection of bold pendants and earrings evoking molten metal mid-pour, capturing the drama of material transformation in solid gold.",
-      "Voronoi — Cuffs and rings inspired by Voronoi diagrams found in nature — bone, coral, and dried earth — rendered in wide, perforated gold forms.",
-      "Erosion — A series exploring the beauty of weathered surfaces, with textured gold pieces that appear carved by wind and water over centuries."
+      {
+        "zh-TW": "菌絲 — 以真菌根系網絡為藍本的戒指、寬版手環與項鍊，分岔的金線交織成不規則卻彼此相連的結構。",
+        "en": "Mycelium — Rings, cuffs, and necklaces modeled on fungal root networks, with branching gold threads forming irregular but interconnected structures."
+      },
+      {
+        "zh-TW": "熔岩流 — 一系列大膽的墜飾與耳環，捕捉熔融金屬傾瀉瞬間的姿態，以黃金定格物質轉變的戲劇張力。",
+        "en": "Lava Flow — A collection of bold pendants and earrings evoking molten metal mid-pour, capturing the drama of material transformation in solid gold."
+      },
+      {
+        "zh-TW": "沃羅諾伊 — 靈感來自自然界（骨骼、珊瑚與乾裂土地）中的沃羅諾伊圖，以寬幅鏤空的黃金造型呈現的寬版手環與戒指。",
+        "en": "Voronoi — Cuffs and rings inspired by Voronoi diagrams found in nature — bone, coral, and dried earth — rendered in wide, perforated gold forms."
+      },
+      {
+        "zh-TW": "侵蝕 — 探索風化表面之美的系列，帶有紋理的黃金作品宛如歷經數百年風與水的雕琢。",
+        "en": "Erosion — A series exploring the beauty of weathered surfaces, with textured gold pieces that appear carved by wind and water over centuries."
+      }
     ]
   },
   {
     "id": "marco_bianchi",
     "name": "Marco Bianchi",
-    "birth_year_and_nationality": "Born 1971, Italian",
-    "current_residence": "Italy",
+    "birth_year_and_nationality": {
+      "zh-TW": "1971 年出生，義大利籍",
+      "en": "Born 1971, Italian"
+    },
+    "current_residence": {
+      "zh-TW": "義大利",
+      "en": "Italy"
+    },
     "works": "4",
     "image": "marco_bianchi-profilesmall.webp",
     "image_detail": "marco_bianchi-detail.webp",
-    "medium": ["18K Rose Gold, Blue Sapphire", "Ruby", "Diamond Baguettes"],
+    "medium": [
+      {
+        "zh-TW": "18K 玫瑰金、藍寶石",
+        "en": "18K Rose Gold, Blue Sapphire"
+      },
+      {
+        "zh-TW": "紅寶石",
+        "en": "Ruby"
+      },
+      {
+        "zh-TW": "長方形切割鑽石",
+        "en": "Diamond Baguettes"
+      }
+    ],
     "design_style": "Art Deco Maximalism — Marco Bianchi is devoted to the exuberant geometry and chromatic drama of the Art Deco era, reinterpreting its architectural vocabulary for the twenty-first century. His signature approach pairs calibré-cut sapphires and rubies in strict geometric arrangements, building pieces that resemble miniature facades of jazz-age skyscrapers.",
-    "quote": "A stone chooses its setting long before I do. My work is simply to listen closely enough that I do not get in its way.",
-    "short_bio": "Reinterprets Art Deco through bold geometry, vivid gemstones, and architectural forms inspired by the glamour of twentieth-century cities.",
-    "biography": "Marco Bianchi grew up surrounded by the decorative arts of Milan's historic palazzos, an upbringing that instilled in him a lifelong passion for architectural ornament.<br><br> He trained at the Istituto Europeo di Design before completing a gemological certification in Antwerp.<br><br> After working for two decades with storied European maisons, he launched his eponymous atelier in Milan, where each piece is produced by a small team of specialized artisans. His collections are celebrated for their jeweler's precision and the almost graphic boldness of their color work.",
+    "quote": {
+      "zh-TW": "寶石早在我之前就已選好它的鑲座。我的工作，只是專注傾聽，不去妨礙它。",
+      "en": "A stone chooses its setting long before I do. My work is simply to listen closely enough that I do not get in its way."
+    },
+    "short_bio": {
+      "zh-TW": "以大膽的幾何、鮮豔的寶石，以及源自二十世紀都會魅力的建築造型，重新詮釋裝飾藝術風格。",
+      "en": "Reinterprets Art Deco through bold geometry, vivid gemstones, and architectural forms inspired by the glamour of twentieth-century cities."
+    },
+    "biography": {
+      "zh-TW": "Marco Bianchi 成長於米蘭歷史宮殿的裝飾藝術環繞之中，這段成長經歷讓他對建築裝飾懷有終身的熱情。<br><br> 他先在歐洲設計學院（Istituto Europeo di Design）受訓，接著在安特衛普取得寶石學認證。<br><br> 在與歐洲知名珠寶品牌合作二十年後，他在米蘭創立了以自己名字命名的工坊，每件作品皆由一小群專業工匠完成。他的系列以珠寶匠的精準度，以及近乎平面設計般大膽的色彩運用而備受讚譽。",
+      "en": "Marco Bianchi grew up surrounded by the decorative arts of Milan's historic palazzos, an upbringing that instilled in him a lifelong passion for architectural ornament.<br><br> He trained at the Istituto Europeo di Design before completing a gemological certification in Antwerp.<br><br> After working for two decades with storied European maisons, he launched his eponymous atelier in Milan, where each piece is produced by a small team of specialized artisans. His collections are celebrated for their jeweler's precision and the almost graphic boldness of their color work."
+    },
     "collections": [
-      "Metropolis — Rings, bracelets, and earrings inspired by the stepped profiles of Art Deco skyscrapers, set with alternating rubies and sapphires in strict vertical columns.",
-      "Soleil — A medallion-centered necklace series featuring sunburst pendants with radiating gemstone spokes, each incorporating a symbolic central motif such as a yin-yang or compass rose.",
-      "Opéra — Drop earrings and brooches referencing the theatrical glamour of 1920s Parisian opera houses, with tiered architectural pendants and jewel-tone color palettes.",
-      "Palais — A bracelet and ring series drawing from the decorative tilework and ironwork of Art Deco civic buildings, with milgrain-bordered panels of calibré-set stones."
+      {
+        "zh-TW": "大都會 — 靈感來自裝飾藝術摩天大樓階梯狀輪廓的戒指、手鍊與耳環，以紅寶石與藍寶石交錯鑲嵌成嚴整的垂直列。",
+        "en": "Metropolis — Rings, bracelets, and earrings inspired by the stepped profiles of Art Deco skyscrapers, set with alternating rubies and sapphires in strict vertical columns."
+      },
+      {
+        "zh-TW": "太陽 — 以獎章為中心的項鍊系列，墜飾呈放射狀的太陽光芒，寶石如輻條向外延伸，每件皆融入陰陽或羅盤玫瑰等象徵性的中心圖案。",
+        "en": "Soleil — A medallion-centered necklace series featuring sunburst pendants with radiating gemstone spokes, each incorporating a symbolic central motif such as a yin-yang or compass rose."
+      },
+      {
+        "zh-TW": "歌劇院 — 呼應 1920 年代巴黎歌劇院戲劇性華麗氛圍的垂墜耳環與胸針，搭配層疊的建築式墜飾與寶石色調的配色。",
+        "en": "Opéra — Drop earrings and brooches referencing the theatrical glamour of 1920s Parisian opera houses, with tiered architectural pendants and jewel-tone color palettes."
+      },
+      {
+        "zh-TW": "宮殿 — 取材自裝飾藝術時期公共建築的裝飾磁磚與鐵藝的手鍊與戒指系列，以米粒邊框的鑲板搭配精準裁切（calibré）的寶石。",
+        "en": "Palais — A bracelet and ring series drawing from the decorative tilework and ironwork of Art Deco civic buildings, with milgrain-bordered panels of calibré-set stones."
+      }
     ]
   },
   {
     "id": "elena_volkov",
     "name": "Elena Volkov",
-    "birth_year_and_nationality": "Born 1983, Russian",
-    "current_residence": "UK",
+    "birth_year_and_nationality": {
+      "zh-TW": "1983 年出生，俄羅斯籍",
+      "en": "Born 1983, Russian"
+    },
+    "current_residence": {
+      "zh-TW": "英國",
+      "en": "UK"
+    },
     "works": "4",
     "image": "elena_volkov-profilesmall.webp",
     "image_detail": "elena_volkov-detail.webp",
-    "medium": ["White Gold", "Black Ceramic", "Pavé Diamonds"],
+    "medium": [
+      {
+        "zh-TW": "白K金",
+        "en": "White Gold"
+      },
+      {
+        "zh-TW": "黑色陶瓷",
+        "en": "Black Ceramic"
+      },
+      {
+        "zh-TW": "密鑲鑽石",
+        "en": "Pavé Diamonds"
+      }
+    ],
     "design_style": "Architectural Minimalism — Elena Volkov strips jewelry down to its essential geometry, creating pieces defined by precise angles, clean lines, and the interplay of contrasting materials. Her work favors restrained palettes — white gold, rose gold, black ceramic, and diamonds — and prioritizes structural integrity and wearability alongside aesthetic rigor.",
-    "quote": "Geometry is honesty made visible. There is nowhere for a flawed idea to hide, and nothing to hold it together but the truth of its own form.",
-    "short_bio": "Creates architectural jewelry defined by precise geometry, restrained materials, and the tension between structure, light, and form.",
-    "biography": "Elena Volkov studied architecture at the Moscow State University of Civil Engineering before relocating to London to pursue jewelry design at the Royal College of Art.<br><br> The shift in discipline proved transformative: she brought to jewelry the architect's instinct for proportion, materiality, and spatial tension. Her London atelier, established in 2012, has become known for producing pieces that appeal equally to collectors of design objects and wearers of fine jewelry.<br><br> Elena frequently collaborates with material scientists to develop new surface treatments and alloy combinations.",
+    "quote": {
+      "zh-TW": "幾何是顯現出來的誠實。有缺陷的想法無處可藏，除了自身形態的真實之外，沒有任何東西能將它維繫在一起。",
+      "en": "Geometry is honesty made visible. There is nowhere for a flawed idea to hide, and nothing to hold it together but the truth of its own form."
+    },
+    "short_bio": {
+      "zh-TW": "創作以精準幾何、克制材質，以及結構、光線與形態間的張力為特色的建築感珠寶。",
+      "en": "Creates architectural jewelry defined by precise geometry, restrained materials, and the tension between structure, light, and form."
+    },
+    "biography": {
+      "zh-TW": "Elena Volkov 在莫斯科國立土木工程大學學習建築，之後移居倫敦，在皇家藝術學院攻讀珠寶設計。<br><br> 這次跨領域轉換帶來了關鍵的轉變：她將建築師對比例、材質與空間張力的直覺帶入珠寶。她於 2012 年成立的倫敦工作室，作品同時吸引設計品收藏家與高級珠寶的配戴者。<br><br> Elena 經常與材料科學家合作，開發新的表面處理與合金組合。",
+      "en": "Elena Volkov studied architecture at the Moscow State University of Civil Engineering before relocating to London to pursue jewelry design at the Royal College of Art.<br><br> The shift in discipline proved transformative: she brought to jewelry the architect's instinct for proportion, materiality, and spatial tension. Her London atelier, established in 2012, has become known for producing pieces that appeal equally to collectors of design objects and wearers of fine jewelry.<br><br> Elena frequently collaborates with material scientists to develop new surface treatments and alloy combinations."
+    },
     "collections": [
-      "Monolith — A collection of rings and cuffs with bold, faceted profiles in white gold and platinum, each set with a single large-format stone in a tension or bezel setting.",
-      "Duality — Pieces that explore the meeting of opposites — diamond and ceramic, matte and mirror, gold and shadow — expressed through open-cuff bracelets and geometric band rings.",
-      "Meridian — A necklace and bracelet series centered on the horizontal bar as a design element, featuring clean rose gold forms channel-set with baguette or princess-cut diamonds.",
-      "Axiom — An architectural ring collection with angular, winglike profiles and flush-set emerald-cut diamonds, designed to sit as precisely on the hand as a building on its foundation."
+      {
+        "zh-TW": "巨石 — 一系列戒指與寬版手環，以白K金與鉑金打造出大膽的切面輪廓，每件皆以張力鑲或包鑲方式鑲嵌一顆大尺寸主石。",
+        "en": "Monolith — A collection of rings and cuffs with bold, faceted profiles in white gold and platinum, each set with a single large-format stone in a tension or bezel setting."
+      },
+      {
+        "zh-TW": "二元 — 探索對立元素交會的作品——鑽石與陶瓷、霧面與鏡面、黃金與陰影——以開口式手環與幾何造型戒指表現。",
+        "en": "Duality — Pieces that explore the meeting of opposites — diamond and ceramic, matte and mirror, gold and shadow — expressed through open-cuff bracelets and geometric band rings."
+      },
+      {
+        "zh-TW": "子午線 — 以水平橫桿為設計核心的項鍊與手鍊系列，簡潔的玫瑰金造型以軌道鑲嵌長方形或公主方切割鑽石。",
+        "en": "Meridian — A necklace and bracelet series centered on the horizontal bar as a design element, featuring clean rose gold forms channel-set with baguette or princess-cut diamonds."
+      },
+      {
+        "zh-TW": "公理 — 具稜角、如羽翼般輪廓的建築感戒指系列，平嵌祖母綠切割鑽石，設計上讓它精準貼合手部，如同建築穩立於地基之上。",
+        "en": "Axiom — An architectural ring collection with angular, winglike profiles and flush-set emerald-cut diamonds, designed to sit as precisely on the hand as a building on its foundation."
+      }
     ]
   }
 ]

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useLocalized } from '@/composables/useLocalized'
 import artists from '@/data/artists.json'
 import works from '@/data/works.json'
 import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
@@ -11,11 +13,19 @@ import ArtistInfo from '@/components/artist-detail/ArtistInfo.vue'
 import QuoteBlock from '@/components/ui/QuoteBlock.vue'
 
 const route = useRoute()
-
+const { t, locale } = useI18n()
+const { localized } = useLocalized()
 const artist = computed(() => artists.find((a) => a.id === route.params.id))
 const work = computed(() => works.filter((w) => w.designer === artist.value?.name))
 const collectionTitles = computed(() => {
-  return artist.value?.collections.map((item) => item.split(' — ')[0]?.trim() ?? item) ?? []
+  const lang = locale.value as 'zh-TW' | 'en'
+  return (
+    artist.value?.collections.map((item) => {
+      const text = item[lang]
+      // 以破折號（— 或 –）切開，只取前面的系列名稱
+      return text.split(/\s*[—–]\s*/)[0]?.trim() ?? text
+    }) ?? []
+  )
 })
 
 // 父層用 ref 拿到子元件 ArtistInfo 的實例（對應模板裡的 ref="artistInfoRef"）
@@ -47,20 +57,23 @@ const scrollToInfo = () => {
           v-fade-in="{ delay: 100, y: 12, mobile: { delay: 80, y: 10 } }"
           class="text-eyebrow text-gold-500"
         >
-          {{ artist.current_residence }}
+          {{ localized(artist.current_residence) }}
         </p>
       </div>
     </div>
     <ArtistInfo ref="artistInfoRef" :artist="artist" :collection-titles="collectionTitles" />
 
     <section class="page-container space-y-8 tablet:space-y-12">
-      <SectionHeading eyebrow="SELECTED WORKS" title="Pieces of Distinction" />
+      <SectionHeading
+        :eyebrow="t('page.artistDetail.selectedWorks')"
+        :title="t('page.artistDetail.selectedWorksSubtitle')"
+      />
       <ItemGrid :items="work" grid-class="grid-cols-1 tablet:grid-cols-3 desktop:grid-cols-4">
         <template #default="{ item }">
           <BaseWorkCard :work="item" />
         </template>
       </ItemGrid>
     </section>
-    <QuoteBlock variant="artist" :quote="artist.quote" :author="artist.name" />
+    <QuoteBlock variant="artist" :quote="localized(artist.quote)" :author="artist.name" />
   </div>
 </template>

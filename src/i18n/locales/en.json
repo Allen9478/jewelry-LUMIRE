@@ -65,9 +65,25 @@
     },
     "artists": {
       "heading": {
-        "eyebrow": "Masters",
-        "title": "Our Artists"
-      }
+        "eyebrow": "VOICES IN GOLD AND STONE",
+        "title": "The Artists",
+        "desc": "Exceptional craftsmanship and a shared pursuit of timeless design."
+      },
+      "viewProfile": "VIEW PROFILE"
+    },
+    "artistCarousel": {
+      "featuredArtist": "Featured Artist",
+      "viewProfile": "View Profile",
+      "signaturePieces": "Signature Pieces"
+    },
+    "artistDetail": {
+      "biography": "Biography",
+      "born": "Born",
+      "based": "Based",
+      "medium": "Medium",
+      "collections": "Collections",
+      "selectedWorks": "Selected Works",
+      "selectedWorksSubtitle": "Pieces of Distinction"
     }
   },
   "footer": {
