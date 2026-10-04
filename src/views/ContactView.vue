@@ -2,6 +2,7 @@
 import contact from '@/data/contact.json'
 import FormInput from '@/components/ui/FormInput.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
+import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
 </script>
 <template>
   <div class="contact flex flex-col tablet:flex-row">
@@ -35,29 +36,14 @@ import BaseButton from '@/components/ui/BaseButton.vue'
             mobile: { delay: 0, y: 16 },
           }"
           :key="index"
-          class="contact__content-inquiries-option flex flex-row items-center justify-between border-b last:border-b-0 border-gold-500/40 pb-4 last:pb-0"
+          class="contact__content-inquiries-option flex flex-row items-center justify-between border-b last:border-b-0 border-gold-500/40 pb-4 last:pb-0 group"
         >
           <div class="max-w-[250px] tablet:max-w-xl flex flex-col gap-2">
             <p class="text-subhead font-serif">{{ inquiries.title }}</p>
             <p class="text-gold-500">{{ inquiries.email }}</p>
             <p class="text-gray-muted">{{ inquiries.description }}</p>
           </div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            aria-hidden="true"
-            focusable="false"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="text-gold-500 size-6"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-            />
-          </svg>
+          <BaseArrowIcon class="text-gold-500 mr-2" />
         </div>
       </div>
       <form action="" class="contact__content-form flex flex-col gap-4">

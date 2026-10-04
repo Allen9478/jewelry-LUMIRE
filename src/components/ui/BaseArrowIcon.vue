@@ -1,3 +1,8 @@
+<script setup lang="ts">
+withDefaults(defineProps<{ sizeClass?: string }>(), {
+  sizeClass: 'size-7',
+})
+</script>
 <template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -7,7 +12,8 @@
     focusable="false"
     stroke-width="1.5"
     stroke="currentColor"
-    class="size-8 ml-2 group-hover:animate-arrow-loop"
+    class="ml-2 group-hover:animate-arrow-loop"
+    :class="sizeClass"
   >
     <path
       stroke-linecap="round"

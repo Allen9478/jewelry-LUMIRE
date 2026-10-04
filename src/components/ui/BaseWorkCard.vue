@@ -4,6 +4,7 @@ import HeartButton from '@/components/common/HeartButton.vue'
 import getImageUrl from '@/utils/getImageUrl'
 import type { WorkItem } from '@/types/work'
 import { useLocalized } from '@/composables/useLocalized'
+import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
 
 const { t } = useI18n()
 const { localized } = useLocalized()
@@ -53,7 +54,9 @@ withDefaults(
         >
           <h2 class="card__name text-white text-body mb-3">{{ localized(work.name) }}</h2>
           <p class="card__artist text-white/90 mb-3 text-body-sm">{{ work.designer }}</p>
-          <p class="text-label tracking-widest text-gold-500 mb-3">{{ t('card.view') }} →</p>
+          <p class="flex items-center text-label tracking-widest text-gold-500 mb-3">
+            {{ t('card.view') }} <BaseArrowIcon sizeClass="size-5" />
+          </p>
         </div>
       </div>
     </div>
