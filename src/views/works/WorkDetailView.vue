@@ -101,7 +101,7 @@ function getOtherWorks() {
             <p
               class="work-detail-hero__artist-bio text-label tablet:text-label-lg tablet:line-clamp-3"
             >
-              {{ artist.short_bio }}
+              {{ localized(artist.short_bio) }}
             </p>
             <BaseButton
               tag="RouterLink"
