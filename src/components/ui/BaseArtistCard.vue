@@ -37,7 +37,7 @@ defineProps<{
       >
         <p class="text-label laptop:text-label-lg">{{ localized(artist.current_residence) }}</p>
         <span class="text-3xl hidden tablet:inline tablet:mx-1 desktop:mx-3">·</span>
-        <p class="text-label laptop:text-label-lg py-1">{{ artist.works }} WORKS</p>
+        <p class="text-label laptop:text-label-lg py-1">{{ localized(artist.works) }}</p>
       </div>
       <div
         class="mt-2 hidden tablet:mb-3 tablet:flex items-center group-hover:text-gold-500 duration-200 transition-all"
@@ -45,7 +45,7 @@ defineProps<{
         <p class="text-label desktop:text-label-lg tracking-wider">
           {{ t('page.artists.viewProfile') }}
         </p>
-        <BaseArrowIcon class="tablet:ml-2 desktop:mr-15" />
+        <BaseArrowIcon class="tablet:ml-2 desktop:mr-15" sizeClass="size-6" />
       </div>
     </div>
   </div>
