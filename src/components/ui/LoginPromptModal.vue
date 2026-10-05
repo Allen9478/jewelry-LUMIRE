@@ -2,9 +2,11 @@
 import BaseModal from './BaseModal.vue'
 import BaseButton from './BaseButton.vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { useUiStore } from '@/stores/useUiStore'
-const uiStore = useUiStore()
 
+const uiStore = useUiStore()
+const { t } = useI18n()
 const router = useRouter()
 
 function goToLogin() {
@@ -18,11 +20,13 @@ function goToLogin() {
 
 <template>
   <BaseModal :isOpen="uiStore.showLoginModal" @close="uiStore.closeLoginModal()">
-    <p class="font-serif text-gold-400 text-subhead mb-2">會員專屬功能</p>
-    <p class="text-cream/60 text-label-lg mb-6">登入後即可收藏您喜愛的作品</p>
+    <p class="font-serif text-gold-400 text-subhead mb-2">{{ t('loginPrompt.title') }}</p>
+    <p class="text-cream/60 text-label-lg mb-6">{{ t('loginPrompt.description') }}</p>
     <div class="flex gap-4">
-      <BaseButton variant="primary" @click="goToLogin">立即登入</BaseButton>
-      <BaseButton variant="ghost" @click="uiStore.closeLoginModal()">取消</BaseButton>
+      <BaseButton variant="primary" @click="goToLogin">{{ t('loginPrompt.confirm') }}</BaseButton>
+      <BaseButton variant="ghost" @click="uiStore.closeLoginModal()">{{
+        t('loginPrompt.cancel')
+      }}</BaseButton>
     </div>
   </BaseModal>
 </template>

@@ -95,6 +95,59 @@
       "collections": "系列",
       "selectedWorks": "精選作品",
       "selectedWorksSubtitle": "非凡之作"
+    },
+    "exhibitions": {
+      "id": "natures-forms",
+      "title": "自然之形",
+      "subtitle": "2026 國際珠寶展",
+      "status": "當期展覽",
+      "date": "2026 年 5 月 18 日 — 8 月 25 日",
+      "location": "Lumière 藝廊，台北",
+      "hours": "週二至週日，上午 10 點至晚上 7 點",
+      "quote": "自然從不匆忙，卻成就萬物。",
+      "description": [
+        "《自然之形》探索有機世界中靜謐而壯麗的美——風蝕岩石的曲線、海浪的律動、葉脈的細緻紋理，以及生長與蛻變的原始之美。",
+        "透過當代珠寶藝術家的視角，這些自然元素被轉化為貴金屬打造的永恆藝術品。每一件作品都是自然與工藝之間的對話，映照出不完美中的和諧，以及歷久不衰之美的力量。"
+      ],
+      "featuredArtist": {
+        "name": "Yu-An Lin",
+        "country": "台灣",
+        "title": "金屬雕塑家",
+        "bio": [
+          "Yu-An Lin 從自然力量與有機衰敗中汲取靈感，將其原始能量轉化為雕塑般的珠寶。",
+          "其作品擁抱不完美，頌揚蛻變之美與時間的流逝。",
+          "每件作品皆為手工雕塑，將自然轉瞬即逝的優雅瞬間，凝固於恆久的金屬之中。"
+        ]
+      },
+      "visit": {
+        "name": "Lumière 藝廊，台北",
+        "address": "110 台北市信義區松高路 88 號",
+        "date": "週二至週日",
+        "hours": "上午 10 點至晚上 7 點",
+        "button": "預約參觀"
+      },
+      "pastExhibitions": [
+        {
+          "title": "空靈幾何",
+          "subtitle": "2023 國際珠寶展",
+          "img": "silent-reflections-entrance.webp"
+        },
+        {
+          "title": "黃金敘事",
+          "subtitle": "2022 國際珠寶展",
+          "img": "sovereign-light-entrance.webp"
+        },
+        {
+          "title": "動態元素",
+          "subtitle": "2021 國際珠寶展",
+          "img": "fractured-light-entrance.webp"
+        }
+      ],
+      "workInExhibitions": "參展作品",
+      "featuredArtistLabel": "精選藝術家",
+      "viewArtistProfile": "查看藝術家簡介",
+      "visitLabel": "參觀資訊",
+      "pastExhibitionsLabel": "過往展覽"
     }
   },
   "footer": {
@@ -131,5 +184,11 @@
   },
   "searchModal": {
     "placeholder": "搜尋藝術家或珠寶"
+  },
+  "loginPrompt": {
+    "title": "會員專屬功能",
+    "description": "登入後即可收藏您喜愛的作品",
+    "confirm": "立即登入",
+    "cancel": "取消"
   }
 }
