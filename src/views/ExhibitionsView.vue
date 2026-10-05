@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useScopedI18n, type RtInput } from '@/composables/useScopedI18n'
 import heroImage from '@/assets/images/exhibition/exhibition-hero.webp'
 import visitImage from '@/assets/images/exhibition/exhibition-location.webp'
 import ItemGrid from '@/components/ui/ItemGrid.vue'
@@ -8,11 +10,34 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
 import getImageUrl from '@/utils/getImageUrl'
 import GoldDivider from '@/components/ui/GoldDivider.vue'
-import exhibitions from '@/data/exhibitions.json'
 import works from '@/data/works.json'
 import artists from '@/data/artists.json'
 
+// i18n 裡取回來的原始形狀
+interface PastExhibitionRaw {
+  title: RtInput
+  subtitle: RtInput
+  img: RtInput
+}
+
+// 轉換後給 template 用的形狀
+interface PastExhibition {
+  title: string
+  subtitle: string
+  img: string
+}
+
+const { tx, txList, txItems } = useScopedI18n('page.exhibitions')
 const artistExample = artists.find((a) => a.id === 'yu_an_lin')
+const descriptions = computed(() => txList('description'))
+const artistBio = computed(() => txList('featuredArtist.bio'))
+const pastExhibitions = computed(() =>
+  txItems<PastExhibitionRaw, PastExhibition>('pastExhibitions', (item, rt) => ({
+    title: rt(item.title),
+    subtitle: rt(item.subtitle),
+    img: rt(item.img),
+  })),
+)
 
 function randomWorks<T>(arr: readonly T[], count: number): T[] {
   const pool = [...arr]
@@ -45,9 +70,9 @@ const fuckData = randomWorks(works, 6)
         class="absolute inset-0 bg-gradient-to-t from-black/100 via-black/20 to-transparent"
       ></div>
       <SectionHeading
-        :eyebrow="exhibitions.status"
-        :title="exhibitions.title"
-        :desc="exhibitions.subtitle"
+        :eyebrow="tx('status')"
+        :title="tx('title')"
+        :desc="tx('subtitle')"
         titleTag="h1"
         class="page-container absolute bottom-0 tablet:bottom-12 tablet:left-4 z-1"
       />
@@ -73,7 +98,7 @@ const fuckData = randomWorks(works, 6)
             d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z"
           />
         </svg>
-        <span>{{ exhibitions.date }}</span>
+        <span>{{ tx('date') }}</span>
       </p>
       <div class="hidden laptop:block w-px h-6 bg-gold-500/60"></div>
       <p class="flex space-x-4 items-center">
@@ -98,7 +123,7 @@ const fuckData = randomWorks(works, 6)
             d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
           />
         </svg>
-        <span>{{ exhibitions.location }}</span>
+        <span>{{ tx('location') }}</span>
       </p>
       <div class="hidden laptop:block w-px h-6 bg-gold-500/60"></div>
 
@@ -120,7 +145,7 @@ const fuckData = randomWorks(works, 6)
           />
         </svg>
 
-        <span>{{ exhibitions.hours }}</span>
+        <span>{{ tx('hours') }}</span>
       </p>
     </div>
     <div
@@ -133,14 +158,14 @@ const fuckData = randomWorks(works, 6)
         <p
           class="exhibitions__quote-text text-quote text-gold-500 p-10 tablet:px-8 desktop:px-12 wide:px-16 italic"
         >
-          {{ exhibitions.quote }}
+          {{ tx('quote') }}
         </p>
       </div>
       <div
         v-fade-in="{ delay: 100, y: 16, mobile: { delay: 0, y: 12 } }"
         class="laptop:w-[90%] flex flex-col tablet:justify-center tablet:border-l tablet:border-gold-500/60 space-y-4 tablet:px-8"
       >
-        <p v-for="(description, index) in exhibitions.description" :key="index">
+        <p v-for="(description, index) in descriptions" :key="index">
           {{ description }}
         </p>
       </div>
@@ -148,7 +173,9 @@ const fuckData = randomWorks(works, 6)
     <section
       class="exhibitions__works page-container space-y-6 tablet:space-y-10 desktop:space-y-16"
     >
-      <p v-fade-in="{ delay: 0, y: 12 }" class="text-subhead text-gold-500">WORK IN EXHIBITIONS</p>
+      <p v-fade-in="{ delay: 0, y: 12 }" class="text-subhead text-gold-500">
+        {{ tx('workInExhibitions') }}
+      </p>
       <ItemGrid
         :items="fuckData"
         grid-class="grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4 "
@@ -163,7 +190,9 @@ const fuckData = randomWorks(works, 6)
       v-fade-in="{ delay: 0, y: 20, mobile: { delay: 0, y: 14 } }"
       class="exhibitions__artist page-container"
     >
-      <p class="tablet:hidden text-subhead text-gold-500">FEATURED ARTIST</p>
+      <p class="tablet:hidden text-subhead text-gold-500">
+        {{ tx('featuredArtistLabel') }}
+      </p>
       <div
         v-if="artistExample"
         class="exhibitions__artist-grid grid grid-cols-[40%_60%] tablet:grid-cols-[50%_50%] laptop:grid-cols-[40%_60%] desktop:grid-cols-[30%_70%]"
@@ -171,25 +200,27 @@ const fuckData = randomWorks(works, 6)
         <div class="exhibitions__artist-photo aspect-[3/4] max-h-[500px] overflow-hidden">
           <img
             src="../assets/images/artists/yu_an_lin-profilesmall.webp"
-            alt="#"
+            alt="artist-YU An Lin"
             class="w-full h-full object-cover"
           />
         </div>
         <div class="exhibitions__artist-info flex flex-col justify-center">
           <div class="space-y-4 mt-10 tablet:ml-8 laptop:ml-12 desktop:ml-16">
-            <p class="hidden tablet:block text-subhead text-gold-500">FEATURED ARTIST</p>
+            <p class="hidden tablet:block text-subhead text-gold-500">
+              {{ tx('featuredArtistLabel') }}
+            </p>
 
             <h2 class="exhibitions__artist-name text-heading-sm font-serif">
-              {{ artistExample.name }}
+              {{ tx('featuredArtist.name') }}
             </h2>
             <div class="exhibitions__artist-meta flex text-body text-cream/85">
               <p class="pr-2 border-r border-gold-500/60">
-                {{ exhibitions.featuredArtist.country }}
+                {{ tx('featuredArtist.country') }}
               </p>
-              <p class="pl-2">{{ exhibitions.featuredArtist.title }}</p>
+              <p class="pl-2">{{ tx('featuredArtist.title') }}</p>
             </div>
             <p
-              v-for="(bio, index) in exhibitions.featuredArtist.bio"
+              v-for="(bio, index) in artistBio"
               :key="index"
               class="exhibitions__artist-bio hidden tablet:block text-label tablet:text-label-lg text-gray-muted"
             >
@@ -200,7 +231,9 @@ const fuckData = randomWorks(works, 6)
               :to="`/artists/${artistExample.id}`"
               variant="ghost"
               class="exhibitions__artist-link inline-flex justify-start items-center text-body-sm"
-              ><span class="text-btn tablet:text-btn-lg normal-case"> View Artist Profile </span>
+              ><span class="text-btn tablet:text-btn-lg normal-case">
+                {{ tx('viewArtistProfile') }}
+              </span>
               <BaseArrowIcon />
             </BaseButton>
           </div>
@@ -210,7 +243,7 @@ const fuckData = randomWorks(works, 6)
     <!-- 先寫股價樣式明天記得條 -->
     <section class="exhibitions__visit flex flex-col mt-6">
       <h2 v-fade-in="{ delay: 0, y: 12 }" class="text-gold-500 text-subhead page-container">
-        VISIT
+        {{ tx('visitLabel') }}
       </h2>
       <div
         class="exhibitions__visit-group flex flex-col tablet:grid tablet:grid-cols-[50%_50%] laptop:grid-cols-[45%_55%] desktop:grid-cols-[35%_65%]"
@@ -242,8 +275,12 @@ const fuckData = randomWorks(works, 6)
               />
             </svg>
             <div class="flex flex-col">
-              <span>{{ exhibitions.visit.name }}</span>
-              <span>{{ exhibitions.visit.address }}</span>
+              <span>
+                {{ tx('visit.name') }}
+              </span>
+              <span>
+                {{ tx('visit.address') }}
+              </span>
             </div>
           </div>
           <div class="flex items-start space-x-4">
@@ -265,12 +302,12 @@ const fuckData = randomWorks(works, 6)
             </svg>
 
             <div class="flex flex-col">
-              <span>{{ exhibitions.visit.viewing }}</span>
-              <span>{{ exhibitions.visit.description }}</span>
+              <span>{{ tx('visit.date') }}</span>
+              <span>{{ tx('visit.hours') }}</span>
             </div>
           </div>
           <BaseButton class="w-72 mx-auto laptop:ml-0">
-            <span class="text-btn tablet:text-btn-lg">{{ exhibitions.visit.button }}</span>
+            <span class="text-btn tablet:text-btn-lg">{{ tx('visit.button') }}</span>
             <BaseArrowIcon />
           </BaseButton>
         </div>
@@ -292,13 +329,13 @@ const fuckData = randomWorks(works, 6)
 
     <section class="exhibitions__past-exhibitions page-container mt-6">
       <h2 v-fade-in="{ delay: 0, y: 12 }" class="text-gold-500 text-subhead py-8 tablet:py-10">
-        PAST EXHIBITIONS
+        {{ tx('pastExhibitionsLabel') }}
       </h2>
       <div
         class="exhibitions__past-exhibitions-group flex flex-col tablet:flex-row space-y-4 tablet:space-y-0 tablet:space-x-4"
       >
         <div
-          v-for="(pastExhibitions, index) in exhibitions.pastExhibitions"
+          v-for="(pastExhibition, index) in pastExhibitions"
           v-fade-in="{
             delay: Math.min(index, 2) * 150,
             y: 24,
@@ -308,8 +345,8 @@ const fuckData = randomWorks(works, 6)
           class="exhibitions__past-exhibitions-item block relative border border-gold-500/20 tablet:w-1/3 h-[140px] tablet:h-[220px] overflow-hidden transition-md hover:border-gold-500 active:border-gold-500 duration-300 group"
         >
           <img
-            :src="getImageUrl(`exhibition/${pastExhibitions.img}`)"
-            :alt="pastExhibitions.title"
+            :src="getImageUrl(`exhibition/${pastExhibition.img}`)"
+            :alt="pastExhibition.title"
             loading="lazy"
             width="1774"
             height="887"
@@ -326,11 +363,11 @@ const fuckData = randomWorks(works, 6)
             <p
               class="text-subhead group-hover:text-gold-500 group-active:text-gold-500 duration-300"
             >
-              {{ pastExhibitions.title }}
+              {{ pastExhibition.title }}
             </p>
             <span
               class="text-label text-gray-muted group-hover:text-cream group-active:text-cream duration-300"
-              >{{ pastExhibitions.subtitle }}</span
+              >{{ pastExhibition.subtitle }}</span
             >
           </div>
         </div>
