@@ -296,23 +296,25 @@ const submitted = ref(false)
     :author="t('page.home.quote.author')"
   >
     <template #extra>
-      <div class="flex w-[290px] ipad:max-w-sm tablet:max-w-md z-10">
+      <div
+        class="group z-10 flex w-[290px] border border-gold-600 transition-colors focus-within:border-gold-400 focus-within:ring-1 focus-within:ring-gold-400 ipad:max-w-sm tablet:max-w-md"
+      >
         <input
-          v-model="email"
           id="home-newsletter-email"
+          v-model="email"
           name="email"
           type="email"
           autocomplete="email"
           required
+          :aria-label="t('page.home.newsletter.placeholder')"
           :placeholder="t('page.home.newsletter.placeholder')"
           :disabled="submitted"
-          class="min-w-0 flex-1 border border-gold-600 border-r-0 bg-transparent p-3 text-label-lg text-white placeholder:text-gold-200/50 focus:outline-none focus:ring-1 focus:ring-gold-400"
+          class="min-w-0 flex-1 bg-transparent p-3 text-label-lg text-white placeholder:text-gold-200/50 focus:outline-none"
         />
         <button
           type="submit"
           :disabled="submitted"
-          :aria-disabled="submitted"
-          class="flex shrink-0 items-center justify-center h-[46px] min-w-[110px] bg-gold-500/80 text-black-soft hover:bg-gold-500 hover:text-black transition-colors"
+          class="flex h-[46px] min-w-[110px] shrink-0 items-center justify-center bg-gold-500/80 text-black-soft transition-colors hover:bg-gold-500 hover:text-black group-focus-within:bg-gold-500 group-focus-within:text-black"
         >
           {{ submitted ? t('page.home.newsletter.submitted') : t('page.home.newsletter.submit') }}
         </button>
