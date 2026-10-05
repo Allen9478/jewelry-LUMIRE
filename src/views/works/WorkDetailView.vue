@@ -110,7 +110,7 @@ function getOtherWorks() {
               variant="ghost"
               class="work-detail-hero__artist-link inline-flex justify-start items-center text-body-sm"
               ><span class="text-btn tablet:text-btn-lg normal-case">
-                {{ t('page.workDetail.viewArtistProfile') }}
+                {{ t('common.viewArtistProfile') }}
               </span>
               <BaseArrowIcon />
             </BaseButton>

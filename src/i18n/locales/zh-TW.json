@@ -71,7 +71,6 @@
       "collection": "系列",
       "collectionName": "自然之形",
       "aboutArtist": "關於藝術家",
-      "viewArtistProfile": "查看藝術家簡介",
       "relatedWorks": "相關作品"
     },
     "artists": {
@@ -145,7 +144,6 @@
       ],
       "workInExhibitions": "參展作品",
       "featuredArtistLabel": "精選藝術家",
-      "viewArtistProfile": "查看藝術家簡介",
       "visitLabel": "參觀資訊",
       "pastExhibitionsLabel": "過往展覽"
     }
@@ -190,5 +188,8 @@
     "description": "登入後即可收藏您喜愛的作品",
     "confirm": "立即登入",
     "cancel": "取消"
+  },
+  "common": {
+    "viewArtistProfile": "查看藝術家簡介"
   }
 }

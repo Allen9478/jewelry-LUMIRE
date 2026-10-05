@@ -71,7 +71,6 @@
       "collection": "Collection",
       "collectionName": "Nature's Forms",
       "aboutArtist": "ABOUT THE ARTIST",
-      "viewArtistProfile": "View Artist Profile",
       "relatedWorks": "RELATED WORKS"
     },
     "artists": {
@@ -145,7 +144,6 @@
       ],
       "workInExhibitions": "Work in Exhibitions",
       "featuredArtistLabel": "Featured Artist",
-      "viewArtistProfile": "View Artist Profile",
       "visitLabel": "Visit",
       "pastExhibitionsLabel": "Past Exhibitions"
     }
@@ -190,5 +188,8 @@
     "description": "Sign in to save your favorite works.",
     "confirm": "Sign In Now",
     "cancel": "Cancel"
+  },
+  "common": {
+    "viewArtistProfile": "View Artist Profile"
   }
 }
