@@ -8,7 +8,7 @@ export interface ArtistItem {
   name: string
   birth_year_and_nationality: LocalizedText
   current_residence: LocalizedText
-  works: string
+  works: LocalizedText
   image: string
   image_detail: string
   medium: LocalizedText[]
