@@ -22,3 +22,7 @@ export function useScopedI18n(prefix: string) {
 
   return { tx, txList, txItems }
 }
+
+export function useCommonI18n() {
+  return useScopedI18n('common')
+}

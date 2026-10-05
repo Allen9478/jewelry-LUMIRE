@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useScopedI18n, type RtInput } from '@/composables/useScopedI18n'
+import { useScopedI18n, useCommonI18n, type RtInput } from '@/composables/useScopedI18n'
 import heroImage from '@/assets/images/exhibition/exhibition-hero.webp'
 import visitImage from '@/assets/images/exhibition/exhibition-location.webp'
 import ItemGrid from '@/components/ui/ItemGrid.vue'
@@ -28,6 +28,7 @@ interface PastExhibition {
 }
 
 const { tx, txList, txItems } = useScopedI18n('page.exhibitions')
+const { tx: txCommon } = useCommonI18n()
 const artistExample = artists.find((a) => a.id === 'yu_an_lin')
 const descriptions = computed(() => txList('description'))
 const artistBio = computed(() => txList('featuredArtist.bio'))
@@ -232,7 +233,7 @@ const fuckData = randomWorks(works, 6)
               variant="ghost"
               class="exhibitions__artist-link inline-flex justify-start items-center text-body-sm"
               ><span class="text-btn tablet:text-btn-lg normal-case">
-                {{ tx('viewArtistProfile') }}
+                {{ txCommon('viewArtistProfile') }}
               </span>
               <BaseArrowIcon />
             </BaseButton>
