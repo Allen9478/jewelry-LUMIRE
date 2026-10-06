@@ -1,8 +1,34 @@
 <script setup lang="ts">
-import contact from '@/data/contact.json'
+import { computed } from 'vue'
+import { useScopedI18n, type RtInput } from '@/composables/useScopedI18n'
+// import contact from '@/data/contact.json'
 import FormInput from '@/components/ui/FormInput.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
+
+interface InquiryRaw {
+  title: RtInput
+  email: string
+  description: RtInput
+}
+
+interface Inquiry {
+  title: string
+  email: string
+  description: string
+}
+const { tx, txList, txItems } = useScopedI18n('page.contact')
+const { tx: txCommon } = useScopedI18n('common')
+
+const inquiries = computed(() =>
+  txItems<InquiryRaw, Inquiry>('inquiries', (item, rt) => ({
+    title: rt(item.title),
+    email: item.email,
+    description: rt(item.description),
+  })),
+)
+
+const address = computed(() => txList('location.address'))
 </script>
 <template>
   <div class="contact flex flex-col tablet:flex-row">
@@ -25,11 +51,11 @@ import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
         v-fade-in="{ delay: 0, y: 12 }"
         class="text-heading text-center tablet:text-start font-italic italic mt-6 tablet:mt-12"
       >
-        {{ contact.title }}
+        {{ tx('title') }}
       </h1>
       <div class="contact__content-inquiries flex flex-col gap-8 mt-8">
         <div
-          v-for="(inquiries, index) in contact.inquiries"
+          v-for="(item, index) in inquiries"
           v-fade-in="{
             delay: 80 + index * 100,
             y: 24,
@@ -39,9 +65,9 @@ import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
           class="contact__content-inquiries-option flex flex-row items-center justify-between border-b last:border-b-0 border-gold-500/40 pb-4 last:pb-0 group"
         >
           <div class="max-w-[250px] tablet:max-w-xl flex flex-col gap-2">
-            <p class="text-subhead font-serif">{{ inquiries.title }}</p>
-            <p class="text-gold-500">{{ inquiries.email }}</p>
-            <p class="text-gray-muted">{{ inquiries.description }}</p>
+            <p class="text-subhead font-serif">{{ item.title }}</p>
+            <p class="text-gold-500">{{ item.email }}</p>
+            <p class="text-gray-muted">{{ item.description }}</p>
           </div>
           <BaseArrowIcon class="text-gold-500 mr-2" />
         </div>
@@ -49,12 +75,12 @@ import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
       <form action="" class="contact__content-form flex flex-col gap-4">
         <FormInput
           v-fade-in="{ delay: 320, y: 20, mobile: { delay: 0, y: 16 } }"
-          :label="contact.form.name"
+          :label="txCommon('form.name')"
           type="text"
         />
         <FormInput
           v-fade-in="{ delay: 380, y: 20, mobile: { delay: 0, y: 16 } }"
-          :label="contact.form.email"
+          :label="txCommon('form.email')"
           type="text"
         />
         <div v-fade-in="{ delay: 440, y: 20, mobile: { delay: 0, y: 16 } }" class="relative group">
@@ -67,10 +93,10 @@ import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
           <label
             for="message"
             class="absolute origin-[0_0] left-0 top-4 text-body-sm laptop:text-body tracking-[1px] peer-focus:top-0 peer-focus:scale-75 group-focus-within:text-gold-500 peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:scale-75"
-            >Message</label
+            >{{ tx('form.message') }}</label
           >
         </div>
-        <BaseButton class="w-full mt-4">{{ contact.form.submit }}</BaseButton>
+        <BaseButton class="w-full mt-4">{{ tx('form.submit') }}</BaseButton>
       </form>
       <section
         class="contact__content-info flex flex-col desktop:flex-row desktop:justify-between gap-8 my-8"
@@ -101,8 +127,8 @@ import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
             />
           </svg>
           <div class="flex flex-col gap-1 ml-4">
-            <p class="text-subhead font-serif">{{ contact.location.name }}</p>
-            <p v-for="(line, i) in contact.location.address" :key="i" class="text-gray-muted">
+            <p class="text-subhead font-serif">{{ tx('location.name') }}</p>
+            <p v-for="(line, i) in address" :key="i" class="text-gray-muted">
               {{ line }}
             </p>
           </div>
@@ -128,9 +154,9 @@ import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
             />
           </svg>
           <div class="flex flex-col gap-1 ml-4">
-            <p class="text-subhead font-serif">{{ contact.studioHours.label }}</p>
-            <p class="text-gray-muted">{{ contact.studioHours.days }}</p>
-            <p class="text-gray-muted">{{ contact.studioHours.hours }}</p>
+            <p class="text-subhead font-serif">{{ tx('studioHours.label') }}</p>
+            <p class="text-gray-muted">{{ tx('studioHours.days') }}</p>
+            <p class="text-gray-muted">{{ tx('studioHours.hours') }}</p>
           </div>
         </div>
       </section>

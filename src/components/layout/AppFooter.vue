@@ -71,9 +71,9 @@ const sections: FooterSection[] = [
           >
             <AppLogo />
           </RouterLink>
-          <p class="pt-5 tablet:pt-7">{{ t('footer.tagline.line1') }}</p>
+          <p class="pt-5 tablet:pt-7">{{ t('footer.tagline.lineFirst') }}</p>
           <br />
-          <p>{{ t('footer.tagline.line2') }}</p>
+          <p>{{ t('footer.tagline.lineSecond') }}</p>
           <div
             class="flex py-4 space-x-6 tablet:flex-row tablet:gap-9 tablet:space-x-0 tablet:pt-12"
           >

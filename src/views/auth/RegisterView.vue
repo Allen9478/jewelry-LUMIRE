@@ -2,8 +2,12 @@
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/useAuthStore'
+import { useScopedI18n } from '@/composables/useScopedI18n'
 import FormInput from '@/components/ui/FormInput.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
+
+const { tx } = useScopedI18n('page.register')
+const { tx: txCommon } = useScopedI18n('common')
 const authStore = useAuthStore()
 const fullname = ref('')
 const email = ref('')
@@ -26,25 +30,25 @@ async function handleSubmit() {
 </script>
 <template>
   <div class="auth__form">
-    <h1 class="auth__title">New Here?</h1>
+    <h1 class="auth__title">{{ tx('title') }}</h1>
     <form @submit.prevent="handleSubmit" class="flex flex-col gap-8">
-      <FormInput v-model="fullname" type="text" label="FULL NAME" />
-      <FormInput v-model="email" type="email" label="EMAIL" />
-      <FormInput v-model="password" type="password" label="PASSWORD" />
-      <FormInput v-model="confirmPassword" type="password" label="CONFIRM PASSWORD" />
+      <FormInput v-model="fullname" type="text" :label="tx('fullName')" />
+      <FormInput v-model="email" type="email" :label="txCommon('form.email')" />
+      <FormInput v-model="password" type="password" :label="txCommon('form.password')" />
+      <FormInput v-model="confirmPassword" type="password" :label="tx('confirmPassword')" />
       <p v-if="authStore.error" class="text-red-500 text-label-lg">{{ authStore.error }}</p>
-      <p v-if="passwordMismatch" class="text-red-500 text-label-lg">两次密码输入不一致</p>
+      <p v-if="passwordMismatch" class="text-red-500 text-label-lg">{{ tx('passwordMismatch') }}</p>
       <BaseButton
         type="submit"
         variant="primary"
         class="w-full font-bold p-4 text-label-lg mt-4 laptop:mt-8"
-        >CREATE ACCOUNT</BaseButton
+        >{{ tx('submit') }}</BaseButton
       >
     </form>
 
     <p class="py-8 text-center laptop:text-left laptop:text-body">
-      Already have an account?
-      <RouterLink :to="{ name: 'login' }" class="link--auth">Sign In</RouterLink>
+      {{ tx('haveAccount') }}
+      <RouterLink :to="{ name: 'login' }" class="link--auth">{{ txCommon('signIn') }}</RouterLink>
     </p>
   </div>
 </template>

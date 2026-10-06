@@ -1,15 +1,76 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useTemplateRef } from 'vue'
-import aboutData from '@/data/about.json'
+import { useScopedI18n, type RtInput } from '@/composables/useScopedI18n'
+import { useLightFollow } from '@/composables/useLightFollow'
 import ItemGrid from '@/components/ui/ItemGrid.vue'
 import SectionHeading from '@/components/ui/SectionHeading.vue'
 import AboutTimeLine from '@/components/ui/AboutTimeLine.vue'
 import GoldDivider from '@/components/ui/GoldDivider.vue'
 import BaseAvatar from '@/components/ui/BaseAvatar.vue'
 import QuoteBlock from '@/components/ui/QuoteBlock.vue'
-import { useLightFollow } from '@/composables/useLightFollow'
 
+interface HighlightRaw {
+  year: number
+  title: RtInput
+  subtitle: RtInput
+}
+interface Highlight {
+  year: number
+  title: string
+  subtitle: string
+}
+
+interface PillarRaw {
+  title: RtInput
+  description: RtInput
+}
+interface Pillar {
+  title: string
+  description: string
+}
+
+interface TeamRaw {
+  id: string
+  name: string
+  title: RtInput
+  image: string
+}
+interface TeamMember {
+  id: string
+  name: string
+  title: string
+  image: string
+}
+
+const { tx, txList, txItems } = useScopedI18n('page.about')
+const paragraphs = computed(() => txList('philosophy.paragraphs'))
 const frameRef = useTemplateRef<HTMLElement>('frame')
+
+const highlights = computed(() =>
+  txItems<HighlightRaw, Highlight>('exhibitionHighlights.items', (item, rt) => ({
+    year: item.year,
+    title: rt(item.title),
+    subtitle: rt(item.subtitle),
+  })),
+)
+
+const pillars = computed(() =>
+  txItems<PillarRaw, Pillar>('pillars.items', (item, rt) => ({
+    title: rt(item.title),
+    description: rt(item.description),
+  })),
+)
+
+const team = computed(() =>
+  txItems<TeamRaw, TeamMember>('team.items', (item, rt) => ({
+    id: item.id,
+    name: item.name,
+    title: rt(item.title),
+    image: item.image,
+  })),
+)
+
 const { isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow(frameRef, {
   tiltStrength: 6,
   zoomOnLit: 1.06,
@@ -24,22 +85,18 @@ const { isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow(frameRef
       <div
         class="about__intro-text page-container flex flex-col gap-8 tablet:gap-20 mt-8 tablet:mt-32"
       >
-        <SectionHeading
-          :eyebrow="aboutData.hero.subtitle"
-          :title="aboutData.hero.title"
-          titleTag="h1"
-        />
+        <SectionHeading :eyebrow="tx('hero.subtitle')" :title="tx('hero.title')" titleTag="h1" />
 
         <div class="about__philosophy space-y-8">
           <h2
             v-fade-in="{ delay: 160, y: 16, mobile: { delay: 120, y: 12 } }"
             class="about__philosophy-title text-gold-500"
           >
-            {{ aboutData.philosophy.sectionTitle }}
+            {{ tx('philosophy.sectionTitle') }}
           </h2>
           <div class="space-y-6">
             <p
-              v-for="(paragraph, index) in aboutData.philosophy.paragraphs"
+              v-for="(paragraph, index) in paragraphs"
               v-fade-in="{
                 delay: 200 + Math.min(index, 3) * 60,
                 y: 16,
@@ -96,23 +153,20 @@ const { isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow(frameRef
 
     <section class="about__exhibition-highlights page-container">
       <h2 v-fade-in="{ delay: 0, y: 12 }" class="about__exhibition-highlights-title text-gold-500">
-        EXHIBITION HIGHLIGHTS
+        {{ tx('exhibitionHighlights.sectionTitle') }}
       </h2>
-      <AboutTimeLine
-        v-fade-in="{ delay: 40, y: 12 }"
-        :timelineData="aboutData.exhibitionHighlights"
-      />
+      <AboutTimeLine v-fade-in="{ delay: 40, y: 12 }" :timelineData="highlights" />
     </section>
 
     <section class="about__pillars page-container space-y-10">
       <h2 v-fade-in="{ delay: 0, y: 12 }" class="about__pillars-title text-gold-500">
-        OUR PILLARS
+        {{ tx('pillars.sectionTitle') }}
       </h2>
       <div
         class="about__pillars-content w-4/5 tablet:w-full flex flex-col tablet:flex-row items-center tablet:items-stretch gap-8 mx-auto desktop:gap-12"
       >
         <div
-          v-for="(pillar, index) in aboutData.pillars"
+          v-for="(pillar, index) in pillars"
           v-fade-in="{
             delay: 100 + index * 100,
             y: 24,
@@ -142,7 +196,7 @@ const { isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow(frameRef
 
     <section class="about__team page-container space-y-8">
       <h2 v-fade-in="{ delay: 0, y: 12 }" class="about__team-title text-gold-500">OUR TEAM</h2>
-      <ItemGrid :items="aboutData.team" grid-class="grid-cols-2 laptop:grid-cols-4">
+      <ItemGrid :items="team" grid-class="grid-cols-2 laptop:grid-cols-4">
         <template #default="{ item }">
           <BaseAvatar :artist="item" variant="team" folder="about" />
         </template>
@@ -152,7 +206,7 @@ const { isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow(frameRef
     <QuoteBlock
       v-fade-in="{ delay: 0, y: 20, duration: 900 }"
       variant="about"
-      quote="Jewelry is what remains when the moment has passed, and what gives that moment its meaning."
+      :quote="tx('quote')"
     />
   </div>
 </template>
