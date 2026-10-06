@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { useI18n } from 'vue-i18n'
+import { useScopedI18n } from '@/composables/useScopedI18n'
 import ScrollHint from '@/components/ui/ScrollHint.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
@@ -14,7 +14,7 @@ import breathing from '@/assets/images/home/breathing-bg.webp'
 import artists from '@/data/artists.json'
 import works from '@/data/works.json'
 
-const { t } = useI18n()
+const { tx } = useScopedI18n('page.home')
 const uniqueDesignerWorks = computed(() => {
   const seenDesigners = new Set()
 
@@ -40,7 +40,7 @@ const submitted = ref(false)
       >
         <div v-fade-in="{ delay: 0, y: 12 }" class="inline-flex flex-col items-start">
           <p class="home-hero__eyebrow uppercase pt-5 tablet:pt-0 text-eyebrow text-gold-500">
-            {{ t('page.home.hero.eyebrow') }}
+            {{ tx('hero.eyebrow') }}
           </p>
           <GoldDivider variant="fade" class="mt-2" />
         </div>
@@ -48,14 +48,10 @@ const submitted = ref(false)
           v-fade-in="{ delay: 100, y: 24 }"
           class="home-hero__heading flex flex-col tablet:block tablet:tracking-wider text-display font-serif mt-6 tablet:mt-4"
         >
-          <span class="block tablet:whitespace-nowrap"
-            >{{ t('page.home.hero.headingLine1') }}
-          </span>
+          <span class="block tablet:whitespace-nowrap">{{ tx('hero.headingLineFirst') }} </span>
           <span class="block wide:whitespace-nowrap">
-            {{ t('page.home.hero.headingLine2Prefix') }}
-            <em class="home-hero__heading-accent text-gold-500">{{
-              t('page.home.hero.headingAccent')
-            }}</em>
+            {{ tx('hero.headingLineSecondPrefix') }}
+            <em class="home-hero__heading-accent text-gold-500">{{ tx('hero.headingAccent') }}</em>
           </span>
         </h1>
         <div
@@ -80,7 +76,7 @@ const submitted = ref(false)
           v-fade-in="{ delay: 180, y: 16 }"
           class="home-hero__subtext text-subtext pt-3 tablet:pt-0 tablet:w-[85%]"
         >
-          {{ t('page.home.hero.subtext') }}
+          {{ tx('hero.subtext') }}
         </p>
         <div
           v-fade-in="{ delay: 250, y: 16 }"
@@ -91,7 +87,7 @@ const submitted = ref(false)
             to="works"
             class="home-hero__actions-item flex items-center w-[60vw] tablet:w-fit laptop:w-fit laptop:mr-0"
           >
-            <span class="text-btn tablet:text-btn-lg">{{ t('page.home.hero.exploreWorks') }}</span>
+            <span class="text-btn tablet:text-btn-lg">{{ tx('hero.exploreWorks') }}</span>
             <BaseArrowIcon />
           </BaseButton>
           <BaseButton
@@ -123,7 +119,7 @@ const submitted = ref(false)
 
             <span
               class="ml-2 text-btn tablet:text-btn-lg text-cream group-hover:text-gold-500 group-active:text-gold-500 transition-colors"
-              >{{ t('page.home.hero.watchStory') }}</span
+              >{{ tx('hero.watchStory') }}</span
             >
           </BaseButton>
         </div>
@@ -173,10 +169,10 @@ const submitted = ref(false)
   </section>
   <section class="page-container home-works-section space-y-8 tablet:space-y-12">
     <SectionHeading
-      :eyebrow="t('page.home.featuredWorks.eyebrow')"
-      :title="t('page.home.featuredWorks.title')"
+      :eyebrow="tx('featuredWorks.eyebrow')"
+      :title="tx('featuredWorks.title')"
       linkTo="works"
-      :linkText="t('page.home.featuredWorks.linkText')"
+      :linkText="tx('featuredWorks.linkText')"
     />
     <ItemGrid
       :items="uniqueDesignerWorks"
@@ -191,10 +187,10 @@ const submitted = ref(false)
 
   <section class="page-container home-artists-section space-y-8 tablet:space-y-12">
     <SectionHeading
-      :eyebrow="t('page.home.featuredArtists.eyebrow')"
-      :title="t('page.home.featuredArtists.title')"
+      :eyebrow="tx('featuredArtists.eyebrow')"
+      :title="tx('featuredArtists.title')"
       linkTo="artists"
-      :linkText="t('page.home.featuredArtists.linkText')"
+      :linkText="tx('featuredArtists.linkText')"
     />
     <ItemGrid :items="artists" grid-class="grid-cols-2 tablet:grid-cols-4">
       <template #default="{ item }">
@@ -210,9 +206,9 @@ const submitted = ref(false)
     <div class="flex justify-start items-center">
       <div class="home-exhibition-section__container flex flex-col items-start">
         <SectionHeading
-          :eyebrow="t('page.home.exhibition.eyebrow')"
-          :title="t('page.home.exhibition.title')"
-          :desc="t('page.home.exhibition.desc')"
+          :eyebrow="tx('exhibition.eyebrow')"
+          :title="tx('exhibition.title')"
+          :desc="tx('exhibition.desc')"
           titleClass="py-2 tablet:py-4"
         />
         <div class="home-exhibition-section__cta-group mt-3 tablet:mt-5">
@@ -234,7 +230,7 @@ const submitted = ref(false)
               />
             </svg>
             <span class="ml-2 text-gray-muted text-body-sm tracking-wider">{{
-              t('page.home.exhibition.dateRange')
+              tx('exhibition.dateRange')
             }}</span>
           </p>
           <p v-fade-in="{ delay: 260, y: 16 }" class="flex items-center mt-2 tablet:mt-4">
@@ -260,7 +256,7 @@ const submitted = ref(false)
               />
             </svg>
             <span class="ml-2 text-gray-muted text-body-sm tracking-wider">{{
-              t('page.home.exhibition.location')
+              tx('exhibition.location')
             }}</span>
           </p>
         </div>
@@ -270,7 +266,7 @@ const submitted = ref(false)
           v-fade-in="{ delay: 340, y: 16 }"
           class="home-exhibition__actions-item flex items-center w-full tablet:w-fit mt-5 tablet:mt-10"
         >
-          <span class="text-btn tablet:text-btn-lg">{{ t('page.home.exhibition.button') }}</span>
+          <span class="text-btn tablet:text-btn-lg">{{ tx('exhibition.button') }}</span>
           <BaseArrowIcon />
         </BaseButton>
       </div>
@@ -290,11 +286,7 @@ const submitted = ref(false)
     </div>
   </section>
 
-  <QuoteBlock
-    variant="home"
-    :quote="t('page.home.quote.text')"
-    :author="t('page.home.quote.author')"
-  >
+  <QuoteBlock variant="home" :quote="tx('quote.text')" :author="tx('quote.author')">
     <template #extra>
       <div
         class="group z-10 flex w-[290px] border border-gold-600 transition-colors focus-within:border-gold-400 focus-within:ring-1 focus-within:ring-gold-400 ipad:max-w-sm tablet:max-w-md"
@@ -306,8 +298,8 @@ const submitted = ref(false)
           type="email"
           autocomplete="email"
           required
-          :aria-label="t('page.home.newsletter.placeholder')"
-          :placeholder="t('page.home.newsletter.placeholder')"
+          :aria-label="tx('newsletter.placeholder')"
+          :placeholder="tx('newsletter.placeholder')"
           :disabled="submitted"
           class="min-w-0 flex-1 bg-transparent p-3 text-label-lg text-white placeholder:text-gold-200/50 focus:outline-none"
         />
@@ -316,7 +308,7 @@ const submitted = ref(false)
           :disabled="submitted"
           class="flex h-[46px] min-w-[110px] shrink-0 items-center justify-center bg-gold-500/80 text-black-soft transition-colors hover:bg-gold-500 hover:text-black group-focus-within:bg-gold-500 group-focus-within:text-black"
         >
-          {{ submitted ? t('page.home.newsletter.submitted') : t('page.home.newsletter.submit') }}
+          {{ submitted ? tx('newsletter.submitted') : tx('newsletter.submit') }}
         </button>
       </div>
     </template>

@@ -1,19 +1,28 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useScopedI18n, type RtInput } from '@/composables/useScopedI18n'
 
+// i18n 裡取回來
+interface TimelineItemRaw {
+  year: number
+  title: RtInput
+  subtitle: RtInput
+}
+// 轉換後給 template 用
 interface TimelineItem {
   year: string
   title: string
   subtitle: string
 }
+const { txItems } = useScopedI18n('page.about')
 // 共用同一份資料，桌機/手機兩套 DOM 都吃這裡
-const timeline: TimelineItem[] = [
-  { year: '2018', title: 'Founding Exhibition', subtitle: 'Origins' },
-  { year: '2019', title: 'Forms of Devotion', subtitle: 'Group Exhibition' },
-  { year: '2021', title: 'Natural Expressions', subtitle: 'Curated by Lumière' },
-  { year: '2022', title: 'Beyond Ornament', subtitle: 'Solo Focus' },
-  { year: '2024', title: 'Memory, Transformed', subtitle: 'Anniversary Exhibition' },
-]
+const timeline = computed(() =>
+  txItems<TimelineItemRaw, TimelineItem>('exhibitionHighlights.items', (item, rt) => ({
+    year: String(item.year),
+    title: rt(item.title),
+    subtitle: rt(item.subtitle),
+  })),
+)
 
 const timelineRef = ref<HTMLElement | null>(null)
 const isVisible = ref(false)
