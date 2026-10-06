@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useScopedI18n, type RtInput } from '@/composables/useScopedI18n'
-// import contact from '@/data/contact.json'
 import FormInput from '@/components/ui/FormInput.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
