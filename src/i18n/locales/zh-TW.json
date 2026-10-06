@@ -21,8 +21,8 @@
     "home": {
       "hero": {
         "eyebrow": "渾然天成",
-        "headingLine1": "當藝術",
-        "headingLine2Prefix": "化為",
+        "headingLineFirst": "當藝術",
+        "headingLineSecondPrefix": "化為",
         "headingAccent": "永恆",
         "subtext": "我們呈獻視野獨到的藝術家所打造的非凡珠寶，將珍貴材質轉化為永恆的故事。",
         "exploreWorks": "探索作品",
@@ -146,12 +146,157 @@
       "featuredArtistLabel": "精選藝術家",
       "visitLabel": "參觀資訊",
       "pastExhibitionsLabel": "過往展覽"
+    },
+    "about": {
+      "hero": {
+        "subtitle": "關於 Lumière",
+        "title": "我們相信，珠寶不是裝飾，而是化為有形的記憶。"
+      },
+      "philosophy": {
+        "sectionTitle": "我們的理念",
+        "paragraphs": [
+          "Lumière 珠寶藝廊建立於一個簡單的信念：珠寶是最貼近人心的藝術形式之一。它承載情感、傳遞故事，並且歷經世代而不衰。",
+          "我們與富有遠見的藝術家合作，他們將稀有材質轉化為對身份、文化與記憶的恆久表達。",
+          "我們的角色不是追隨潮流，而是揭示其意義。透過用心的策展與深度的合作，我們打造一個讓非凡工藝與有意義的連結相遇的空間。"
+        ]
+      },
+      "exhibitionHighlights": {
+        "sectionTitle": "展覽精選",
+        "items": [
+          {
+            "year": 2018,
+            "title": "創始展",
+            "subtitle": "起源"
+          },
+          {
+            "year": 2019,
+            "title": "虔敬之形",
+            "subtitle": "聯展"
+          },
+          {
+            "year": 2021,
+            "title": "自然表達",
+            "subtitle": "Lumière 策展"
+          },
+          {
+            "year": 2022,
+            "title": "超越裝飾",
+            "subtitle": "個人聚焦展"
+          },
+          {
+            "year": 2024,
+            "title": "記憶，蛻變",
+            "subtitle": "週年特展"
+          }
+        ]
+      },
+      "pillars": {
+        "sectionTitle": "我們的核心價值",
+        "items": [
+          {
+            "title": "策展",
+            "description": "我們尋求有深度、有意圖的作品。每件作品的入選，皆基於其藝術語彙、文化意義與歷久不衰的共鳴。"
+          },
+          {
+            "title": "工藝",
+            "description": "我們尊崇毫不妥協的工藝，以及每個細節背後的精湛技藝。真正的奢華，在於製作的誠信。"
+          },
+          {
+            "title": "社群",
+            "description": "我們促進藝術家、收藏家與理念之間有意義的連結，圍繞當代珠寶藝術打造一個社群。"
+          }
+        ]
+      },
+      "team": {
+        "sectionTitle": "我們的團隊",
+        "items": [
+          {
+            "id": "Isabella_Chen",
+            "name": "Isabella Chen",
+            "title": "創辦人暨總監",
+            "image": "isabella-chen.webp"
+          },
+          {
+            "id": "Marcus_Lin",
+            "name": "Marcus Lin",
+            "title": "策展人",
+            "image": "marcus-lin.webp"
+          },
+          {
+            "id": "Sophia_Wu",
+            "name": "Sophia Wu",
+            "title": "收藏家關係",
+            "image": "sophia-wu.webp"
+          },
+          {
+            "id": "Henry_Chang",
+            "name": "Henry Chang",
+            "title": "藝廊經理",
+            "image": "henry-chang.webp"
+          }
+        ]
+      },
+      "quote": "珠寶是時刻逝去之後所留下的，也是賦予那一刻意義的存在。"
+    },
+    "contact": {
+      "title": "聯絡我們",
+      "inquiries": [
+        {
+          "title": "作品收藏洽詢",
+          "email": "acquisitions@lumiergallery.com",
+          "description": "有關藝術品收藏與私人鑑賞的洽詢。"
+        },
+        {
+          "title": "媒體與合作洽詢",
+          "email": "press@lumiergallery.com",
+          "description": "媒體採訪、專題報導與合作機會的洽詢。"
+        },
+        {
+          "title": "展覽洽詢",
+          "email": "exhibitions@lumiergallery.com",
+          "description": "有關即將舉行的展覽與參展藝術家的資訊。"
+        }
+      ],
+      "form": {
+        "message": "訊息",
+        "submit": "送出訊息"
+      },
+      "location": {
+        "name": "Lumière 珠寶藝廊",
+        "address": ["香港中環", "畢打街 8 號 12 樓"]
+      },
+      "studioHours": {
+        "label": "開放時間",
+        "days": "週二至週六",
+        "hours": "上午 11 點至晚上 7 點"
+      }
+    },
+    "login": {
+      "title": "歡迎回來",
+      "submit": "進入",
+      "newToLumiere": "初次來到 Lumière？",
+      "requestAccess": "申請加入",
+      "forgotPassword": "忘記密碼"
+    },
+    "forgotPassword": {
+      "title": "重設密碼",
+      "description": "請輸入您的電子郵件，我們將寄送重設密碼的連結給您。",
+      "submit": "寄送連結",
+      "rememberPassword": "想起密碼了嗎？"
+    },
+    "register": {
+      "title": "初次來訪？",
+      "fullName": "姓名",
+      "confirmPassword": "確認密碼",
+      "passwordMismatch": "兩次輸入的密碼不一致",
+      "submit": "建立帳號",
+      "haveAccount": "已經有帳號了嗎？"
     }
   },
   "footer": {
     "tagline": {
-      "line1": "禮讚珠寶的工藝之美",
-      "line2": "與人性表達的動人光輝"
+      "lineFirst": "禮讚珠寶的工藝之美",
+      "lineSecond": "與人性表達的動人光輝"
     },
     "explore": {
       "title": "探索",
@@ -190,6 +335,8 @@
     "cancel": "取消"
   },
   "common": {
-    "viewArtistProfile": "查看藝術家簡介"
+    "viewArtistProfile": "查看藝術家簡介",
+    "form": { "name": "姓名", "email": "電子郵件", "password": "密碼" },
+    "signIn": "登入"
   }
 }

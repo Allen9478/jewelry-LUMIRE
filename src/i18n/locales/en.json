@@ -21,8 +21,8 @@
     "home": {
       "hero": {
         "eyebrow": "Extraordinary by Nature",
-        "headingLine1": "Where Art",
-        "headingLine2Prefix": "Becomes",
+        "headingLineFirst": "Where Art",
+        "headingLineSecondPrefix": "Becomes",
         "headingAccent": "Timeless",
         "subtext": "We showcase exceptional jewelry by visionary artists who transform precious materials into timeless stories.",
         "exploreWorks": "Explore Works",
@@ -146,12 +146,157 @@
       "featuredArtistLabel": "Featured Artist",
       "visitLabel": "Visit",
       "pastExhibitionsLabel": "Past Exhibitions"
+    },
+    "about": {
+      "hero": {
+        "subtitle": "ABOUT LUMIÈRE",
+        "title": "We believe jewelry is not decoration. It is memory made tangible."
+      },
+      "philosophy": {
+        "sectionTitle": "OUR PHILOSOPHY",
+        "paragraphs": [
+          "Lumière Jewelry Gallery was founded on a simple conviction: jewelry is one of the most intimate forms of art. It holds emotion, carries stories, and outlives generations.",
+          "We work with visionary artists who transform rare materials into enduring expressions of identity, culture, and memory.",
+          "Our role is not to follow trends, but to reveal significance. Through thoughtful curation and deep collaboration, we create a space where exceptional craftsmanship meets meaningful connection."
+        ]
+      },
+      "exhibitionHighlights": {
+        "sectionTitle": "EXHIBITION HIGHLIGHTS",
+        "items": [
+          {
+            "year": 2018,
+            "title": "Founding Exhibition",
+            "subtitle": "Origins"
+          },
+          {
+            "year": 2019,
+            "title": "Forms of Devotion",
+            "subtitle": "Group Exhibition"
+          },
+          {
+            "year": 2021,
+            "title": "Natural Expressions",
+            "subtitle": "Curated by Lumière"
+          },
+          {
+            "year": 2022,
+            "title": "Beyond Ornament",
+            "subtitle": "Solo Focus"
+          },
+          {
+            "year": 2024,
+            "title": "Memory, Transformed",
+            "subtitle": "Anniversary Exhibition"
+          }
+        ]
+      },
+      "pillars": {
+        "sectionTitle": "OUR PILLARS",
+        "items": [
+          {
+            "title": "Curation",
+            "description": "We seek works of depth and intention. Each piece is chosen for its artistic voice, cultural relevance, and timeless resonance."
+          },
+          {
+            "title": "Craft",
+            "description": "We honor uncompromising craftsmanship and the mastery behind every detail. True luxury lies in integrity of making."
+          },
+          {
+            "title": "Community",
+            "description": "We foster meaningful relationships between artists, collectors, and ideas—building a community around contemporary jewelry as art."
+          }
+        ]
+      },
+      "team": {
+        "sectionTitle": "OUR TEAM",
+        "items": [
+          {
+            "id": "Isabella_Chen",
+            "name": "Isabella Chen",
+            "title": "FOUNDER & DIRECTOR",
+            "image": "isabella-chen.webp"
+          },
+          {
+            "id": "Marcus_Lin",
+            "name": "Marcus Lin",
+            "title": "CURATOR",
+            "image": "marcus-lin.webp"
+          },
+          {
+            "id": "Sophia_Wu",
+            "name": "Sophia Wu",
+            "title": "COLLECTOR RELATIONS",
+            "image": "sophia-wu.webp"
+          },
+          {
+            "id": "Henry_Chang",
+            "name": "Henry Chang",
+            "title": "GALLERY MANAGER",
+            "image": "henry-chang.webp"
+          }
+        ]
+      },
+      "quote": "Jewelry is what remains when the moment has passed, and what gives that moment its meaning."
+    },
+    "contact": {
+      "title": "Get in Touch",
+      "inquiries": [
+        {
+          "title": "For Acquisitions",
+          "email": "acquisitions@lumiergallery.com",
+          "description": "Inquiries regarding artwork acquisition and private viewings."
+        },
+        {
+          "title": "For Press & Collaboration",
+          "email": "press@lumiergallery.com",
+          "description": "Media inquiries, features, and partnership opportunities."
+        },
+        {
+          "title": "For Exhibition Enquiries",
+          "email": "exhibitions@lumiergallery.com",
+          "description": "Information on upcoming exhibitions and participating artists."
+        }
+      ],
+      "form": {
+        "message": "Message",
+        "submit": "Send Message"
+      },
+      "location": {
+        "name": "Lumière Jewelry Gallery",
+        "address": ["12/F, 8 Pedder Street", "Central, Hong Kong"]
+      },
+      "studioHours": {
+        "label": "STUDIO HOURS",
+        "days": "TUESDAY – SATURDAY",
+        "hours": "11:00 AM – 7:00 PM"
+      }
+    },
+    "login": {
+      "title": "Welcome Back",
+      "submit": "Enter",
+      "newToLumiere": "New to Lumière?",
+      "requestAccess": "Request Access",
+      "forgotPassword": "Forgot password"
+    },
+    "forgotPassword": {
+      "title": "Reset Password",
+      "description": "Enter your email and we'll send you a link to reset your password.",
+      "submit": "Send Link",
+      "rememberPassword": "Remember password?"
+    },
+    "register": {
+      "title": "New Here?",
+      "fullName": "Full Name",
+      "confirmPassword": "Confirm Password",
+      "passwordMismatch": "Passwords do not match",
+      "submit": "Create Account",
+      "haveAccount": "Already have an account?"
     }
   },
   "footer": {
     "tagline": {
-      "line1": "Celebrating the artistry of jewelry",
-      "line2": "and the beauty of Human expression"
+      "lineFirst": "Celebrating the artistry of jewelry",
+      "lineSecond": "and the beauty of Human expression"
     },
     "explore": {
       "title": "EXPLORE",
@@ -190,6 +335,8 @@
     "cancel": "Cancel"
   },
   "common": {
-    "viewArtistProfile": "View Artist Profile"
+    "viewArtistProfile": "View Artist Profile",
+    "form": { "name": "Name", "email": "Email", "password": "Password" },
+    "signIn": "Sign In"
   }
 }
