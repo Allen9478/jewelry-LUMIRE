@@ -215,10 +215,10 @@ const fuckData = randomWorks(works, 6)
               {{ tx('featuredArtist.name') }}
             </h2>
             <div class="exhibitions__artist-meta flex text-body text-cream/85">
-              <p class="pr-2 border-r border-gold-500/60">
+              <p class="pr-2 border-r border-gold-500/60 text-body-sm tablet:text-body">
                 {{ tx('featuredArtist.country') }}
               </p>
-              <p class="pl-2">{{ tx('featuredArtist.title') }}</p>
+              <p class="pl-2 text-body-sm tablet:text-body">{{ tx('featuredArtist.title') }}</p>
             </div>
             <p
               v-for="(bio, index) in artistBio"
@@ -241,7 +241,6 @@ const fuckData = randomWorks(works, 6)
         </div>
       </div>
     </section>
-    <!-- 先寫股價樣式明天記得條 -->
     <section class="exhibitions__visit flex flex-col mt-6">
       <h2 v-fade-in="{ delay: 0, y: 12 }" class="text-gold-500 text-subhead page-container">
         {{ tx('visitLabel') }}
@@ -333,7 +332,7 @@ const fuckData = randomWorks(works, 6)
         {{ tx('pastExhibitionsLabel') }}
       </h2>
       <div
-        class="exhibitions__past-exhibitions-group flex flex-col tablet:flex-row space-y-4 tablet:space-y-0 tablet:space-x-4"
+        class="exhibitions__past-exhibitions-group flex flex-col tablet:flex-row gap-6 tablet:gap-4"
       >
         <div
           v-for="(pastExhibition, index) in pastExhibitions"
@@ -343,7 +342,7 @@ const fuckData = randomWorks(works, 6)
             mobile: { delay: 0, y: 16 },
           }"
           :key="index"
-          class="exhibitions__past-exhibitions-item block relative border border-gold-500/20 tablet:w-1/3 h-[140px] tablet:h-[220px] overflow-hidden transition-md hover:border-gold-500 active:border-gold-500 duration-300 group"
+          class="exhibitions__past-exhibitions-item block relative border border-gold-500/20 w-full tablet:w-1/3 h-[140px] tablet:h-[220px] max-w-[450px] tablet:max-w-none mx-auto overflow-hidden transition-md hover:border-gold-500 active:border-gold-500 duration-500 group"
         >
           <img
             :src="getImageUrl(`exhibition/${pastExhibition.img}`)"
@@ -351,7 +350,7 @@ const fuckData = randomWorks(works, 6)
             loading="lazy"
             width="1774"
             height="887"
-            class="object-cover absolute inset-0 w-full h-full"
+            class="object-cover absolute inset-0 w-full h-full group-hover:scale-105 transition-all duration-500"
           />
           <!-- 桌機版加一層漸層遮罩,讓文字在圖片上更好讀 -->
           <div
@@ -362,12 +361,12 @@ const fuckData = randomWorks(works, 6)
             class="exhibitions__past-exhibitions-item-info absolute bottom-6 left-6 z-10 w-auto px-0 space-y-2"
           >
             <p
-              class="text-subhead group-hover:text-gold-500 group-active:text-gold-500 duration-300"
+              class="text-subhead group-hover:text-gold-500 group-active:text-gold-500 duration-500"
             >
               {{ pastExhibition.title }}
             </p>
             <span
-              class="text-label text-gray-muted group-hover:text-cream group-active:text-cream duration-300"
+              class="text-label text-gray-muted group-hover:text-cream group-active:text-cream duration-500"
               >{{ pastExhibition.subtitle }}</span
             >
           </div>
