@@ -61,7 +61,7 @@ const address = computed(() => txList('location.address'))
             mobile: { delay: 0, y: 16 },
           }"
           :key="index"
-          class="contact__content-inquiries-option flex flex-row items-center justify-between border-b last:border-b-0 border-gold-500/40 pb-4 last:pb-0 group"
+          class="contact__content-inquiries-option flex flex-row items-center justify-between border-b last:border-b-0 border-gold-500/40 pb-4 last:pb-0 hover:cursor-pointer group"
         >
           <div class="max-w-[250px] tablet:max-w-xl flex flex-col gap-2">
             <p class="text-subhead font-serif">{{ item.title }}</p>
