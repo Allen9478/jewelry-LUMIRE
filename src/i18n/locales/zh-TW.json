@@ -271,6 +271,37 @@
         "hours": "上午 11 點至晚上 7 點"
       }
     },
+    "favorites": {
+      "hero": {
+        "eyebrow": "由您策展",
+        "title": "您的收藏",
+        "desc": "您所收藏的作品"
+      },
+      "browseWorks": "瀏覽作品",
+      "empty": {
+        "title": "開始建立您的收藏",
+        "description": "探索富有遠見的藝術家的作品，收藏與您心意相通的珠寶。"
+      },
+      "filter": {
+        "legend": "篩選與排序您的收藏",
+        "type": "類別",
+        "artist": "藝術家",
+        "sortBy": "排序方式",
+        "allTypes": "全部",
+        "allArtists": "全部藝術家"
+      },
+      "sort": {
+        "recent": "最近收藏",
+        "oldest": "最早收藏",
+        "nameAsc": "名稱 A–Z",
+        "artistAsc": "藝術家 A–Z"
+      },
+      "collection": {
+        "allPieces": "所有作品",
+        "piecesCount": "{count} 件作品",
+        "noResults": "沒有符合篩選條件的作品"
+      }
+    },
     "login": {
       "title": "歡迎回來",
       "submit": "進入",
@@ -336,6 +367,13 @@
   },
   "common": {
     "viewArtistProfile": "查看藝術家簡介",
+    "loading": "載入中...",
+    "categories": {
+      "necklace": "項鍊",
+      "earrings": "耳環",
+      "bracelet": "手鍊",
+      "ring": "戒指"
+    },
     "form": { "name": "姓名", "email": "電子郵件", "password": "密碼" },
     "signIn": "登入"
   }

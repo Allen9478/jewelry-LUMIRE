@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { useScopedI18n } from '@/composables/useScopedI18n'
 import { useFavoriteStore } from '@/stores/useFavoriteStore'
 import { useAuthStore } from '@/stores/useAuthStore'
 import { useLocalized } from '@/composables/useLocalized'
@@ -15,12 +16,15 @@ import works from '@/data/works.json'
 const favoriteStore = useFavoriteStore()
 const authStore = useAuthStore()
 const { localized } = useLocalized()
+const { tx } = useScopedI18n('page.favorites')
+const { tx: txCommon } = useScopedI18n('common')
 const { favorites, isLoading: isFavoritesLoading } = storeToRefs(favoriteStore)
 const { isAuthReady } = storeToRefs(authStore)
 
 const currentCategory = ref(null)
 const currentArtist = ref(null)
 const currentSort = ref('recent')
+const categoryLabel = (category: string) => txCommon(`categories.${category.toLowerCase()}`)
 const isLoading = computed(() => !isAuthReady.value || isFavoritesLoading.value)
 
 const favoriteWorks = computed(() => {
@@ -29,14 +33,16 @@ const favoriteWorks = computed(() => {
   // 篩選出所有作品中，其 id 存在於 favorites 陣列裡面的項目
   return works.filter((work) => favorites.value.includes(work.id))
 })
+
 const collectionTitle = computed(() => {
   if (currentArtist.value && currentCategory.value) {
-    return `${currentArtist.value} — ${currentCategory.value}`
+    return `${currentArtist.value} — ${categoryLabel(currentCategory.value)}`
   }
   if (currentArtist.value) return currentArtist.value
-  if (currentCategory.value) return currentCategory.value
-  return 'All Pieces'
+  if (currentCategory.value) return categoryLabel(currentCategory.value)
+  return tx('collection.allPieces')
 })
+
 const availableType = computed(() => {
   return [...new Set(works.map((item) => item.category))]
 })
@@ -77,16 +83,16 @@ const sortedFavorites = computed(() => {
   >
     <section>
       <SectionHeading
-        eyebrow="CURATED BY YOU"
-        title="Your Collection"
-        desc="Pieces you've saved"
+        :eyebrow="tx('hero.eyebrow')"
+        :title="tx('hero.title')"
+        :desc="tx('hero.desc')"
         titleTag="h1"
         titleClass="py-2 tablet:py-4"
       />
     </section>
     <template v-if="isLoading">
       <div class="min-h-[50vh]">
-        <p>載入中...</p>
+        <p>{{ txCommon('loading') }}</p>
       </div>
     </template>
 
@@ -95,12 +101,12 @@ const sortedFavorites = computed(() => {
         v-fade-in="{ delay: 160, y: 16, mobile: { delay: 160, y: 12 } }"
         class="empty-state flex flex-col text-center gap-6"
       >
-        <h2 class="text-cream text-heading-sm">Begin curating your collection</h2>
+        <h2 class="text-cream text-heading-sm">{{ tx('empty.title') }}</h2>
         <p class="text-gray-muted">
-          Explore works by visionary artists and save the pieces that speak to you.
+          {{ tx('empty.description') }}
         </p>
         <BaseButton tag="RouterLink" :to="'works'" variant="ghost">
-          <span class="text-btn">Browse Works</span>
+          <span class="text-btn">{{ tx('browseWorks') }}</span>
           <BaseArrowIcon />
         </BaseButton>
       </div>
@@ -113,33 +119,33 @@ const sortedFavorites = computed(() => {
           class="flex flex-col tablet:flex-row justify-between tablet:items-center gap-4"
         >
           <BaseButton tag="RouterLink" :to="'works'" variant="ghost">
-            <span class="text-btn">Browse Works</span>
+            <span class="text-btn">{{ tx('browseWorks') }}</span>
             <BaseArrowIcon />
           </BaseButton>
           <fieldset class="filter-group flex flex-col tablet:flex-row gap-4">
-            <legend class="sr-only">Filter and sort your collection</legend>
+            <legend class="sr-only">{{ tx('filter.legend') }}</legend>
             <div class="flex gap-2">
               <div class="dropdown flex gap-2 tablet:gap-4 items-center">
-                <label for="typeFilter">Type</label>
+                <label for="typeFilter">{{ tx('filter.type') }}</label>
                 <select
                   id="typeFilter"
                   v-model="currentCategory"
                   class="text-cream border border-gray-muted/30 focus:border-gold-500 p-2"
                 >
-                  <option :value="null">All</option>
+                  <option :value="null">{{ tx('filter.allTypes') }}</option>
                   <option v-for="type in availableType" :key="type" :value="type">
-                    {{ type }}
+                    {{ categoryLabel(type) }}
                   </option>
                 </select>
               </div>
               <div class="dropdown flex gap-2 tablet:gap-4 items-center">
-                <label for="artistFilter">Artist</label>
+                <label for="artistFilter">{{ tx('filter.artist') }}</label>
                 <select
                   id="artistFilter"
                   v-model="currentArtist"
                   class="text-cream border border-gray-muted/30 focus:border-gold-500 p-2"
                 >
-                  <option :value="null">All Artists</option>
+                  <option :value="null">{{ tx('filter.allArtists') }}</option>
                   <option v-for="artist in availableArtist" :key="artist" :value="artist">
                     {{ artist }}
                   </option>
@@ -147,17 +153,17 @@ const sortedFavorites = computed(() => {
               </div>
             </div>
             <div class="dropdown flex gap-4 items-center">
-              <label for="sortFilter">Sort by</label>
+              <label for="sortFilter">{{ tx('filter.sortBy') }}</label>
 
               <select
                 id="sortFilter"
                 v-model="currentSort"
                 class="text-cream border border-gray-muted/30 focus:border-gold-500 p-2"
               >
-                <option value="recent">Recently Saved</option>
-                <option value="oldest">Oldest Saved</option>
-                <option value="name-asc">Name A–Z</option>
-                <option value="artist-asc">Artist A–Z</option>
+                <option value="recent">{{ tx('sort.recent') }}</option>
+                <option value="oldest">{{ tx('sort.oldest') }}</option>
+                <option value="name-asc">{{ tx('sort.nameAsc') }}</option>
+                <option value="artist-asc">{{ tx('sort.artistAsc') }}</option>
               </select>
             </div>
           </fieldset>
@@ -165,10 +171,12 @@ const sortedFavorites = computed(() => {
         <GoldDivider v-fade-in="{ delay: 220, y: 0 }" />
         <div v-fade-in="{ delay: 260, y: 12 }" class="flex items-center">
           <h2 class="text-subhead font-serif">{{ collectionTitle }}</h2>
-          <span class="text-gray-muted ml-4">{{ sortedFavorites.length }} pieces</span>
+          <span class="text-gray-muted ml-4">{{
+            tx('collection.piecesCount', sortedFavorites.length)
+          }}</span>
         </div>
         <template v-if="sortedFavorites.length === 0">
-          <p class="text-gray-muted text-center">沒有符合篩選條件的作品</p>
+          <p class="text-gray-muted text-center">{{ tx('collection.noResults') }}</p>
         </template>
         <ItemGrid
           :items="sortedFavorites"

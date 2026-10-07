@@ -271,6 +271,37 @@
         "hours": "11:00 AM – 7:00 PM"
       }
     },
+    "favorites": {
+      "hero": {
+        "eyebrow": "CURATED BY YOU",
+        "title": "Your Collection",
+        "desc": "Pieces you've saved"
+      },
+      "browseWorks": "Browse Works",
+      "empty": {
+        "title": "Begin curating your collection",
+        "description": "Explore works by visionary artists and save the pieces that speak to you."
+      },
+      "filter": {
+        "legend": "Filter and sort your collection",
+        "type": "Type",
+        "artist": "Artist",
+        "sortBy": "Sort by",
+        "allTypes": "All",
+        "allArtists": "All Artists"
+      },
+      "sort": {
+        "recent": "Recently Saved",
+        "oldest": "Oldest Saved",
+        "nameAsc": "Name A–Z",
+        "artistAsc": "Artist A–Z"
+      },
+      "collection": {
+        "allPieces": "All Pieces",
+        "piecesCount": "{count} piece | {count} pieces",
+        "noResults": "No pieces match your filters"
+      }
+    },
     "login": {
       "title": "Welcome Back",
       "submit": "Enter",
@@ -336,6 +367,13 @@
   },
   "common": {
     "viewArtistProfile": "View Artist Profile",
+    "loading": "Loading...",
+    "categories": {
+      "necklace": "Necklace",
+      "earrings": "Earrings",
+      "bracelet": "Bracelet",
+      "ring": "Ring"
+    },
     "form": { "name": "Name", "email": "Email", "password": "Password" },
     "signIn": "Sign In"
   }
