@@ -173,7 +173,7 @@ const { isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow(frameRef
             mobile: { delay: 0, y: 16 },
           }"
           :key="index"
-          class="flex flex-col p-8 border border-gold-500/20 gap-8"
+          class="flex flex-col p-8 border border-gold-500/40 gap-8"
         >
           <h3 class="text-heading-sm font-serif">{{ pillar.title }}</h3>
           <p class="flex-1 text-gray-muted">{{ pillar.description }}</p>
