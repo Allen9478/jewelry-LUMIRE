@@ -375,6 +375,7 @@
       "ring": "Ring"
     },
     "form": { "name": "Name", "email": "Email", "password": "Password" },
-    "signIn": "Sign In"
+    "signIn": "Sign In",
+    "signOut": "Sign Out"
   }
 }
