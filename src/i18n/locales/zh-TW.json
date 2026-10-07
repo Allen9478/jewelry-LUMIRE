@@ -375,6 +375,7 @@
       "ring": "戒指"
     },
     "form": { "name": "姓名", "email": "電子郵件", "password": "密碼" },
-    "signIn": "登入"
+    "signIn": "登入",
+    "signOut": "登出"
   }
 }

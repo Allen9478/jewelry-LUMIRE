@@ -1,17 +1,21 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { navItems } from '@/constants/navigations'
 import { useAuthStore } from '@/stores/useAuthStore'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useScrollDirection } from '@/composables/useScrollDirection'
 import AppLogo from './AppLogo.vue'
 import LangSwitch from '@/components/ui/LangSwitch.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 
 const authStore = useAuthStore()
+const route = useRoute()
 const router = useRouter()
+const { t } = useI18n()
 const { isHeaderVisible } = useScrollDirection()
 const isOpen = ref(false)
+const isActive = (matchNames: string[]) => matchNames.includes(String(route.name))
 
 function toggleMenu() {
   isOpen.value = !isOpen.value
@@ -84,9 +88,15 @@ onUnmounted(() => {
                 :key="item.name"
                 class="menu__item"
               >
-                <RouterLink :to="item.to" class="menu__link" @click="closeMenu">
+                <RouterLink
+                  :to="item.to"
+                  class="menu__link"
+                  :class="{ 'menu__link--active': isActive(item.matchNames) }"
+                  :aria-current="isActive(item.matchNames) ? 'page' : undefined"
+                  @click="closeMenu"
+                >
                   <span class="menu__link-number">0{{ index + 1 }}</span>
-                  <span class="menu__link-name">{{ item.name }}</span>
+                  <span class="menu__link-name">{{ t(item.labelKey) }}</span>
                   <span class="menu__link-arrow">→</span>
                 </RouterLink>
               </li>
@@ -94,8 +104,7 @@ onUnmounted(() => {
 
             <!-- 底部資訊 -->
             <div v-fade-in="{ delay: 600, y: 24, duration: 600 }" class="menu__footer">
-              <LangSwitch variant="mobile" />
-              <div class="menu__footer-divider"></div>
+              <LangSwitch variant="mobile" class="mb-2" />
               <template v-if="authStore.user">
                 <BaseButton
                   variant="ghost"
@@ -119,7 +128,7 @@ onUnmounted(() => {
                       d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
                     />
                   </svg>
-                  <span class="ml-2">{{ authStore.displayName }}/Logout</span>
+                  <span class="ml-2">{{ authStore.displayName }}/{{ t('common.signOut') }}</span>
                 </BaseButton>
               </template>
               <template v-else>
@@ -145,7 +154,7 @@ onUnmounted(() => {
                       d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
                     />
                   </svg>
-                  <span>Login</span>
+                  <span>{{ t('common.signIn') }}</span>
                 </BaseButton>
               </template>
             </div>
@@ -345,6 +354,10 @@ onUnmounted(() => {
   line-height: 1;
   flex: 1;
   transition: transform 0.3s var(--ease-luxury);
+}
+
+.menu__link--active .menu__link-name {
+  color: var(--color-gold-500);
 }
 
 .menu__link:hover .menu__link-name {
