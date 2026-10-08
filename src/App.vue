@@ -10,5 +10,4 @@ const catalog = useCatalogStore()
   <RouterView />
   <LoginPromptModal />
   <SearchModal :works="catalog.works" :artists="catalog.artists" />
-  <!-- 全域一個就夠，Pinia 控制開關 -->
 </template>

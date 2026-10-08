@@ -8,7 +8,6 @@ export default function getImageUrl(imgName: string): string {
   const mod = images[path]
 
   if (!mod) {
-    console.error('找不到圖片:', path)
     return ''
   }
 

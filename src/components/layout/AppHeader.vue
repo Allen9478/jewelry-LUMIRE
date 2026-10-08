@@ -39,7 +39,6 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 </script>
 
 <template>
-  <!-- 用途：Header 的基礎黑金配色 -->
   <header
     class="fixed top-0 left-0 right-0 z-card transition-transform duration-300"
     :class="[
@@ -101,8 +100,6 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
             />
           </svg>
         </button>
-
-        <!-- 登入後改變成使用者帳號,樣式有待考慮調整 -->
         <template v-if="authStore.user">
           <!-- 手機版 -->
           <div class="flex gap-2 tablet:hidden">

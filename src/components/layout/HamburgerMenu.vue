@@ -180,10 +180,9 @@ onUnmounted(() => {
   cursor: pointer;
   padding: 0;
   z-index: var(--z-index-modal);
-  /* 新增：脫離文件流，用視窗座標固定位置 */
   position: fixed;
-  top: 24px; /* 對照你 Header 原本按鈕的實際高度微調 */
-  left: 24px; /* 對照你 Header 原本右側的 padding 微調 */
+  top: 24px;
+  left: 24px;
   transition: transform 0.3s ease;
   transform: translateY(0); /* 顯示狀態：在原本位置 */
 }
@@ -215,7 +214,6 @@ onUnmounted(() => {
   width: 24px;
 }
 
-/* 開啟時 X 形態 */
 .hamburger__btn.is-open .hamburger__bar--top {
   width: 26px;
   transform: rotate(-45deg) translateY(-6px);

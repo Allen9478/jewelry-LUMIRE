@@ -79,7 +79,6 @@ const { isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow(frameRef
 
 <template>
   <div class="about header-offset-mobile-only flex flex-col gap-8 tablet:gap-20">
-    <!-- 原本的 hero + philosophy 改成一個 grid wrapper -->
     <section class="about__intro grid grid-cols-1 tablet:grid-cols-2 gap-8 tablet:gap-16">
       <!-- 左欄:標題 + philosophy 疊在一起,當作一個 grid item -->
       <div

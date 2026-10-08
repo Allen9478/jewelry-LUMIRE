@@ -1,6 +1,3 @@
-// directives/vFadeIn.ts
-// 用法：v-fade-in  或  v-fade-in="{ delay: 200, duration: 700 }"
-
 import type { Directive } from 'vue'
 
 export interface FadeOptions {

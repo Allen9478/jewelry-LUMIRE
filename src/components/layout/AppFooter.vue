@@ -181,7 +181,6 @@ const sections: FooterSection[] = [
         <div
           class="flex-1 grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-8 tablet:gap-6 laptop:gap-12"
         >
-          <!-- section.desktopOnly只會在桌機上顯示 -->
           <div
             v-for="section in sections"
             :key="section.key"

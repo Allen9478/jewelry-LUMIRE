@@ -56,8 +56,8 @@ onUnmounted(() => {
 
 <template>
   <div ref="timelineRef" class="w-full py-12 px-4 md:px-8">
-    <!-- ========== 桌機版：橫向時間軸 (md 以上顯示) ========== -->
-    <div class="hidden md:grid grid-cols-5 relative">
+    <!-- ========== 桌機版：橫向時間軸 (tablet 以上顯示) ========== -->
+    <div class="hidden tablet:grid grid-cols-5 relative">
       <!-- 背景基準線（貫穿整條，永遠存在） -->
       <div class="absolute top-[50px] left-0 right-0 h-px bg-white/10"></div>
 
@@ -86,7 +86,7 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <!-- ========== 手機版：縱向時間軸 (md 以下顯示) ========== -->
+    <!-- ========== 手機版：縱向時間軸 (tablet 以下顯示) ========== -->
     <div class="flex tablet:hidden flex-col relative pl-6 ml-4">
       <!-- 背景基準線 -->
       <div class="absolute top-4 bottom-0 left-[5.5px] w-px bg-white/10"></div>

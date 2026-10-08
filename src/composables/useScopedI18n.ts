@@ -1,4 +1,3 @@
-// src/composables/useScopedI18n.ts
 import { useI18n } from 'vue-i18n'
 import type { MessageFunction, VueMessageType } from 'vue-i18n'
 
