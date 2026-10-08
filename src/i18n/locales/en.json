@@ -322,6 +322,11 @@
       "passwordMismatch": "Passwords do not match",
       "submit": "Create Account",
       "haveAccount": "Already have an account?"
+    },
+    "notFound": {
+      "title": "As empty as a stone yet to be cut",
+      "body": "The page you're looking for doesn't exist or has moved.",
+      "cta": "Back to home"
     }
   },
   "footer": {

@@ -322,6 +322,11 @@
       "passwordMismatch": "兩次輸入的密碼不一致",
       "submit": "建立帳號",
       "haveAccount": "已經有帳號了嗎？"
+    },
+    "notFound": {
+      "title": "這裡空無一物，如同尚未雕琢的璞石",
+      "body": "你要找的頁面不存在，或已移到別處。",
+      "cta": "回到首頁"
     }
   },
   "footer": {
