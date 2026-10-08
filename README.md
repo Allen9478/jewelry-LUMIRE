@@ -13,6 +13,14 @@ Demo：https://allen9478.github.io/jewelry-LUMIRE/
 ![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=flat-square&logo=eslint&logoColor=white)
 ![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=flat-square&logo=prettier&logoColor=black)
 
+## 畫面預覽
+
+![首頁](./docs/screenshots/home.png)
+
+![搜尋功能](./docs/screenshots/search.gif)
+
+<img src="./docs/screenshots/mobile.png" width="300" alt="手機版" />
+
 ## 使用技術
 
 Vue 3、TypeScript、Vite、Tailwind CSS、Vue Router、Pinia、Firebase、Fuse.js、ESLint
