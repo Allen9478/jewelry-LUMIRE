@@ -31,6 +31,34 @@ Vue 3、TypeScript、Vite、Tailwind CSS、Vue Router、Pinia、Firebase、Fuse.
 ## 本地執行
 
 ```bash
+git clone https://github.com/Allen9478/jewelry-LUMIRE.git
+cd jewelry-LUMIRE
 npm install
+```
+
+### Firebase 設定
+
+本專案使用 Firebase，需先在 [Firebase Console](https://console.firebase.google.com/) 建立自己的專案，並啟用 Authentication 與 Firestore。
+
+複製範例檔，並填入自己的 Firebase 設定：
+
+```bash
+cp .env.example .env
+```
+
+`.env` 需要的變數：
+
+```env
+VITE_FIREBASE_API_KEY=
+VITE_FIREBASE_AUTH_DOMAIN=
+VITE_FIREBASE_PROJECT_ID=
+VITE_FIREBASE_STORAGE_BUCKET=
+VITE_FIREBASE_MESSAGING_SENDER_ID=
+VITE_FIREBASE_APP_ID=
+```
+
+### 啟動
+
+```bash
 npm run dev
 ```
