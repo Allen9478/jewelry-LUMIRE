@@ -189,8 +189,6 @@ const sortedFavorites = computed(() => {
         <GoldDivider />
       </section>
     </template>
-
-    <!-- 如果收藏為空，可以顯示提示（非必要，依需求加上） -->
   </div>
 </template>
 

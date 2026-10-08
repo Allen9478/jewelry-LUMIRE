@@ -19,7 +19,6 @@ const filteredWorks = computed(() => {
   return works.filter((item) => item.category === currentCategory.value)
 })
 
-// 計算每個作品卡片的淡入延遲時間,還不確定要不要全站套用
 function getFadeDelay(index: number, base: number, step: number) {
   return base + index * step
 }
@@ -61,14 +60,12 @@ function getFadeDelay(index: number, base: number, step: number) {
       <ul
         class="flex w-max items-center tablet:w-full tablet:justify-around gap-8 tablet:gap-10 mx-auto pr-4 tablet:pr-8 whitespace-nowrap"
       >
-        <!-- 1. 新增：手動加入「全部」按鈕 -->
         <li class="text-eyebrow shrink-0">
           <BaseUnderlineTab :active="currentCategory === null" @click="currentCategory = null">
             {{ t('category.all') }}
           </BaseUnderlineTab>
         </li>
 
-        <!-- 2. 原本的作家迴圈 -->
         <li v-for="category in availableCategories" :key="category" class="text-eyebrow shrink-0">
           <BaseUnderlineTab
             :active="currentCategory === category"
@@ -132,7 +129,6 @@ function getFadeDelay(index: number, base: number, step: number) {
   display: flex;
   flex-direction: column;
   justify-content: center; /* 內容在自然高度內垂直置中 */
-  /* padding: 88px 64px; */
 }
 
 .works-section__desc {
@@ -153,7 +149,6 @@ function getFadeDelay(index: number, base: number, step: number) {
   object-position: 80% center;
 }
 
-/* ---------- Responsive ---------- */
 @media (max-width: 768px) {
   .text-container {
     justify-content: start;

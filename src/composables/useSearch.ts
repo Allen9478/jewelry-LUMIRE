@@ -8,12 +8,9 @@ import type { ArtistItem } from '@/types/artist'
 import type { SearchResult } from '@/types/search'
 
 /**
- * useSiteSearch
- * ------------------------------------------------------------
  * 把「搜尋狀態管理」「鍵盤操作」「導頁」全部封裝在這裡，
  * 元件只需要呼叫這個 composable、把回傳值綁到 template 上即可，
  * 之後要換搜尋邏輯或加功能，只改這一個檔案，不用動元件。
- *
  * 參數用 Ref<WorkItem[]> / Ref<ArtistItem[]>，而不是直接傳陣列，
  * 是因為如果資料是非同步載入（例如 API fetch 完才有值），
  * 用 ref 包起來，資料一到位，computed 的 search 才會跟著重新建立。
@@ -55,13 +52,8 @@ export function useSearch(works: Ref<WorkItem[]>, artists: Ref<ArtistItem[]>) {
   }
 
   /**
-   * goTo
-   * ------------------------------------------------------------
    * 依照 result.type 導向不同的詳情頁路由。
    * 導頁後清空搜尋狀態，避免使用者返回時看到殘留的搜尋結果。
-   *
-   * 注意：'work-detail' / 'artist-detail' 要跟你 router 設定的
-   * route name 完全一致，請依實際路由設定調整。
    */
   function goTo(result?: SearchResult) {
     if (!result) return

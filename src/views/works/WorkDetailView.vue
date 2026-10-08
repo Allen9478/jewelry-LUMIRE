@@ -32,7 +32,6 @@ function getOtherWorks() {
       v-fade-in="{ delay: 0, y: 24, mobile: { delay: 0, y: 16 } }"
       class="work-detail-hero__image tablet:w-full tablet:h-full tablet:min-h-0 aspect-[4/5]"
     >
-      <!-- 前景:完整圖片 -->
       <img
         :src="getImageUrl(`jewelry/${work.image}`)"
         :alt="localized(work.name)"

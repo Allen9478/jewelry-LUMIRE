@@ -32,7 +32,6 @@ export function useLightFollow(
     if (!frameEl.value) return //防呆
 
     demoTimeoutId = setTimeout(() => {
-      //  800ms期間就動過滑鼠的話直接不要開始
       if (userInteracted || !frameEl.value) return
 
       const rect = frameEl.value.getBoundingClientRect()
@@ -75,7 +74,7 @@ export function useLightFollow(
     if (demoTimeoutId) clearTimeout(demoTimeoutId)
     if (rafId) cancelAnimationFrame(rafId)
   })
-  // ---- 事件處理 ----
+
   function onMouseMove(e: MouseEvent) {
     // 新增:順手取消還在跑的示範動畫迴圈,不用等 tick() 自己發現
     if (rafId) {
@@ -99,11 +98,10 @@ export function useLightFollow(
     isLit.value = true
   }
   function onMouseLeave() {
-    userInteracted = true //滑鼠離開也算互動過,避免之後又被onmounted蓋掉
+    userInteracted = true //滑鼠離開也算互動過,避免之後又被 onmounted 蓋掉
     isLit.value = false
   }
 
-  // ---- 衍生樣式 ----
   // 把目前的滑鼠(或onmounted)座標寫成 CSS 變數 --lx / --ly
   const lightStyle = computed(() => ({
     '--lx': `${cursor.x}px`,

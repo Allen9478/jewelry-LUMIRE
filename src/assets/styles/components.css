@@ -3,6 +3,7 @@
   .page-container {
     @apply mx-auto  w-full  px-6 tablet:px-8 laptop:px-12;
   }
+
   .btn {
     @apply cursor-pointer inline-flex items-center justify-center;
   }
@@ -11,7 +12,7 @@
     @apply hover:text-gold-500  transition-colors duration-300;
   }
 
-  /* iconbtn */
+  /* icon btn */
   .footer__icon {
     @apply text-gold-500;
   }
@@ -24,9 +25,11 @@
   .auth__form {
     @apply w-full mx-auto p-6 pt-0 tablet:flex tablet:flex-1 tablet:flex-col tablet:justify-center tablet:px-16 laptop:px-24 tablet:max-w-[600px] laptop:max-w-[680px] ml-auto;
   }
+
   .auth__title {
     @apply text-[42px] laptop:text-[56px] text-center tracking-wide font-serif pb-8 tablet:landscape:pt-8;
   }
+
   /* auth的跳轉link */
   .link--auth {
     @apply text-gold-500 border-b border-transparent hover:opacity-70 hover:border-b-gold-500 transition duration-300 cursor-pointer;
