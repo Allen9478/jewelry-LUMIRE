@@ -354,10 +354,12 @@
       "login": "登入",
       "benefits": "會員權益",
       "privateViewings": "私人賞鑑"
-    }
+    },
+    "copyright": "© 2026 Lumière 珠寶藝廊。版權所有。"
   },
   "searchModal": {
-    "placeholder": "搜尋藝術家或珠寶"
+    "placeholder": "搜尋藝術家或珠寶",
+    "noResults": "找不到符合「{keyword}」的結果"
   },
   "loginPrompt": {
     "title": "會員專屬功能",

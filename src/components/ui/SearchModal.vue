@@ -124,7 +124,7 @@ watch(
         aria-live="polite"
         class="mt-6 py-4 text-center text-gray"
       >
-        找不到符合「{{ keyword }}」的結果
+        {{ t('searchModal.noResults', { keyword }) }}
       </div>
     </div>
   </BaseModal>

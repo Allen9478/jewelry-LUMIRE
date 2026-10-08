@@ -223,7 +223,7 @@ const sections: FooterSection[] = [
       </div>
 
       <p class="py-4 display-inline tablet:pt-10 text-label-lg text-cream/50">
-        © 2026 Lumière Jewelry Gallery. All Rights Reserved.
+        {{ t('footer.copyright') }}
       </p>
     </div>
   </footer>

@@ -354,10 +354,12 @@
       "login": "Log In",
       "benefits": "Membership Benefits",
       "privateViewings": "Private Viewings"
-    }
+    },
+    "copyright": "© 2026 Lumière Jewelry Gallery. All Rights Reserved."
   },
   "searchModal": {
-    "placeholder": "Search artist or jewelry"
+    "placeholder": "Search artist or jewelry",
+    "noResults": "No results found for “{keyword}”"
   },
   "loginPrompt": {
     "title": "Members Only",
