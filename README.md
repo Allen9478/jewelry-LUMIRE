@@ -15,9 +15,9 @@ Demo：https://allen9478.github.io/jewelry-LUMIRE/
 
 ## 畫面預覽
 
-![首頁](./docs/screenshots/home.png)
+<img src="./docs/screenshots/home.png" width="800" alt="首頁" />
 
-![搜尋功能](./docs/screenshots/search.gif)
+<img src="./docs/screenshots/sear.gif" width="800" alt="搜尋功能" />
 
 <img src="./docs/screenshots/mobile.png" width="300" alt="手機版" />
 
