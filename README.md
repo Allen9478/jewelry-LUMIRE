@@ -1,6 +1,6 @@
 # jewelry-LUMIÈRE
 
-以 Vue 3 + TypeScript 打造的珠寶藝廊網站，提供作品瀏覽、模糊搜尋與收藏功能，並支援桌機與手機版。
+以 Vue 3 + TypeScript 打造的珠寶藝廊網站，提供作品瀏覽、模糊搜尋、收藏與中英文切換功能，並支援桌機與手機版。
 
 Demo：https://allen9478.github.io/jewelry-LUMIRE/
 
@@ -21,9 +21,17 @@ Demo：https://allen9478.github.io/jewelry-LUMIRE/
 
 <img src="./docs/screenshots/mobile.png" width="300" alt="手機版" />
 
+## 功能特色
+
+- 🔍 **模糊搜尋**：以 Fuse.js 實作，支援搜尋珠寶或藝術家名稱，點擊結果或按 Enter 即可跳轉並關閉視窗
+- ❤️ **收藏功能**：登入後可收藏喜歡的作品，會員與收藏資料由 Firebase 管理
+- 🌐 **多語系切換**：以 vue-i18n 實作，支援全站中英文切換
+- 💡 **光線跟隨互動效果**：自訂 composable `useLightFollow`，在 About 頁面中滑鼠移動時產生光澤效果
+- 📱 **響應式設計**：以 Tailwind CSS 實作，桌機與手機版各有對應版面，手機版提供漢堡選單
+
 ## 使用技術
 
-Vue 3、TypeScript、Vite、Tailwind CSS、Vue Router、Pinia、Firebase、Fuse.js、ESLint
+Vue 3、TypeScript、Vite、Tailwind CSS、Vue Router、Pinia、Firebase、Fuse.js、vue-i18n、ESLint、Prettier
 
 ## 技術重點
 
@@ -51,10 +59,10 @@ npm install
 複製範例檔，並填入自己的 Firebase 設定：
 
 ```bash
-cp .env.example .env
+cp .env.example .env.local
 ```
 
-`.env` 需要的變數：
+`.env.local` 需要的變數：
 
 ```env
 VITE_FIREBASE_API_KEY=
