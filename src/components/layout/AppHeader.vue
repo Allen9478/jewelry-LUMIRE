@@ -129,7 +129,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
                 @click="handleLogout"
                 class="absolute inset-0 flex items-center justify-center text-center text-gold-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200 tracking-widest text-sm"
               >
-                SIGN OUT
+                {{ t('common.signOut') }}
               </span>
             </div>
           </div>
