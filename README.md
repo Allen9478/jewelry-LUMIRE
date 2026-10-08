@@ -43,8 +43,8 @@ Vue 3、TypeScript、Vite、Tailwind CSS、Vue Router、Pinia、Firebase、Fuse.
 ## 遇到的問題與解決
 
 - 狀態邏輯分散在各頁面，沒有統一管理，導致單頁程式碼過長 → 建立 composables 管理 Pinia 狀態邏輯
-- JS 遷移 TS 陣列資料取值報錯 → 建立 composables 自訂一個TypeScript 泛型 txItems 函式去轉換資料
-- 使用者以登入狀態下，頁面重整後帳號消失 → 使用 Firebase 的 onAuthStateChanged 監聽以確保狀態同步 Firebase
+- JS 遷移 TS 後，陣列資料取值出現型別錯誤 → 在 composables 中用 TypeScript 泛型自訂 `txItems` 函式去轉換資料
+- 登入狀態下重新整理頁面後，帳號狀態消失 → 使用 Firebase 的 `onAuthStateChanged` 監聽以確保頁面重整後仍與 Firebase 同步
 - 早期直接在 main 修改，變更紀錄混雜 → 以功能分支搭配 PR 合併，透過 GitHub Actions 自動部署
 
 ## 本地執行
