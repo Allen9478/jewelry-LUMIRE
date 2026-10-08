@@ -38,11 +38,14 @@ Vue 3、TypeScript、Vite、Tailwind CSS、Vue Router、Pinia、Firebase、Fuse.
 - Pinia 狀態職責拆分
 - 從 JavaScript 逐步遷移至 TypeScript
 - 使用 Fuse.js 實作模糊搜尋
+- 使用 vue-i18n 實作中英文切換
 
 ## 遇到的問題與解決
 
 - 狀態邏輯分散在各頁面，沒有統一管理，導致單頁程式碼過長 → 建立 composables 管理 Pinia 狀態邏輯
-- 一開始直接在 main 修改程式碼，沒有使用分支與 PR 流程 → 養成用 `git switch -c` 建立新分支的習慣
+- JS 遷移 TS 陣列資料取值報錯 → 建立 composables 自訂一個TypeScript 泛型 txItems 函式去轉換資料
+- 使用者以登入狀態下，頁面重整後帳號消失 → 使用 Firebase 的 onAuthStateChanged 監聽以確保狀態同步 Firebase
+- 早期直接在 main 修改，變更紀錄混雜 → 以功能分支搭配 PR 合併，透過 GitHub Actions 自動部署
 
 ## 本地執行
 
@@ -78,3 +81,7 @@ VITE_FIREBASE_APP_ID=
 ```bash
 npm run dev
 ```
+
+## 作者
+
+Allen · [GitHub](https://github.com/Allen9478) · Email：allenyu0708@gmail.com
