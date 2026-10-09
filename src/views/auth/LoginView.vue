@@ -25,8 +25,8 @@ async function handleSubmit() {
     const target = typeof redirect === 'string' ? redirect : '/'
 
     router.push(target)
-  } catch (err) {
-    console.error('登入失败:', err)
+  } catch {
+    // 避免 Eslint 報錯
   }
 }
 </script>

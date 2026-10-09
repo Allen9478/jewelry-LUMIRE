@@ -7,7 +7,8 @@ import { useRoute, useRouter } from 'vue-router'
 import { useScrollDirection } from '@/composables/useScrollDirection'
 import AppLogo from './AppLogo.vue'
 import LangSwitch from '@/components/ui/LangSwitch.vue'
-import BaseButton from '@/components/ui/BaseButton.vue'
+import MenuLink from './menu/MenuLink.vue'
+import UserActionButton from './menu/UserActionButton.vue'
 
 const authStore = useAuthStore()
 const route = useRoute()
@@ -88,75 +89,25 @@ onUnmounted(() => {
                 :key="item.name"
                 class="menu__item"
               >
-                <RouterLink
+                <MenuLink
                   :to="item.to"
-                  class="menu__link"
-                  :class="{ 'menu__link--active': isActive(item.matchNames) }"
-                  :aria-current="isActive(item.matchNames) ? 'page' : undefined"
-                  @click="closeMenu"
-                >
-                  <span class="menu__link-number">0{{ index + 1 }}</span>
-                  <span class="menu__link-name">{{ t(item.labelKey) }}</span>
-                  <span class="menu__link-arrow">→</span>
-                </RouterLink>
+                  :index="index"
+                  :label="t(item.labelKey)"
+                  :active="isActive(item.matchNames)"
+                  @navigate="closeMenu"
+                />
               </li>
             </ul>
 
             <!-- 底部資訊 -->
             <div v-fade-in="{ delay: 600, y: 24, duration: 600 }" class="menu__footer">
               <LangSwitch variant="mobile" class="mb-2" />
-              <template v-if="authStore.user">
-                <BaseButton
-                  variant="ghost"
-                  @click="handleLogout"
-                  class="nav__icon inline-flex normal-case py-3 text-label-lg tracking-widest transition-transform duration-150 active:scale-95"
-                  aria-label="會員"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    focusable="false"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="size-6"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
-                    />
-                  </svg>
-                  <span class="ml-2">{{ authStore.displayName }}/{{ t('common.signOut') }}</span>
-                </BaseButton>
-              </template>
-              <template v-else>
-                <BaseButton
-                  variant="ghost"
-                  @click="goToLogin"
-                  class="nav__icon inline-flex normal-case py-3 text-label-lg tracking-widest transition-transform duration-150 active:scale-95"
-                  aria-label="會員"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    focusable="false"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="size-6"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
-                    />
-                  </svg>
-                  <span>{{ t('common.signIn') }}</span>
-                </BaseButton>
-              </template>
+              <UserActionButton
+                v-if="authStore.user"
+                :label="`${authStore.displayName}/${t('common.signOut')}`"
+                @click="handleLogout"
+              />
+              <UserActionButton v-else :label="t('common.signIn')" @click="goToLogin" />
             </div>
           </nav>
         </div>
@@ -166,7 +117,6 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-/* ── 漢堡按鈕 ── */
 .hamburger__btn {
   display: flex;
   flex-direction: column;
@@ -258,7 +208,7 @@ onUnmounted(() => {
     var(--color-gold-400) 70%,
     transparent 100%
   );
-  margin: 0 60px;
+  margin: 0 24px;
   opacity: 0.4;
   animation: lineReveal 0.8s var(--ease-luxury) forwards;
 }
@@ -280,7 +230,7 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 60px 80px 60px 0;
+  padding: 40px 32px 40px 0;
   max-width: 560px;
 }
 
@@ -289,7 +239,7 @@ onUnmounted(() => {
   animation: fadeUp 0.6s 0.05s var(--ease-luxury) both;
 }
 
-/* ── 連結清單 ── */
+/* ── 連結清單(連結本身的樣式在 menu/MenuLink.vue) ── */
 .menu__links {
   list-style: none;
   padding: 0;
@@ -298,100 +248,6 @@ onUnmounted(() => {
 
 .menu__item {
   border-bottom: 1px solid rgba(214, 180, 106, 0.102);
-}
-
-.menu__link {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 20px 0;
-  text-decoration: none;
-  color: var(--color-cream);
-  position: relative;
-  overflow: hidden;
-  transition: color 0.3s ease;
-}
-
-.menu__link::before {
-  content: '';
-  position: absolute;
-  left: -100%;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(214, 180, 106, 0.05), transparent);
-  transition: left 0.5s ease;
-}
-
-.menu__link:hover::before {
-  left: 100%;
-}
-
-.menu__link:hover {
-  color: var(--color-gold-500);
-}
-.menu__link:active {
-  color: var(--color-gold-500);
-  transform: translateX(4px);
-}
-.menu__link-number {
-  font-family: var(--font-sans);
-  font-size: 9px;
-  letter-spacing: 0.15em;
-  color: var(--color-gold-500);
-  opacity: 0.6;
-  width: 24px;
-  flex-shrink: 0;
-}
-
-.menu__link-name {
-  font-family: var(--font-serif);
-  font-size: 24px;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  line-height: 1;
-  flex: 1;
-  transition: transform 0.3s var(--ease-luxury);
-}
-
-.menu__link--active .menu__link-name {
-  color: var(--color-gold-500);
-}
-
-.menu__link:hover .menu__link-name {
-  transform: translateX(8px);
-}
-
-.menu__link-arrow {
-  font-size: 14px;
-  color: var(--color-gold-500);
-  opacity: 0;
-  transform: translateX(-10px);
-  transition: all 0.3s var(--ease-luxury);
-}
-
-.menu__link:hover .menu__link-arrow {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* ── Footer ── */
-
-.menu__footer-divider {
-  width: 40px;
-  height: 1px;
-  background: var(--color-gold-500);
-  margin-bottom: 20px;
-  opacity: 0.5;
-}
-
-.menu__footer-copy {
-  font-family: var(--font-sans);
-  font-size: 11px;
-  color: var(--color-gray-muted);
-  letter-spacing: 0.05em;
-  margin-top: 12px;
-  opacity: 0.5;
 }
 
 /* ── 進場動畫 ── */
@@ -431,25 +287,6 @@ onUnmounted(() => {
   to {
     clip-path: inset(0 0 0 100%);
     opacity: 0;
-  }
-}
-
-/* ── RWD ── */
-@media (max-width: 640px) {
-  .menu__deco-line {
-    margin: 0 24px;
-  }
-
-  .menu__nav {
-    padding: 40px 32px 40px 0;
-  }
-
-  .menu__item-name {
-    font-size: 28px;
-  }
-
-  .menu__link {
-    padding: 16px 0;
   }
 }
 </style>
