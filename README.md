@@ -68,13 +68,28 @@ cp .env.example .env.local
 `.env.local` 需要的變數：
 
 ```env
-VITE_FIREBASE_API_KEY=
-VITE_FIREBASE_AUTH_DOMAIN=
-VITE_FIREBASE_PROJECT_ID=
-VITE_FIREBASE_STORAGE_BUCKET=
-VITE_FIREBASE_MESSAGING_SENDER_ID=
-VITE_FIREBASE_APP_ID=
+VITE_API_KEY=
+VITE_AUTH_DOMAIN=
+VITE_PROJECT_ID=
+VITE_STORAGE_BUCKET=
+VITE_MESSAGING_SENDER_ID=
+VITE_APP_ID=
 ```
+
+### 資料結構與安全規則
+
+收藏功能使用 Firestore,資料結構如下:
+
+```
+favorites/{uid}/items/{workId}
+  ├─ workId: string
+  └─ addedAt: timestamp
+```
+
+安全規則寫在 [`firestore.rules`](./firestore.rules),重點如下:
+
+- 只有已登入且 `uid` 與路徑相符的使用者,才能讀寫自己的收藏
+- 無法讀取或修改其他使用者的資料
 
 ### 啟動
 
