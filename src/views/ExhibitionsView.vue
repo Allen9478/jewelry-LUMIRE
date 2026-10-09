@@ -53,7 +53,7 @@ function randomWorks<T>(arr: readonly T[], count: number): T[] {
 
   return result
 }
-const fuckData = randomWorks(works, 6)
+const featuredWorks = randomWorks(works, 6)
 </script>
 <template>
   <div class="exhibitions flex flex-col gap-8 desktop:gap-12">
@@ -178,7 +178,7 @@ const fuckData = randomWorks(works, 6)
         {{ tx('workInExhibitions') }}
       </p>
       <ItemGrid
-        :items="fuckData"
+        :items="featuredWorks"
         grid-class="grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4 "
         class=""
       >
