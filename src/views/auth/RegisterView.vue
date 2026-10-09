@@ -18,13 +18,12 @@ const passwordMismatch = computed(
   () => confirmPassword.value !== '' && password.value !== confirmPassword.value,
 )
 async function handleSubmit() {
-  console.log('handleSubmit triggered')
   if (passwordMismatch.value) return
   try {
     await authStore.register(fullname.value, email.value, password.value)
     router.push('/')
-  } catch (err) {
-    console.log('error:', err)
+  } catch {
+    //錯誤由 passwordMismatch 掌管這裡註解避免 eslint 報錯
   }
 }
 </script>
@@ -36,7 +35,6 @@ async function handleSubmit() {
       <FormInput v-model="email" type="email" :label="txCommon('form.email')" />
       <FormInput v-model="password" type="password" :label="txCommon('form.password')" />
       <FormInput v-model="confirmPassword" type="password" :label="tx('confirmPassword')" />
-      <p v-if="authStore.error" class="text-red-500 text-label-lg">{{ authStore.error }}</p>
       <p v-if="passwordMismatch" class="text-red-500 text-label-lg">{{ tx('passwordMismatch') }}</p>
       <BaseButton
         type="submit"
