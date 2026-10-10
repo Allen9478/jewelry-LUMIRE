@@ -11,6 +11,7 @@ export const useUiStore = defineStore('ui', () => {
   }
   function closeLoginModal() {
     showLoginModal.value = false
+    clearPendingRedirect()
   }
   function openSearchModal() {
     showSearchModal.value = true

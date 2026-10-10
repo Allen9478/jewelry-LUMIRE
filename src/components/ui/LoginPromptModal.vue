@@ -10,11 +10,9 @@ const { t } = useI18n()
 const router = useRouter()
 
 function goToLogin() {
+  const redirect = uiStore.pendingRedirect ?? router.currentRoute.value.fullPath
   uiStore.closeLoginModal()
-  router.push({
-    name: 'login',
-    query: uiStore.pendingRedirect ? { redirect: uiStore.pendingRedirect } : {},
-  })
+  router.push({ name: 'login', query: { redirect } })
 }
 </script>
 
