@@ -4,6 +4,7 @@ import { useScopedI18n, type RtInput } from '@/composables/useScopedI18n'
 import FormInput from '@/components/ui/FormInput.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
+import { MapPinIcon, ClockIcon } from '@heroicons/vue/24/outline'
 
 interface InquiryRaw {
   title: RtInput
@@ -104,27 +105,7 @@ const address = computed(() => txList('location.address'))
           v-fade-in="{ delay: 120, y: 16, mobile: { delay: 0, y: 12 } }"
           class="contact__content-info-location flex justify-start"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            aria-hidden="true"
-            focusable="false"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-8 text-gold-500"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-            />
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-            />
-          </svg>
+          <MapPinIcon class="size-8 text-gold-500 -translate-y-px" />
           <div class="flex flex-col gap-1 ml-4">
             <p class="text-subhead font-serif">{{ tx('location.name') }}</p>
             <p v-for="(line, i) in address" :key="i" class="text-gray-muted">
@@ -136,22 +117,7 @@ const address = computed(() => txList('location.address'))
           v-fade-in="{ delay: 200, y: 16, mobile: { delay: 0, y: 12 } }"
           class="contact__content-info-studio flex"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            aria-hidden="true"
-            focusable="false"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-8 text-gold-500"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-            />
-          </svg>
+          <ClockIcon class="size-8 text-gold-500 -translate-y-px" />
           <div class="flex flex-col gap-1 ml-4">
             <p class="text-subhead font-serif">{{ tx('studioHours.label') }}</p>
             <p class="text-gray-muted">{{ tx('studioHours.days') }}</p>
@@ -164,8 +130,8 @@ const address = computed(() => txList('location.address'))
 </template>
 
 <style scoped>
+/* 讓右下圖是變金色 firefox沒有用其他有用 */
 textarea::-webkit-resizer {
   background: transparent;
-  /* 讓右下圖是變金色 firefox沒有用其他有用 */
 }
 </style>
