@@ -25,12 +25,12 @@ const showMenu = ref(false)
 async function handleLogout() {
   await authStore.logout()
   showMenu.value = false
-  router.push({ name: 'login' })
+  router.push('/')
 }
 function handleScroll() {
   isScrolled.value = window.scrollY > 50
 }
-function goToLogin() {
+function handleLogin() {
   router.push({ name: 'login' })
 }
 
@@ -143,7 +143,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
           >
             <HeartIcon :filled="isFavoritePage" />
           </RouterLink>
-          <button @click="goToLogin" aria-label="會員" class="nav__icon hidden tablet:block">
+          <button @click="handleLogin" aria-label="會員" class="nav__icon hidden tablet:block">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

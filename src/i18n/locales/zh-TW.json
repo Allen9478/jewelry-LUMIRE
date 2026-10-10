@@ -383,6 +383,8 @@
     },
     "form": { "name": "姓名", "email": "電子郵件", "password": "密碼" },
     "signIn": "登入",
-    "signOut": "登出"
+    "signOut": "登出",
+    "addFavorite": "加入收藏",
+    "removeFavorite": "取消收藏"
   }
 }

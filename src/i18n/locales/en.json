@@ -383,6 +383,8 @@
     },
     "form": { "name": "Name", "email": "Email", "password": "Password" },
     "signIn": "Sign In",
-    "signOut": "Sign Out"
+    "signOut": "Sign Out",
+    "addFavorite": "Add to favorites",
+    "removeFavorite": "Remove from favorites"
   }
 }
