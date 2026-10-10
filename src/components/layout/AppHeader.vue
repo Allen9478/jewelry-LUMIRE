@@ -11,6 +11,7 @@ import LangSwitch from '@/components/ui/LangSwitch.vue'
 import HamburgerMenu from '@/components/layout/HamburgerMenu.vue'
 import HeartIcon from '@/components/common/HeartIcon.vue'
 import AppLogo from './AppLogo.vue'
+import { UserIcon, MagnifyingGlassIcon } from '@heroicons/vue/24/outline'
 
 const uiStore = useUiStore()
 const isScrolled = ref(false)
@@ -30,10 +31,6 @@ async function handleLogout() {
 function handleScroll() {
   isScrolled.value = window.scrollY > 50
 }
-function handleLogin() {
-  router.push({ name: 'login' })
-}
-
 onMounted(() => window.addEventListener('scroll', handleScroll))
 onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 </script>
@@ -83,22 +80,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
       <div class="flex shrink-0 justify-end items-center gap-2 lg:gap-3 xl:gap-4 text-stone-50">
         <button @click="uiStore.openSearchModal" aria-label="站內搜尋" class="nav__icon">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            aria-hidden="true"
-            focusable="false"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-6"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-            />
-          </svg>
+          <MagnifyingGlassIcon class="size-6" />
         </button>
         <template v-if="authStore.user">
           <!-- 手機版 -->
@@ -143,24 +125,13 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
           >
             <HeartIcon :filled="isFavoritePage" />
           </RouterLink>
-          <button @click="handleLogin" aria-label="會員" class="nav__icon hidden tablet:block">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              focusable="false"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="size-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
-              />
-            </svg>
-          </button>
+          <RouterLink
+            :to="{ name: 'login' }"
+            aria-label="會員"
+            class="nav__icon hidden tablet:block"
+          >
+            <UserIcon class="size-6" />
+          </RouterLink>
         </template>
         <LangSwitch variant="desktop" />
       </div>

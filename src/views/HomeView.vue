@@ -13,6 +13,7 @@ import GoldDivider from '@/components/ui/GoldDivider.vue'
 import breathing from '@/assets/images/home/breathing-bg.webp'
 import artists from '@/data/artists.json'
 import works from '@/data/works.json'
+import { CalendarDaysIcon, MapPinIcon } from '@heroicons/vue/24/outline'
 
 const { tx } = useScopedI18n('page.home')
 const uniqueDesignerWorks = computed(() => {
@@ -116,7 +117,6 @@ const submitted = ref(false)
                 d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z"
               />
             </svg>
-
             <span
               class="ml-2 text-btn tablet:text-btn-lg text-cream group-hover:text-gold-500 group-active:text-gold-500 transition-colors"
               >{{ tx('hero.watchStory') }}</span
@@ -213,48 +213,13 @@ const submitted = ref(false)
         />
         <div class="home-exhibition-section__cta-group mt-3 tablet:mt-5">
           <p v-fade-in="{ delay: 260, y: 16 }" class="flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              focusable="false"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="size-6 text-gold-500"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z"
-              />
-            </svg>
+            <CalendarDaysIcon class="size-6 text-gold-500 -translate-y-px" />
             <span class="ml-2 text-gray-muted text-body-sm tracking-wider">{{
               tx('exhibition.dateRange')
             }}</span>
           </p>
           <p v-fade-in="{ delay: 260, y: 16 }" class="flex items-center mt-2 tablet:mt-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              focusable="false"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="size-6 text-gold-500"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-              />
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-              />
-            </svg>
+            <MapPinIcon class="size-6 text-gold-500 -translate-y-px" />
             <span class="ml-2 text-gray-muted text-body-sm tracking-wider">{{
               tx('exhibition.location')
             }}</span>
