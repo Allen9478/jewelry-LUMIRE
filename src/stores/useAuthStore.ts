@@ -12,7 +12,6 @@ import {
 } from 'firebase/auth'
 import { FirebaseError } from 'firebase/app'
 import { auth } from '@/firebase'
-import { useFavoriteStore } from '@/stores/useFavoriteStore'
 
 const DEFAULT_ERROR = 'Something went wrong. Please try again.'
 
@@ -38,7 +37,6 @@ export const useAuthStore = defineStore('auth', () => {
   const isAuthReady = ref(false) // Firebase 是否已回報過
   const error = ref('')
   const isLoggedIn = computed(() => user.value !== null)
-  const favoriteStore = useFavoriteStore()
 
   const displayName = computed(() => {
     const email = user.value?.email
@@ -51,11 +49,6 @@ export const useAuthStore = defineStore('auth', () => {
     if (unsubscribe) return
     unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       user.value = firebaseUser
-      if (firebaseUser) {
-        void favoriteStore.fetchFavorites() // 登入時載入收藏
-      } else {
-        favoriteStore.resetFavorites() // 登出時清空
-      }
       isAuthReady.value = true
     })
   }
@@ -91,7 +84,6 @@ export const useAuthStore = defineStore('auth', () => {
   async function logout(): Promise<void> {
     await signOut(auth)
     user.value = null
-    favoriteStore.resetFavorites()
   }
 
   function resetPassword(email: string): Promise<void> {
