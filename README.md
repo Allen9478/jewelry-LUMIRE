@@ -48,6 +48,12 @@ Vue 3、TypeScript、Vite、Tailwind CSS、Vue Router、Pinia、Firebase、Fuse.
 - 早期直接在 main 修改，變更紀錄混雜 → 以功能分支搭配 PR 合併，透過 GitHub Actions 自動部署
 - 未登入時點擊卡片愛心，登入後沒有導回原本瀏覽之頁面 → 登入視窗在沒有指定導向時改以目前打開視窗的頁面作為導向目標，並在關閉視窗後清除
 
+## 展示用
+
+以下為展示用途，尚未寫成實際功能：
+
+- Footer 項目：僅呈現版面，未連結至頁面。
+
 ## 本地執行
 
 ```bash
