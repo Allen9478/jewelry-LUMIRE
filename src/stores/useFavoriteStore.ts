@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { useAuthStore } from './useAuthStore'
 import { useUiStore } from './useUiStore'
 import { doc, getDocs, collection, setDoc, deleteDoc } from 'firebase/firestore'
@@ -73,6 +73,17 @@ export const useFavoriteStore = defineStore('favorite', () => {
     favorites.value = []
     isLoading.value = false
   }
+
+  //原本寫在 useAuthStore 造成雙向依賴的錯誤購置
+  watch(
+    () => authStore.user?.uid,
+    (uid) => {
+      if (uid) void fetchFavorites()
+      else resetFavorites()
+    },
+    { immediate: true, flush: 'sync' },
+  )
+
   return {
     favorites,
     isLoading,
