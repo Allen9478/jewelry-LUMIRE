@@ -46,6 +46,7 @@ Vue 3、TypeScript、Vite、Tailwind CSS、Vue Router、Pinia、Firebase、Fuse.
 - JS 遷移 TS 後，陣列資料取值出現型別錯誤 → 在 composables 中用 TypeScript 泛型自訂 `txItems` 函式去轉換資料
 - 登入狀態下重新整理頁面後，帳號狀態消失 → 使用 Firebase 的 `onAuthStateChanged` 監聽以確保頁面重整後仍與 Firebase 同步
 - 早期直接在 main 修改，變更紀錄混雜 → 以功能分支搭配 PR 合併，透過 GitHub Actions 自動部署
+- 未登入時點擊卡片愛心，登入後沒有導回原本瀏覽之頁面 → 登入視窗在沒有指定導向時改以目前打開視窗的頁面作為導向目標，並在關閉視窗後清除
 
 ## 本地執行
 

@@ -9,7 +9,7 @@ const uiStore = useUiStore()
 const { t } = useI18n()
 const router = useRouter()
 
-function goToLogin() {
+function handleLogin() {
   const redirect = uiStore.pendingRedirect ?? router.currentRoute.value.fullPath
   uiStore.closeLoginModal()
   router.push({ name: 'login', query: { redirect } })
@@ -21,7 +21,7 @@ function goToLogin() {
     <p class="font-serif text-gold-400 text-subhead mb-2">{{ t('loginPrompt.title') }}</p>
     <p class="text-cream/60 text-label-lg mb-6">{{ t('loginPrompt.description') }}</p>
     <div class="flex gap-4">
-      <BaseButton variant="primary" @click="goToLogin">{{ t('loginPrompt.confirm') }}</BaseButton>
+      <BaseButton variant="primary" @click="handleLogin">{{ t('loginPrompt.confirm') }}</BaseButton>
       <BaseButton variant="ghost" @click="uiStore.closeLoginModal()">{{
         t('loginPrompt.cancel')
       }}</BaseButton>
