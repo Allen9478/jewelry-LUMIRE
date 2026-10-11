@@ -372,6 +372,7 @@
     "copyright": "© 2026 Lumière 珠寶藝廊。版權所有。"
   },
   "searchModal": {
+    "title": "站內搜尋",
     "placeholder": "搜尋藝術家或珠寶",
     "noResults": "找不到符合「{keyword}」的結果"
   },

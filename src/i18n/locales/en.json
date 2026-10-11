@@ -372,6 +372,7 @@
     "copyright": "© 2026 Lumière Jewelry Gallery. All Rights Reserved."
   },
   "searchModal": {
+    "title": "Site search",
     "placeholder": "Search artist or jewelry",
     "noResults": "No results found for “{keyword}”"
   },

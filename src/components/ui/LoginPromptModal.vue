@@ -17,7 +17,11 @@ function handleLogin() {
 </script>
 
 <template>
-  <BaseModal :isOpen="uiStore.showLoginModal" @close="uiStore.closeLoginModal()">
+  <BaseModal
+    :isOpen="uiStore.showLoginModal"
+    :label="t('loginPrompt.title')"
+    @close="uiStore.closeLoginModal()"
+  >
     <p class="font-serif text-gold-400 text-subhead mb-2">{{ t('loginPrompt.title') }}</p>
     <p class="text-cream/60 text-label-lg mb-6">{{ t('loginPrompt.description') }}</p>
     <div class="flex gap-4">
