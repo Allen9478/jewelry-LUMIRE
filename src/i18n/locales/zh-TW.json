@@ -284,6 +284,8 @@
         "title": "您的收藏",
         "desc": "您所收藏的作品"
       },
+      "loadError": "無法載入收藏，請稍後再試。",
+      "retry": "重試",
       "browseWorks": "瀏覽作品",
       "empty": {
         "title": "開始建立您的收藏",
@@ -392,6 +394,10 @@
     "signIn": "登入",
     "signOut": "登出",
     "addFavorite": "加入收藏",
-    "removeFavorite": "取消收藏"
+    "removeFavorite": "取消收藏",
+    "toast": {
+      "offline": "目前沒有網路連線，請稍後再試。",
+      "favoriteFailed": "收藏更新失敗，請稍後再試。"
+    }
   }
 }

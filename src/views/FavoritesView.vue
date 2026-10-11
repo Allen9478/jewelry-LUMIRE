@@ -18,7 +18,7 @@ const authStore = useAuthStore()
 const { localized } = useLocalized()
 const { tx } = useScopedI18n('page.favorites')
 const { tx: txCommon } = useScopedI18n('common')
-const { favorites, isLoading: isFavoritesLoading } = storeToRefs(favoriteStore)
+const { favorites, isLoading: isFavoritesLoading, loadError } = storeToRefs(favoriteStore)
 const { isAuthReady } = storeToRefs(authStore)
 
 const currentCategory = ref(null)
@@ -95,7 +95,14 @@ const sortedFavorites = computed(() => {
         <p>{{ txCommon('loading') }}</p>
       </div>
     </template>
-
+    <template v-else-if="loadError">
+      <div role="alert" class="flex flex-col items-center gap-6 text-center">
+        <p class="text-gray-muted">{{ tx('loadError') }}</p>
+        <BaseButton type="button" @click="favoriteStore.fetchFavorites()">
+          {{ tx('retry') }}
+        </BaseButton>
+      </div>
+    </template>
     <template v-else-if="favoriteWorks.length === 0">
       <div
         v-fade-in="{ delay: 160, y: 16, mobile: { delay: 160, y: 12 } }"
