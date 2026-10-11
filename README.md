@@ -52,6 +52,8 @@ Vue 3、TypeScript、Vite、Tailwind CSS、Vue Router、Pinia、Firebase、Fuse.
 
 以下為展示用途，尚未寫成實際功能：
 
+- 聯絡表單：已實作前端驗證（必填、Email 格式），送出後僅顯示提示，不會傳送任何資料。
+- 電子報：已實作 Email 格式驗證，送出後僅顯示展示提示，不會實際訂閱。
 - Footer 項目：僅呈現版面，未連結至頁面。
 
 ## 本地執行

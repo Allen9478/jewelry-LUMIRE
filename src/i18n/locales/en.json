@@ -54,7 +54,9 @@
       "newsletter": {
         "placeholder": "Enter email",
         "submit": "Subscribe",
-        "submitted": "Thank you!"
+        "submitted": "Thank you!",
+        "demo": "This is a demo feature. No subscription will be created.",
+        "invalid": "Please enter a valid email address"
       }
     },
     "works": {
@@ -259,7 +261,12 @@
       ],
       "form": {
         "message": "Message",
-        "submit": "Send Message"
+        "submit": "Send Message",
+        "demo": "This is a demo feature. Your message will not be sent.",
+        "error": {
+          "required": "Please fill in all fields",
+          "invalidEmail": "Please enter a valid email address"
+        }
       },
       "location": {
         "name": "Lumière Jewelry Gallery",

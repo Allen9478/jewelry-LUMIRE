@@ -1,10 +1,21 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 import { useScopedI18n, type RtInput } from '@/composables/useScopedI18n'
 import FormInput from '@/components/ui/FormInput.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
 import { MapPinIcon, ClockIcon } from '@heroicons/vue/24/outline'
+
+const form = ref({
+  name: '',
+  email: '',
+  message: '',
+})
+const formMsg = ref('')
+const formHasError = ref(false)
+
+//讓郵件格式符合驗證的正規表達式
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 interface InquiryRaw {
   title: RtInput
@@ -29,6 +40,18 @@ const inquiries = computed(() =>
 )
 
 const address = computed(() => txList('location.address'))
+
+function handleDemoSubmit() {
+  const missing = !form.value.name.trim() || !form.value.email.trim() || !form.value.message.trim()
+  const badEmail = !missing && !EMAIL_RE.test(form.value.email.trim())
+
+  formHasError.value = missing || badEmail
+  formMsg.value = missing
+    ? tx('form.error.required')
+    : badEmail
+      ? tx('form.error.invalidEmail')
+      : tx('form.demo')
+}
 </script>
 <template>
   <div class="contact flex flex-col tablet:flex-row">
@@ -72,31 +95,52 @@ const address = computed(() => txList('location.address'))
           <BaseArrowIcon class="text-gold-500 mr-2" />
         </div>
       </div>
-      <form action="" class="contact__content-form flex flex-col gap-4">
+      <!-- novalidate是關閉表單原生驗證 -->
+      <form
+        novalidate
+        @submit.prevent="handleDemoSubmit"
+        class="contact__content-form flex flex-col gap-4"
+      >
         <FormInput
           v-fade-in="{ delay: 320, y: 20, mobile: { delay: 0, y: 16 } }"
+          v-model="form.name"
+          id="contact-name"
+          name="name"
+          autocomplete="name"
           :label="txCommon('form.name')"
           type="text"
         />
         <FormInput
           v-fade-in="{ delay: 380, y: 20, mobile: { delay: 0, y: 16 } }"
+          v-model="form.email"
+          id="contact-email"
+          name="email"
+          autocomplete="email"
           :label="txCommon('form.email')"
-          type="text"
+          type="email"
         />
         <div v-fade-in="{ delay: 440, y: 20, mobile: { delay: 0, y: 16 } }" class="relative group">
           <textarea
-            id="message"
+            v-model="form.message"
+            id="contact-message"
             rows="5"
             placeholder=" "
             class="w-full pt-5 pb-1 outline-none peer bg-transparent text-gold-500 border-b border-gray-muted group-focus-within:border-gold-500 resize-y min-h-[80px]"
           />
           <label
-            for="message"
+            for="contact-message"
             class="absolute origin-[0_0] left-0 top-4 text-body-sm laptop:text-body tracking-[1px] peer-focus:top-0 peer-focus:scale-75 group-focus-within:text-gold-500 peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:scale-75"
             >{{ tx('form.message') }}</label
           >
         </div>
-        <BaseButton class="w-full mt-4">{{ tx('form.submit') }}</BaseButton>
+        <p
+          aria-live="polite"
+          class="min-h-[1rem] text-label-lg"
+          :class="formHasError ? 'text-red-500' : 'text-gold-500'"
+        >
+          {{ formMsg }}
+        </p>
+        <BaseButton type="submit" class="w-full mt-4">{{ tx('form.submit') }}</BaseButton>
       </form>
       <section
         class="contact__content-info flex flex-col desktop:flex-row desktop:justify-between gap-8 my-8"
