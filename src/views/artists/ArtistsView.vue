@@ -3,7 +3,7 @@ import { useI18n } from 'vue-i18n'
 import BaseArtistCard from '@/components/ui/BaseArtistCard.vue'
 import SectionHeading from '@/components/ui/SectionHeading.vue'
 import GoldDivider from '@/components/ui/GoldDivider.vue'
-import artists from '@/data/artists.json'
+import { artists } from '@/data'
 
 const { t } = useI18n()
 </script>

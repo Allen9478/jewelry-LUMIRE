@@ -3,8 +3,7 @@ import { useRoute } from 'vue-router'
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useLocalized } from '@/composables/useLocalized'
-import artists from '@/data/artists.json'
-import works from '@/data/works.json'
+import { getArtistById, getWorksByDesigner } from '@/data'
 import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
 import SectionHeading from '@/components/ui/SectionHeading.vue'
 import ItemGrid from '@/components/ui/ItemGrid.vue'
@@ -15,8 +14,8 @@ import QuoteBlock from '@/components/ui/QuoteBlock.vue'
 const route = useRoute()
 const { t, locale } = useI18n()
 const { localized } = useLocalized()
-const artist = computed(() => artists.find((a) => a.id === route.params.id))
-const work = computed(() => works.filter((w) => w.designer === artist.value?.name))
+const artist = computed(() => getArtistById(String(route.params.id)))
+const work = computed(() => (artist.value ? getWorksByDesigner(artist.value.name) : []))
 const collectionTitles = computed(() => {
   const lang = locale.value as 'zh-TW' | 'en'
   return (

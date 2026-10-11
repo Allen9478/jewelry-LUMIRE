@@ -2,23 +2,14 @@
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 import getImageUrl from '@/utils/getImageUrl'
-import artistsData from '@/data/artists.json'
-import worksData from '@/data/works.json'
-import type { ArtistItem } from '@/types/artist'
-import type { WorkItem } from '@/types/work'
+import { artists, getWorksByDesigner } from '@/data'
 import { useI18n } from 'vue-i18n'
 import { useLocalized } from '@/composables/useLocalized'
 import GoldDivider from '@/components/ui/GoldDivider.vue'
 import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
 
-const works: WorkItem[] = worksData
-const artists: ArtistItem[] = artistsData
 const { t } = useI18n()
 const { localized } = useLocalized()
-
-function getArtistWorks(artistName: string) {
-  return works.filter((w) => w.designer === artistName).slice(0, 3)
-}
 </script>
 
 <template>
@@ -84,7 +75,7 @@ function getArtistWorks(artistName: string) {
             <p class="text-eyebrow text-gold-500">{{ t('page.artistCarousel.signaturePieces') }}</p>
             <div class="hidden tablet:flex gap-3">
               <RouterLink
-                v-for="work in getArtistWorks(artist.name)"
+                v-for="work in getWorksByDesigner(artist.name).slice(0, 3)"
                 :key="work.id"
                 :to="{ name: 'works-detail', params: { id: work.id } }"
                 class="flex-1 aspect-square overflow-hidden border border-gold-500/20 hover:border-gold-500/60 transition-colors"

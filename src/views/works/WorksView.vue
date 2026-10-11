@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import works from '@/data/works.json'
+import { works } from '@/data'
 import SectionHeading from '@/components/ui/SectionHeading.vue'
 import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
 import BaseUnderlineTab from '@/components/common/BaseUnderlineTab.vue'
