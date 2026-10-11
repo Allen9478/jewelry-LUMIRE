@@ -6,6 +6,20 @@ export const useUiStore = defineStore('ui', () => {
   const showLoginModal = ref(false)
   const showSearchModal = ref(false)
   const pendingRedirect = ref<string | null>(null)
+  const toastKey = ref<string | null>(null) // 存 i18n key
+
+  //不寫ref是因為這只有內部用沒有畫面依賴
+  let toastTimer: ReturnType<typeof setTimeout> | null = null
+
+  function showToast(key: string, duration = 3000) {
+    toastKey.value = key
+    //新的提示出現前如果有舊的提示就把舊的先刪掉
+    if (toastTimer) clearTimeout(toastTimer)
+    toastTimer = setTimeout(() => {
+      toastKey.value = null
+    }, duration)
+  }
+
   function openLoginModal() {
     showLoginModal.value = true
   }
@@ -25,6 +39,7 @@ export const useUiStore = defineStore('ui', () => {
   function clearPendingRedirect() {
     pendingRedirect.value = null
   }
+
   return {
     showLoginModal,
     openLoginModal,
@@ -35,5 +50,7 @@ export const useUiStore = defineStore('ui', () => {
     closeSearchModal,
     setPendingRedirect,
     clearPendingRedirect,
+    toastKey,
+    showToast,
   }
 })
