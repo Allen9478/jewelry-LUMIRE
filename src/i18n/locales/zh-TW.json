@@ -54,7 +54,9 @@
       "newsletter": {
         "placeholder": "輸入 Email",
         "submit": "訂閱",
-        "submitted": "感謝訂閱！"
+        "submitted": "感謝訂閱！",
+        "demo": "此為展示功能,不會實際訂閱。",
+        "invalid": "請輸入有效的 Email"
       }
     },
     "works": {
@@ -259,7 +261,12 @@
       ],
       "form": {
         "message": "訊息",
-        "submit": "送出訊息"
+        "submit": "送出訊息",
+        "demo": "此為展示功能,訊息不會實際送出。",
+        "error": {
+          "required": "請填寫所有欄位",
+          "invalidEmail": "請輸入有效的 Email"
+        }
       },
       "location": {
         "name": "Lumière 珠寶藝廊",
