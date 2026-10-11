@@ -6,12 +6,13 @@ import { useAuthStore } from '@/stores/useAuthStore'
 import { useLocalized } from '@/composables/useLocalized'
 import { storeToRefs } from 'pinia'
 import GoldDivider from '@/components/ui/GoldDivider.vue'
+import loadingDiamond from '@/assets/images/favorites/loading-diamond.svg'
 import SectionHeading from '@/components/ui/SectionHeading.vue'
 import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
 import ItemGrid from '@/components/ui/ItemGrid.vue'
-import works from '@/data/works.json'
+import { works } from '@/data'
 
 const favoriteStore = useFavoriteStore()
 const authStore = useAuthStore()
@@ -91,8 +92,15 @@ const sortedFavorites = computed(() => {
       />
     </section>
     <template v-if="isLoading">
-      <div class="min-h-[50vh]">
-        <p>{{ txCommon('loading') }}</p>
+      <div class="min-h-[50vh] flex items-center justify-center gap-3">
+        <img
+          :src="loadingDiamond"
+          alt=""
+          width="40"
+          height="40"
+          class="size-10 motion-reduce:hidden"
+        />
+        <p class="text-body-lg">{{ txCommon('loading') }}</p>
       </div>
     </template>
     <template v-else-if="loadError">

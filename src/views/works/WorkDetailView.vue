@@ -3,8 +3,7 @@ import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useLocalized } from '@/composables/useLocalized'
 import { computed } from 'vue'
-import works from '@/data/works.json'
-import artists from '@/data/artists.json'
+import { getWorkById, getArtistByName, getWorksByDesigner } from '@/data'
 import BaseAvatar from '@/components/ui/BaseAvatar.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
@@ -14,14 +13,15 @@ import getImageUrl from '@/utils/getImageUrl'
 const route = useRoute()
 const { t } = useI18n()
 const { localized } = useLocalized()
-const work = computed(() => works.find((w) => w.id === route.params.id))
-const artist = computed(() => artists.find((a) => a.name === work.value?.designer))
-
-function getOtherWorks() {
-  return works
-    .filter((w) => w.designer === artist.value?.name && w.id !== work.value?.id)
-    .slice(0, 3)
-}
+const work = computed(() => getWorkById(String(route.params.id)))
+const artist = computed(() => (work.value ? getArtistByName(work.value.designer) : undefined))
+const otherWorks = computed(() =>
+  work.value
+    ? getWorksByDesigner(work.value.designer)
+        .filter((w) => w.id !== work.value!.id)
+        .slice(0, 3)
+    : [],
+)
 </script>
 <template>
   <div
@@ -131,7 +131,7 @@ function getOtherWorks() {
       class="grid grid-cols-1 tablet:grid-cols-3 tablet:justify-items-center py-8 tablet:py-16 gap-6 tablet:gap-4"
     >
       <div
-        v-for="(work, i) in getOtherWorks()"
+        v-for="(work, i) in otherWorks"
         v-fade-in="{ delay: i * 100, y: 24, mobile: { delay: i * 60, y: 16 } }"
         :key="work.id"
         class="flex w-full justify-center"

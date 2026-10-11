@@ -10,8 +10,7 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
 import getImageUrl from '@/utils/getImageUrl'
 import GoldDivider from '@/components/ui/GoldDivider.vue'
-import works from '@/data/works.json'
-import artists from '@/data/artists.json'
+import { works, artists } from '@/data'
 import { CalendarDaysIcon, MapPinIcon, ClockIcon } from '@heroicons/vue/24/outline'
 
 // i18n 裡取回來的原始形狀

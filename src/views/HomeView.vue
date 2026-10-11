@@ -11,8 +11,7 @@ import BaseAvatar from '@/components/ui/BaseAvatar.vue'
 import QuoteBlock from '@/components/ui/QuoteBlock.vue'
 import GoldDivider from '@/components/ui/GoldDivider.vue'
 import breathing from '@/assets/images/home/breathing-bg.webp'
-import artists from '@/data/artists.json'
-import works from '@/data/works.json'
+import { works, artists } from '@/data'
 import { CalendarDaysIcon, MapPinIcon } from '@heroicons/vue/24/outline'
 
 const { tx } = useScopedI18n('page.home')
