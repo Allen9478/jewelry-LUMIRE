@@ -3,12 +3,14 @@ import BaseModal from '@/components/ui/BaseModal.vue'
 import { ref, watch, toRef, nextTick } from 'vue'
 import { useSearch } from '@/composables/useSearch'
 import { useI18n } from 'vue-i18n'
+import { useScopedI18n } from '@/composables/useScopedI18n'
 import type { WorkItem } from '@/types/work'
 import type { ArtistItem } from '@/types/artist'
 
 import { useUiStore } from '@/stores/useUiStore'
 
 const { t } = useI18n()
+const { tx: txSearch } = useScopedI18n('searchModal')
 const props = defineProps<{
   works: WorkItem[]
   artists: ArtistItem[]
@@ -117,7 +119,9 @@ watch(
           <span
             class="shrink-0 text-label tracking-wide text-gold-500/90 bg-gold-500/10 px-2 py-0.5 rounded border border-gold-500/20"
           >
-            {{ result.type === 'work' ? '珠寶' : '藝術家' }}
+            {{
+              result.type === 'work' ? txSearch('searchResultWork') : txSearch('searchResultArtist')
+            }}
           </span>
         </li>
       </ul>

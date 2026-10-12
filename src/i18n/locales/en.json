@@ -374,6 +374,8 @@
   "searchModal": {
     "title": "Site search",
     "placeholder": "Search artist or jewelry",
+    "searchResultWork": "Jewelry",
+    "searchResultArtist": "Artist",
     "noResults": "No results found for “{keyword}”"
   },
   "loginPrompt": {
