@@ -16,6 +16,7 @@ const emit = defineEmits<{ navigate: [] }>()
     :to="to"
     class="menu__link"
     :class="{ 'menu__link--active': active }"
+    :aria-label="label"
     :aria-current="active ? 'page' : undefined"
     @click="emit('navigate')"
   >

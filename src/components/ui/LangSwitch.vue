@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import { useCommonI18n } from '@/composables/useScopedI18n'
 import type { LocalizedText } from '@/types/work'
 
 type Variant = 'desktop' | 'mobile'
@@ -15,7 +16,7 @@ withDefaults(
 )
 
 const { locale } = useI18n()
-
+const { tx: txCommon } = useCommonI18n()
 function switchLocale(lang: Locale) {
   locale.value = lang
 }
@@ -53,7 +54,7 @@ function switchLocale(lang: Locale) {
         type="button"
         @click="switchLocale('en')"
         class="w-full px-4 py-2 text-left text-label-lg hover:text-gold-500"
-        aria-label="english"
+        :aria-label="txCommon('aria.langEn')"
       >
         EN
       </button>
@@ -61,7 +62,7 @@ function switchLocale(lang: Locale) {
         type="button"
         @click="switchLocale('zh-TW')"
         class="w-full px-4 py-2 text-left text-label-lg hover:text-gold-500"
-        aria-label="chinese"
+        :aria-label="txCommon('aria.langZh')"
       >
         中文
       </button>
@@ -72,7 +73,7 @@ function switchLocale(lang: Locale) {
       type="button"
       @click="switchLocale('en')"
       class="text-label-lg px-1 py-2 transition-colors"
-      aria-label="english"
+      :aria-label="txCommon('aria.langEn')"
       :class="
         locale === 'en'
           ? 'text-gold-500 border-b border-gold-500'
@@ -86,7 +87,7 @@ function switchLocale(lang: Locale) {
       type="button"
       @click="switchLocale('zh-TW')"
       class="text-label-lg px-1 py-2 transition-colors"
-      aria-label="chinese"
+      :aria-label="txCommon('aria.langZh')"
       :class="
         locale === 'zh-TW'
           ? 'text-gold-500 border-b border-gold-500'

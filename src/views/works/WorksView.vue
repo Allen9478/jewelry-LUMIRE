@@ -6,8 +6,10 @@ import BaseUnderlineTab from '@/components/common/BaseUnderlineTab.vue'
 import ArtistsCarousel from '@/components/ui/ArtistsCarousel.vue'
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useCommonI18n } from '@/composables/useScopedI18n'
 
 const { t } = useI18n()
+const { tx: txCommon } = useCommonI18n()
 const currentCategory = ref<string | null>(null)
 
 const availableCategories = computed(() => {
@@ -54,7 +56,7 @@ function getFadeDelay(index: number, base: number, step: number) {
   <div class="work-main page-container relative">
     <nav
       v-fade-in="{ delay: 0, y: 12, mobile: { delay: 200, y: 12 } }"
-      aria-label="依作品類別篩選作品"
+      :aria-label="txCommon('aria.filterWorks')"
       class="py-3 overflow-x-auto no-scrollbar tablet:overflow-visible"
     >
       <ul

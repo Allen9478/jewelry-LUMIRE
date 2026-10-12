@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useCommonI18n } from '@/composables/useScopedI18n'
 import AppLogo from './AppLogo.vue'
 import SocialIcon from '@/components/ui/SocialIcon.vue'
 
@@ -12,6 +13,7 @@ interface FooterSection {
 }
 
 const { t } = useI18n()
+const { tx: txCommon } = useCommonI18n()
 const socials = ['instagram', 'facebook', 'email', 'youtube'] as const
 const openSections = ref<Record<string, boolean>>({})
 
@@ -66,7 +68,7 @@ const sections: FooterSection[] = [
         <!-- tablet:w-[300px]是為svg的寬度改變時不影響整體排版而寫 -->
         <div class="flex flex-col tablet:shrink-0 tablet:w-[300px]">
           <RouterLink
-            aria-label="回首頁"
+            :aria-label="txCommon('aria.home')"
             :to="{ name: 'home' }"
             exact-active-class=""
             class="inline-flex flex-col self-start font-serif text-center text-gold-500"

@@ -396,6 +396,16 @@
     "signOut": "登出",
     "addFavorite": "加入收藏",
     "removeFavorite": "取消收藏",
+    "aria": {
+      "home": "回首頁",
+      "mainNav": "主要導覽列",
+      "favorites": "我的最愛收藏",
+      "member": "會員",
+      "toggleMenu": "切換導覽選單",
+      "langEn": "English",
+      "langZh": "繁體中文",
+      "filterWorks": "依作品類別篩選作品"
+    },
     "toast": {
       "offline": "目前沒有網路連線，請稍後再試。",
       "favoriteFailed": "收藏更新失敗，請稍後再試。"

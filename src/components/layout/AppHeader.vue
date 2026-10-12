@@ -5,13 +5,14 @@ import { useRoute, useRouter } from 'vue-router'
 import { navItems } from '@/constants/navigations'
 import { useScrollDirection } from '@/composables/useScrollDirection'
 import { useUiStore } from '@/stores/useUiStore'
+import { useCommonI18n } from '@/composables/useScopedI18n'
+import { UserIcon, MagnifyingGlassIcon } from '@heroicons/vue/24/outline'
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import BaseUnderlineTab from '@/components/common/BaseUnderlineTab.vue'
 import LangSwitch from '@/components/ui/LangSwitch.vue'
 import HamburgerMenu from '@/components/layout/HamburgerMenu.vue'
 import HeartIcon from '@/components/common/HeartIcon.vue'
 import AppLogo from './AppLogo.vue'
-import { UserIcon, MagnifyingGlassIcon } from '@heroicons/vue/24/outline'
 
 const uiStore = useUiStore()
 const isScrolled = ref(false)
@@ -19,6 +20,7 @@ const router = useRouter()
 const route = useRoute()
 const authStore = useAuthStore()
 const { t } = useI18n()
+const { tx: txCommon } = useCommonI18n()
 const { isHeaderVisible } = useScrollDirection()
 const isFavoritePage = computed(() => route.name === 'favorites')
 const showMenu = ref(false)
@@ -49,7 +51,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
       <HamburgerMenu class="w-9" />
 
       <RouterLink
-        aria-label="回首頁"
+        :aria-label="txCommon('aria.home')"
         :to="{ name: 'home' }"
         exact-active-class=""
         class="inline-flex flex-col font-serif text-center text-gold-500"
@@ -58,7 +60,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
       </RouterLink>
       <!-- Nav：flex-1 吸收空間，overflow hidden 防破版 -->
       <nav
-        aria-label="主要導覽列"
+        :aria-label="txCommon('aria.mainNav')"
         class="hidden tablet:flex flex-1 justify-center min-w-0 overflow-x-auto px-2 laptop:px-4"
       >
         <ul class="flex items-center whitespace-nowrap">
@@ -86,7 +88,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
           <!-- 手機版 -->
           <div class="flex gap-2 tablet:hidden">
             <RouterLink
-              aria-label="我的最愛收藏"
+              :aria-label="txCommon('aria.favorites')"
               class="nav__icon w-9 flex items-center justify-end tablet:w-6"
               :to="{ name: 'favorites' }"
             >
@@ -97,7 +99,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
           <!-- 桌機版 -->
           <div class="hidden tablet:flex gap-2 lg:gap-3 xl:gap-4">
             <RouterLink
-              aria-label="我的最愛收藏"
+              :aria-label="txCommon('aria.favorites')"
               class="nav__icon w-9 flex items-center justify-end tablet:w-6"
               :to="{ name: 'favorites' }"
             >
@@ -119,7 +121,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
         <template v-else>
           <RouterLink
             @click="uiStore.openLoginModal"
-            aria-label="我的最愛收藏"
+            :aria-label="txCommon('aria.favorites')"
             class="nav__icon w-9 flex items-center justify-end tablet:w-6"
             :to="{ name: 'favorites' }"
           >
@@ -127,7 +129,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
           </RouterLink>
           <RouterLink
             :to="{ name: 'login' }"
-            aria-label="會員"
+            :aria-label="txCommon('aria.member')"
             class="nav__icon hidden tablet:block"
           >
             <UserIcon class="size-6" />
