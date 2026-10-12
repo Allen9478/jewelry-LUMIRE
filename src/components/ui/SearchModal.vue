@@ -45,7 +45,11 @@ watch(
 </script>
 
 <template>
-  <BaseModal :is-open="uiStore.showSearchModal" @close="uiStore.closeSearchModal">
+  <BaseModal
+    :is-open="uiStore.showSearchModal"
+    :label="t('searchModal.title')"
+    @close="uiStore.closeSearchModal"
+  >
     <div class="search-box relative w-full">
       <div class="relative flex items-center">
         <svg

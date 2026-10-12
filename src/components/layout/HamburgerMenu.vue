@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useCommonI18n } from '@/composables/useScopedI18n'
 import { navItems } from '@/constants/navigations'
 import { useAuthStore } from '@/stores/useAuthStore'
 import { useRoute, useRouter } from 'vue-router'
@@ -14,6 +15,7 @@ const authStore = useAuthStore()
 const route = useRoute()
 const router = useRouter()
 const { t } = useI18n()
+const { tx: txCommon } = useCommonI18n()
 const { isHeaderVisible } = useScrollDirection()
 const isOpen = ref(false)
 const isActive = (matchNames: string[]) => matchNames.includes(String(route.name))
@@ -59,7 +61,7 @@ onUnmounted(() => {
         class="hamburger__btn"
         :class="{ 'is-open': isOpen, 'hamburger__btn--hidden': !isHeaderVisible && !isOpen }"
         :aria-expanded="isOpen"
-        aria-label="Toggle navigation menu"
+        :aria-label="txCommon('aria.toggleMenu')"
       >
         <span class="hamburger__bar hamburger__bar--top"></span>
         <span class="hamburger__bar hamburger__bar--mid"></span>
@@ -73,7 +75,7 @@ onUnmounted(() => {
           <!-- 選單內容 -->
           <nav class="menu__nav">
             <RouterLink
-              aria-label="回首頁"
+              :aria-label="txCommon('aria.home')"
               :to="{ name: 'home' }"
               @click="closeMenu"
               class="inline-flex flex-col font-serif self-start text-center text-gold-500 mt-12 menu__logo"

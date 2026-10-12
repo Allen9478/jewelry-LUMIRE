@@ -372,6 +372,7 @@
     "copyright": "© 2026 Lumière Jewelry Gallery. All Rights Reserved."
   },
   "searchModal": {
+    "title": "Site search",
     "placeholder": "Search artist or jewelry",
     "noResults": "No results found for “{keyword}”"
   },
@@ -395,6 +396,16 @@
     "signOut": "Sign Out",
     "addFavorite": "Add to favorites",
     "removeFavorite": "Remove from favorites",
+    "aria": {
+      "home": "Back to home",
+      "mainNav": "Main navigation",
+      "favorites": "My favorites",
+      "member": "Member",
+      "toggleMenu": "Toggle navigation menu",
+      "langEn": "English",
+      "langZh": "繁體中文",
+      "filterWorks": "Filter works by category"
+    },
     "toast": {
       "offline": "You appear to be offline. Please try again later.",
       "favoriteFailed": "Could not update your favorites. Please try again."
