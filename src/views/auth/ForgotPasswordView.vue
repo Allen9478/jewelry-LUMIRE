@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useAuthStore } from '@/stores/useAuthStore'
 import { useScopedI18n } from '@/composables/useScopedI18n'
+import { getAuthErrorKey } from '@/utils/authError'
 import FormInput from '@/components/ui/FormInput.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 
@@ -9,16 +10,21 @@ const { tx } = useScopedI18n('page.forgotPassword')
 const { tx: txCommon } = useScopedI18n('common')
 const authStore = useAuthStore()
 const email = ref('')
-const error = ref('')
-const sucMsg = ref('')
+const errMsg = ref('')
+const resetEmailSent = ref(false)
 async function handleSubmit() {
+  if (authStore.isLoading) return
+  errMsg.value = ''
+  resetEmailSent.value = false
+  if (!email.value.trim()) {
+    errMsg.value = 'auth.errMsg.emailEmpty'
+    return
+  }
   try {
-    error.value = ''
-    sucMsg.value = ''
     await authStore.resetPassword(email.value)
-    sucMsg.value = 'A reset link has been sent to your email'
-  } catch {
-    error.value = authStore.error || 'Something went wrong'
+    resetEmailSent.value = true
+  } catch (err) {
+    errMsg.value = getAuthErrorKey(err)
   }
 }
 </script>
@@ -28,10 +34,16 @@ async function handleSubmit() {
     <p class="text-center">{{ tx('description') }}</p>
     <form @submit.prevent="handleSubmit" class="flex flex-col gap-8">
       <FormInput v-model="email" type="email" :label="txCommon('form.email')" class="mt-5" />
-      <p v-if="sucMsg" class="text-gold-500 text-label-lg">{{ sucMsg }}</p>
-      <p v-if="error" class="text-red-500 text-label-lg">{{ error }}</p>
+      <!-- role=status是內容唸完再換他唸，alert是馬上念出來 -->
+      <p v-if="resetEmailSent" role="status" class="text-gold-500 text-label-lg">
+        {{ txCommon('auth.resetEmailSent') }}
+      </p>
+      <p v-if="errMsg" role="alert" class="text-red-500 text-label-lg">
+        {{ txCommon(errMsg) }}
+      </p>
       <BaseButton
         type="submit"
+        :disabled="authStore.isLoading"
         variant="primary"
         class="w-full font-bold p-4 text-label-lg mt-4 laptop:mt-8"
         >{{ tx('submit') }}</BaseButton

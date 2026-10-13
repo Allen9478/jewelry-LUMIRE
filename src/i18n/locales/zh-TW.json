@@ -313,7 +313,7 @@
     },
     "login": {
       "title": "歡迎回來",
-      "submit": "進入",
+      "submit": "登入",
       "newToLumiere": "初次來到 Lumière？",
       "requestAccess": "申請加入",
       "forgotPassword": "忘記密碼"
@@ -328,7 +328,6 @@
       "title": "初次來訪？",
       "fullName": "姓名",
       "confirmPassword": "確認密碼",
-      "passwordMismatch": "兩次輸入的密碼不一致",
       "submit": "建立帳號",
       "haveAccount": "已經有帳號了嗎？"
     },
@@ -411,6 +410,20 @@
     "toast": {
       "offline": "目前沒有網路連線，請稍後再試。",
       "favoriteFailed": "收藏更新失敗，請稍後再試。"
+    },
+    "auth": {
+      "errMsg": {
+        "required": "請填寫完整資料",
+        "emailEmpty": "請輸入電子郵件",
+        "passwordMismatch": "兩次輸入的密碼不一致",
+        "invalidCredential": "電子郵件或密碼不正確",
+        "invalidEmail": "請輸入有效的電子郵件",
+        "emailInUse": "此電子郵件已被註冊",
+        "weakPassword": "密碼至少需要 6 個字元",
+        "userNotFound": "找不到此電子郵件對應的帳號",
+        "genericError": "發生錯誤，請稍後再試"
+      },
+      "resetEmailSent": "重設密碼的連結已寄出，請至信箱查收"
     }
   }
 }
