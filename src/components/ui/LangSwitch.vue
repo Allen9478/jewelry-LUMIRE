@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useCommonI18n } from '@/composables/useScopedI18n'
 import type { LocalizedText } from '@/types/work'
@@ -15,40 +16,70 @@ withDefaults(
   },
 )
 
+const isOpen = ref(false)
+const rootRef = ref<HTMLElement | null>(null)
 const { locale } = useI18n()
 const { tx: txCommon } = useCommonI18n()
+
 function switchLocale(lang: Locale) {
   locale.value = lang
+  isOpen.value = false
 }
+
+function onPointerDown(e: PointerEvent) {
+  if (rootRef.value && e.target instanceof Node && !rootRef.value.contains(e.target)) {
+    isOpen.value = false // 點到選單外面就收起
+  }
+}
+
+function onKeydown(e: KeyboardEvent) {
+  if (e.key === 'Escape') isOpen.value = false
+}
+
+onMounted(() => {
+  document.addEventListener('pointerdown', onPointerDown)
+  document.addEventListener('keydown', onKeydown)
+})
+onBeforeUnmount(() => {
+  document.removeEventListener('pointerdown', onPointerDown)
+  document.removeEventListener('keydown', onKeydown)
+})
 </script>
 <template>
   <div
+    ref="rootRef"
     v-if="variant === 'desktop'"
     class="relative group hidden tablet:flex items-center cursor-pointer"
   >
     <!-- 顯示目前選項 -->
-    <span
-      class="text-label laptop:text-label-lg px-2 py-2 group-hover:text-gold-500 transition-colors"
+    <button
+      type="button"
+      @click="isOpen = !isOpen"
+      class="flex items-center group-hover:text-gold-500 group-focus-within:text-gold-500 transition-colors"
     >
-      {{ locale === 'zh-TW' ? '中文' : 'EN' }}
-    </span>
+      <span class="text-label laptop:text-label-lg px-2 py-2">
+        {{ locale === 'zh-TW' ? '中文' : 'EN' }}
+      </span>
 
-    <!-- 箭頭 -->
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      focusable="false"
-      stroke-width="1.5"
-      stroke="currentColor"
-      class="size-4 pointer-events-none text-white transition-colors duration-300 group-hover:text-gold-500"
-    >
-      <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-    </svg>
+      <!-- 箭頭 -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+        focusable="false"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-4 pointer-events-none text-white transition-colors duration-300 group-hover:text-gold-500"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+      </svg>
+    </button>
     <!-- 自訂下拉 -->
+    <!-- group-focus-within 意思是 group 容器裡只要有任何元素拿到焦點，就套用這組樣式。 -->
     <div
-      class="absolute left-0 top-full mt-2 w-20 bg-[#1a1a1a] border border-[#3a3530] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
+      :class="isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'"
+      class="absolute left-0 top-full mt-2 w-20 bg-[#1a1a1a] border border-[#3a3530] group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200"
     >
       <button
         type="button"
