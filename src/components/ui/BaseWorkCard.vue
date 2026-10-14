@@ -37,24 +37,27 @@ withDefaults(
             class="aspect-[3/4] max-w-full object-cover max-h-[180px] tablet:max-h-[250px] laptop:max-h-[300px] laptop:object-contain"
           />
           <div
-            class="card__overlay tablet:absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            class="card__overlay tablet:absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100"
           ></div>
         </div>
         <!-- 分開寫兩個的原因是解決 mobile切換tablet瞬間文字出現消失的問題,用css能解決就不用js並且這裡code沒很多  -->
-        <div class="flex flex-col pl-4 pr-10 tablet:hidden">
-          <h2 class="card__name text-white text-body my-2 line-clamp-2">
+        <div class="flex flex-col pl-4 pr-10 gap-3 tablet:hidden">
+          <h2 class="card__name text-white text-body line-clamp-2">
             {{ localized(work.name) }}
           </h2>
-          <p class="card__artist text-white/50 mb-3 text-body-sm">{{ work.designer }}</p>
-          <p class="text-label order-last mb-3 tracking-widest text-gold-500">View →</p>
+          <p class="card__artist text-white/50 text-body-sm">{{ work.designer }}</p>
+          <!-- <p class="text-label order-last mb-3 tracking-widest text-gold-500">View →</p> -->
+          <p class="flex items-center text-label tracking-widest text-gold-500">
+            {{ t('card.view') }} <BaseArrowIcon sizeClass="size-5" />
+          </p>
         </div>
 
         <div
-          class="hidden tablet:flex flex-col tablet:absolute tablet:bottom-0 tablet:left-0 tablet:right-0 tablet:p-5 translate-y-2 pointer-events-none opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500"
+          class="hidden tablet:flex flex-col tablet:absolute tablet:bottom-0 tablet:left-0 tablet:right-0 tablet:p-5 tablet:gap-3 translate-y-2 pointer-events-none opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100 transition-all duration-500"
         >
-          <h2 class="card__name text-white text-body mb-3">{{ localized(work.name) }}</h2>
-          <p class="card__artist text-white/90 mb-3 text-body-sm">{{ work.designer }}</p>
-          <p class="flex items-center text-label tracking-widest text-gold-500 mb-3">
+          <h2 class="card__name text-white text-body">{{ localized(work.name) }}</h2>
+          <p class="card__artist text-white/90 text-body-sm">{{ work.designer }}</p>
+          <p class="flex items-center text-label tracking-widest text-gold-500">
             {{ t('card.view') }} <BaseArrowIcon sizeClass="size-5" />
           </p>
         </div>
