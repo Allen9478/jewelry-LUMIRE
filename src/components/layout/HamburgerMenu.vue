@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, watch, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useCommonI18n } from '@/composables/useScopedI18n'
 import { navItems } from '@/constants/navigations'
@@ -40,13 +40,22 @@ function goToLogin() {
 }
 
 async function handleLogout() {
-  await authStore.logout()
-  closeMenu()
-  router.push('/')
+  try {
+    await authStore.logout()
+    router.push('/')
+  } finally {
+    closeMenu()
+  }
 }
 
+watch(isOpen, (open) => {
+  document.getElementById('app')?.toggleAttribute('inert', open)
+})
+
 onMounted(() => window.addEventListener('keydown', handleKeydown))
+
 onUnmounted(() => {
+  document.getElementById('app')?.removeAttribute('inert')
   window.removeEventListener('keydown', handleKeydown)
   document.body.style.overflow = ''
 })
@@ -54,9 +63,10 @@ onUnmounted(() => {
 <template>
   <div class="hamburger tablet:hidden">
     <!-- 全螢幕選單遮罩 -->
-    <Teleport to="body">
+    <Teleport to="#hamburger-menu-root">
       <!-- 觸發按鈕 -->
       <button
+        type="button"
         @click="toggleMenu"
         class="hamburger__btn"
         :class="{ 'is-open': isOpen, 'hamburger__btn--hidden': !isHeaderVisible && !isOpen }"

@@ -6,6 +6,7 @@ import { navItems } from '@/constants/navigations'
 import { useScrollDirection } from '@/composables/useScrollDirection'
 import { useUiStore } from '@/stores/useUiStore'
 import { useCommonI18n } from '@/composables/useScopedI18n'
+import { useDropdown } from '@/composables/useDropdown'
 import { UserIcon, MagnifyingGlassIcon } from '@heroicons/vue/24/outline'
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import BaseUnderlineTab from '@/components/common/BaseUnderlineTab.vue'
@@ -21,15 +22,18 @@ const route = useRoute()
 const authStore = useAuthStore()
 const { t } = useI18n()
 const { tx: txCommon } = useCommonI18n()
+const { isOpen, toggle, close } = useDropdown('memberRef')
 const { isHeaderVisible } = useScrollDirection()
 const isFavoritePage = computed(() => route.name === 'favorites')
 const showMenu = ref(false)
 
 async function handleLogout() {
+  close()
   await authStore.logout()
   showMenu.value = false
   router.push('/')
 }
+
 function handleScroll() {
   isScrolled.value = window.scrollY > 50
 }
@@ -105,16 +109,27 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
             >
               <HeartIcon :filled="isFavoritePage"></HeartIcon>
             </RouterLink>
-            <div class="member relative group cursor-pointer">
-              <span class="group-hover:opacity-0 transition-opacity duration-200">
-                {{ authStore.displayName }}
-              </span>
-              <span
-                @click="handleLogout"
-                class="absolute inset-0 flex items-center justify-center text-center text-gold-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200 tracking-widest text-sm"
+            <div ref="memberRef" class="member relative">
+              <button
+                type="button"
+                class="text-label-lg hover:text-gold-500 transition-colors"
+                :aria-expanded="isOpen"
+                @click="toggle"
               >
-                {{ t('common.signOut') }}
-              </span>
+                {{ authStore.displayName }}
+              </button>
+              <div
+                v-if="isOpen"
+                class="absolute left-1/2 top-full mt-2 min-w-24 -translate-x-1/2 whitespace-nowrap bg-[#1a1a1a] border border-[#3a3530]"
+              >
+                <button
+                  type="button"
+                  class="w-full text-center text-label-lg text-white hover:text-gold-500"
+                  @click="handleLogout"
+                >
+                  {{ t('common.signOut') }}
+                </button>
+              </div>
             </div>
           </div>
         </template>

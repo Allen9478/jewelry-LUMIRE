@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useCommonI18n } from '@/composables/useScopedI18n'
+import { useDropdown } from '@/composables/useDropdown'
 import type { LocalizedText } from '@/types/work'
 
 type Variant = 'desktop' | 'mobile'
@@ -16,34 +16,14 @@ withDefaults(
   },
 )
 
-const isOpen = ref(false)
-const rootRef = ref<HTMLElement | null>(null)
 const { locale } = useI18n()
 const { tx: txCommon } = useCommonI18n()
+const { isOpen, toggle, close } = useDropdown('rootRef')
 
 function switchLocale(lang: Locale) {
   locale.value = lang
-  isOpen.value = false
+  close()
 }
-
-function onPointerDown(e: PointerEvent) {
-  if (rootRef.value && e.target instanceof Node && !rootRef.value.contains(e.target)) {
-    isOpen.value = false // 點到選單外面就收起
-  }
-}
-
-function onKeydown(e: KeyboardEvent) {
-  if (e.key === 'Escape') isOpen.value = false
-}
-
-onMounted(() => {
-  document.addEventListener('pointerdown', onPointerDown)
-  document.addEventListener('keydown', onKeydown)
-})
-onBeforeUnmount(() => {
-  document.removeEventListener('pointerdown', onPointerDown)
-  document.removeEventListener('keydown', onKeydown)
-})
 </script>
 <template>
   <div
@@ -54,7 +34,7 @@ onBeforeUnmount(() => {
     <!-- 顯示目前選項 -->
     <button
       type="button"
-      @click="isOpen = !isOpen"
+      @click="toggle"
       class="flex items-center group-hover:text-gold-500 group-focus-within:text-gold-500 transition-colors"
     >
       <span class="text-label laptop:text-label-lg px-2 py-2">
