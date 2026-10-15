@@ -9,6 +9,7 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
 import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
 import getImageUrl from '@/utils/getImageUrl'
+import NotFoundView from '@/views/NotFoundView.vue'
 
 const route = useRoute()
 const { t } = useI18n()
@@ -24,120 +25,124 @@ const otherWorks = computed(() =>
 )
 </script>
 <template>
-  <div
-    v-if="work"
-    class="page-container work-detail-hero tablet:grid tablet:grid-cols-[50%_1fr] wide:grid-cols-[40%_1fr] tablet:h-full wide:h-[90dvh] header-offset tablet:mt-2 gap-6"
-  >
+  <template v-if="work">
     <div
-      v-fade-in="{ delay: 0, y: 24, mobile: { delay: 0, y: 16 } }"
-      class="work-detail-hero__image tablet:w-full tablet:h-full tablet:min-h-0 aspect-[4/5]"
+      class="page-container work-detail-hero tablet:grid tablet:grid-cols-[50%_1fr] wide:grid-cols-[40%_1fr] tablet:h-full wide:h-[90dvh] header-offset tablet:mt-2 gap-6"
     >
-      <img
-        :src="getImageUrl(`jewelry/${work.image}`)"
-        :alt="localized(work.name)"
-        fetchpriority="high"
-        width="1122"
-        height="1402"
-        class="w-full h-full object-cover"
-      />
-    </div>
-    <div class="work-detail-hero__info tablet:h-full tablet:min-h-0 overflow-hidden">
-      <div class="work-detail-hero__info-heading-group flex flex-col gap-6 mt-2 tablet:mt-2">
-        <div
-          v-fade-in="{ delay: 80, y: 12, mobile: { delay: 40, y: 8 } }"
-          class="work-detail-hero__info-eyebrow text-eyebrow text-gold-500"
-        >
-          {{ t('page.workDetail.title') }}
-        </div>
-        <h1
-          v-fade-in="{ delay: 140, y: 16, mobile: { delay: 80, y: 12 } }"
-          class="work-detail-hero__info-heading text-heading-sm font-serif italic"
-        >
-          {{ localized(work.name) }}
-        </h1>
-        <dl
-          v-fade-in="{ delay: 220, y: 16, mobile: { delay: 120, y: 12 } }"
-          class="work-detail-hero__info-specs flex flex-col gap-2 text-label tablet:text-label-lg border-t border-gold-500/10"
-        >
-          <div class="flex justify-between items-center gap-4 py-2 border-b border-gold-500/10">
-            <dt class="text-white/50 uppercase tracking-wide shrink-0">
-              {{ t('page.workDetail.materials') }}
-            </dt>
-            <dd class="text-white text-right">{{ localized(work.materials) }}</dd>
-          </div>
-          <div class="flex justify-between gap-4 py-2 border-b border-gold-500/10">
-            <dt class="text-white/50 uppercase tracking-wide shrink-0">
-              {{ t('page.workDetail.year') }}
-            </dt>
-            <dd class="text-white text-right">2026</dd>
-          </div>
-          <div class="flex justify-between gap-4 py-2 border-b border-gold-500/10">
-            <dt class="text-white/50 uppercase tracking-wide shrink-0">
-              {{ t('page.workDetail.collection') }}
-            </dt>
-            <dd class="text-white text-right">{{ t('page.workDetail.collectionName') }}</dd>
-          </div>
-        </dl>
-        <p
-          v-fade-in="{ delay: 300, y: 16, mobile: { delay: 160, y: 12 } }"
-          class="work-detail-hero__info-description text-label tablet:text-body-sm tablet:pt-4 text-cream/80 tablet:line-clamp-4"
-        >
-          {{ localized(work.description) }}
-        </p>
+      <div
+        v-fade-in="{ delay: 0, y: 24, mobile: { delay: 0, y: 16 } }"
+        class="work-detail-hero__image tablet:w-full tablet:h-full tablet:min-h-0 aspect-[4/5]"
+      >
+        <img
+          :src="getImageUrl(`jewelry/${work.image}`)"
+          :alt="localized(work.name)"
+          fetchpriority="high"
+          width="1122"
+          height="1402"
+          class="w-full h-full object-cover"
+        />
       </div>
+      <div class="work-detail-hero__info tablet:h-full tablet:min-h-0 overflow-hidden">
+        <div class="work-detail-hero__info-heading-group flex flex-col gap-6 mt-2 tablet:mt-2">
+          <div
+            v-fade-in="{ delay: 80, y: 12, mobile: { delay: 40, y: 8 } }"
+            class="work-detail-hero__info-eyebrow text-eyebrow text-gold-500"
+          >
+            {{ t('page.workDetail.title') }}
+          </div>
+          <h1
+            v-fade-in="{ delay: 140, y: 16, mobile: { delay: 80, y: 12 } }"
+            class="work-detail-hero__info-heading text-heading-sm font-serif italic"
+          >
+            {{ localized(work.name) }}
+          </h1>
+          <dl
+            v-fade-in="{ delay: 220, y: 16, mobile: { delay: 120, y: 12 } }"
+            class="work-detail-hero__info-specs flex flex-col gap-2 text-label tablet:text-label-lg border-t border-gold-500/10"
+          >
+            <div class="flex justify-between items-center gap-4 py-2 border-b border-gold-500/10">
+              <dt class="text-white/50 uppercase tracking-wide shrink-0">
+                {{ t('page.workDetail.materials') }}
+              </dt>
+              <dd class="text-white text-right">{{ localized(work.materials) }}</dd>
+            </div>
+            <div class="flex justify-between gap-4 py-2 border-b border-gold-500/10">
+              <dt class="text-white/50 uppercase tracking-wide shrink-0">
+                {{ t('page.workDetail.year') }}
+              </dt>
+              <dd class="text-white text-right">2026</dd>
+            </div>
+            <div class="flex justify-between gap-4 py-2 border-b border-gold-500/10">
+              <dt class="text-white/50 uppercase tracking-wide shrink-0">
+                {{ t('page.workDetail.collection') }}
+              </dt>
+              <dd class="text-white text-right">{{ t('page.workDetail.collectionName') }}</dd>
+            </div>
+          </dl>
+          <p
+            v-fade-in="{ delay: 300, y: 16, mobile: { delay: 160, y: 12 } }"
+            class="work-detail-hero__info-description text-label tablet:text-body-sm tablet:pt-4 text-cream/80 tablet:line-clamp-4"
+          >
+            {{ localized(work.description) }}
+          </p>
+        </div>
 
-      <div
-        v-fade-in="{ delay: 380, y: 20, mobile: { delay: 200, y: 14 } }"
-        class="work-detail-hero__artist my-8"
-      >
-        <p class="text-eyebrow text-gold-500">{{ t('page.workDetail.aboutArtist') }}</p>
-        <div v-if="artist" class="work-detail-hero__artist-grid grid grid-cols-[35%_65%] mt-4">
-          <BaseAvatar :artist="artist" :show-name="false" class="justify-center" />
-          <div class="work-detail-hero__artist-info flex flex-col tablet:justify-center gap-4 pl-6">
-            <h2 class="work-detail-hero__artist-name text-subhead tablet:text-[24px] font-serif">
-              {{ artist.name }}
-            </h2>
-            <p
-              class="work-detail-hero__artist-bio text-label tablet:text-label-lg tablet:line-clamp-3"
+        <div
+          v-fade-in="{ delay: 380, y: 20, mobile: { delay: 200, y: 14 } }"
+          class="work-detail-hero__artist my-8"
+        >
+          <p class="text-eyebrow text-gold-500">{{ t('page.workDetail.aboutArtist') }}</p>
+          <div v-if="artist" class="work-detail-hero__artist-grid grid grid-cols-[35%_65%] mt-4">
+            <BaseAvatar :artist="artist" :show-name="false" class="justify-center" />
+            <div
+              class="work-detail-hero__artist-info flex flex-col tablet:justify-center gap-4 pl-6"
             >
-              {{ localized(artist.short_bio) }}
-            </p>
-            <BaseButton
-              tag="RouterLink"
-              :to="`/artists/${artist.id}`"
-              v-fade-in="{ delay: 460, y: 16, mobile: { delay: 240, y: 12 } }"
-              variant="ghost"
-              class="work-detail-hero__artist-link inline-flex justify-start items-center text-body-sm"
-              ><span class="text-btn tablet:text-btn-lg normal-case">
-                {{ t('common.viewArtistProfile') }}
-              </span>
-              <BaseArrowIcon />
-            </BaseButton>
+              <h2 class="work-detail-hero__artist-name text-subhead tablet:text-[24px] font-serif">
+                {{ artist.name }}
+              </h2>
+              <p
+                class="work-detail-hero__artist-bio text-label tablet:text-label-lg tablet:line-clamp-3"
+              >
+                {{ localized(artist.short_bio) }}
+              </p>
+              <BaseButton
+                tag="RouterLink"
+                :to="`/artists/${artist.id}`"
+                v-fade-in="{ delay: 460, y: 16, mobile: { delay: 240, y: 12 } }"
+                variant="ghost"
+                class="work-detail-hero__artist-link inline-flex justify-start items-center text-body-sm"
+                ><span class="text-btn tablet:text-btn-lg normal-case">
+                  {{ t('common.viewArtistProfile') }}
+                </span>
+                <BaseArrowIcon />
+              </BaseButton>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div
-    class="page-container work-detail-related-works border-y border-gold-500/20 my-8 tablet:my-10 tablet:mb-6"
-  >
-    <p
-      v-fade-in="{ delay: 460, y: 16, mobile: { delay: 0, y: 12 } }"
-      class="text-subhead text-gold-500 py-4 tablet:py-8"
-    >
-      {{ t('page.workDetail.relatedWorks') }}
-    </p>
     <div
-      class="grid grid-cols-1 tablet:grid-cols-3 tablet:justify-items-center py-8 tablet:py-16 gap-6 tablet:gap-4"
+      class="page-container work-detail-related-works border-y border-gold-500/20 my-8 tablet:my-10 tablet:mb-6"
     >
-      <div
-        v-for="(work, i) in otherWorks"
-        v-fade-in="{ delay: i * 100, y: 24, mobile: { delay: i * 60, y: 16 } }"
-        :key="work.id"
-        class="flex w-full justify-center"
+      <p
+        v-fade-in="{ delay: 460, y: 16, mobile: { delay: 0, y: 12 } }"
+        class="text-subhead text-gold-500 py-4 tablet:py-8"
       >
-        <BaseWorkCard :work="work" />
+        {{ t('page.workDetail.relatedWorks') }}
+      </p>
+      <div
+        class="grid grid-cols-1 tablet:grid-cols-3 tablet:justify-items-center py-8 tablet:py-16 gap-6 tablet:gap-4"
+      >
+        <div
+          v-for="(work, i) in otherWorks"
+          v-fade-in="{ delay: i * 100, y: 24, mobile: { delay: i * 60, y: 16 } }"
+          :key="work.id"
+          class="flex w-full justify-center"
+        >
+          <BaseWorkCard :work="work" />
+        </div>
       </div>
     </div>
-  </div>
+  </template>
+  <NotFoundView v-else />
 </template>
