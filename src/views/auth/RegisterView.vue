@@ -45,10 +45,34 @@ async function handleSubmit() {
   <div class="auth__form">
     <h1 class="auth__title">{{ tx('title') }}</h1>
     <form @submit.prevent="handleSubmit" class="flex flex-col gap-8">
-      <FormInput v-model="fullname" type="text" :label="tx('fullName')" />
-      <FormInput v-model="email" type="email" :label="txCommon('form.email')" />
-      <FormInput v-model="password" type="password" :label="txCommon('form.password')" />
-      <FormInput v-model="confirmPassword" type="password" :label="tx('confirmPassword')" />
+      <FormInput
+        v-model="fullname"
+        type="text"
+        name="name"
+        autocomplete="username"
+        :label="tx('fullName')"
+      />
+      <FormInput
+        v-model="email"
+        type="email"
+        name="email"
+        autocomplete="email"
+        :label="txCommon('form.email')"
+      />
+      <FormInput
+        v-model="password"
+        type="password"
+        name="password"
+        autocomplete="new-password"
+        :label="txCommon('form.password')"
+      />
+      <FormInput
+        v-model="confirmPassword"
+        type="password"
+        name="confirmPassword"
+        autocomplete="new-password"
+        :label="tx('confirmPassword')"
+      />
       <p v-if="errMsg" role="alert" class="text-red-500 text-label-lg">{{ txCommon(errMsg) }}</p>
       <BaseButton
         type="submit"

@@ -47,10 +47,10 @@ function handleDemoSubmit() {
 
   formHasError.value = missing || badEmail
   formMsg.value = missing
-    ? tx('form.error.required')
+    ? 'form.error.required'
     : badEmail
-      ? tx('form.error.invalidEmail')
-      : tx('form.demo')
+      ? 'form.error.invalidEmail'
+      : 'form.demo'
 }
 </script>
 <template>
@@ -106,7 +106,7 @@ function handleDemoSubmit() {
           v-model="form.name"
           id="contact-name"
           name="name"
-          autocomplete="name"
+          autocomplete="username"
           :label="txCommon('form.name')"
           type="text"
         />
@@ -138,7 +138,7 @@ function handleDemoSubmit() {
           class="min-h-[1rem] text-label-lg"
           :class="formHasError ? 'text-red-500' : 'text-gold-500'"
         >
-          {{ formMsg }}
+          {{ tx(formMsg) }}
         </p>
         <BaseButton type="submit" class="w-full mt-4">{{ tx('form.submit') }}</BaseButton>
       </form>

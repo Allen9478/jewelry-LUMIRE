@@ -1,12 +1,14 @@
 <!-- FormInput.vue -->
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, useId } from 'vue'
 
 const props = withDefaults(
   defineProps<{
     type?: 'text' | 'password' | 'email'
     label: string
     id?: string
+    name?: string
+    autocomplete?: string
   }>(),
   {
     type: 'text',
@@ -14,10 +16,11 @@ const props = withDefaults(
   },
 )
 
+const generatedId = useId()
 const modelValue = defineModel<string>()
 const showPassword = ref(false)
 
-const inputId = computed(() => props.id || props.label)
+const inputId = computed(() => props.id || generatedId)
 const isPassword = computed(() => props.type === 'password')
 const inputType = computed(() =>
   isPassword.value ? (showPassword.value ? 'text' : 'password') : props.type,
@@ -28,6 +31,8 @@ const inputType = computed(() =>
   <div class="relative group">
     <input
       :id="inputId"
+      :name="name"
+      :autocomplete="autocomplete"
       :type="inputType"
       v-model="modelValue"
       placeholder=" "
