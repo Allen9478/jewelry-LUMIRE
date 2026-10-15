@@ -99,7 +99,12 @@ function handleNewsletterDemo() {
             <span class="text-btn tablet:text-btn-lg">{{ tx('hero.exploreWorks') }}</span>
             <BaseArrowIcon />
           </BaseButton>
+          <!-- noopener noreferrer 功能是避免頁面透過 window.opener 控制原本的頁面 -->
           <BaseButton
+            tag="a"
+            href="https://www.youtube.com/watch?v=ZOIspsrbiZs&pp=ygUUamV3ZWxyeSDlvaLosaHlvbHniYc%3D"
+            target="_blank"
+            rel="noopener noreferrer"
             variant="ghost"
             class="home-hero__actions-item flex justify-start items-center mt-6 laptop:mt-0 w-fit group"
           >
