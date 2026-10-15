@@ -43,12 +43,16 @@ async function handleSubmit() {
         v-fade-in="{ delay: 60, y: 16 }"
         v-model="email"
         type="email"
+        name="email"
+        autocomplete="username"
         :label="txCommon('form.email')"
       />
       <FormInput
         v-fade-in="{ delay: 120, y: 16 }"
         v-model="password"
         type="password"
+        name="password"
+        autocomplete="current-password"
         :label="txCommon('form.password')"
       />
       <p v-if="errMsg" role="alert" class="text-red-500 text-label-lg">{{ txCommon(errMsg) }}</p>

@@ -33,7 +33,14 @@ async function handleSubmit() {
     <h1 class="auth__title">{{ tx('title') }}</h1>
     <p class="text-center">{{ tx('description') }}</p>
     <form @submit.prevent="handleSubmit" class="flex flex-col gap-8">
-      <FormInput v-model="email" type="email" :label="txCommon('form.email')" class="mt-5" />
+      <FormInput
+        v-model="email"
+        type="email"
+        name="email"
+        autocomplete="email"
+        :label="txCommon('form.email')"
+        class="mt-5"
+      />
       <!-- role=status是內容唸完再換他唸，alert是馬上念出來 -->
       <p v-if="resetEmailSent" role="status" class="text-gold-500 text-label-lg">
         {{ txCommon('auth.resetEmailSent') }}
