@@ -10,6 +10,7 @@ import ItemGrid from '@/components/ui/ItemGrid.vue'
 import ArtistHero from '@/components/artist-detail/ArtistHero.vue'
 import ArtistInfo from '@/components/artist-detail/ArtistInfo.vue'
 import QuoteBlock from '@/components/ui/QuoteBlock.vue'
+import NotFoundView from '@/views/NotFoundView.vue'
 
 const route = useRoute()
 const { t, locale } = useI18n()
@@ -75,4 +76,5 @@ const scrollToInfo = () => {
     </section>
     <QuoteBlock variant="artist" :quote="localized(artist.quote)" :author="artist.name" />
   </div>
+  <NotFoundView v-else />
 </template>
