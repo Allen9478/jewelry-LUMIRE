@@ -27,22 +27,27 @@ function getFadeDelay(index: number, base: number, step: number) {
 </script>
 
 <template>
-  <section class="work-hero tablet:min-h-[460px]">
-    <div class="page-container text-container mt-4 flex flex-col items-start header-offset">
+  <section class="work-hero flex items-stretch tablet:min-h-[460px]">
+    <div
+      class="page-container mt-4 header-offset flex flex-col items-start flex-1 basis-1/2 justify-center"
+    >
       <SectionHeading
         :eyebrow="t('page.works.heading.eyebrow')"
         :title="t('page.works.heading.title')"
         titleTag="h1"
         titleClass="whitespace-nowrap italic py-2 tablet:py-4"
       />
-      <p v-fade-in="{ delay: 120, y: 20 }" class="works-section__desc text-subtext">
+      <p
+        v-fade-in="{ delay: 120, y: 20 }"
+        class="works-section__desc max-w-[55cqw] text-subtext text-gray-muted"
+      >
         {{ t('page.works.heading.desc') }}
       </p>
     </div>
 
     <div
       v-fade-in="{ delay: 160, y: 12, duration: 900 }"
-      class="work-hero__image-desktop tablet:block hidden w-full overflow-hidden"
+      class="work-hero__image-desktop hidden tablet:block tablet:flex-1 tablet:basis-1/2 min-h-0 overflow-hidden"
     >
       <img
         src="../../assets/images/works/works_hero.webp"
@@ -50,6 +55,7 @@ function getFadeDelay(index: number, base: number, step: number) {
         fetchpriority="high"
         width="1704"
         height="923"
+        class="w-full h-full object-cover object-[80%_center]"
       />
     </div>
   </section>
@@ -113,48 +119,10 @@ function getFadeDelay(index: number, base: number, step: number) {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
-  -webkit-overflow-scrolling: touch; /* 舊版 iOS 慣性捲動保險 */
-  touch-action: pan-x; /* 關鍵：明確宣告此元素允許水平觸控 */
   overscroll-behavior-x: contain; /* 避免捲到底時把手勢傳給外層 body 造成連動抖動或觸發返回手勢 */
 }
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;
-}
-.work-hero {
-  display: flex;
-  align-items: stretch; /* 讓圖片欄「拉伸」去符合文字欄的高度 */
-}
-
-.text-container {
-  flex: 1 1 50%; /* 這一欄的內容量決定整個 hero 的高度 */
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* 內容在自然高度內垂直置中 */
-}
-
-.works-section__desc {
-  max-width: 55cqw;
-  color: var(--color-text-muted, #c9c2b3);
-}
-
-.work-hero__image-desktop {
-  flex: 1 1 50%;
-  min-height: 0;
-  overflow: hidden;
-}
-
-.work-hero__image-desktop img {
-  width: 100%;
-  height: 100%; /* 完全交給 .text-container 決定，不會反過來撐高 work-hero */
-  object-fit: cover;
-  object-position: 80% center;
-}
-
-@media (max-width: 768px) {
-  .text-container {
-    justify-content: start;
-    /* padding: 20px; */
-  }
 }
 </style>
