@@ -147,7 +147,11 @@
       "workInExhibitions": "Work in Exhibitions",
       "featuredArtistLabel": "Featured Artist",
       "visitLabel": "Visit",
-      "pastExhibitionsLabel": "Past Exhibitions"
+      "pastExhibitionsLabel": "Past Exhibitions",
+      "alt": {
+        "artistPortrait": "Artist YU An Lin",
+        "venue": "The exhibition venue"
+      }
     },
     "about": {
       "hero": {
@@ -238,7 +242,8 @@
           }
         ]
       },
-      "quote": "Jewelry is what remains when the moment has passed, and what gives that moment its meaning."
+      "quote": "Jewelry is what remains when the moment has passed, and what gives that moment its meaning.",
+      "alt": { "gallery": "Interior of the Lumière Jewelry Gallery" }
     },
     "contact": {
       "title": "Get in Touch",
@@ -386,13 +391,13 @@
   "common": {
     "viewArtistProfile": "View Artist Profile",
     "loading": "Loading...",
-    "categories": {
-      "necklace": "Necklace",
-      "earrings": "Earrings",
-      "bracelet": "Bracelet",
-      "ring": "Ring"
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "hidePassword": "Hide password",
+      "showPassword": "Show password"
     },
-    "form": { "name": "Name", "email": "Email", "password": "Password" },
     "signIn": "Sign In",
     "signOut": "Sign Out",
     "addFavorite": "Add to favorites",

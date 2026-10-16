@@ -60,7 +60,7 @@ function handleDemoSubmit() {
     >
       <img
         src="@/assets/images/contact/contact-hero.webp"
-        alt="contact hero image"
+        alt=""
         fetchpriority="high"
         width="1023"
         height="1537"

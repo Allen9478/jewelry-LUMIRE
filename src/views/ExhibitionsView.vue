@@ -60,7 +60,7 @@ const featuredWorks = randomWorks(works, 6)
     <div class="exhibitions__hero relative w-full h-[350px] md:h-[600px] overflow-hidden">
       <img
         :src="heroImage"
-        alt="Natural Form Exhibition"
+        alt=""
         fetchpriority="high"
         width="1536"
         height="1024"
@@ -150,7 +150,7 @@ const featuredWorks = randomWorks(works, 6)
         <div class="exhibitions__artist-photo aspect-[3/4] max-h-[500px] overflow-hidden">
           <img
             src="../assets/images/artists/yu_an_lin-profilesmall.webp"
-            alt="artist-YU An Lin"
+            :alt="tx('alt.artistPortrait')"
             class="w-full h-full object-cover"
           />
         </div>
@@ -230,7 +230,7 @@ const featuredWorks = randomWorks(works, 6)
         >
           <img
             :src="visitImage"
-            alt="exhibition location"
+            :alt="tx('alt.venue')"
             loading="lazy"
             width="1536"
             height="1024"

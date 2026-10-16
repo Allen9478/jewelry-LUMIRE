@@ -51,7 +51,7 @@ function getFadeDelay(index: number, base: number, step: number) {
     >
       <img
         src="../../assets/images/works/works_hero.webp"
-        alt="jewelry on rock"
+        alt=""
         fetchpriority="high"
         width="1704"
         height="923"
