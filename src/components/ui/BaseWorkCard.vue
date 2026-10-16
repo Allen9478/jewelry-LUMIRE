@@ -20,12 +20,10 @@ withDefaults(
 )
 </script>
 <template>
-  <RouterLink
-    :to="`/works/${work.id}`"
-    class="card relative block w-full max-w-[350px] mobile:max-w-[360px] p-1.5 border border-gold-500/35 hover:border-gold-500/80 hover:shadow-gold-glow active:scale-[0.98] active:border-gold-500/60 active:shadow-gold-glow transition-all duration-150 ease-out group"
+  <div
+    class="card relative w-full max-w-[350px] mobile:max-w-[360px] p-1.5 border border-gold-500/35 has-[:focus-visible]:border-gold-500/80 has-[:focus-visible]:shadow-gold-glow hover:border-gold-500/80 hover:shadow-gold-glow active:scale-[0.98] active:border-gold-500/80 active:shadow-gold-glow transition-all duration-150 ease-out group"
   >
-    <HeartButton :workId="work.id" />
-    <div class="card__inner">
+    <RouterLink :to="`/works/${work.id}`" class="card__inner block">
       <div class="card__body flex items-center tablet:flex-col">
         <div class="relative overflow-hidden w-[110px] shrink-0 tablet:w-auto tablet:max-w-full">
           <img
@@ -37,7 +35,7 @@ withDefaults(
             class="aspect-[3/4] max-w-full object-cover max-h-[180px] tablet:max-h-[250px] laptop:max-h-[300px] laptop:object-contain"
           />
           <div
-            class="card__overlay tablet:absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100"
+            class="card__overlay tablet:absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-has-[:focus-visible]:opacity-100"
           ></div>
         </div>
         <!-- 分開寫兩個的原因是解決 mobile切換tablet瞬間文字出現消失的問題,用css能解決就不用js並且這裡code沒很多  -->
@@ -53,7 +51,7 @@ withDefaults(
         </div>
 
         <div
-          class="hidden tablet:flex flex-col tablet:absolute tablet:bottom-0 tablet:left-0 tablet:right-0 tablet:p-5 tablet:gap-3 translate-y-2 pointer-events-none opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100 transition-all duration-500"
+          class="hidden tablet:flex flex-col tablet:absolute tablet:bottom-0 tablet:left-0 tablet:right-0 tablet:p-5 tablet:gap-3 translate-y-2 pointer-events-none opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-has-[:focus-visible]:translate-y-0 group-has-[:focus-visible]:opacity-100 transition-all duration-500"
         >
           <h2 class="card__name text-white text-body">{{ localized(work.name) }}</h2>
           <p class="card__artist text-white/90 text-body-sm">{{ work.designer }}</p>
@@ -62,8 +60,9 @@ withDefaults(
           </p>
         </div>
       </div>
-    </div>
-  </RouterLink>
+    </RouterLink>
+    <HeartButton :workId="work.id" />
+  </div>
 </template>
 
 <style scoped>
@@ -76,7 +75,8 @@ withDefaults(
 }
 
 .card:hover .card__inner,
-.card:active .card__inner {
+.card:active .card__inner,
+.card:has(:focus-visible) .card__inner {
   border-color: rgb(212 175 55 / 0.85);
 }
 
