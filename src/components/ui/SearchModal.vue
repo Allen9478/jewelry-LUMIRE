@@ -31,9 +31,29 @@ const {
 } = useSearch(works, artists)
 
 const uiStore = useUiStore()
-
 const searchInputRef = ref<HTMLInputElement | null>(null)
 
+async function scrollActiveIntoView() {
+  await nextTick()
+  document
+    .getElementById(`search-option-${activeIndex.value}`)
+    ?.scrollIntoView({ block: 'nearest' })
+}
+
+function handleArrowDown() {
+  onArrowDown()
+  scrollActiveIntoView()
+}
+
+function handleArrowUp() {
+  onArrowUp()
+  scrollActiveIntoView()
+}
+
+function handleEnter(e: KeyboardEvent) {
+  e.preventDefault()
+  onEnter()
+}
 // 等DOM渲染完在讓游標focus
 watch(
   () => uiStore.showSearchModal,
@@ -76,16 +96,17 @@ watch(
           ref="searchInputRef"
           v-model="keyword"
           type="search"
+          role="combobox"
           :placeholder="t('searchModal.placeholder')"
           :aria-label="t('searchModal.placeholder')"
-          role="combobox"
           :aria-expanded="isOpen"
+          :aria-activedescendant="activeIndex >= 0 ? `search-option-${activeIndex}` : undefined"
           aria-autocomplete="list"
           aria-controls="search-results-list"
           class="w-full bg-transparent pl-8 text-cream placeholder:text-gray-muted/70 text-body tablet:text-subhead focus:outline-none focus:border-gold-500 transition-colors duration-300 ease-out"
-          @keydown.down.prevent="onArrowDown"
-          @keydown.up.prevent="onArrowUp"
-          @keydown.enter="onEnter"
+          @keydown.down.prevent="handleArrowDown"
+          @keydown.up.prevent="handleArrowUp"
+          @keydown.enter="handleEnter"
           @keydown.esc="onEscape"
           @focus="isOpen = keyword.trim().length > 0"
         />
