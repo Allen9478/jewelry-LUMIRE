@@ -85,7 +85,11 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
       </nav>
 
       <div class="flex shrink-0 justify-end items-center gap-2 lg:gap-3 xl:gap-4 text-stone-50">
-        <button @click="uiStore.openSearchModal" aria-label="站內搜尋" class="nav__icon">
+        <button
+          @click="uiStore.openSearchModal"
+          :aria-label="t('searchModal.title')"
+          class="nav__icon"
+        >
           <MagnifyingGlassIcon class="size-6" />
         </button>
         <template v-if="authStore.user">
