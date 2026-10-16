@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useScopedI18n } from '@/composables/useScopedI18n'
 import { useFavoriteStore } from '@/stores/useFavoriteStore'
 import { useAuthStore } from '@/stores/useAuthStore'
@@ -17,6 +18,7 @@ import { works } from '@/data'
 const favoriteStore = useFavoriteStore()
 const authStore = useAuthStore()
 const { localized } = useLocalized()
+const { t } = useI18n()
 const { tx } = useScopedI18n('page.favorites')
 const { tx: txCommon } = useScopedI18n('common')
 const { favorites, isLoading: isFavoritesLoading, loadError } = storeToRefs(favoriteStore)
@@ -25,7 +27,7 @@ const { isAuthReady } = storeToRefs(authStore)
 const currentCategory = ref(null)
 const currentArtist = ref(null)
 const currentSort = ref('recent')
-const categoryLabel = (category: string) => txCommon(`categories.${category.toLowerCase()}`)
+const categoryLabel = (category: string) => t(`category.${category.toLowerCase()}`)
 const isLoading = computed(() => !isAuthReady.value || isFavoritesLoading.value)
 
 const favoriteWorks = computed(() => {

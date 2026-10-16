@@ -1,7 +1,9 @@
 <!-- FormInput.vue -->
 <script setup lang="ts">
 import { ref, computed, useId } from 'vue'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const props = withDefaults(
   defineProps<{
     type?: 'text' | 'password' | 'email'
@@ -48,7 +50,7 @@ const inputType = computed(() =>
       v-if="isPassword"
       type="button"
       class="toggle-pw absolute right-0 bottom-2 group-focus-within:text-gold-500"
-      :aria-label="showPassword ? 'Hide password' : 'Show password'"
+      :aria-label="showPassword ? t('common.form.hidePassword') : t('common.form.showPassword')"
       :aria-pressed="showPassword"
       @click="showPassword = !showPassword"
     >

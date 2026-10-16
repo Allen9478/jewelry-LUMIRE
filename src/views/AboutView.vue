@@ -127,7 +127,7 @@ const { isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow(frameRef
           <!-- 底層:永遠黑白 -->
           <img
             src="../assets/images/about/about-craft-detail.webp"
-            alt="about hero image"
+            alt=""
             fetchpriority="high"
             width="1122"
             height="1402"
@@ -137,7 +137,8 @@ const { isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow(frameRef
           <!-- 上層:彩色,用 mask 做出跟隨游標的圓形視窗 -->
           <img
             src="../assets/images/about/about-craft-detail.webp"
-            alt="about hero image"
+            alt=""
+            aria-hidden="true"
             fetchpriority="high"
             width="1122"
             height="1402"
@@ -185,7 +186,7 @@ const { isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow(frameRef
       <img
         v-fade-in="{ delay: 0, y: 12, duration: 900 }"
         src="../assets/images/about/about-hero.webp"
-        alt="Lumière Jewelry Gallery 展場空間"
+        :alt="tx('alt.gallery')"
         loading="lazy"
         width="1672"
         height="971"

@@ -69,7 +69,7 @@ function handleNewsletterDemo() {
         >
           <img
             src="../assets/images/home/home-hero-ring.webp"
-            alt="ring on rock"
+            alt=""
             fetchpriority="high"
             width="1254"
             height="1254"
@@ -143,7 +143,7 @@ function handleNewsletterDemo() {
       >
         <img
           src="../assets/images/home/home-hero-ring.webp"
-          alt="ring on rock"
+          alt=""
           fetchpriority="high"
           width="1254"
           height="1254"
@@ -255,7 +255,7 @@ function handleNewsletterDemo() {
       <img
         v-fade-in="{ delay: 200, y: 0 }"
         src="../assets/images/home/home-exhibition.webp"
-        alt="Molten Flow Ring"
+        alt=""
         loading="lazy"
         width="1470"
         height="1070"

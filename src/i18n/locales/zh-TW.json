@@ -147,7 +147,11 @@
       "workInExhibitions": "參展作品",
       "featuredArtistLabel": "精選藝術家",
       "visitLabel": "參觀資訊",
-      "pastExhibitionsLabel": "過往展覽"
+      "pastExhibitionsLabel": "過往展覽",
+      "alt": {
+        "artistPortrait": "藝術家 YU An Lin",
+        "venue": "展場空間"
+      }
     },
     "about": {
       "hero": {
@@ -238,7 +242,8 @@
           }
         ]
       },
-      "quote": "珠寶是時刻逝去之後所留下的，也是賦予那一刻意義的存在。"
+      "quote": "珠寶是時刻逝去之後所留下的，也是賦予那一刻意義的存在。",
+      "alt": { "gallery": "Lumière Jewelry Gallery 展場空間" }
     },
     "contact": {
       "title": "聯絡我們",
@@ -386,13 +391,13 @@
   "common": {
     "viewArtistProfile": "查看藝術家簡介",
     "loading": "載入中...",
-    "categories": {
-      "necklace": "項鍊",
-      "earrings": "耳環",
-      "bracelet": "手鍊",
-      "ring": "戒指"
+    "form": {
+      "name": "姓名",
+      "email": "電子郵件",
+      "password": "密碼",
+      "hidePassword": "隱藏密碼",
+      "showPassword": "顯示密碼"
     },
-    "form": { "name": "姓名", "email": "電子郵件", "password": "密碼" },
     "signIn": "登入",
     "signOut": "登出",
     "addFavorite": "加入收藏",
