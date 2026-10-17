@@ -46,7 +46,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
     class="fixed top-0 left-0 right-0 z-card transition-transform duration-300"
     :class="[
       isHeaderVisible ? 'translate-y-0' : '-translate-y-full',
-      isScrolled ? 'bg-black' : 'bg-gradient-to-b from-black/60 to-transparent',
+      isScrolled ? 'bg-black' : 'bg-gradient-to-b from-black to-transparent',
     ]"
   >
     <div
@@ -161,9 +161,6 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 </template>
 
 <style scoped>
-.header-bg-test {
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
-}
 /* 解決768px時navbar有橫向捲軸 */
 nav {
   scrollbar-width: none; /* Firefox */

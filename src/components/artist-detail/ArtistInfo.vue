@@ -18,7 +18,7 @@ defineExpose({ infoSectionRef })
 <template>
   <div
     ref="infoSectionRef"
-    class="page-container artist-detail__info mt-12 tablet:mt-24 space-y-6 tablet:grid tablet:grid-cols-[minmax(0,600px)_1fr] tablet:max-w-[1200px] tablet:mx-auto tablet:gap-24 desktop:gap-48"
+    class="page-container artist-detail__info mt-12 tablet:mt-24 space-y-6 tablet:grid tablet:grid-cols-[minmax(0,500px)_1fr] tablet:justify-items-center tablet:max-w-[1200px] tablet:gap-20"
   >
     <div
       v-fade-in="{ delay: 0, y: 16, mobile: { delay: 0, y: 12 } }"
@@ -27,7 +27,7 @@ defineExpose({ infoSectionRef })
       <p class="text-eyebrow text-gold-500">{{ t('page.artistDetail.biography') }}</p>
       <p v-html="localized(artist.biography)"></p>
     </div>
-    <div class="artist-detail__info-group space-y-6 tablet:max-w-xs">
+    <div class="artist-detail__info-group space-y-6 tablet:max-w-[180px]">
       <div
         v-fade-in="{ delay: 80, y: 12, mobile: { delay: 0, y: 12 } }"
         class="artist-detail__info-group-born space-y-2"

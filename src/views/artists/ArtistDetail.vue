@@ -25,11 +25,6 @@ const collectionTitles = computed(
     }) ?? [],
 )
 
-// 父層用 ref 拿到子元件 ArtistInfo 的實例（對應模板裡的 ref="artistInfoRef"）
-// - typeof ArtistInfo：取得元件本身的型別（建構函式）
-// - InstanceType<...>：把它轉成「元件實例」的型別，才能存取實例上公開的屬性
-// - | null：元件還沒掛載完成前，ref 的初始值是 null
-// 注意：子元件必須用 defineExpose 公開 infoSectionRef，父層才拿得到
 const artistInfoRef = ref<InstanceType<typeof ArtistInfo> | null>(null)
 
 const scrollToInfo = () => {
@@ -41,7 +36,7 @@ const scrollToInfo = () => {
     <ArtistHero :artist="artist" @scroll-to-info="scrollToInfo" />
 
     <div
-      class="relative page-container artist-detail__heading space-y-16 tablet:space-y-24 tablet:-mt-32"
+      class="relative page-container artist-detail__heading space-y-16 tablet:space-y-24 tablet:-mt-40"
     >
       <div class="artist-detail__heading-group space-y-2">
         <h1

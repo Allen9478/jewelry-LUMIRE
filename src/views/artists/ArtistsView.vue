@@ -17,7 +17,9 @@ const { t } = useI18n()
       :desc="t('page.artists.heading.desc')"
       descClass="max-w-3/4 tablet:max-w-full"
     />
-    <div class="mt-6 grid grid-cols-2 tablet:grid-cols-3 laptop:grid-cols-4 gap-4 tablet:gap-8">
+    <div
+      class="mt-6 grid grid-cols-2 tablet:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4 justify-items-center gap-4 tablet:gap-8"
+    >
       <RouterLink
         v-for="(item, i) in artists"
         v-fade-in="{
