@@ -134,6 +134,7 @@ function handleDemoSubmit() {
           >
         </div>
         <p
+          v-if="formMsg"
           aria-live="polite"
           class="min-h-[1rem] text-label-lg"
           :class="formHasError ? 'text-red-500' : 'text-gold-500'"

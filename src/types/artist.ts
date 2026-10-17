@@ -1,7 +1,4 @@
-export interface LocalizedText {
-  'zh-TW': string
-  en: string
-}
+import { type LocalizedText } from './locale'
 
 export interface ArtistItem {
   id: string

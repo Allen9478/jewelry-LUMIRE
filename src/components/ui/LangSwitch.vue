@@ -2,7 +2,7 @@
 import { useI18n } from 'vue-i18n'
 import { useCommonI18n } from '@/composables/useScopedI18n'
 import { useDropdown } from '@/composables/useDropdown'
-import type { LocalizedText } from '@/types/work'
+import type { LocalizedText } from '@/types/locale'
 
 type Variant = 'desktop' | 'mobile'
 type Locale = keyof LocalizedText
