@@ -1,9 +1,8 @@
 import { watch } from 'vue'
 import { createI18n } from 'vue-i18n'
+import type { AppLocale } from '@/types/locale'
 import zhTW from '@/i18n/locales/zh-TW.json'
 import en from '@/i18n/locales/en.json'
-
-export type AppLocale = 'en' | 'zh-TW'
 
 // 初始:優先用上次的沒有就預設英文
 function getInitialLocale(): AppLocale {

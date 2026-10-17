@@ -13,20 +13,17 @@ import QuoteBlock from '@/components/ui/QuoteBlock.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 
 const route = useRoute()
-const { t, locale } = useI18n()
+const { t } = useI18n()
 const { localized } = useLocalized()
 const artist = computed(() => getArtistById(String(route.params.id)))
 const work = computed(() => (artist.value ? getWorksByDesigner(artist.value.name) : []))
-const collectionTitles = computed(() => {
-  const lang = locale.value as 'zh-TW' | 'en'
-  return (
+const collectionTitles = computed(
+  () =>
     artist.value?.collections.map((item) => {
-      const text = item[lang]
-      // 以破折號（— 或 –）切開，只取前面的系列名稱
+      const text = localized(item)
       return text.split(/\s*[—–]\s*/)[0]?.trim() ?? text
-    }) ?? []
-  )
-})
+    }) ?? [],
+)
 
 // 父層用 ref 拿到子元件 ArtistInfo 的實例（對應模板裡的 ref="artistInfoRef"）
 // - typeof ArtistInfo：取得元件本身的型別（建構函式）

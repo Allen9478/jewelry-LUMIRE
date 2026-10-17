@@ -1,7 +1,7 @@
 import { ref, computed, watch, type Ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { useI18n } from 'vue-i18n'
 import { useUiStore } from '@/stores/useUiStore'
+import { useLocalized } from '@/composables/useLocalized'
 import { createSearchIndex } from '@/utils/search'
 import type { WorkItem } from '@/types/work'
 import type { ArtistItem } from '@/types/artist'
@@ -18,7 +18,7 @@ import type { SearchResult } from '@/types/search'
 export function useSearch(works: Ref<WorkItem[]>, artists: Ref<ArtistItem[]>) {
   const router = useRouter()
   const uiStore = useUiStore()
-  const { locale } = useI18n()
+  const { localized } = useLocalized()
   const keyword = ref('') // 使用者輸入的關鍵字
   const activeIndex = ref(-1) // 目前鍵盤（↑↓）選取到第幾筆，-1 代表沒選
   const isOpen = ref(false) // 搜尋結果下拉選單是否顯示
@@ -44,10 +44,7 @@ export function useSearch(works: Ref<WorkItem[]>, artists: Ref<ArtistItem[]>) {
    * - artist: name 本來就是純字串，直接回傳即可
    */
   function displayLabel(result: SearchResult): string {
-    if (result.type === 'work') {
-      const localeKey = locale.value as keyof typeof result.item.name
-      return result.item.name[localeKey] ?? result.item.name['zh-TW']
-    }
+    if (result.type === 'work') return localized(result.item.name)
     return result.item.name
   }
 
