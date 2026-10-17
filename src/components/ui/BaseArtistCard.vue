@@ -14,7 +14,7 @@ defineProps<{
 </script>
 <template>
   <div
-    class="card w-full overflow-hidden border border-gold-500/40 hover:border-gold-500 hover:-translate-y-2 hover:shadow-gold-glow active:border-gold-500 active:shadow-gold-glow duration-300 transition-all group"
+    class="card w-full tablet:max-w-[300px] desktop:max-w-[350px] overflow-hidden border border-gold-500/40 hover:border-gold-500 hover:-translate-y-2 hover:shadow-gold-glow active:border-gold-500 active:shadow-gold-glow duration-300 transition-all group"
   >
     <div class="aspect-[4/5] tablet:aspect-[3/4]">
       <img
