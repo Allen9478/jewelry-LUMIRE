@@ -1,93 +1,48 @@
+<script setup lang="ts">
+interface Dust {
+  size: number
+  x: number
+  y: number
+  duration: number
+  delay: number
+}
+const dusts: Dust[] = [
+  { size: 5, x: 28, y: 24, duration: 7.5, delay: 0 },
+  { size: 5, x: 32, y: 60, duration: 8, delay: 0 },
+  { size: 4, x: 16, y: 32, duration: 5.5, delay: 0 },
+  { size: 3, x: 22, y: 20, duration: 6.5, delay: 0 },
+  { size: 4, x: 40, y: 70, duration: 10, delay: 2 },
+  { size: 3, x: 28, y: 50, duration: 9, delay: 4 },
+  { size: 4, x: 45, y: 55, duration: 11, delay: 1 },
+  { size: 5, x: 25, y: 65, duration: 9.5, delay: 5 },
+]
+</script>
 <template>
   <div
-    class="auth flex flex-col tablet:flex-row tablet:h-screen max-w-lg mx-auto tablet:max-w-full overflow-hidden"
+    class="auth flex flex-col tablet:flex-row tablet:h-screen max-w-[540px] mx-auto tablet:max-w-full overflow-hidden"
   >
     <!-- 圖片：固定不變 -->
-    <div class="auth__hero h-[clamp(240px,40svh,380px)] tablet:h-full tablet:w-1/2">
+    <div class="auth__hero h-[clamp(240px,50svh,420px)] tablet:h-full tablet:w-1/2 wide:w-[45%]">
       <img
         src="../assets/images/auth/auth-hero-ring.webp"
         alt=""
         fetchpriority="high"
-        class="w-full h-full object-cover object-[center_30%] tablet:object-[center_25%]"
+        class="w-full h-full object-cover object-[center_30%] tablet:object-[center_20%]"
       />
       <div class="hidden tablet:block">
         <span
+          v-for="(d, i) in dusts"
+          :key="i"
           class="dust"
-          style="
-            width: 5px;
-            height: 5px;
-            left: 32%;
-            top: 60%;
-            animation-duration: 8s;
-            animation-delay: 0s;
-          "
-        ></span>
-        <span
-          class="dust"
-          style="
-            width: 4px;
-            height: 4px;
-            left: 40%;
-            top: 70%;
-            animation-duration: 10s;
-            animation-delay: 2s;
-          "
-        ></span>
-        <span
-          class="dust"
-          style="
-            width: 3px;
-            height: 3px;
-            left: 28%;
-            top: 50%;
-            animation-duration: 9s;
-            animation-delay: 4s;
-          "
-        ></span>
-        <span
-          class="dust"
-          style="
-            width: 4px;
-            height: 4px;
-            left: 45%;
-            top: 55%;
-            animation-duration: 11s;
-            animation-delay: 1s;
-          "
-        ></span>
-        <span
-          class="dust"
-          style="
-            width: 3px;
-            height: 3px;
-            left: 36%;
-            top: 75%;
-            animation-duration: 7s;
-            animation-delay: 3s;
-          "
-        ></span>
-        <span
-          class="dust"
-          style="
-            width: 5px;
-            height: 5px;
-            left: 25%;
-            top: 65%;
-            animation-duration: 9.5s;
-            animation-delay: 5s;
-          "
-        ></span>
-        <span
-          class="dust"
-          style="
-            width: 3px;
-            height: 3px;
-            left: 38%;
-            top: 45%;
-            animation-duration: 8.5s;
-            animation-delay: 6s;
-          "
-        ></span>
+          :style="{
+            width: `${d.size}px`,
+            height: `${d.size}px`,
+            left: `${d.x}%`,
+            top: `${d.y}%`,
+            animationDuration: `${d.duration}s`,
+            animationDelay: `${d.delay}s`,
+          }"
+        />
       </div>
     </div>
 
