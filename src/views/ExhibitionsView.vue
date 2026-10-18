@@ -80,7 +80,7 @@ const featuredWorks = randomWorks(works, 6)
     </div>
     <div
       v-fade-in="{ delay: 0, y: 12 }"
-      class="exhibitions__info page-container flex flex-col tablet:flex-row tablet:justify-around space-y-4 tablet:space-y-0 text-cream/80"
+      class="exhibitions__info page-container flex flex-col tablet:flex-row tablet:justify-around space-y-4 tablet:space-y-0 tablet:gap-12 text-cream/80"
     >
       <p class="flex space-x-4 items-center">
         <CalendarDaysIcon class="size-7 text-gold-500 -translate-y-[2px]" />
@@ -103,7 +103,7 @@ const featuredWorks = randomWorks(works, 6)
     >
       <div
         v-fade-in="{ delay: 0, y: 16, mobile: { delay: 0, y: 12 } }"
-        class="exhibitions__quote-main relative flex items-center"
+        class="exhibitions__quote-main relative flex items-center justify-center"
       >
         <p
           class="exhibitions__quote-text text-quote text-gold-500 p-10 tablet:px-8 desktop:px-12 wide:px-16 italic"
@@ -128,8 +128,7 @@ const featuredWorks = randomWorks(works, 6)
       </p>
       <ItemGrid
         :items="featuredWorks"
-        grid-class="grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4 "
-        class=""
+        grid-class="grid-cols-1 tablet:grid-cols-3  desktop:grid-cols-4 "
       >
         <template #default="{ item }">
           <BaseWorkCard v-fade-in="{ delay: 0, y: 28, mobile: { delay: 0, y: 16 } }" :work="item" />
@@ -226,7 +225,7 @@ const featuredWorks = randomWorks(works, 6)
         </div>
         <div
           v-fade-in="{ delay: 160, y: 12, duration: 900, mobile: { delay: 0, y: 12 } }"
-          class="exhibitions__visit-img-wrap relative aspect-[16/7] tablet:aspect-auto tablet:h-full"
+          class="exhibitions__visit-img-wrap relative aspect-[16/7] tablet:aspect-auto tablet:min-h-[360px] overflow-hidden"
         >
           <img
             :src="visitImage"
@@ -234,7 +233,7 @@ const featuredWorks = randomWorks(works, 6)
             loading="lazy"
             width="1536"
             height="1024"
-            class="exhibitions__visit-img w-full h-full object-cover object-center tablet:absolute tablet:inset-0"
+            class="exhibitions__visit-img absolute inset-0 w-full h-full object-cover object-center"
           />
         </div>
       </div>
