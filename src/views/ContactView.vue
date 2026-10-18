@@ -56,7 +56,7 @@ function handleDemoSubmit() {
 <template>
   <div class="contact flex flex-col tablet:flex-row">
     <section
-      class="contact__hero hidden tablet:block tablet:sticky tablet:w-[50%] tablet:top-0 tablet:h-screen tablet:self-start"
+      class="contact__hero hidden tablet:block tablet:sticky tablet:w-[50%] desktop:w-[45%] tablet:top-0 tablet:h-screen tablet:self-start"
     >
       <img
         src="@/assets/images/contact/contact-hero.webp"
@@ -64,7 +64,7 @@ function handleDemoSubmit() {
         fetchpriority="high"
         width="1023"
         height="1537"
-        class="contact__hero-img w-full h-full object-cover tablet:object-left laptop:object-center"
+        class="contact__hero-img w-full h-full object-cover tablet:object-[30%_50%]"
       />
     </section>
     <section
