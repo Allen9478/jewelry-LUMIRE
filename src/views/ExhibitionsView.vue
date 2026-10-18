@@ -56,7 +56,7 @@ function randomWorks<T>(arr: readonly T[], count: number): T[] {
 const featuredWorks = randomWorks(works, 6)
 </script>
 <template>
-  <div class="exhibitions flex flex-col gap-8 desktop:gap-12">
+  <div class="exhibitions flex flex-col gap-24 tablet:gap-36">
     <div class="exhibitions__hero relative w-full h-[350px] md:h-[600px] overflow-hidden">
       <img
         :src="heroImage"
@@ -80,26 +80,26 @@ const featuredWorks = randomWorks(works, 6)
     </div>
     <div
       v-fade-in="{ delay: 0, y: 12 }"
-      class="exhibitions__info page-container flex flex-col tablet:flex-row tablet:justify-around space-y-4 tablet:space-y-0 tablet:gap-12 text-cream/80"
+      class="exhibitions__info page-container flex flex-col tablet:flex-row tablet:justify-around tablet:items-center space-y-4 tablet:space-y-0 tablet:gap-12 text-cream/80"
     >
       <p class="flex space-x-4 items-center">
-        <CalendarDaysIcon class="size-7 text-gold-500 -translate-y-[2px]" />
+        <CalendarDaysIcon class="size-7 text-gold-500" />
         <span>{{ tx('date') }}</span>
       </p>
-      <div class="hidden laptop:block w-px h-6 bg-gold-500/60"></div>
+      <div class="hidden laptop:block w-px h-8 bg-gold-500/60"></div>
       <p class="flex space-x-4 items-center">
-        <MapPinIcon class="size-7 text-gold-500 -translate-y-[2px]" />
+        <MapPinIcon class="size-7 text-gold-500" />
         <span>{{ tx('location') }}</span>
       </p>
-      <div class="hidden laptop:block w-px h-6 bg-gold-500/60"></div>
+      <div class="hidden laptop:block w-px h-8 bg-gold-500/60"></div>
 
       <p class="flex space-x-4 items-center">
-        <ClockIcon class="size-7 text-gold-500 -translate-y-[2px]" />
+        <ClockIcon class="size-7 text-gold-500" />
         <span>{{ tx('hours') }}</span>
       </p>
     </div>
     <div
-      class="exhibitions__quote page-container grid tablet:grid-cols-[50%_50%] laptop:grid-cols-[40%_60%] desktop:grid-cols-[35%_65%] wide:grid-cols-[30%_70%] space-y-4 tablet:space-y-0 tablet:space-x-4 wide:mt-24"
+      class="exhibitions__quote page-container grid tablet:grid-cols-[40%_60%] laptop:grid-cols-[35%_65%] wide:grid-cols-[30%_70%] tablet:justify-items-center gap-12 tablet:gap-8"
     >
       <div
         v-fade-in="{ delay: 0, y: 16, mobile: { delay: 0, y: 12 } }"
@@ -137,59 +137,62 @@ const featuredWorks = randomWorks(works, 6)
     </section>
     <section
       v-fade-in="{ delay: 0, y: 20, mobile: { delay: 0, y: 14 } }"
-      class="exhibitions__artist page-container"
+      class="exhibitions__artist page-container space-y-4"
     >
       <p class="tablet:hidden text-subhead text-gold-500">
         {{ tx('featuredArtistLabel') }}
       </p>
       <div
         v-if="artistExample"
-        class="exhibitions__artist-grid grid grid-cols-[40%_60%] tablet:grid-cols-[50%_50%] laptop:grid-cols-[40%_60%] desktop:grid-cols-[30%_70%]"
+        class="exhibitions__artist-grid grid justify-items-center grid-cols-[40%_60%] tablet:grid-cols-[50%_50%] laptop:grid-cols-[40%_60%] desktop:grid-cols-[30%_70%]"
       >
-        <div class="exhibitions__artist-photo aspect-[3/4] max-h-[500px] overflow-hidden">
+        <div
+          class="exhibitions__artist-photo aspect-[3/4] max-h-[350px] tablet:max-h-[500px] overflow-hidden"
+        >
           <img
             src="../assets/images/artists/yu_an_lin-profilesmall.webp"
             :alt="tx('alt.artistPortrait')"
             class="w-full h-full object-cover"
           />
         </div>
-        <div class="exhibitions__artist-info flex flex-col justify-center">
-          <div class="space-y-4 mt-10 tablet:ml-8 laptop:ml-12 desktop:ml-16">
-            <p class="hidden tablet:block text-subhead text-gold-500">
-              {{ tx('featuredArtistLabel') }}
-            </p>
 
-            <h2 class="exhibitions__artist-name text-heading-sm font-serif">
-              {{ tx('featuredArtist.name') }}
-            </h2>
-            <div class="exhibitions__artist-meta flex text-body text-cream/85">
-              <p class="pr-2 border-r border-gold-500/60 text-body-sm tablet:text-body">
-                {{ tx('featuredArtist.country') }}
-              </p>
-              <p class="pl-2 text-body-sm tablet:text-body">{{ tx('featuredArtist.title') }}</p>
-            </div>
-            <p
-              v-for="(bio, index) in artistBio"
-              :key="index"
-              class="exhibitions__artist-bio hidden tablet:block text-label tablet:text-label-lg text-gray-muted"
-            >
-              {{ bio }}
+        <div
+          class="exhibitions__artist-info flex flex-col justify-center gap-6 tablet:gap-8 tablet:px-4 laptop:gap-10"
+        >
+          <p class="hidden tablet:block text-subhead text-gold-500">
+            {{ tx('featuredArtistLabel') }}
+          </p>
+
+          <h2 class="exhibitions__artist-name text-heading-sm font-serif">
+            {{ tx('featuredArtist.name') }}
+          </h2>
+          <div class="exhibitions__artist-meta flex text-body text-cream/85">
+            <p class="pr-2 border-r border-gold-500/60 text-body-sm tablet:text-body">
+              {{ tx('featuredArtist.country') }}
             </p>
-            <BaseButton
-              tag="RouterLink"
-              :to="`/artists/${artistExample.id}`"
-              variant="ghost"
-              class="exhibitions__artist-link inline-flex justify-start items-center text-body-sm"
-              ><span class="text-btn tablet:text-btn-lg normal-case">
-                {{ txCommon('viewArtistProfile') }}
-              </span>
-              <BaseArrowIcon />
-            </BaseButton>
+            <p class="pl-2 text-body-sm tablet:text-body">{{ tx('featuredArtist.title') }}</p>
           </div>
+          <p
+            v-for="(bio, index) in artistBio"
+            :key="index"
+            class="exhibitions__artist-bio hidden tablet:block text-label tablet:text-label-lg text-gray-muted"
+          >
+            {{ bio }}
+          </p>
+          <BaseButton
+            tag="RouterLink"
+            :to="`/artists/${artistExample.id}`"
+            variant="ghost"
+            class="exhibitions__artist-link inline-flex justify-start items-center text-body-sm"
+            ><span class="text-btn tablet:text-btn-lg normal-case">
+              {{ txCommon('viewArtistProfile') }}
+            </span>
+            <BaseArrowIcon />
+          </BaseButton>
         </div>
       </div>
     </section>
-    <section class="exhibitions__visit flex flex-col mt-6">
+    <section class="exhibitions__visit flex flex-col gap-4 tablet:gap-8">
       <h2 v-fade-in="{ delay: 0, y: 12 }" class="text-gold-500 text-subhead page-container">
         {{ tx('visitLabel') }}
       </h2>
@@ -201,7 +204,7 @@ const featuredWorks = randomWorks(works, 6)
           class="exhibitions__visit-info page-container flex flex-col justify-center gap-8 p-8 tablet:p-16"
         >
           <div class="flex items-start space-x-4">
-            <MapPinIcon class="shrink-0 size-8 text-gold-500 -translate-y-[2px]" />
+            <MapPinIcon class="shrink-0 size-8 text-gold-500" />
             <div class="flex flex-col">
               <span>
                 {{ tx('visit.name') }}
@@ -212,7 +215,7 @@ const featuredWorks = randomWorks(works, 6)
             </div>
           </div>
           <div class="flex items-start space-x-4">
-            <ClockIcon class="shrink-0 size-8 text-gold-500 -translate-y-[2px]" />
+            <ClockIcon class="shrink-0 size-8 text-gold-500" />
             <div class="flex flex-col">
               <span>{{ tx('visit.date') }}</span>
               <span>{{ tx('visit.hours') }}</span>
@@ -239,12 +242,14 @@ const featuredWorks = randomWorks(works, 6)
       </div>
     </section>
 
-    <section class="exhibitions__past-exhibitions page-container mt-6">
-      <h2 v-fade-in="{ delay: 0, y: 12 }" class="text-gold-500 text-subhead py-8 tablet:py-10">
+    <section
+      class="exhibitions__past-exhibitions page-container flex flex-col gap-12 tablet:gap-18"
+    >
+      <h2 v-fade-in="{ delay: 0, y: 12 }" class="text-gold-500 text-subhead">
         {{ tx('pastExhibitionsLabel') }}
       </h2>
       <div
-        class="exhibitions__past-exhibitions-group flex flex-col tablet:flex-row gap-6 tablet:gap-4"
+        class="exhibitions__past-exhibitions-group grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-10 tablet:gap-12"
       >
         <div
           v-for="(pastExhibition, index) in pastExhibitions"
@@ -254,7 +259,7 @@ const featuredWorks = randomWorks(works, 6)
             mobile: { delay: 0, y: 16 },
           }"
           :key="index"
-          class="exhibitions__past-exhibitions-item block relative border border-gold-500/20 w-full tablet:w-1/3 h-[140px] tablet:h-[220px] max-w-[450px] tablet:max-w-none mx-auto overflow-hidden transition-md hover:border-gold-500 active:border-gold-500 duration-500 group"
+          class="exhibitions__past-exhibitions-item block relative border border-gold-500/20 w-full h-[160px] tablet:h-[220px] max-w-[400px] tablet:max-w-[500px] mx-auto overflow-hidden transition-md hover:border-gold-500 active:border-gold-500 duration-500 group"
         >
           <img
             :src="getImageUrl(`exhibition/${pastExhibition.img}`)"
