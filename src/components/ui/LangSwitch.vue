@@ -22,6 +22,9 @@ const { isOpen, toggle, close } = useDropdown('rootRef')
 
 function switchLocale(lang: Locale) {
   locale.value = lang
+  if (document.activeElement instanceof HTMLElement) {
+    document.activeElement.blur()
+  }
   close()
 }
 </script>
