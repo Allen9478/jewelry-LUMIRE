@@ -4,7 +4,7 @@ import breathing from '@/assets/images/home/breathing-bg.webp'
 
 <template>
   <section
-    class="relative w-screen breathing-height my-16 overflow-hidden ml-[calc(50%-50vw)] mr-[calc(50%-50vw)]"
+    class="relative w-screen breathing-height overflow-hidden ml-[calc(50%-50vw)] mr-[calc(50%-50vw)]"
   >
     <img
       :src="breathing"

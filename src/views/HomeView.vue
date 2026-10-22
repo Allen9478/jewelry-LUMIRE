@@ -24,7 +24,7 @@ function handleNewsletterDemo() {
 </script>
 <template>
   <HomeHero />
-  <HomeBreathing />
+  <HomeBreathing class="my-48" />
   <HomeFeaturedWorks />
   <GoldDivider variant="full" class="w-full my-20 tablet:my-40" />
   <HomeFeaturedArtists />
