@@ -1,4 +1,17 @@
 {
+  "pageTitle": {
+    "home": "Jewelry Gallery",
+    "works": "Works",
+    "artists": "Artists",
+    "exhibitions": "Exhibitions",
+    "about": "About",
+    "contact": "Contact",
+    "favorites": "Favorites",
+    "login": "Sign In",
+    "register": "Sign Up",
+    "forgotPassword": "Forgot Password",
+    "notFound": "Page Not Found"
+  },
   "navItem": {
     "home": "Home",
     "works": "Works",

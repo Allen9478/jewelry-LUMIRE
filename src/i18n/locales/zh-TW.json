@@ -1,4 +1,17 @@
 {
+  "pageTitle": {
+    "home": "珠寶藝廊",
+    "works": "作品",
+    "artists": "藝術家",
+    "exhibitions": "展覽",
+    "about": "關於我們",
+    "contact": "聯絡我們",
+    "favorites": "我的收藏",
+    "login": "登入",
+    "register": "註冊",
+    "forgotPassword": "忘記密碼",
+    "notFound": "找不到頁面"
+  },
   "navItem": {
     "home": "首頁",
     "works": "作品",
