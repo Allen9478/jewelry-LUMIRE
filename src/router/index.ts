@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import type { RouteRecordRaw, RouterOptions } from 'vue-router'
+import i18n from '@/i18n'
 import { watch } from 'vue'
 import { useAuthStore } from '@/stores/useAuthStore'
 import { useUiStore } from '@/stores/useUiStore'
@@ -33,48 +34,54 @@ const routes: RouteRecordRaw[] = [
         path: '',
         name: 'home',
         component: () => import('@/views/HomeView.vue'),
+        meta: { titleKey: 'pageTitle.home' },
       },
       {
         path: '/works',
         name: 'works',
         component: () => import('@/views/works/WorksView.vue'),
+        meta: { titleKey: 'pageTitle.works' },
       },
       {
         path: '/works/:id',
         name: 'works-detail',
         component: () => import('@/views/works/WorkDetailView.vue'),
+        meta: { titleKey: 'pageTitle.works' },
       },
       {
         path: '/artists',
         name: 'artists',
         component: () => import('@/views/artists/ArtistsView.vue'),
+        meta: { titleKey: 'pageTitle.artists' },
       },
       {
         path: '/artists/:id',
         name: 'artists-detail',
         component: () => import('@/views/artists/ArtistDetail.vue'),
+        meta: { titleKey: 'pageTitle.artists' },
       },
       {
         path: '/about',
         name: 'about',
         component: () => import('@/views/AboutView.vue'),
+        meta: { titleKey: 'pageTitle.about' },
       },
       {
         path: '/exhibitions',
         name: 'exhibitions',
         component: () => import('@/views/ExhibitionsView.vue'),
+        meta: { titleKey: 'pageTitle.exhibitions' },
       },
       {
         path: '/contact',
         name: 'contact',
         component: () => import('@/views/ContactView.vue'),
-        meta: { hideFooter: true },
+        meta: { hideFooter: true, titleKey: 'pageTitle.contact' },
       },
       {
         path: '/favorites',
         name: 'favorites',
         component: () => import('@/views/FavoritesView.vue'),
-
         beforeEnter: async (to, from) => {
           await waitForAuthReady()
 
@@ -89,6 +96,7 @@ const routes: RouteRecordRaw[] = [
           }
           return { name: 'home' }
         },
+        meta: { titleKey: 'pageTitle.favorites' },
       },
       {
         path: '/auth',
@@ -99,24 +107,27 @@ const routes: RouteRecordRaw[] = [
             path: 'login',
             name: 'login',
             component: () => import('@/views/auth/LoginView.vue'),
+            meta: { titleKey: 'pageTitle.login' },
           },
           {
             path: 'register',
             name: 'register',
             component: () => import('@/views/auth/RegisterView.vue'),
+            meta: { titleKey: 'pageTitle.register' },
           },
           {
             path: 'forgot-password',
             name: 'forgot-password',
             component: () => import('@/views/auth/ForgotPasswordView.vue'),
+            meta: { titleKey: 'pageTitle.forgotPassword' },
           },
         ],
       },
-      //404頁面
       {
         path: '/:pathMatch(.*)*',
         name: 'notFound',
         component: () => import('@/views/NotFoundView.vue'),
+        meta: { titleKey: 'pageTitle.notFound' },
       },
     ],
   },
@@ -136,4 +147,13 @@ const routerOptions: RouterOptions = {
   },
 }
 const router = createRouter(routerOptions)
+function updateTitle(): void {
+  const key = router.currentRoute.value.meta.titleKey
+  const title = typeof key === 'string' ? i18n.global.t(key) : ''
+  document.title = title ? `${title} | LUMIÈRE` : 'LUMIÈRE'
+}
+
+router.afterEach(updateTitle)
+watch(i18n.global.locale, updateTitle)
+
 export default router
