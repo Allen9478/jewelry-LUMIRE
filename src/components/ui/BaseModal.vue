@@ -11,8 +11,22 @@ const emit = defineEmits<{ close: [] }>()
 const dialogRef = ref<HTMLElement | null>(null)
 let previouslyFocused: HTMLElement | null = null
 
+function toggleScrollLock(isLock: boolean) {
+  if (isLock) {
+    // height是不讓捲軸滾action是防止手機端
+    document.body.style.overflow = 'hidden'
+    document.body.style.height = '100vh'
+    document.body.style.touchAction = 'none'
+  } else {
+    document.body.style.overflow = ''
+    document.body.style.height = ''
+    document.body.style.touchAction = ''
+  }
+}
+
 function setBackgroundInert(inert: boolean) {
   document.getElementById('app')?.toggleAttribute('inert', inert)
+  document.getElementById('hamburger-menu-root')?.toggleAttribute('inert', inert)
 }
 
 watch(
@@ -20,11 +34,14 @@ watch(
   async (open) => {
     if (open) {
       previouslyFocused = document.activeElement as HTMLElement | null
+
+      toggleScrollLock(true)
       setBackgroundInert(true)
       await nextTick()
       // 內容若已自行聚焦（例如搜尋輸入框）就不要搶；否則聚焦對話框本身
       if (!dialogRef.value?.contains(document.activeElement)) dialogRef.value?.focus()
     } else {
+      toggleScrollLock(false)
       setBackgroundInert(false) // 要先解除，焦點才回得去
       previouslyFocused?.focus()
       previouslyFocused = null
@@ -33,7 +50,10 @@ watch(
 )
 
 // 元件被卸載時也要解除，避免背景被鎖住
-onBeforeUnmount(() => setBackgroundInert(false))
+onBeforeUnmount(() => {
+  toggleScrollLock(false)
+  setBackgroundInert(false)
+})
 </script>
 
 <template>
