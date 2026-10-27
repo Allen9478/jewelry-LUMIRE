@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref, shallowRef, computed } from 'vue'
+import { ref, shallowRef, computed, triggerRef } from 'vue'
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -19,6 +19,9 @@ export const useAuthStore = defineStore('auth', () => {
   const isLoggedIn = computed(() => user.value !== null)
 
   const displayName = computed(() => {
+    const name = user.value?.displayName
+    if (name) return name
+
     const email = user.value?.email
     return email ? email.split('@')[0] : ''
   })
@@ -47,6 +50,7 @@ export const useAuthStore = defineStore('auth', () => {
       const { user: newUser } = await createUserWithEmailAndPassword(auth, email, password)
       await updateProfile(newUser, { displayName: fullname })
       user.value = newUser
+      triggerRef(user)
     })
   }
 
