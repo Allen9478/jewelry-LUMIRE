@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import getImageUrl from '@/utils/getImageUrl'
+import type { RouteLocationRaw } from 'vue-router'
 import type { ArtistItem } from '@/types/artist'
+import getImageUrl from '@/utils/getImageUrl'
 
 type Variant = 'artist' | 'team'
 
@@ -23,8 +24,11 @@ const props = withDefaults(
 )
 
 const imageSrc = computed(() => getImageUrl(`${props.folder}/${props.artist.image}`))
-// team 版本不需要連結,artist 版本連去該藝術家的頁面
-const linkTo = computed(() => `/artists/${props.artist.id ?? ''}`)
+const linkTo = computed<RouteLocationRaw>(() =>
+  props.artist.id
+    ? { name: 'artists-detail', params: { id: props.artist.id } }
+    : { name: 'artists' },
+)
 </script>
 <template>
   <component

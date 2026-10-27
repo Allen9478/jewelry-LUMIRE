@@ -52,7 +52,7 @@ const { tx } = useScopedI18n('page.home')
         >
           <BaseButton
             tag="RouterLink"
-            to="works"
+            :to="{ name: 'works' }"
             class="home-hero__actions-item flex items-center w-[60vw] tablet:w-fit laptop:w-fit laptop:mr-0"
           >
             <span class="text-btn tablet:text-btn-lg">{{ tx('hero.exploreWorks') }}</span>

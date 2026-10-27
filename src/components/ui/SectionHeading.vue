@@ -1,5 +1,5 @@
-<!-- 區塊eyebrow加標題加button重複所以拆分出這元件,有帶判斷是否必要 -->
 <script setup lang="ts">
+import type { RouteLocationRaw } from 'vue-router'
 import GoldDivider from '@/components/ui/GoldDivider.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
@@ -9,7 +9,7 @@ withDefaults(
     eyebrow: string
     title: string
     desc?: string
-    linkTo?: string
+    linkTo?: RouteLocationRaw
     linkText?: string
     titleTag?: string
     titleClass?: string

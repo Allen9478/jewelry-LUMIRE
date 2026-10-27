@@ -23,7 +23,7 @@ withDefaults(
   <div
     class="card relative w-full max-w-[350px] mobile:max-w-[360px] p-1.5 border border-gold-500/35 has-[:focus-visible]:border-gold-500/80 has-[:focus-visible]:shadow-gold-glow hover:border-gold-500/80 hover:shadow-gold-glow active:scale-[0.98] active:border-gold-500/80 active:shadow-gold-glow transition-all duration-150 ease-out group"
   >
-    <RouterLink :to="`/works/${work.id}`" class="card__inner block">
+    <RouterLink :to="{ name: 'works-detail', params: { id: work.id } }" class="card__inner block">
       <div class="card__body flex items-center tablet:flex-col">
         <div class="relative overflow-hidden w-[110px] shrink-0 tablet:w-auto tablet:max-w-full">
           <img
