@@ -13,7 +13,7 @@ const { tx } = useScopedI18n('page.home')
     <SectionHeading
       :eyebrow="tx('featuredArtists.eyebrow')"
       :title="tx('featuredArtists.title')"
-      linkTo="artists"
+      :linkTo="{ name: 'artists' }"
       :linkText="tx('featuredArtists.linkText')"
     />
     <ItemGrid :items="artists" grid-class="grid-cols-2 tablet:grid-cols-4">

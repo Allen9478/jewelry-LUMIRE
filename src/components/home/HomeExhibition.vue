@@ -37,7 +37,7 @@ const { tx } = useScopedI18n('page.home')
         </div>
         <BaseButton
           tag="RouterLink"
-          to="exhibitions"
+          :to="{ name: 'exhibitions' }"
           v-fade-in="{ delay: 340, y: 16 }"
           class="home-exhibition__actions-item flex items-center w-full tablet:w-fit mt-5 tablet:mt-10"
         >

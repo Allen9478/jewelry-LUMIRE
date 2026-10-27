@@ -122,7 +122,7 @@ const sortedFavorites = computed(() => {
         <p class="text-gray-muted">
           {{ tx('empty.description') }}
         </p>
-        <BaseButton tag="RouterLink" :to="'works'" variant="ghost">
+        <BaseButton tag="RouterLink" :to="{ name: 'works' }" variant="ghost">
           <span class="text-btn">{{ tx('browseWorks') }}</span>
           <BaseArrowIcon />
         </BaseButton>
@@ -135,7 +135,7 @@ const sortedFavorites = computed(() => {
           v-fade-in="{ delay: 160, y: 12 }"
           class="flex flex-col tablet:flex-row justify-between tablet:items-center gap-4"
         >
-          <BaseButton tag="RouterLink" :to="'works'" variant="ghost">
+          <BaseButton tag="RouterLink" :to="{ name: 'works' }" variant="ghost">
             <span class="text-btn">{{ tx('browseWorks') }}</span>
             <BaseArrowIcon />
           </BaseButton>

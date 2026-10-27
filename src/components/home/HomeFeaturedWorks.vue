@@ -25,7 +25,7 @@ const uniqueDesignerWorks = computed(() => {
     <SectionHeading
       :eyebrow="tx('featuredWorks.eyebrow')"
       :title="tx('featuredWorks.title')"
-      linkTo="works"
+      :linkTo="{ name: 'works' }"
       :linkText="tx('featuredWorks.linkText')"
     />
     <ItemGrid

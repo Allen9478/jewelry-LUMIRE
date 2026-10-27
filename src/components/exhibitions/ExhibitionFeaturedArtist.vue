@@ -59,7 +59,7 @@ const artistBio = computed(() => txList('featuredArtist.bio'))
         </p>
         <BaseButton
           tag="RouterLink"
-          :to="`/artists/${artistExample.id}`"
+          :to="{ name: 'artists-detail', params: { id: artistExample.id } }"
           variant="ghost"
           class="exhibitions__artist-link inline-flex justify-start items-center text-body-sm"
           ><span class="text-btn tablet:text-btn-lg normal-case">

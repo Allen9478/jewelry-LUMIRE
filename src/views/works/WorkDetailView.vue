@@ -107,7 +107,7 @@ const otherWorks = computed(() =>
               </p>
               <BaseButton
                 tag="RouterLink"
-                :to="`/artists/${artist.id}`"
+                :to="{ name: 'artists-detail', params: { id: artist.id } }"
                 v-fade-in="{ delay: 460, y: 16, mobile: { delay: 240, y: 12 } }"
                 variant="ghost"
                 class="work-detail-hero__artist-link inline-flex justify-start items-center text-body-sm"
