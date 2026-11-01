@@ -10,5 +10,5 @@ const errorKeys: Record<string, string> = {
 
 export function getAuthErrorKey(err: unknown): string {
   const code = err instanceof FirebaseError ? err.code : ''
-  return errorKeys[code] ?? 'genericError'
+  return errorKeys[code] ?? 'auth.errMsg.genericError'
 }
