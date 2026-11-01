@@ -154,6 +154,11 @@ function updateTitle(): void {
 }
 
 router.afterEach(updateTitle)
+router.afterEach((to, from) => {
+  if (to.path !== from.path) {
+    ;(document.activeElement as HTMLElement | null)?.blur()
+  }
+})
 watch(i18n.global.locale, updateTitle)
 
 export default router
