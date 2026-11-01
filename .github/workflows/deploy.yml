@@ -20,7 +20,7 @@ concurrency:
 
 jobs:
   check:
-    name: Type check & Lint
+    name: Type check, Lint & Test
     runs-on: ubuntu-latest
 
     steps:
@@ -38,6 +38,9 @@ jobs:
 
       - name: Run check
         run: npm run check
+
+      - name: Run tests
+        run: npm test -- --run
 
   build:
     name: Build
