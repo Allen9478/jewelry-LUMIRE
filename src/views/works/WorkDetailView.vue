@@ -10,6 +10,8 @@ import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
 import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
 import getImageUrl from '@/utils/getImageUrl'
 import NotFoundView from '@/views/NotFoundView.vue'
+import ItemGrid from '@/components/ui/ItemGrid.vue'
+import type { FadeOptions } from '@/directives/vFadeIn'
 
 const route = useRoute()
 const { t } = useI18n()
@@ -23,6 +25,11 @@ const otherWorks = computed(() =>
         .slice(0, 3)
     : [],
 )
+const relatedFade = (i: number): FadeOptions => ({
+  delay: i * 100,
+  y: 24,
+  mobile: { delay: i * 60, y: 16 },
+})
 </script>
 <template>
   <template v-if="work">
@@ -130,18 +137,17 @@ const otherWorks = computed(() =>
       >
         {{ t('page.workDetail.relatedWorks') }}
       </p>
-      <div
-        class="grid grid-cols-1 tablet:grid-cols-3 tablet:justify-items-center py-8 tablet:py-16 gap-6 tablet:gap-4"
+      <ItemGrid
+        :items="otherWorks"
+        grid-class="grid-cols-1 tablet:grid-cols-3"
+        gap-class="gap-6 tablet:gap-4"
+        :fade="relatedFade"
+        class="py-8 tablet:py-16"
       >
-        <div
-          v-for="(work, i) in otherWorks"
-          v-fade-in="{ delay: i * 100, y: 24, mobile: { delay: i * 60, y: 16 } }"
-          :key="work.id"
-          class="flex w-full justify-center"
-        >
-          <BaseWorkCard :work="work" />
-        </div>
-      </div>
+        <template #default="{ item }">
+          <BaseWorkCard :work="item" />
+        </template>
+      </ItemGrid>
     </div>
   </template>
   <NotFoundView v-else />
