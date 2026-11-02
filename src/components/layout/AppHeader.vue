@@ -1,30 +1,28 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/stores/useAuthStore'
 import { useI18n } from 'vue-i18n'
-import { useRoute, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 import { navItems } from '@/constants/navigations'
 import { useScrollDirection } from '@/composables/useScrollDirection'
 import { useUiStore } from '@/stores/useUiStore'
 import { useCommonI18n } from '@/composables/useScopedI18n'
 import { useDropdown } from '@/composables/useDropdown'
 import { UserIcon, MagnifyingGlassIcon } from '@heroicons/vue/24/outline'
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import BaseUnderlineTab from '@/components/common/BaseUnderlineTab.vue'
 import LangSwitch from '@/components/ui/LangSwitch.vue'
 import HamburgerMenu from '@/components/layout/HamburgerMenu.vue'
-import HeartIcon from '@/components/common/HeartIcon.vue'
+import FavoritesLink from './FavoritesLink.vue'
 import AppLogo from './AppLogo.vue'
 
 const uiStore = useUiStore()
 const isScrolled = ref(false)
 const router = useRouter()
-const route = useRoute()
 const authStore = useAuthStore()
 const { t } = useI18n()
 const { tx: txCommon } = useCommonI18n()
 const { isOpen, toggle, close } = useDropdown('memberRef')
 const { isHeaderVisible } = useScrollDirection()
-const isFavoritePage = computed(() => route.name === 'favorites')
 
 async function handleLogout() {
   close()
@@ -90,60 +88,32 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
         >
           <MagnifyingGlassIcon class="size-6" />
         </button>
+        <FavoritesLink />
         <template v-if="authStore.user">
-          <!-- 手機版 -->
-          <div class="flex gap-2 tablet:hidden">
-            <RouterLink
-              :aria-label="txCommon('aria.favorites')"
-              class="nav__icon w-9 flex items-center justify-end tablet:w-6"
-              :to="{ name: 'favorites' }"
+          <div ref="memberRef" class="member relative hidden tablet:block">
+            <button
+              type="button"
+              class="text-label-lg hover:text-gold-500 transition-colors"
+              :aria-expanded="isOpen"
+              @click="toggle"
             >
-              <HeartIcon :filled="isFavoritePage"></HeartIcon>
-            </RouterLink>
-          </div>
-
-          <!-- 桌機版 -->
-          <div class="hidden tablet:flex gap-2 lg:gap-3 xl:gap-4">
-            <RouterLink
-              :aria-label="txCommon('aria.favorites')"
-              class="nav__icon w-9 flex items-center justify-end tablet:w-6"
-              :to="{ name: 'favorites' }"
+              {{ authStore.displayName }}
+            </button>
+            <div
+              v-if="isOpen"
+              class="absolute left-1/2 top-full mt-2 min-w-24 -translate-x-1/2 whitespace-nowrap bg-[#1a1a1a] border border-[#3a3530]"
             >
-              <HeartIcon :filled="isFavoritePage"></HeartIcon>
-            </RouterLink>
-            <div ref="memberRef" class="member relative">
               <button
                 type="button"
-                class="text-label-lg hover:text-gold-500 transition-colors"
-                :aria-expanded="isOpen"
-                @click="toggle"
+                class="w-full text-center text-label-lg text-white hover:text-gold-500"
+                @click="handleLogout"
               >
-                {{ authStore.displayName }}
+                {{ t('common.signOut') }}
               </button>
-              <div
-                v-if="isOpen"
-                class="absolute left-1/2 top-full mt-2 min-w-24 -translate-x-1/2 whitespace-nowrap bg-[#1a1a1a] border border-[#3a3530]"
-              >
-                <button
-                  type="button"
-                  class="w-full text-center text-label-lg text-white hover:text-gold-500"
-                  @click="handleLogout"
-                >
-                  {{ t('common.signOut') }}
-                </button>
-              </div>
             </div>
           </div>
         </template>
         <template v-else>
-          <RouterLink
-            @click="uiStore.openLoginModal"
-            :aria-label="txCommon('aria.favorites')"
-            class="nav__icon w-9 flex items-center justify-end tablet:w-6"
-            :to="{ name: 'favorites' }"
-          >
-            <HeartIcon :filled="isFavoritePage" />
-          </RouterLink>
           <RouterLink
             :to="{ name: 'login' }"
             :aria-label="txCommon('aria.member')"
