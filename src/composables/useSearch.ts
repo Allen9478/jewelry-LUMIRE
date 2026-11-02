@@ -102,7 +102,6 @@ export function useSearch(works: Ref<WorkItem[]>, artists: Ref<ArtistItem[]>) {
     isOpen,
     results,
     displayLabel,
-    goTo,
     selectItem,
     onEnter,
     onArrowDown,

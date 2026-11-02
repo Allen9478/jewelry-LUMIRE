@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { works } from '@/data'
+import { works, workCategories } from '@/data'
 import SectionHeading from '@/components/ui/SectionHeading.vue'
 import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
 import BaseUnderlineTab from '@/components/common/BaseUnderlineTab.vue'
@@ -11,11 +11,6 @@ import { useCommonI18n } from '@/composables/useScopedI18n'
 const { t } = useI18n()
 const { tx: txCommon } = useCommonI18n()
 const currentCategory = ref<string | null>(null)
-
-const availableCategories = computed(() => {
-  return [...new Set(works.map((item) => item.category))]
-})
-
 const filteredWorks = computed(() => {
   if (!currentCategory.value) return works
   return works.filter((item) => item.category === currentCategory.value)
@@ -74,7 +69,7 @@ function getFadeDelay(index: number, base: number, step: number) {
           </BaseUnderlineTab>
         </li>
 
-        <li v-for="category in availableCategories" :key="category" class="text-eyebrow shrink-0">
+        <li v-for="category in workCategories" :key="category" class="text-eyebrow shrink-0">
           <BaseUnderlineTab
             :active="currentCategory === category"
             @click="currentCategory = category"

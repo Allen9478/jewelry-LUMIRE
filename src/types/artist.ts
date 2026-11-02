@@ -9,7 +9,6 @@ export interface ArtistItem {
   image: string
   image_detail: string
   medium: LocalizedText[]
-  design_style: string
   quote: LocalizedText
   short_bio: LocalizedText
   biography: LocalizedText

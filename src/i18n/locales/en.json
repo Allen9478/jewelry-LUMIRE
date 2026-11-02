@@ -39,8 +39,7 @@
         "headingAccent": "Timeless",
         "subtext": "We showcase exceptional jewelry by visionary artists who transform precious materials into timeless stories.",
         "exploreWorks": "Explore Works",
-        "watchStory": "WATCH THE STORY",
-        "imageAlt": "ring on rock"
+        "watchStory": "WATCH THE STORY"
       },
       "featuredWorks": {
         "eyebrow": "FEATURED WORKS",
@@ -98,7 +97,6 @@
     },
     "artistCarousel": {
       "featuredArtist": "Featured Artist",
-      "viewProfile": "View Profile",
       "signaturePieces": "Signature Pieces"
     },
     "artistDetail": {
@@ -111,7 +109,6 @@
       "selectedWorksSubtitle": "Pieces of Distinction"
     },
     "exhibitions": {
-      "id": "natures-forms",
       "title": "Nature’s Forms",
       "subtitle": "International Jewelry Exhibition 2026",
       "status": "CURRENT EXHIBITION",

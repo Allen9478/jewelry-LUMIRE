@@ -25,12 +25,10 @@ const { tx: txCommon } = useCommonI18n()
 const { isOpen, toggle, close } = useDropdown('memberRef')
 const { isHeaderVisible } = useScrollDirection()
 const isFavoritePage = computed(() => route.name === 'favorites')
-const showMenu = ref(false)
 
 async function handleLogout() {
   close()
   await authStore.logout()
-  showMenu.value = false
   router.push('/')
 }
 

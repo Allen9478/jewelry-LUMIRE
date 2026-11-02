@@ -8,6 +8,7 @@ export const works: WorkItem[] = worksJson
 export const artists: ArtistItem[] = artistsJson
 
 export const workCategories: string[] = [...new Set(works.map((w) => w.category))]
+export const workDesigners: string[] = [...new Set(works.map((w) => w.designer))]
 
 export function getWorkById(id: string): WorkItem | undefined {
   return works.find((w) => w.id === id)
