@@ -60,7 +60,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
       >
         <AppLogo />
       </RouterLink>
-      <!-- Nav：flex-1 吸收空間，overflow hidden 防破版 -->
+      <!-- Nav：flex-1 吸收空間 -->
       <nav
         :aria-label="txCommon('aria.mainNav')"
         class="hidden tablet:flex flex-1 justify-center min-w-0 overflow-x-auto px-2 laptop:px-4"

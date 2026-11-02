@@ -97,7 +97,7 @@ const displayAuthor = computed(() => {
   left: 50%;
   transform: translateX(-50%);
 }
-/* 手機版(預設,無 media query 就是最小寬度優先)*/
+
 @media (max-width: 767px) {
   .quote-block {
     /* 拿掉 cover,改用固定百分比,避免手機窄版時被放大過度 */

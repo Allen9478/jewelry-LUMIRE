@@ -29,7 +29,7 @@ function closeMenu() {
   isOpen.value = false
   document.body.style.overflow = ''
 }
-// KeyboardEvent是內建的型別
+
 function handleKeydown(e: KeyboardEvent) {
   if (e.key === 'Escape') closeMenu()
 }
@@ -62,9 +62,7 @@ onUnmounted(() => {
 </script>
 <template>
   <div class="hamburger tablet:hidden">
-    <!-- 全螢幕選單遮罩 -->
     <Teleport to="#hamburger-menu-root">
-      <!-- 觸發按鈕 -->
       <button
         type="button"
         @click="toggleMenu"
@@ -79,10 +77,7 @@ onUnmounted(() => {
       </button>
       <Transition name="overlay">
         <div v-if="isOpen" class="menu__overlay" @click.self="closeMenu">
-          <!-- 左側裝飾線 -->
           <div class="menu__deco-line"></div>
-
-          <!-- 選單內容 -->
           <nav class="menu__nav">
             <RouterLink
               :aria-label="txCommon('aria.home')"
@@ -92,8 +87,6 @@ onUnmounted(() => {
             >
               <AppLogo />
             </RouterLink>
-
-            <!-- 主要連結 -->
             <ul class="menu__links">
               <li
                 v-for="(item, index) in navItems"
@@ -110,8 +103,6 @@ onUnmounted(() => {
                 />
               </li>
             </ul>
-
-            <!-- 底部資訊 -->
             <div v-fade-in="{ delay: 600, y: 24, duration: 600 }" class="menu__footer">
               <LangSwitch variant="mobile" class="mb-2" />
               <UserActionButton
@@ -199,7 +190,6 @@ onUnmounted(() => {
   width: 28px;
 }
 
-/* ── 全螢幕遮罩 ── */
 .menu__overlay {
   position: fixed;
   inset: 0;
@@ -210,7 +200,6 @@ onUnmounted(() => {
   overflow: hidden;
 }
 
-/* ── 裝飾線 ── */
 .menu__deco-line {
   width: 1px;
   background: linear-gradient(
@@ -236,7 +225,6 @@ onUnmounted(() => {
   }
 }
 
-/* ── 選單 Nav ── */
 .menu__nav {
   flex: 1;
   display: flex;
@@ -246,12 +234,10 @@ onUnmounted(() => {
   max-width: 560px;
 }
 
-/* ── Logo ── */
 .menu__logo {
   animation: fadeUp 0.6s 0.05s var(--ease-luxury) both;
 }
 
-/* ── 連結清單(連結本身的樣式在 menu/MenuLink.vue) ── */
 .menu__links {
   list-style: none;
   padding: 0;
@@ -262,7 +248,6 @@ onUnmounted(() => {
   border-bottom: 1px solid rgba(214, 180, 106, 0.102);
 }
 
-/* ── 進場動畫 ── */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -274,7 +259,6 @@ onUnmounted(() => {
   }
 }
 
-/* ── Vue Transition ── */
 .overlay-enter-active {
   animation: overlayIn 0.6s var(--ease-luxury) forwards;
 }

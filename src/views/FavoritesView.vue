@@ -31,9 +31,7 @@ const categoryLabel = (category: string) => t(`category.${category.toLowerCase()
 const isLoading = computed(() => !isAuthReady.value || isFavoritesLoading.value)
 
 const favoriteWorks = computed(() => {
-  // 如果 favorites 還沒載入或不是陣列，直接回傳空陣列
   if (!Array.isArray(favorites.value)) return []
-  // 篩選出所有作品中，其 id 存在於 favorites 陣列裡面的項目
   return works.filter((work) => favorites.value.includes(work.id))
 })
 
