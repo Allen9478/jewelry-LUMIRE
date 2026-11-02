@@ -1,23 +1,18 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useLocalized } from '@/composables/useLocalized'
 import type { ArtistItem } from '@/types/artist'
 
 const { t } = useI18n()
 const { localized } = useLocalized()
-const infoSectionRef = ref<HTMLElement | null>(null)
 
 defineProps<{
   artist: ArtistItem
   collectionTitles: string[]
 }>()
-
-defineExpose({ infoSectionRef })
 </script>
 <template>
   <div
-    ref="infoSectionRef"
     class="page-container artist-detail__info mt-12 tablet:mt-24 space-y-6 tablet:grid tablet:grid-cols-[minmax(0,500px)_1fr] tablet:justify-items-center tablet:max-w-[1200px] tablet:gap-20"
   >
     <div

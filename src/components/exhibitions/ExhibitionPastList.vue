@@ -43,7 +43,7 @@ const pastExhibitions = computed(() =>
           mobile: { delay: 0, y: 16 },
         }"
         :key="index"
-        class="exhibitions__past-exhibitions-item block relative border border-gold-500/20 w-full h-[160px] tablet:h-[220px] max-w-[400px] tablet:max-w-[500px] mx-auto overflow-hidden transition-md hover:border-gold-500 active:border-gold-500 duration-500 group"
+        class="exhibitions__past-exhibitions-item block relative border border-gold-500/20 w-full h-[160px] tablet:h-[220px] max-w-[400px] tablet:max-w-[500px] mx-auto overflow-hidden hover:border-gold-500 active:border-gold-500 duration-500 group"
       >
         <img
           :src="getImageUrl(`exhibition/${pastExhibition.img}`)"

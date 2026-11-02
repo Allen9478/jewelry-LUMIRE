@@ -122,7 +122,6 @@ const sections: FooterSection[] = [
                   class="py-1 tablet:py-0 tablet:leading-10"
                 >
                   <span
-                    href="#"
                     class="inline-block py-1 text-cream/60 hover:text-cream/80 transition-colors duration-200"
                   >
                     <!--  zh.json 跟 en.json 中的 email 必須寫成 {'info@gmail.com'}，
@@ -136,7 +135,7 @@ const sections: FooterSection[] = [
         </div>
       </div>
 
-      <p class="py-4 display-inline tablet:pt-10 text-label-lg text-cream/50">
+      <p class="py-4 tablet:pt-10 text-label-lg text-cream/50">
         {{ t('footer.copyright') }}
       </p>
     </div>

@@ -13,7 +13,7 @@ import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
 import ItemGrid from '@/components/ui/ItemGrid.vue'
-import { works } from '@/data'
+import { works, workCategories, workDesigners } from '@/data'
 
 const favoriteStore = useFavoriteStore()
 const authStore = useAuthStore()
@@ -46,13 +46,6 @@ const collectionTitle = computed(() => {
   return tx('collection.allPieces')
 })
 
-const availableType = computed(() => {
-  return [...new Set(works.map((item) => item.category))]
-})
-
-const availableArtist = computed(() => {
-  return [...new Set(works.map((item) => item.designer))]
-})
 const filterFavorites = computed(() => {
   return favoriteWorks.value.filter((item) => {
     const matchCategory = !currentCategory.value || item.category === currentCategory.value
@@ -150,7 +143,7 @@ const sortedFavorites = computed(() => {
                   class="text-cream border border-gray-muted/30 focus:border-gold-500 p-2"
                 >
                   <option :value="null">{{ tx('filter.allTypes') }}</option>
-                  <option v-for="type in availableType" :key="type" :value="type">
+                  <option v-for="type in workCategories" :key="type" :value="type">
                     {{ categoryLabel(type) }}
                   </option>
                 </select>
@@ -163,7 +156,7 @@ const sortedFavorites = computed(() => {
                   class="text-cream border border-gray-muted/30 focus:border-gold-500 p-2"
                 >
                   <option :value="null">{{ tx('filter.allArtists') }}</option>
-                  <option v-for="artist in availableArtist" :key="artist" :value="artist">
+                  <option v-for="artist in workDesigners" :key="artist" :value="artist">
                     {{ artist }}
                   </option>
                 </select>

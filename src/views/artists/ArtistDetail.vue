@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useLocalized } from '@/composables/useLocalized'
 import { getArtistById, getWorksByDesigner } from '@/data'
@@ -24,16 +24,10 @@ const collectionTitles = computed(
       return text.split(/\s*[—–]\s*/)[0]?.trim() ?? text
     }) ?? [],
 )
-
-const artistInfoRef = ref<InstanceType<typeof ArtistInfo> | null>(null)
-
-const scrollToInfo = () => {
-  artistInfoRef.value?.infoSectionRef?.scrollIntoView({ behavior: 'smooth' })
-}
 </script>
 <template>
   <div v-if="artist" class="flex flex-col gap-8 tablet:gap-12">
-    <ArtistHero :artist="artist" @scroll-to-info="scrollToInfo" />
+    <ArtistHero :artist="artist" />
 
     <div
       class="relative page-container artist-detail__heading space-y-16 tablet:space-y-24 tablet:-mt-40"
@@ -53,7 +47,7 @@ const scrollToInfo = () => {
         </p>
       </div>
     </div>
-    <ArtistInfo ref="artistInfoRef" :artist="artist" :collection-titles="collectionTitles" />
+    <ArtistInfo :artist="artist" :collection-titles="collectionTitles" />
 
     <section class="page-container space-y-8 tablet:space-y-12">
       <SectionHeading

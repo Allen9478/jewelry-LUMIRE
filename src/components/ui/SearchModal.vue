@@ -151,7 +151,7 @@ watch(
       <div
         v-else-if="isOpen && keyword.trim()"
         aria-live="polite"
-        class="mt-6 py-4 text-center text-gray"
+        class="mt-6 py-4 text-center text-gray-muted"
       >
         {{ t('searchModal.noResults', { keyword }) }}
       </div>

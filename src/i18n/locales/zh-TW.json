@@ -39,8 +39,7 @@
         "headingAccent": "永恆",
         "subtext": "我們呈獻視野獨到的藝術家所打造的非凡珠寶，將珍貴材質轉化為永恆的故事。",
         "exploreWorks": "探索作品",
-        "watchStory": "觀看故事",
-        "imageAlt": "岩石上的戒指"
+        "watchStory": "觀看故事"
       },
       "featuredWorks": {
         "eyebrow": "精選作品",
@@ -98,7 +97,6 @@
     },
     "artistCarousel": {
       "featuredArtist": "精選藝術家",
-      "viewProfile": "查看簡介",
       "signaturePieces": "代表作品"
     },
     "artistDetail": {
@@ -111,7 +109,6 @@
       "selectedWorksSubtitle": "非凡之作"
     },
     "exhibitions": {
-      "id": "natures-forms",
       "title": "自然之形",
       "subtitle": "2026 國際珠寶展",
       "status": "當期展覽",
