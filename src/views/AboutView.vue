@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useTemplateRef } from 'vue'
+import { computed, useTemplateRef } from 'vue'
 import { useScopedI18n, type RtInput } from '@/composables/useScopedI18n'
 import { useLightFollow } from '@/composables/useLightFollow'
 import ItemGrid from '@/components/ui/ItemGrid.vue'
@@ -9,17 +8,6 @@ import AboutTimeLine from '@/components/ui/AboutTimeLine.vue'
 import GoldDivider from '@/components/ui/GoldDivider.vue'
 import BaseAvatar from '@/components/ui/BaseAvatar.vue'
 import QuoteBlock from '@/components/ui/QuoteBlock.vue'
-
-interface HighlightRaw {
-  year: number
-  title: RtInput
-  subtitle: RtInput
-}
-interface Highlight {
-  year: number
-  title: string
-  subtitle: string
-}
 
 interface PillarRaw {
   title: RtInput
@@ -46,14 +34,6 @@ interface TeamMember {
 const { tx, txList, txItems } = useScopedI18n('page.about')
 const paragraphs = computed(() => txList('philosophy.paragraphs'))
 const frameRef = useTemplateRef<HTMLElement>('frame')
-
-const highlights = computed(() =>
-  txItems<HighlightRaw, Highlight>('exhibitionHighlights.items', (item, rt) => ({
-    year: item.year,
-    title: rt(item.title),
-    subtitle: rt(item.subtitle),
-  })),
-)
 
 const pillars = computed(() =>
   txItems<PillarRaw, Pillar>('pillars.items', (item, rt) => ({
@@ -155,7 +135,7 @@ const { isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow(frameRef
       <h2 v-fade-in="{ delay: 0, y: 12 }" class="about__exhibition-highlights-title text-gold-500">
         {{ tx('exhibitionHighlights.sectionTitle') }}
       </h2>
-      <AboutTimeLine v-fade-in="{ delay: 40, y: 12 }" :timelineData="highlights" />
+      <AboutTimeLine v-fade-in="{ delay: 40, y: 12 }" />
     </section>
 
     <section class="about__pillars page-container space-y-10">
