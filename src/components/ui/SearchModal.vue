@@ -91,7 +91,6 @@ watch(
           />
         </svg>
 
-        <!-- 輸入框：加上 pl-8 留出左側 Icon 空間、提升 Placeholder 與文字對比度、補充 a11y -->
         <input
           ref="searchInputRef"
           v-model="keyword"
@@ -112,7 +111,6 @@ watch(
         />
       </div>
 
-      <!-- 2. 下拉搜尋結果清單：補充無障礙 role 與 aria-selected -->
       <ul
         id="search-results-list"
         v-if="isOpen && results.length"
@@ -147,7 +145,7 @@ watch(
         </li>
       </ul>
 
-      <!-- 3. 無結果提示區域：加上 aria-live="polite" 讓 Screen Reader 能夠主動朗讀搜尋結果狀態 -->
+      <!-- aria-live="polite" 讓 Screen Reader 能夠主動朗讀搜尋結果狀態 -->
       <div
         v-else-if="isOpen && keyword.trim()"
         aria-live="polite"

@@ -35,23 +35,11 @@ export function useSearch(works: Ref<WorkItem[]>, artists: Ref<ArtistItem[]>) {
     isOpen.value = keyword.value.trim().length > 0
   })
 
-  /**
-   * displayLabel
-   * ------------------------------------------------------------
-   * 依照 result.type 做型別縮小（narrowing）：
-   * - work: name 是 LocalizedText，要用 locale.value 取出對應語言，
-   *         找不到就 fallback 回 'zh-TW'（跟 i18n 的 fallbackLocale 一致）
-   * - artist: name 本來就是純字串，直接回傳即可
-   */
   function displayLabel(result: SearchResult): string {
     if (result.type === 'work') return localized(result.item.name)
     return result.item.name
   }
 
-  /**
-   * 依照 result.type 導向不同的詳情頁路由。
-   * 導頁後清空搜尋狀態，避免使用者返回時看到殘留的搜尋結果。
-   */
   function goTo(result?: SearchResult) {
     if (!result) return
 

@@ -76,7 +76,7 @@ export function useLightFollow(
   })
 
   function onMouseMove(e: MouseEvent) {
-    // 新增:順手取消還在跑的示範動畫迴圈,不用等 tick() 自己發現
+    // 取消還在跑的示範動畫迴圈,不用等 tick() 自己發現
     if (rafId) {
       cancelAnimationFrame(rafId)
       rafId = null

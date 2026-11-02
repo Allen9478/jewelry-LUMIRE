@@ -44,7 +44,6 @@ withDefaults(
             {{ localized(work.name) }}
           </h2>
           <p class="card__artist text-white/50 text-body-sm">{{ work.designer }}</p>
-          <!-- <p class="text-label order-last mb-3 tracking-widest text-gold-500">View →</p> -->
           <p class="flex items-center text-label tracking-widest text-gold-500">
             {{ t('card.view') }} <BaseArrowIcon sizeClass="size-5" />
           </p>

@@ -23,7 +23,6 @@ export const useFavoriteStore = defineStore('favorite', () => {
   const loadError = ref(false)
 
   async function toggleFavorite(id: string) {
-    //沒登入都不用談
     if (!authStore.isLoggedIn) {
       uiStore.openLoginModal()
       return
@@ -31,8 +30,8 @@ export const useFavoriteStore = defineStore('favorite', () => {
     const uid = authStore.user?.uid // Firebase Auth 的使用者 id
     if (!uid || !id) return
 
-    // 如果離現時 Firestore 寫入不會失敗只會排隊，所以先擋下並告知
-    // 不黨的話，畫面顯示已收藏但其實還沒寫入
+    // 如果離線時 Firestore 寫入不會失敗只會排隊，所以先擋下並告知
+    // 不擋的話，畫面顯示已收藏但其實還沒寫入
     if (!navigator.onLine) {
       uiStore.showToast('common.toast.offline')
       return
@@ -40,7 +39,7 @@ export const useFavoriteStore = defineStore('favorite', () => {
 
     const willFavorite = !favorites.value.includes(id)
 
-    // 先趕畫面在等網路，也就是所謂的樂觀更新
+    // 先趕畫面在等網路
     favorites.value = willFavorite
       ? [...favorites.value, id]
       : favorites.value.filter((f) => f !== id)
@@ -71,7 +70,7 @@ export const useFavoriteStore = defineStore('favorite', () => {
     isLoading.value = true
     loadError.value = false
     try {
-      // orderBy 讓順序以資料為準。沒指定的話 Firestore 預設依文件 ID 排，
+      // orderBy 讓順序以資料為準。沒指定的話 Firestore 預設依文件 ID
       const q = query(collection(db, 'favorites', uid, 'items'), orderBy('addedAt'))
       const snapshot = await getDocs(q)
       if (authStore.user?.uid !== uid) return // 期間換了帳號，丟棄這次結果

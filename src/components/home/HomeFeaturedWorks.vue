@@ -13,9 +13,9 @@ const uniqueDesignerWorks = computed(() => {
   return works.filter((work) => {
     if (!seenDesigners.has(work.designer)) {
       seenDesigners.add(work.designer)
-      return true // 保留第一次出現的設計師作品
+      return true
     }
-    return false // 跳過重複的
+    return false
   })
 })
 </script>

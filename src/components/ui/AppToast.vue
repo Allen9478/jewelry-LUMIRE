@@ -7,7 +7,6 @@ const uiStore = useUiStore()
 </script>
 
 <template>
-  <!-- aria-live是溫和朗讀，放在app.vue是因為閱讀器是「偵測內容變化」才朗讀外層容器常駐在 DOM的話比較讀得到-->
   <div
     role="status"
     aria-live="polite"

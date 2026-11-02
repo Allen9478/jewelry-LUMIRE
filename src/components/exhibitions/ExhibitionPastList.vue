@@ -53,7 +53,6 @@ const pastExhibitions = computed(() =>
           height="887"
           class="object-cover absolute inset-0 w-full h-full group-hover:scale-105 transition-all duration-500"
         />
-        <!-- 桌機版加一層漸層遮罩,讓文字在圖片上更好讀 -->
         <div
           class="block absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"
         ></div>
