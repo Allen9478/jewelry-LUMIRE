@@ -83,11 +83,11 @@
 
   /* 按鈕 */
   --text-btn-lg: 0.9725rem;
-  --text-btn-lg--line-height: 1.125;
+  --text-btn-lg--line-height: 1.25;
   --text-btn-lg--letter-spacing: 0.16em;
 
   --text-btn: 0.8125rem;
-  --text-btn--line-height: 1;
+  --text-btn--line-height: 1.25;
   --text-btn--letter-spacing: 0.12em;
 
   /* ── Letter Spacing ── */

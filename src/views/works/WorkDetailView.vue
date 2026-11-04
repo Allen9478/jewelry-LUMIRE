@@ -88,7 +88,7 @@ const relatedFade = (i: number): FadeOptions => ({
           </dl>
           <p
             v-fade-in="{ delay: 300, y: 16, mobile: { delay: 160, y: 12 } }"
-            class="work-detail-hero__info-description text-label tablet:text-body-sm tablet:pt-4 text-cream/80 tablet:line-clamp-4"
+            class="work-detail-hero__info-description text-body-sm tablet:text-body tablet:pt-4 text-cream/80 tablet:line-clamp-4"
           >
             {{ localized(work.description) }}
           </p>
@@ -104,11 +104,13 @@ const relatedFade = (i: number): FadeOptions => ({
             <div
               class="work-detail-hero__artist-info flex flex-col tablet:justify-center gap-4 pl-6"
             >
-              <h2 class="work-detail-hero__artist-name text-subhead tablet:text-[24px] font-serif">
+              <h2
+                class="work-detail-hero__artist-name text-subhead tablet:text-[1.5rem] font-serif"
+              >
                 {{ artist.name }}
               </h2>
               <p
-                class="work-detail-hero__artist-bio text-label tablet:text-label-lg tablet:line-clamp-3"
+                class="work-detail-hero__artist-bio text-body-sm tablet:text-label-lg tablet:line-clamp-3"
               >
                 {{ localized(artist.short_bio) }}
               </p>
