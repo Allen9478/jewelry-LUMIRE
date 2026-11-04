@@ -80,7 +80,9 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
         </ul>
       </nav>
 
-      <div class="flex shrink-0 justify-end items-center gap-2 lg:gap-3 xl:gap-4 text-stone-50">
+      <div
+        class="flex shrink-0 justify-end items-center gap-2 laptop:gap-3 desktop:gap-4 text-stone-50"
+      >
         <button
           @click="uiStore.openSearchModal"
           :aria-label="t('searchModal.title')"
