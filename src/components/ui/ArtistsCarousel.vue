@@ -42,19 +42,19 @@ const { localized } = useLocalized()
           <div class="artists-carousel__content flex flex-col p-8 tablet:p-12 bg-black">
             <div class="artists-carousel__text flex flex-col gap-4 my-auto">
               <p
-                class="artists-carousel__eyebrow uppercase text-gold-500 text-[11px] tablet:text-eyebrow"
+                class="artists-carousel__eyebrow uppercase text-gold-500 text-[0.6875rem] tablet:text-eyebrow"
               >
                 {{ t('page.artistCarousel.featuredArtist') }}
               </p>
 
               <h2
-                class="artists-carousel__name font-serif text-white text-[18px] tablet:text-heading-sm"
+                class="artists-carousel__name font-serif text-white text-[1.125rem] tablet:text-heading-sm"
               >
                 {{ artist.name }}
               </h2>
 
               <p
-                class="artists-carousel__bio text-gray-muted text-[13px] tablet:text-subtext line-clamp-3 leading-relaxed tablet:max-w-md"
+                class="artists-carousel__bio text-gray-muted text-[0.8125rem] tablet:text-subtext line-clamp-3 leading-relaxed tablet:max-w-md"
               >
                 {{ localized(artist.short_bio) }}
               </p>
@@ -63,7 +63,7 @@ const { localized } = useLocalized()
               :to="{ name: 'artists-detail', params: { id: artist.id } }"
               class="artists-carousel__link inline-flex items-center text-gold-500 hover:text-gold-300 transition-colors group"
             >
-              <span class="text-[11px] tablet:text-btn whitespace-nowrap">{{
+              <span class="text-[0.6875rem] tablet:text-btn whitespace-nowrap">{{
                 t('page.artists.viewProfile')
               }}</span>
               <BaseArrowIcon />

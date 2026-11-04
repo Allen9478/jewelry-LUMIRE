@@ -65,7 +65,7 @@ const emit = defineEmits<{ navigate: [] }>()
 
 .menu__link-number {
   font-family: var(--font-sans);
-  font-size: 9px;
+  font-size: 0.5625rem;
   letter-spacing: 0.15em;
   color: var(--color-gold-500);
   opacity: 0.6;
@@ -75,7 +75,7 @@ const emit = defineEmits<{ navigate: [] }>()
 
 .menu__link-name {
   font-family: var(--font-serif);
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 400;
   letter-spacing: 0.02em;
   line-height: 1;
@@ -92,7 +92,7 @@ const emit = defineEmits<{ navigate: [] }>()
 }
 
 .menu__link-arrow {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--color-gold-500);
   opacity: 0;
   transform: translateX(-10px);

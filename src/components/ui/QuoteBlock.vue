@@ -49,17 +49,17 @@ const displayAuthor = computed(() => {
 </script>
 <template>
   <div
-    class="quote-block border-y border-gold-500/30 flex flex-col items-center justify-center text-center gap-4 px-6 py-16 my-10 tablet:my-0 tablet:mb-5 tablet:py-20 laptop:py-24 w-screen ml-[calc(50%_-_50vw)] mr-[calc(50%_-_50vw)]"
+    class="quote-block border-y border-gold-500/30 flex flex-col items-center justify-center text-center gap-4 px-6 py-8 my-10 tablet:my-0 tablet:mb-6 laptop:py-16 w-screen ml-[calc(50%_-_50vw)] mr-[calc(50%_-_50vw)]"
     :style="{ '--quote-bg': `url(${backgroundImage})` }"
   >
     <div
       v-fade-in
-      class="flex flex-col items-center gap-4 w-full max-w-[400px] tablet:max-w-[700px] mx-auto text-center p-12"
+      class="flex flex-col items-center gap-4 w-full max-w-[400px] tablet:max-w-[700px] mx-auto text-center p-2 tablet:p-12"
     >
       <div class="quote-block__quote-wrap relative w-full flex justify-center">
         <p
           :class="styles.quote"
-          class="quote-block__text mx-auto mt-2 max-w-[280px] ipad:max-w-md tablet:max-w-xl text-quote pt-16"
+          class="quote-block__text mx-auto mt-2 max-w-[280px] ipad:max-w-md tablet:max-w-xl text-quote pt-12 laptop:pt-16"
         >
           {{ quote }}
         </p>
@@ -84,11 +84,12 @@ const displayAuthor = computed(() => {
   background-image: var(--quote-bg);
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .quote-block__quote-wrap::before {
   position: absolute;
-  font-size: clamp(64px, 6vw, 96px);
+  font-size: clamp(4rem, 6vw, 6rem);
   font-family: 'Georgia', serif;
   line-height: 0;
   color: var(--color-gold-500);
@@ -100,9 +101,8 @@ const displayAuthor = computed(() => {
 
 @media (max-width: 767px) {
   .quote-block {
-    /* 拿掉 cover,改用固定百分比,避免手機窄版時被放大過度 */
-    background-size: contain;
-    background-position: center top;
+    background-size: auto 100%;
+    background-position: center;
   }
 }
 </style>
