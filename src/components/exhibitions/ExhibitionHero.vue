@@ -7,7 +7,7 @@ const { tx } = useScopedI18n('page.exhibitions')
 </script>
 
 <template>
-  <div class="exhibitions__hero relative w-full h-[350px] md:h-[600px] overflow-hidden">
+  <div class="exhibitions__hero relative w-full h-[350px] tablet:h-[600px] overflow-hidden">
     <img
       :src="heroImage"
       alt=""
