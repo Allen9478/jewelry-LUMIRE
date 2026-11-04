@@ -194,7 +194,7 @@ const { isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow(frameRef
 <style scoped>
 .about__quote-text::before {
   position: absolute;
-  font-size: clamp(64px, 6vw, 96px);
+  font-size: clamp(4rem, 6vw, 6rem);
   font-family: 'Georgia', serif;
   line-height: 0;
   color: var(--color-gold-500);

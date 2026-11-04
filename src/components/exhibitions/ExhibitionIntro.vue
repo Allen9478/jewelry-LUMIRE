@@ -40,7 +40,7 @@ const descriptions = computed(() => txList('description'))
 .exhibitions__quote-text::before,
 .exhibitions__quote-text::after {
   position: absolute;
-  font-size: clamp(36px, 6vw, 60px);
+  font-size: clamp(2.25rem, 6vw, 3.75rem);
   font-family: 'Georgia', serif;
   line-height: 0;
   color: var(--color-gold-500);
