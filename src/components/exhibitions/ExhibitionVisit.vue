@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useScopedI18n } from '@/composables/useScopedI18n'
 import visitImage from '@/assets/images/exhibition/exhibition-location.webp'
+import BaseImage from '@/components/common/BaseImage.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
 import { MapPinIcon, ClockIcon } from '@heroicons/vue/24/outline'
@@ -47,7 +48,7 @@ const { tx } = useScopedI18n('page.exhibitions')
         v-fade-in="{ delay: 160, y: 12, duration: 900, mobile: { delay: 0, y: 12 } }"
         class="exhibitions__visit-img-wrap relative aspect-[16/7] tablet:aspect-auto tablet:min-h-[360px] overflow-hidden"
       >
-        <img
+        <BaseImage
           :src="visitImage"
           :alt="tx('alt.venue')"
           loading="lazy"

@@ -98,7 +98,7 @@ const { isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow(frameRef
       >
         <div
           ref="frame"
-          class="frame relative h-full overflow-hidden"
+          class="frame relative h-full overflow-hidden bg-black"
           :class="{ 'is-lit': isLit }"
           :style="lightStyle"
           @mousemove="onMouseMove"

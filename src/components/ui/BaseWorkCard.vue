@@ -4,6 +4,7 @@ import HeartButton from '@/components/common/HeartButton.vue'
 import getImageUrl from '@/utils/getImageUrl'
 import type { WorkItem } from '@/types/work'
 import { useLocalized } from '@/composables/useLocalized'
+import BaseImage from '@/components/common/BaseImage.vue'
 import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
 
 const { t } = useI18n()
@@ -25,14 +26,16 @@ withDefaults(
   >
     <RouterLink :to="{ name: 'works-detail', params: { id: work.id } }" class="card__inner block">
       <div class="card__body flex items-center tablet:flex-col">
-        <div class="relative overflow-hidden w-[110px] shrink-0 tablet:w-auto tablet:max-w-full">
-          <img
+        <div
+          class="relative overflow-hidden bg-black w-[110px] shrink-0 tablet:w-auto tablet:max-w-full"
+        >
+          <BaseImage
             :src="getImageUrl(`jewelry/${work.image}`)"
             :alt="localized(work.name)"
             :loading="loading"
-            width="1122"
-            height="1402"
-            class="aspect-[3/4] max-w-full object-cover max-h-[180px] tablet:max-h-[250px] laptop:max-h-[300px] laptop:object-contain"
+            width="640"
+            height="800"
+            class="aspect-[4/5] max-w-full object-cover max-h-[180px] tablet:max-h-[250px] laptop:max-h-[300px] laptop:object-contain"
           />
           <div
             class="card__overlay tablet:absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-has-[:focus-visible]:opacity-100"

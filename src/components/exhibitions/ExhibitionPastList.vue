@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { useScopedI18n, type RtInput } from '@/composables/useScopedI18n'
 import getImageUrl from '@/utils/getImageUrl'
+import BaseImage from '@/components/common/BaseImage.vue'
 
 // i18n 裡取回來的原始形狀
 interface PastExhibitionRaw {
@@ -45,7 +46,7 @@ const pastExhibitions = computed(() =>
         :key="index"
         class="exhibitions__past-exhibitions-item block relative border border-gold-500/20 w-full h-[160px] tablet:h-[220px] max-w-[400px] tablet:max-w-[500px] mx-auto overflow-hidden hover:border-gold-500 active:border-gold-500 duration-500 group"
       >
-        <img
+        <BaseImage
           :src="getImageUrl(`exhibition/${pastExhibition.img}`)"
           :alt="pastExhibition.title"
           loading="lazy"
