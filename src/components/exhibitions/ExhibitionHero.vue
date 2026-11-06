@@ -2,17 +2,17 @@
 import { useScopedI18n } from '@/composables/useScopedI18n'
 import heroImage from '@/assets/images/exhibition/exhibition-hero.webp'
 import SectionHeading from '@/components/ui/SectionHeading.vue'
-
+import BaseImage from '@/components/common/BaseImage.vue'
 const { tx } = useScopedI18n('page.exhibitions')
 </script>
 
 <template>
   <div class="exhibitions__hero relative w-full h-[350px] tablet:h-[600px] overflow-hidden">
-    <img
+    <BaseImage
       :src="heroImage"
       alt=""
       fetchpriority="high"
-      width="1536"
+      width="1534"
       height="1024"
       class="absolute inset-0 w-full h-full object-cover object-center"
     />

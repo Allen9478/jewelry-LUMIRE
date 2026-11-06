@@ -2,8 +2,10 @@
 import { works, workCategories } from '@/data'
 import SectionHeading from '@/components/ui/SectionHeading.vue'
 import BaseWorkCard from '@/components/ui/BaseWorkCard.vue'
+import BaseImage from '@/components/common/BaseImage.vue'
 import BaseUnderlineTab from '@/components/common/BaseUnderlineTab.vue'
 import ArtistsCarousel from '@/components/ui/ArtistsCarousel.vue'
+import worksHero from '../../assets/images/works/works_hero.webp'
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useCommonI18n } from '@/composables/useScopedI18n'
@@ -44,8 +46,8 @@ function getFadeDelay(index: number, base: number, step: number) {
       v-fade-in="{ delay: 160, y: 12, duration: 900 }"
       class="work-hero__image-desktop hidden tablet:block tablet:flex-1 tablet:basis-1/2 min-h-0 overflow-hidden"
     >
-      <img
-        src="../../assets/images/works/works_hero.webp"
+      <BaseImage
+        :src="worksHero"
         alt=""
         fetchpriority="high"
         width="1704"

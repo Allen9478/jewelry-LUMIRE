@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
+import BaseImage from '@/components/common/BaseImage.vue'
 import ringImg from '@/assets/images/home/home-hero-ring.webp'
 
+const imgReady = ref(false)
 const props = defineProps<{
   variant: 'mobile' | 'desktop'
 }>()
@@ -30,17 +32,26 @@ const cfg = computed(() => config[props.variant])
 
 <template>
   <div v-fade-in="cfg.fade" :class="cfg.wrapper">
-    <img
+    <BaseImage
       :src="ringImg"
       alt=""
+      :fade="false"
       fetchpriority="high"
       width="1254"
       height="1254"
       class="home-hero__visual-img"
       :class="cfg.img"
+      @load="imgReady = true"
+      @error="imgReady = true"
     />
-    <div class="home-hero__visual-circle" :class="cfg.circle">
-      <div class="home-hero__visual-circle-ring absolute inset-0 rounded-full"></div>
+    <!-- 圓環等圖片載完才一起出現 -->
+    <div
+      class="absolute inset-0 pointer-events-none transition-opacity duration-500"
+      :class="imgReady ? 'opacity-100' : 'opacity-0'"
+    >
+      <div class="home-hero__visual-circle" :class="cfg.circle">
+        <div class="home-hero__visual-circle-ring absolute inset-0 rounded-full"></div>
+      </div>
     </div>
   </div>
 </template>
