@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import BaseImage from '@/components/common/BaseImage.vue'
+import authHeroRing from '../assets/images/auth/auth-hero-ring.webp'
+
 interface Dust {
   size: number
   x: number
@@ -19,14 +22,17 @@ const dusts: Dust[] = [
 </script>
 <template>
   <div
-    class="auth flex flex-col tablet:flex-row tablet:h-screen max-w-[540px] mx-auto tablet:max-w-full overflow-hidden"
+    class="auth flex flex-col tablet:flex-row tablet:h-screen max-w-[540px] mx-auto tablet:max-w-full bg-black overflow-hidden"
   >
-    <!-- 圖片：固定不變 -->
-    <div class="auth__hero h-[clamp(240px,50svh,420px)] tablet:h-full tablet:w-1/2 wide:w-[45%]">
-      <img
-        src="../assets/images/auth/auth-hero-ring.webp"
+    <div
+      class="auth__hero h-[clamp(240px,50svh,420px)] tablet:h-full tablet:w-1/2 wide:w-[45%] bg-black"
+    >
+      <BaseImage
+        :src="authHeroRing"
         alt=""
         fetchpriority="high"
+        width="900"
+        height="1125"
         class="w-full h-full object-cover object-[center_30%] tablet:object-[center_20%]"
       />
       <div class="hidden tablet:block">

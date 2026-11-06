@@ -5,21 +5,20 @@ const props = withDefaults(
   defineProps<{
     src: string
     alt?: string
+    fade?: boolean
   }>(),
-  { alt: '' },
+  { alt: '', fade: true },
 )
 
 const loaded = ref(false)
 const imgEl = ref<HTMLImageElement | null>(null)
 
-// 圖片已在快取時 load 事件可能來不及觸發,這裡補判斷
 function checkComplete() {
   if (imgEl.value?.complete) loaded.value = true
 }
 
 onMounted(checkComplete)
 
-// src 換掉時(例如切換商品)要重新跑一次淡入
 watch(
   () => props.src,
   async () => {
@@ -37,7 +36,7 @@ watch(
     :alt="alt"
     decoding="async"
     class="base-image"
-    :class="{ 'is-loaded': loaded }"
+    :class="{ 'is-loaded': loaded, 'is-fade': fade }"
     @load="loaded = true"
     @error="loaded = true"
   />

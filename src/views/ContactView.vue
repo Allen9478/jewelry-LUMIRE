@@ -4,6 +4,8 @@ import { useScopedI18n, type RtInput } from '@/composables/useScopedI18n'
 import FormInput from '@/components/ui/FormInput.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseArrowIcon from '@/components/ui/BaseArrowIcon.vue'
+import BaseImage from '@/components/common/BaseImage.vue'
+import contactHero from '@/assets/images/contact/contact-hero.webp'
 import { MapPinIcon, ClockIcon } from '@heroicons/vue/24/outline'
 
 const form = ref({
@@ -56,14 +58,14 @@ function handleDemoSubmit() {
 <template>
   <div class="contact flex flex-col tablet:flex-row">
     <section
-      class="contact__hero hidden tablet:block tablet:sticky tablet:w-[50%] desktop:w-[45%] tablet:top-0 tablet:h-screen tablet:self-start"
+      class="bg-black contact__hero hidden tablet:block tablet:sticky tablet:w-[50%] desktop:w-[45%] tablet:top-0 tablet:h-screen tablet:self-start"
     >
-      <img
-        src="@/assets/images/contact/contact-hero.webp"
+      <BaseImage
+        :src="contactHero"
         alt=""
         fetchpriority="high"
-        width="1023"
-        height="1537"
+        width="900"
+        height="1352"
         class="contact__hero-img w-full h-full object-cover tablet:object-[30%_50%]"
       />
     </section>
