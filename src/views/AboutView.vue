@@ -175,7 +175,9 @@ const { isLit, onMouseMove, onMouseLeave, lightStyle } = useLightFollow(frameRef
     </section>
 
     <section class="about__team page-container space-y-8">
-      <h2 v-fade-in="{ delay: 0, y: 12 }" class="about__team-title text-gold-500">OUR TEAM</h2>
+      <h2 v-fade-in="{ delay: 0, y: 12 }" class="about__team-title text-gold-500">
+        {{ tx('team.sectionTitle') }}
+      </h2>
       <ItemGrid :items="team" grid-class="grid-cols-2 laptop:grid-cols-4">
         <template #default="{ item }">
           <BaseAvatar :artist="item" variant="team" folder="about" />
