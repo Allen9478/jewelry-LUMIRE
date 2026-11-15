@@ -62,13 +62,6 @@
       "quote": {
         "text": "Jewelry is not just an ornament, it is a story, a memory, a work of art.",
         "author": "LUMIÈRE JEWELRY GALLERY"
-      },
-      "newsletter": {
-        "placeholder": "Enter email",
-        "submit": "Subscribe",
-        "submitted": "Thank you!",
-        "demo": "This is a demo feature. No subscription will be created.",
-        "invalid": "Please enter a valid email address"
       }
     },
     "works": {
