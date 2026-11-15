@@ -57,8 +57,9 @@ function getFadeDelay(index: number, base: number, step: number) {
     </div>
   </section>
   <div class="work-main page-container relative">
-    <nav
+    <div
       v-fade-in="{ delay: 0, y: 12, mobile: { delay: 200, y: 12 } }"
+      role="group"
       :aria-label="txCommon('aria.filterWorks')"
       class="py-3 overflow-x-auto no-scrollbar tablet:overflow-visible"
     >
@@ -75,22 +76,21 @@ function getFadeDelay(index: number, base: number, step: number) {
           <BaseUnderlineTab
             :active="currentCategory === category"
             @click="currentCategory = category"
-            :aria-current="currentCategory === category ? 'true' : undefined"
           >
             {{ t('category.' + category.toLowerCase()) }}
           </BaseUnderlineTab>
         </li>
       </ul>
-    </nav>
+    </div>
     <!-- 這是給navbar的漸層遮罩 -->
     <div
       class="tablet:hidden pointer-events-none absolute top-0 right-0 h-full w-12 bg-gradient-to-l from-black to-transparent"
       aria-hidden="true"
     ></div>
-    <div
+    <ul
       class="works-section__grid tablet:grid tablet:grid-cols-3 laptop:grid-cols-4 h-[80vh] tablet:h-auto tablet:overflow-visible tablet:gap-5 laptop:gap-6 flex flex-col place-items-center gap-4 overflow-y-auto py-4 no-scrollbar"
     >
-      <div
+      <li
         v-for="(work, i) in filteredWorks"
         v-fade-in="{
           delay: getFadeDelay(i, 50, 80),
@@ -100,9 +100,13 @@ function getFadeDelay(index: number, base: number, step: number) {
         :key="`${currentCategory}-${work.id}`"
         class="flex w-full justify-center"
       >
-        <BaseWorkCard :work="work" :loading="i < 4 ? 'eager' : 'lazy'"></BaseWorkCard>
-      </div>
-    </div>
+        <BaseWorkCard
+          :work="work"
+          :loading="i < 4 ? 'eager' : 'lazy'"
+          heading-tag="h2"
+        ></BaseWorkCard>
+      </li>
+    </ul>
     <!-- 這是給item捲動的漸層遮罩 -->
     <div
       class="tablet:hidden pointer-events-none absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black to-transparent"

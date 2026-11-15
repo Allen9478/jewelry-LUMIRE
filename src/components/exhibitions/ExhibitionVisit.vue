@@ -27,9 +27,9 @@ const { tx } = useScopedI18n('page.exhibitions')
             <span>
               {{ tx('visit.name') }}
             </span>
-            <span>
+            <address>
               {{ tx('visit.address') }}
-            </span>
+            </address>
           </div>
         </div>
         <div class="flex items-start gap-4">

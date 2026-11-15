@@ -14,14 +14,16 @@ withDefaults(
   defineProps<{
     work: WorkItem
     loading?: 'lazy' | 'eager'
+    headingTag?: 'h2' | 'h3'
   }>(),
   {
     loading: 'lazy',
+    headingTag: 'h3',
   },
 )
 </script>
 <template>
-  <div
+  <article
     class="card relative w-full max-w-[350px] p-1.5 border border-gold-500/35 has-[:focus-visible]:border-gold-500/80 has-[:focus-visible]:shadow-gold-glow hover:border-gold-500/80 hover:shadow-gold-glow active:scale-[0.98] active:border-gold-500/80 active:shadow-gold-glow transition-all duration-150 ease-out group"
   >
     <RouterLink :to="{ name: 'works-detail', params: { id: work.id } }" class="card__inner block">
@@ -43,9 +45,9 @@ withDefaults(
         </div>
         <!-- 分開寫兩個的原因是解決 mobile切換tablet瞬間文字出現消失的問題,用css能解決就不用js並且這裡code沒很多  -->
         <div class="flex flex-col pl-4 pr-10 gap-3 tablet:hidden">
-          <h2 class="card__name text-white text-body line-clamp-2">
+          <component :is="headingTag" class="card__name text-white text-body line-clamp-2">
             {{ localized(work.name) }}
-          </h2>
+          </component>
           <p class="card__artist text-white/50 text-body-sm">{{ work.designer }}</p>
           <p class="flex items-center text-label tracking-widest text-gold-500">
             {{ t('card.view') }} <BaseArrowIcon sizeClass="size-5" />
@@ -55,7 +57,9 @@ withDefaults(
         <div
           class="hidden tablet:flex flex-col tablet:absolute tablet:bottom-0 tablet:left-0 tablet:right-0 tablet:p-5 tablet:gap-3 translate-y-2 pointer-events-none opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-has-[:focus-visible]:translate-y-0 group-has-[:focus-visible]:opacity-100 transition-all duration-500"
         >
-          <h2 class="card__name text-white text-body">{{ localized(work.name) }}</h2>
+          <component :is="headingTag" class="card__name text-white text-body">
+            {{ localized(work.name) }}
+          </component>
           <p class="card__artist text-white/90 text-body-sm">{{ work.designer }}</p>
           <p class="flex items-center text-label tracking-widest text-gold-500">
             {{ t('card.view') }} <BaseArrowIcon sizeClass="size-5" />
@@ -64,7 +68,7 @@ withDefaults(
       </div>
     </RouterLink>
     <HeartButton :workId="work.id" />
-  </div>
+  </article>
 </template>
 
 <style scoped>

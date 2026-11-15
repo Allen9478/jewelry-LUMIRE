@@ -14,12 +14,12 @@ const { tx } = useScopedI18n('page.exhibitions')
       <CalendarDaysIcon class="size-7 text-gold-500" />
       <span>{{ tx('date') }}</span>
     </p>
-    <div class="hidden laptop:block w-px h-8 bg-gold-500/60"></div>
+    <div aria-hidden="true" class="hidden laptop:block w-px h-8 bg-gold-500/60"></div>
     <p class="flex gap-4 items-center">
       <MapPinIcon class="size-7 text-gold-500" />
       <span>{{ tx('location') }}</span>
     </p>
-    <div class="hidden laptop:block w-px h-8 bg-gold-500/60"></div>
+    <div aria-hidden="true" class="hidden laptop:block w-px h-8 bg-gold-500/60"></div>
 
     <p class="flex gap-4 items-center">
       <ClockIcon class="size-7 text-gold-500" />

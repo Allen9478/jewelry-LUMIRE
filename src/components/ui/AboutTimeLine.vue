@@ -56,7 +56,7 @@ onUnmounted(() => {
 
 <template>
   <div ref="timelineRef" class="w-full py-12 px-4 tablet:px-8">
-    <div class="hidden tablet:grid grid-cols-5 relative">
+    <ol class="hidden tablet:grid grid-cols-5 relative">
       <div class="absolute top-[50px] left-0 right-0 h-px bg-white/10"></div>
 
       <div
@@ -64,12 +64,12 @@ onUnmounted(() => {
         :class="isVisible ? 'w-full' : 'w-0'"
       ></div>
 
-      <div
+      <li
         v-for="(item, index) in timeline"
         :key="item.year"
         class="flex flex-col items-center text-center gap-2 px-2"
       >
-        <span class="text-label-lg text-gray-400">{{ item.year }}</span>
+        <time class="text-label-lg text-gray-400">{{ item.year }}</time>
         <!-- 圓點：固定在線條的高度上，並依序延遲變色 -->
         <span
           class="w-3 h-3 rounded-full z-10 transition-colors duration-500 my-4"
@@ -79,8 +79,8 @@ onUnmounted(() => {
 
         <h3 class="font-serif italic text-white text-base">{{ item.title }}</h3>
         <p class="text-label text-gray-400 italic">{{ item.subtitle }}</p>
-      </div>
-    </div>
+      </li>
+    </ol>
 
     <div class="flex tablet:hidden flex-col relative pl-6 ml-4">
       <div class="absolute top-4 bottom-0 left-[5.5px] w-px bg-white/10"></div>
