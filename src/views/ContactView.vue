@@ -156,7 +156,7 @@ function handleDemoSubmit() {
           <MapPinIcon class="size-8 text-gold-500 -translate-y-px" />
           <div class="flex flex-col gap-1 ml-4">
             <p class="text-subhead font-serif">{{ tx('location.name') }}</p>
-            <address v-for="(line, i) in address" :key="i" class="text-gray-muted">
+            <address v-for="(line, i) in address" :key="i" class="text-gray-muted not-italic">
               {{ line }}
             </address>
           </div>

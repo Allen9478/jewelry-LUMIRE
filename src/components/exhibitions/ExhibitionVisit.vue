@@ -27,7 +27,7 @@ const { tx } = useScopedI18n('page.exhibitions')
             <span>
               {{ tx('visit.name') }}
             </span>
-            <address>
+            <address class="not-italic">
               {{ tx('visit.address') }}
             </address>
           </div>
