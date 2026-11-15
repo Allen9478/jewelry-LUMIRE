@@ -23,7 +23,7 @@ const variantClasses: Record<Variant, string> = {
 const variantClass = computed(() => variantClasses[props.variant])
 </script>
 <template>
-  <!-- hr時不寫無障礙 -->
+  <!-- hr 本身有語意不用另外的 aria -->
   <component
     :is="tag"
     :class="['h-px ', `${variantClass}`]"

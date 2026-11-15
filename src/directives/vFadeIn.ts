@@ -19,7 +19,6 @@ interface FadeElement extends HTMLElement {
 
 export const vFadeIn: Directive<FadeElement, FadeOptions | undefined> = {
   mounted(el, binding) {
-    // 手機端判斷
     const isTablet = window.innerWidth < 768
 
     const base = binding.value ?? {}

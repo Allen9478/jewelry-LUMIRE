@@ -82,7 +82,7 @@ function getFadeDelay(index: number, base: number, step: number) {
         </li>
       </ul>
     </div>
-    <!-- 這是給navbar的漸層遮罩 -->
+    <!-- 分類的漸層遮罩 -->
     <div
       class="tablet:hidden pointer-events-none absolute top-0 right-0 h-full w-12 bg-gradient-to-l from-black to-transparent"
       aria-hidden="true"
