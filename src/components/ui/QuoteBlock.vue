@@ -73,8 +73,6 @@ const displayAuthor = computed(() => {
       >
         {{ displayAuthor }}
       </figcaption>
-
-      <slot name="extra" />
     </figure>
   </div>
 </template>
