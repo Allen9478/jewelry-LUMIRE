@@ -9,10 +9,12 @@ import worksHero from '../../assets/images/works/works_hero.webp'
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useCommonI18n } from '@/composables/useScopedI18n'
+import { useCategoryLabel } from '@/composables/useCategoryLabel'
 
 const { t } = useI18n()
 const { tx: txCommon } = useCommonI18n()
 const currentCategory = ref<string | null>(null)
+const categoryLabel = useCategoryLabel()
 const filteredWorks = computed(() => {
   if (!currentCategory.value) return works
   return works.filter((item) => item.category === currentCategory.value)
@@ -77,7 +79,7 @@ function getFadeDelay(index: number, base: number, step: number) {
             :active="currentCategory === category"
             @click="currentCategory = category"
           >
-            {{ t('category.' + category.toLowerCase()) }}
+            {{ categoryLabel(category) }}
           </BaseUnderlineTab>
         </li>
       </ul>
