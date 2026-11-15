@@ -132,9 +132,9 @@ watch(
           @mouseenter="activeIndex = index"
           @click="selectItem(result)"
         >
-          <strong class="text-label-lg font-normal truncate">
+          <span class="text-label-lg font-normal truncate">
             {{ displayLabel(result) }}
-          </strong>
+          </span>
           <span
             class="shrink-0 text-label tracking-wide text-gold-500/90 bg-gold-500/10 px-2 py-0.5 rounded border border-gold-500/20"
           >

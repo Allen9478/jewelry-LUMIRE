@@ -43,8 +43,9 @@ function handleNewsletterDemo() {
             type="email"
             autocomplete="email"
             :aria-label="tx('newsletter.placeholder')"
-            :placeholder="tx('newsletter.placeholder')"
             :aria-invalid="newsletterHasError"
+            :aria-describedby="newsletterMsg ? 'newsletter-msg' : undefined"
+            :placeholder="tx('newsletter.placeholder')"
             class="min-w-0 flex-1 bg-transparent p-3 text-body tablet:text-label-lg text-white placeholder:text-gold-200/50 focus:outline-none"
           />
           <button

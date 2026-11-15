@@ -52,30 +52,30 @@ const displayAuthor = computed(() => {
     class="quote-block border-y border-gold-500/30 flex flex-col items-center justify-center text-center gap-4 px-6 py-8 my-10 tablet:my-0 tablet:mb-6 laptop:py-16 w-screen ml-[calc(50%_-_50vw)] mr-[calc(50%_-_50vw)]"
     :style="{ '--quote-bg': `url(${backgroundImage})` }"
   >
-    <div
+    <figure
       v-fade-in
       class="flex flex-col items-center gap-4 w-full max-w-[400px] tablet:max-w-[700px] mx-auto text-center p-2 tablet:p-12"
     >
-      <div class="quote-block__quote-wrap relative w-full flex justify-center">
+      <blockquote class="quote-block__quote-wrap relative w-full flex justify-center">
         <p
           :class="styles.quote"
           class="quote-block__text mx-auto mt-2 max-w-[280px] ipad:max-w-md tablet:max-w-xl text-quote pt-12 laptop:pt-16"
         >
           {{ quote }}
         </p>
-      </div>
+      </blockquote>
 
       <div v-if="variant !== 'home'" class="w-12 h-px bg-gold-500 my-4" aria-hidden="true"></div>
 
-      <p
+      <figcaption
         v-if="displayAuthor"
         class="quote-block__author text-label uppercase tracking-wider text-gold-300 tablet:mt-5 tablet:text-label-lg"
       >
         {{ displayAuthor }}
-      </p>
+      </figcaption>
 
       <slot name="extra" />
-    </div>
+    </figure>
   </div>
 </template>
 

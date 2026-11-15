@@ -88,6 +88,7 @@ function switchLocale(lang: Locale) {
       @click="switchLocale('en')"
       class="text-label-lg px-1 py-2 transition-colors"
       :aria-label="txCommon('aria.langEn')"
+      :aria-pressed="locale === 'en'"
       :class="
         locale === 'en'
           ? 'text-gold-500 border-b border-gold-500'
@@ -96,12 +97,13 @@ function switchLocale(lang: Locale) {
     >
       EN
     </button>
-    <span class="text-white/40">|</span>
+    <span aria-hidden="true" class="text-white/40">|</span>
     <button
       type="button"
       @click="switchLocale('zh-TW')"
       class="text-label-lg px-1 py-2 transition-colors"
       :aria-label="txCommon('aria.langZh')"
+      :aria-pressed="locale === 'zh-TW'"
       :class="
         locale === 'zh-TW'
           ? 'text-gold-500 border-b border-gold-500'

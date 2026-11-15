@@ -38,12 +38,13 @@ const baseClass =
     <slot />
   </RouterLink>
 
-  <a
+  <button
     v-else
-    href="#"
+    type="button"
+    :aria-pressed="active"
     :class="[baseClass, active ? 'font-bold text-gold-500 after:w-full' : 'text-cream']"
-    @click.prevent="$emit('click')"
+    @click="$emit('click')"
   >
     <slot />
-  </a>
+  </button>
 </template>

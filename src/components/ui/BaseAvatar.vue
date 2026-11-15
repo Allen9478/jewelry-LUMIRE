@@ -48,12 +48,12 @@ const linkTo = computed<RouteLocationRaw>(() =>
         class="w-full h-full object-cover object-[center_10%] transition-transform duration-500 ease-out group-hover:scale-[1.08] group-active:scale-[1.03] group-active:duration-150"
       />
     </div>
-    <h2
+    <h3
       v-if="showName"
       class="mt-3 text-cream/80 text-label-lg tablet:text-body desktop:text-subhead transition-colors duration-300 ease-out group-hover:text-gold-500"
     >
       {{ artist.name }}
-    </h2>
+    </h3>
     <p
       v-if="variant === 'team' && artist.title"
       class="mt-1 text-label tracking-wider text-gray-muted/60"

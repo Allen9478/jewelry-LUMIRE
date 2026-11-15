@@ -40,23 +40,25 @@ const relatedFade = (i: number): FadeOptions => ({
         v-fade-in="{ delay: 0, y: 24, mobile: { delay: 0, y: 16 } }"
         class="work-detail-hero__image tablet:w-full tablet:h-full tablet:min-h-0 aspect-[4/5]"
       >
-        <img
-          :src="getImageUrl(`jewelry/${work.image}`)"
-          :alt="localized(work.name)"
-          fetchpriority="high"
-          width="1122"
-          height="1402"
-          class="w-full h-full object-cover"
-        />
+        <figure class="w-full h-full">
+          <img
+            :src="getImageUrl(`jewelry/${work.image}`)"
+            :alt="localized(work.name)"
+            fetchpriority="high"
+            width="1122"
+            height="1402"
+            class="w-full h-full object-cover"
+          />
+        </figure>
       </div>
       <div class="work-detail-hero__info tablet:h-full tablet:min-h-0 overflow-hidden">
         <div class="work-detail-hero__info-heading-group flex flex-col gap-6 mt-2 tablet:mt-2">
-          <div
+          <p
             v-fade-in="{ delay: 80, y: 12, mobile: { delay: 40, y: 8 } }"
             class="work-detail-hero__info-eyebrow text-eyebrow text-gold-500"
           >
             {{ t('page.workDetail.title') }}
-          </div>
+          </p>
           <h1
             v-fade-in="{ delay: 140, y: 16, mobile: { delay: 80, y: 12 } }"
             class="work-detail-hero__info-heading text-heading-sm font-serif italic"
@@ -98,7 +100,7 @@ const relatedFade = (i: number): FadeOptions => ({
           v-fade-in="{ delay: 380, y: 20, mobile: { delay: 200, y: 14 } }"
           class="work-detail-hero__artist my-8"
         >
-          <p class="text-eyebrow text-gold-500">{{ t('page.workDetail.aboutArtist') }}</p>
+          <h2 class="text-subtext text-gold-500">{{ t('page.workDetail.aboutArtist') }}</h2>
           <div v-if="artist" class="work-detail-hero__artist-grid grid grid-cols-[35%_65%] mt-4">
             <BaseAvatar :artist="artist" :show-name="false" class="justify-center" />
             <div
@@ -133,12 +135,12 @@ const relatedFade = (i: number): FadeOptions => ({
     <div
       class="page-container work-detail-related-works border-y border-gold-500/20 my-8 tablet:my-10 tablet:mb-6"
     >
-      <p
+      <h2
         v-fade-in="{ delay: 460, y: 16, mobile: { delay: 0, y: 12 } }"
         class="text-subhead text-gold-500 py-4 tablet:py-8"
       >
         {{ t('page.workDetail.relatedWorks') }}
-      </p>
+      </h2>
       <ItemGrid
         :items="otherWorks"
         grid-class="grid-cols-1 tablet:grid-cols-3"

@@ -191,7 +191,7 @@ const sortedFavorites = computed(() => {
           grid-class="grid-cols-1 tablet:grid-cols-3 laptop:grid-cols-4"
         >
           <template #default="{ item }">
-            <BaseWorkCard :work="item" />
+            <BaseWorkCard :work="item" heading-tag="h2" />
           </template>
         </ItemGrid>
         <GoldDivider />

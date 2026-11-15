@@ -57,7 +57,7 @@ function handleDemoSubmit() {
 </script>
 <template>
   <div class="contact flex flex-col tablet:flex-row">
-    <section
+    <div
       class="bg-black contact__hero hidden tablet:block tablet:sticky tablet:w-[50%] desktop:w-[45%] tablet:top-0 tablet:h-screen tablet:self-start"
     >
       <BaseImage
@@ -68,7 +68,7 @@ function handleDemoSubmit() {
         height="1352"
         class="contact__hero-img w-full h-full object-cover tablet:object-[30%_50%]"
       />
-    </section>
+    </div>
     <section
       class="contact__content page-container header-offset flex flex-col gap-6 tablet:gap-8 tablet:w-[50%] max-w-[400px] tablet:max-w-[640px]"
     >
@@ -108,7 +108,7 @@ function handleDemoSubmit() {
           v-model="form.name"
           id="contact-name"
           name="name"
-          autocomplete="username"
+          autocomplete="name"
           :label="txCommon('form.name')"
           type="text"
         />
@@ -125,6 +125,7 @@ function handleDemoSubmit() {
           <textarea
             v-model="form.message"
             id="contact-message"
+            name="message"
             rows="5"
             placeholder=" "
             class="w-full pt-5 pb-1 outline-none peer bg-transparent text-gold-500 border-b border-gray-muted group-focus-within:border-gold-500 resize-y min-h-[80px]"
@@ -155,9 +156,9 @@ function handleDemoSubmit() {
           <MapPinIcon class="size-8 text-gold-500 -translate-y-px" />
           <div class="flex flex-col gap-1 ml-4">
             <p class="text-subhead font-serif">{{ tx('location.name') }}</p>
-            <p v-for="(line, i) in address" :key="i" class="text-gray-muted">
+            <address v-for="(line, i) in address" :key="i" class="text-gray-muted">
               {{ line }}
-            </p>
+            </address>
           </div>
         </div>
         <div

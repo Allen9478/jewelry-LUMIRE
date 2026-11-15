@@ -22,20 +22,20 @@ defineSlots<{
 }>()
 </script>
 <template>
-  <div
+  <ul
     :class="[
       'item-grid grid gap-4 tablet:gap-5 laptop:gap-6 place-items-center',
       gapClass,
       gridClass,
     ]"
   >
-    <div
+    <li
       v-for="(item, i) in items"
       :key="item.id"
       v-fade-in="fade(i)"
       class="flex w-full justify-center"
     >
       <slot :item="item" :index="i" />
-    </div>
-  </div>
+    </li>
+  </ul>
 </template>

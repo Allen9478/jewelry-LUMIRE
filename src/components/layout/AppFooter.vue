@@ -105,8 +105,12 @@ const sections: FooterSection[] = [
               class="footer-nav-title flex flex-col border-b border-gold-400/30 py-2 tablet:py-1 tablet:border-none"
             >
               <div class="flex justify-between items-center gap-2 tablet:pb-5">
-                <p class="min-w-0 truncate">{{ t(section.titleKey) }}</p>
+                <h2 class="min-w-0 truncate">{{ t(section.titleKey) }}</h2>
                 <button
+                  type="button"
+                  :aria-label="t(section.titleKey)"
+                  :aria-expanded="!!openSections[section.key]"
+                  :aria-controls="`footer-list-${section.key}`"
                   @click="toggleMenu(section.key)"
                   class="toggle-bar flex tablet:hidden shrink-0 -m-2 p-2"
                   :class="{ 'is-open': openSections[section.key] }"
@@ -115,7 +119,10 @@ const sections: FooterSection[] = [
                   <span class="bar bar-flex"></span>
                 </button>
               </div>
-              <ul :class="[openSections[section.key] ? 'block' : 'hidden', 'tablet:block']">
+              <ul
+                :id="`footer-list-${section.key}`"
+                :class="[openSections[section.key] ? 'block' : 'hidden', 'tablet:block']"
+              >
                 <li
                   v-for="itemKey in section.itemKeys"
                   :key="itemKey"
