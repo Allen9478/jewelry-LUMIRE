@@ -13,7 +13,6 @@ let previouslyFocused: HTMLElement | null = null
 
 function toggleScrollLock(isLock: boolean) {
   if (isLock) {
-    // height是不讓捲軸滾action是防止手機端
     document.body.style.overflow = 'hidden'
     document.body.style.height = '100vh'
     document.body.style.touchAction = 'none'

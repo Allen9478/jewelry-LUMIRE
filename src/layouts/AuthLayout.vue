@@ -107,7 +107,6 @@ const dusts: Dust[] = [
   opacity: 0;
 }
 
-/* 加上高度限制解決在桌機版也會觸發的問題*/
 @media (orientation: landscape) and (max-width: 926px) and (max-height: 500px) {
   .auth {
     flex-direction: row;

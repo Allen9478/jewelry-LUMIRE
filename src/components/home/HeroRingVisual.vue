@@ -59,7 +59,7 @@ const cfg = computed(() => config[props.variant])
 <style scoped>
 /* 外層負責裁掉下方靠岩石那段 */
 .home-hero__visual-circle {
-  clip-path: inset(0 0 29.5% 0); /* 依實際畫面微調這個 29.5% */
+  clip-path: inset(0 0 29.5% 0);
 }
 
 /* 內層負責畫出漸層光圈本身 */
